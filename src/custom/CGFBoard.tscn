@@ -1,0 +1,126 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://src/custom/CGFDiscard.gd" type="Script" id=1]
+[ext_resource path="res://src/core/Pile.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/core/Hand.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/custom/CGFDeck.gd" type="Script" id=4]
+[ext_resource path="res://src/custom/CGFBoard.gd" type="Script" id=5]
+[ext_resource path="res://src/custom/CGFHand.gd" type="Script" id=6]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0, 0, 0, 1 )
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+
+[node name="Board" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Deck" parent="." instance=ExtResource( 2 )]
+script = ExtResource( 4 )
+placement = 8
+pile_name = "Deck"
+
+[node name="Discard" parent="." instance=ExtResource( 2 )]
+script = ExtResource( 1 )
+placement = 6
+pile_name = "Discard"
+faceup_cards = true
+
+[node name="Control" parent="Discard" index="0"]
+custom_styles/panel = SubResource( 1 )
+
+[node name="Hand" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1.12244, 0 )
+script = ExtResource( 6 )
+placement = 7
+
+[node name="FancyMovementToggle" type="CheckButton" parent="."]
+margin_right = 12.0
+margin_bottom = 20.0
+pressed = true
+text = "Fancy Movement"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EnableAttach" type="CheckButton" parent="."]
+margin_left = 194.978
+margin_top = 1.33486
+margin_right = 395.978
+margin_bottom = 41.3349
+text = "Enable Attachment"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScalingFocusOptions" type="OptionButton" parent="."]
+margin_left = -1.33484
+margin_top = 44.0497
+margin_right = 187.665
+margin_bottom = 84.0497
+pressed = true
+text = "Scaling + Viewport Focus"
+items = [ "Scaling Focus", null, false, 0, null, "Viewport Focus", null, false, 1, null, "Scaling + Viewport Focus", null, false, 2, null ]
+selected = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ReshuffleAllDeck" type="Button" parent="."]
+margin_left = 9.89948
+margin_top = 116.762
+margin_right = 200.899
+margin_bottom = 136.762
+text = "Reshuffle all cards into deck"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ReshuffleAllDiscard" type="Button" parent="."]
+margin_left = 9.89948
+margin_top = 140.334
+margin_right = 200.899
+margin_bottom = 160.334
+text = "Reshuffle all cards into discard"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="OvalHandToggle" type="CheckButton" parent="."]
+margin_left = 405.31
+margin_top = 1.12245
+margin_right = 594.31
+margin_bottom = 41.1225
+pressed = true
+text = "Oval Hand Shape"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Debug" type="CheckButton" parent="."]
+margin_left = 789.192
+margin_top = 3.36737
+margin_right = 978.192
+margin_bottom = 43.3674
+pressed = true
+text = "Debug"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="toggled" from="FancyMovementToggle" to="." method="_on_FancyMovementToggle_toggled"]
+[connection signal="toggled" from="EnableAttach" to="." method="_on_EnableAttach_toggled"]
+[connection signal="item_selected" from="ScalingFocusOptions" to="." method="_on_ScalingFocusOptions_item_selected"]
+[connection signal="pressed" from="ReshuffleAllDeck" to="." method="_on_ReshuffleAllDeck_pressed"]
+[connection signal="pressed" from="ReshuffleAllDiscard" to="." method="_on_ReshuffleAllDiscard_pressed"]
+[connection signal="toggled" from="OvalHandToggle" to="." method="_on_OvalHandToggle_toggled"]
+[connection signal="toggled" from="Debug" to="." method="_on_Debug_toggled"]
+
+[editable path="Discard"]

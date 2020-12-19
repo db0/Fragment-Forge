@@ -1,0 +1,188 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[ {
+"base": "Control",
+"class": "Board",
+"language": "GDScript",
+"path": "res://src/core/BoardTemplate.gd"
+}, {
+"base": "Reference",
+"class": "CFConst",
+"language": "GDScript",
+"path": "res://src/shader_wars/CFConst.gd"
+}, {
+"base": "Node",
+"class": "CFControl",
+"language": "GDScript",
+"path": "res://src/core/CFControl.gd"
+}, {
+"base": "Reference",
+"class": "CFUtils",
+"language": "GDScript",
+"path": "res://src/core/CFUtils.gd"
+}, {
+"base": "Area2D",
+"class": "Card",
+"language": "GDScript",
+"path": "res://src/core/CardTemplate.gd"
+}, {
+"base": "Panel",
+"class": "CardBack",
+"language": "GDScript",
+"path": "res://src/core/Card/CardBack.gd"
+}, {
+"base": "CardBack",
+"class": "CardBackGlow",
+"language": "GDScript",
+"path": "res://src/core/Card/CardBackGlow.gd"
+}, {
+"base": "CardBack",
+"class": "CardBackTexture",
+"language": "GDScript",
+"path": "res://src/core/Card/CardBackTexture.gd"
+}, {
+"base": "Reference",
+"class": "CardConfig",
+"language": "GDScript",
+"path": "res://src/shader_wars/cards/CardConfig.gd"
+}, {
+"base": "Area2D",
+"class": "CardContainer",
+"language": "GDScript",
+"path": "res://src/core/CardContainer.gd"
+}, {
+"base": "Panel",
+"class": "CardFront",
+"language": "GDScript",
+"path": "res://src/core/Card/CardFront.gd"
+}, {
+"base": "Reference",
+"class": "CustomScripts",
+"language": "GDScript",
+"path": "res://src/shader_wars/cards/CustomScripts.gd"
+}, {
+"base": "CardContainer",
+"class": "Hand",
+"language": "GDScript",
+"path": "res://src/core/Hand.gd"
+}, {
+"base": "Control",
+"class": "Highlight",
+"language": "GDScript",
+"path": "res://src/core/Highlight.gd"
+}, {
+"base": "VBoxContainer",
+"class": "ManipulationButtons",
+"language": "GDScript",
+"path": "res://src/core/Card/ManipulationButtons.gd"
+}, {
+"base": "Area2D",
+"class": "MousePointer",
+"language": "GDScript",
+"path": "res://src/core/MousePointer.gd"
+}, {
+"base": "CardContainer",
+"class": "Pile",
+"language": "GDScript",
+"path": "res://src/core/Pile.gd"
+}, {
+"base": "Reference",
+"class": "SP",
+"language": "GDScript",
+"path": "res://src/core/ScriptProperties.gd"
+}, {
+"base": "Reference",
+"class": "ScriptTask",
+"language": "GDScript",
+"path": "res://src/core/ScriptTask.gd"
+}, {
+"base": "Reference",
+"class": "ScriptingEngine",
+"language": "GDScript",
+"path": "res://src/core/ScriptingEngine.gd"
+}, {
+"base": "HBoxContainer",
+"class": "ShaderWarsCounters",
+"language": "GDScript",
+"path": "res://src/shader_wars/Counters.gd"
+}, {
+"base": "Line2D",
+"class": "TargetingArrow",
+"language": "GDScript",
+"path": "res://src/core/Card/TargetingArrow.gd"
+}, {
+"base": "HBoxContainer",
+"class": "Token",
+"language": "GDScript",
+"path": "res://src/core/Token.gd"
+}, {
+"base": "Node2D",
+"class": "TokenDrawer",
+"language": "GDScript",
+"path": "res://src/core/Card/TokenDrawer.gd"
+}, {
+"base": "Node",
+"class": "UTCommon",
+"language": "GDScript",
+"path": "res://tests/UTcommon.gd"
+}, {
+"base": "Node2D",
+"class": "ViewportCardFocus",
+"language": "GDScript",
+"path": "res://src/core/ViewportCardFocus.gd"
+} ]
+_global_script_class_icons={
+"Board": "",
+"CFConst": "",
+"CFControl": "",
+"CFUtils": "",
+"Card": "",
+"CardBack": "",
+"CardBackGlow": "",
+"CardBackTexture": "",
+"CardConfig": "",
+"CardContainer": "",
+"CardFront": "",
+"CustomScripts": "",
+"Hand": "",
+"Highlight": "",
+"ManipulationButtons": "",
+"MousePointer": "",
+"Pile": "",
+"SP": "",
+"ScriptTask": "",
+"ScriptingEngine": "",
+"ShaderWarsCounters": "",
+"TargetingArrow": "",
+"Token": "",
+"TokenDrawer": "",
+"UTCommon": "",
+"ViewportCardFocus": ""
+}
+
+[application]
+
+config/name="Shader Wars"
+run/main_scene="res://src/custom/CGFMain.tscn"
+config/icon="res://icon.png"
+
+[autoload]
+
+cfc="*res://src/core/CFControl.gd"
+
+[display]
+
+window/size/width=1700
+window/size/height=900
+
+[rendering]
+
+environment/default_environment="res://default_env.tres"
