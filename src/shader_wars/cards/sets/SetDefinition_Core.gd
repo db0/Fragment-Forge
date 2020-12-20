@@ -4,7 +4,7 @@ extends Reference
 
 const SET = "Core Set"
 const CARDS := {
-	"Circle shader": {
+	"Circle Shader": {
 		"Type": "Shader",
 		"Tags": [],
 		"Requirements": "",

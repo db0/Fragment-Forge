@@ -117,6 +117,7 @@ const SCRRIPT_SET_NAME_PREPEND := "SetScripts_"
 # This specifies the location of your token images.
 # Tokens are always going to be seeked at this location
 const PATH_TOKENS := PATH_ASSETS + "tokens/"
+const PATH_SCRIPTING_ENGINE := PATH_CUSTOM + "ShaderWarsScriptingEngine.gd"
 # The amount of distance neighboring cards are pushed during card focus
 #
 # It's based on the card width. Bigger percentage means larger push.

@@ -3,6 +3,7 @@ extends Board
 
 var allCards := [] # A pseudo-deck array to hold the card objects we want to pull
 
+onready var counters : ShaderWarsCounters = $Counters
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

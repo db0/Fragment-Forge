@@ -9,20 +9,29 @@ onready var _label_time = $"PC/VBC/HBC/TimeAvailable"
 onready var _label_skill = $"PC/VBC/HBC2/Skill"
 onready var _label_cred = $"PC/VBC/HBC3/Cred"
 
+func mod_counter(counter_name: String, value: int) -> void:
+	match counter_name:
+		"time":
+			set_time(time + value)
+		"skill":
+			set_skill(skill + value)
+		"cred":
+			set_cred(cred + value)
+
 func set_time(value: int) -> void:
 	time = value
 	if time < 0: 
 		time = 0
-	_label_time = str(time)
+	_label_time.text = str(time)
 
 func set_skill(value: int) -> void:
 	skill = value
 	if skill < 0: 
 		skill = 0
-	_label_skill = str(skill)
+	_label_skill.text = str(skill)
 
 func set_cred(value: int) -> void:
 	cred = value
 	if cred < 0: 
 		cred = 0
-	_label_skill = str(cred)
+	_label_skill.text = str(cred)

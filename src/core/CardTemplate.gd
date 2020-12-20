@@ -71,7 +71,7 @@ signal card_targeted(card,trigger,details)
 #
 # If we do, it is parsed by the compiler who then considers it
 # a cyclic reference as the scripting engine refers back to the Card class.
-var scripting_engine = load(CFConst.PATH_CORE + "ScriptingEngine.gd")
+var scripting_engine = load(CFConst.PATH_SCRIPTING_ENGINE)
 
 
 # The properties dictionary will be filled in by the setup() code
@@ -1615,21 +1615,11 @@ func _process_card_state() -> void:
 					if not c in neighbours and c != self:
 						c.interruptTweening()
 						c.reorganize_self()
-				# When zooming in, we also want to move the card higher,
-				# so that it's not under the screen's bottom edge.
-				# We multiple with 0.25 to offset the increase in size
-				# due to the 1.5 scale coming later.
-				var oval_offset = 0.0
-				# The below calculation ensures that rotated cards
-				# Don't raise too much over the hand location, causing the card
-				# focus to spazz-out.
-				# This needs to be improved, as the multiplier needs to be
-				# based on the angle somehow.
 				_target_position = expected_position \
 						- Vector2(card_size.x \
 						* 0.25,0)
 				# Enough with the fancy calculations. I'm just brute-forcing
-				# The card to stay at the fully within the viewport.
+				# The card to stay fully within the viewport.
 				while cfc.NMAP.hand.position.y \
 					+ cfc.NMAP.hand.bottom_margin \
 					+ _target_position.y \
