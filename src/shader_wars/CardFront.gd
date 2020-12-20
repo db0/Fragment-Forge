@@ -14,5 +14,5 @@ func _ready() -> void:
 	card_labels["Tags"] = $Margin/CardText/Tags
 	card_labels["Requirements"] = $Margin/CardText/Requirements
 	card_labels["Abilities"] = $Margin/CardText/Abilities
-	card_labels["Cost"] = $Margin/CardText/HB/Cost
-	card_labels["Power"] = $Margin/CardText/HB/Power
+	card_labels["Time"] = $Margin/CardText/HB/Time
+	card_labels["Value"] = $Margin/CardText/HB/Value

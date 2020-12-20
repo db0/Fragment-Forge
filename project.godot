@@ -171,7 +171,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Shader Wars"
-run/main_scene="res://src/custom/CGFMain.tscn"
+run/main_scene="res://src/shader_wars/Main.tscn"
 config/icon="res://icon.png"
 
 [autoload]

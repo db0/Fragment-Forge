@@ -13,28 +13,10 @@ func _ready() -> void:
 	# instead of defining them on the scene.
 	# This way any they will work with any size of viewport in a game.
 	# Discard pile goes bottom right
-	$FancyMovementToggle.pressed = cfc.fancy_movement
-	$OvalHandToggle.pressed = cfc.hand_use_oval_shape
-	$ScalingFocusOptions.selected = cfc.focus_style
 	$Debug.pressed = cfc._debug
 	# Fill up the deck for demo purposes
 	if not get_tree().get_root().has_node('Gut'):
 		load_test_cards()
-
-
-
-# This function is to avoid relating the logic in the card objects
-# to a node which might not be there in another game
-# You can remove this function and the FancyMovementToggle button
-# without issues
-func _on_FancyMovementToggle_toggled(_button_pressed) -> void:
-	cfc.fancy_movement = $FancyMovementToggle.pressed
-
-
-func _on_OvalHandToggle_toggled(_button_pressed: bool) -> void:
-	cfc.hand_use_oval_shape = $OvalHandToggle.pressed
-	for c in cfc.NMAP.hand.get_all_cards():
-		c.reorganize_self()
 
 
 # Reshuffles all Card objects created back into the deck
@@ -58,17 +40,6 @@ func reshuffle_all_in_pile(pile = cfc.NMAP.deck):
 	pile.shuffle_cards()
 
 
-# Button to change focus mode
-func _on_ScalingFocusOptions_item_selected(index) -> void:
-	cfc.focus_style = index
-
-
-# Button to make all cards act as attachments
-func _on_EnableAttach_toggled(button_pressed: bool) -> void:
-	for c in allCards:
-		c.is_attachment = button_pressed
-
-
 func _on_Debug_toggled(button_pressed: bool) -> void:
 	cfc._debug = button_pressed
 
@@ -79,9 +50,10 @@ func load_test_cards(extras := 11) -> void:
 		test_cards.append(ckey)
 	var test_card_array := []
 	for _i in range(extras):
-		var random_card_name = \
-				test_cards[CFUtils.randi() % len(test_cards)]
-		test_card_array.append(cfc.instance_card(random_card_name))
+		if not test_cards.empty():
+			var random_card_name = \
+					test_cards[CFUtils.randi() % len(test_cards)]
+			test_card_array.append(cfc.instance_card(random_card_name))
 	# 11 is the cards GUT expects. It's the testing standard
 	if extras == 11:
 	# I ensure there's of each test card, for use in GUT
@@ -90,7 +62,7 @@ func load_test_cards(extras := 11) -> void:
 	for card in test_card_array:
 		$Deck.add_child(card)
 		# warning-ignore:return_value_discarded
-		card.set_is_faceup(false,true)
+		#card.set_is_faceup(false,true)
 		card._determine_idle_state()
 		allCards.append(card) # Just keeping track of all the instanced card objects for demo purposes
 		#card.modulate.a = 0 # We use this for a nice transition effect
