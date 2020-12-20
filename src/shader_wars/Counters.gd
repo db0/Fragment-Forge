@@ -1,37 +1,37 @@
 class_name ShaderWarsCounters
 extends HBoxContainer
 
-var time : int = 0 setget set_time
-var skill : int = 0 setget set_skill
-var cred : int = 0 setget set_cred
+var counters := {}
+var _labels := {}
 
-onready var _label_time = $"PC/VBC/HBC/TimeAvailable"
-onready var _label_skill = $"PC/VBC/HBC2/Skill"
-onready var _label_cred = $"PC/VBC/HBC3/Cred"
+func _ready() -> void:
+	for c in ["time","skill","cred"]:
+		counters[c] = 0
+	_labels["time"] = $"PC/VBC/HBC/TimeAvailable"
+	_labels["skill"] = $"PC/VBC/HBC2/Skill"
+	_labels["cred"] = $"PC/VBC/HBC3/Cred"
 
-func mod_counter(counter_name: String, value: int) -> void:
-	match counter_name:
-		"time":
-			set_time(time + value)
-		"skill":
-			set_skill(skill + value)
-		"cred":
-			set_cred(cred + value)
 
-func set_time(value: int) -> void:
-	time = value
-	if time < 0: 
-		time = 0
-	_label_time.text = str(time)
-
-func set_skill(value: int) -> void:
-	skill = value
-	if skill < 0: 
-		skill = 0
-	_label_skill.text = str(skill)
-
-func set_cred(value: int) -> void:
-	cred = value
-	if cred < 0: 
-		cred = 0
-	_label_skill.text = str(cred)
+func mod_counter(counter_name: String, 
+		value: int,
+		set_to_mod := false,
+		check := false) -> int:
+	var retcode = CFConst.ReturnCode.CHANGED
+	if counters.get(counter_name, null) == null:
+		retcode = CFConst.ReturnCode.FAILED
+	else:
+		if set_to_mod and counters[counter_name] == value:
+			retcode = CFConst.ReturnCode.OK
+		elif set_to_mod and counters[counter_name] < 0:
+			retcode = CFConst.ReturnCode.FAILED
+		else:
+			if counters[counter_name] + value < 0:
+				retcode = CFConst.ReturnCode.FAILED
+				value = -counters[counter_name]
+			if not check:
+				if set_to_mod:
+					counters[counter_name] = value
+				else:
+					counters[counter_name] += value
+			_labels[counter_name].text = str(counters[counter_name])
+	return(retcode)
