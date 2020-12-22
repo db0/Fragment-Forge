@@ -31,6 +31,7 @@ placement = 8
 [node name="Discard" parent="." instance=ExtResource( 4 )]
 script = ExtResource( 3 )
 placement = 6
+faceup_cards = true
 
 [node name="Control" parent="Discard" index="0"]
 custom_styles/panel = SubResource( 1 )
