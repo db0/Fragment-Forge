@@ -10,6 +10,6 @@
 card_back_design = ExtResource( 3 )
 card_front_design = ExtResource( 1 )
 
-[node name="ManipulationButtons" parent="Control" index="3"]
+[node name="ManipulationButtons" parent="Control" index="4"]
 script = ExtResource( 5 )
 manipulation_button = ExtResource( 2 )
