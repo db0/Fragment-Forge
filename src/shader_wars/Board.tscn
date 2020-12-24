@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://src/core/Hand.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/shader_wars/Deck.gd" type="Script" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://src/shader_wars/Board.gd" type="Script" id=5]
 [ext_resource path="res://src/shader_wars/Counters.tscn" type="PackedScene" id=6]
 [ext_resource path="res://src/shader_wars/Hand.gd" type="Script" id=7]
+[ext_resource path="res://src/shader_wars/ShadersGrid.tscn" type="PackedScene" id=8]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0, 0, 0, 1 )
@@ -73,6 +74,15 @@ __meta__ = {
 }
 
 [node name="Counters" parent="." instance=ExtResource( 6 )]
+
+[node name="Shaders" parent="." instance=ExtResource( 8 )]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 20.0
+margin_top = -450.0
+margin_right = 1019.0
+margin_bottom = -254.0
+grow_vertical = 0
 [connection signal="pressed" from="ReshuffleAllDeck" to="." method="_on_ReshuffleAllDeck_pressed"]
 [connection signal="pressed" from="ReshuffleAllDiscard" to="." method="_on_ReshuffleAllDiscard_pressed"]
 [connection signal="toggled" from="Debug" to="." method="_on_Debug_toggled"]

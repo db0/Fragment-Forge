@@ -18,7 +18,7 @@ func get_scripts(card_name: String) -> Dictionary:
 					{
 						"name": "move_card_to_board",
 						"subject": "self",
-						"board_position": Vector2(500,100),
+						"grid_name": "Shaders",
 					}
 				]
 			},
@@ -34,7 +34,7 @@ func get_scripts(card_name: String) -> Dictionary:
 					{
 						"name": "move_card_to_board",
 						"subject": "self",
-						"board_position": Vector2(100,100),
+						"grid_name": "Shaders",
 					}
 				]
 			},
