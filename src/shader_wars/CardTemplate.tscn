@@ -1,14 +1,16 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://src/shader_wars/CardFront.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/shader_wars/CardTemplate.gd" type="Script" id=1]
 [ext_resource path="res://src/shader_wars/CardManipulationButton.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/shader_wars/CardBack.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/core/CardTemplate.tscn" type="PackedScene" id=4]
 [ext_resource path="res://src/shader_wars/ManipulationButtons.gd" type="Script" id=5]
+[ext_resource path="res://src/shader_wars/CardFront.tscn" type="PackedScene" id=6]
 
 [node name="Card" instance=ExtResource( 4 )]
+script = ExtResource( 1 )
 card_back_design = ExtResource( 3 )
-card_front_design = ExtResource( 1 )
+card_front_design = ExtResource( 6 )
 
 [node name="ManipulationButtons" parent="Control" index="4"]
 script = ExtResource( 5 )

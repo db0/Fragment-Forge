@@ -135,7 +135,24 @@ const BOTTOM_MARGIN_MULTIPLIER := 0.5
 #
 # Put a negative number here if you want attachments to offset
 # towards the top of the host.
-const ATTACHMENT_OFFSET := -0.2
+const ATTACHMENT_OFFSET := [
+	# TOP_LEFT
+	Vector2(-0.2,-0.2),
+	# TOP
+	Vector2(0,-0.2),
+	# TOP_RIGHT
+	Vector2(0.2,-0.2),
+	# RIGHT
+	Vector2(0.2,0),
+	# LEFT
+	Vector2(-0.2,0),
+	# BOTTOM_LEFT
+	Vector2(-0.2,0.2),
+	# BOTTOM
+	Vector2(0,0.2),
+	# BOTTOM_RIGHT
+	Vector2(0.2,0.2),
+]
 # The colour to use when hovering over a card.
 #
 # Reduce the multiplier to reduce glow effect or stop it altogether

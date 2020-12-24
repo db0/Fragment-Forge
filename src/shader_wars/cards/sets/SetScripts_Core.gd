@@ -7,36 +7,27 @@ extends Reference
 func get_scripts(card_name: String) -> Dictionary:
 	var scripts := {
 		"Circle Shader": {
-			"manual": {
-				"hand": [
+			"card_moved_to_board": {
+				"board": [
 					{
 						"name": "modify_counter",
 						"counter": "time",
-						"is_cost": true,
 						"modification": -3,
 					},
-					{
-						"name": "move_card_to_board",
-						"subject": "self",
-						"grid_name": "Shaders",
-					}
-				]
+				],
+				"trigger": "self",
 			},
 		},
 		"Advanced Shader": {
-			"manual": {
-				"hand": [
+			"card_moved_to_board": {
+				"board": [
 					{
 						"name": "modify_counter",
 						"counter": "time",
 						"modification": 10,
 					},
-					{
-						"name": "move_card_to_board",
-						"subject": "self",
-						"grid_name": "Shaders",
-					}
-				]
+				],
+				"trigger": "self",
 			},
 		},
 	}
