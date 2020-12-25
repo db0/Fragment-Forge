@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://src/shader_wars/CardTemplate.gd" type="Script" id=1]
+[ext_resource path="res://src/shader_wars/SWCardTemplate.gd" type="Script" id=1]
 [ext_resource path="res://src/shader_wars/CardManipulationButton.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/shader_wars/CardBack.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/core/CardTemplate.tscn" type="PackedScene" id=4]

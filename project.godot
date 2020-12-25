@@ -132,7 +132,7 @@ _global_script_classes=[ {
 "base": "ScriptingEngine",
 "class": "ShaderWarsScriptingEngine",
 "language": "GDScript",
-"path": "res://src/shader_wars/ShaderWarsScriptingEngine.gd"
+"path": "res://src/shader_wars/SWScriptingEngine.gd"
 }, {
 "base": "Line2D",
 "class": "TargetingArrow",

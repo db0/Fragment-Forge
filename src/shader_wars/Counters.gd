@@ -35,3 +35,6 @@ func mod_counter(counter_name: String,
 					counters[counter_name] += value
 			_labels[counter_name].text = str(counters[counter_name])
 	return(retcode)
+
+func get_counter(counter_name: String) -> int:
+	return(counters[counter_name])

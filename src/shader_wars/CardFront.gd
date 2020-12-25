@@ -7,12 +7,14 @@ func _ready() -> void:
 		"Cost": 3,
 		"Power": 3,
 	}
-	shrink_label = "Abilities"
+	compensation_label = "Abilities"
 	_card_text = $Margin/CardText
 	card_labels["Name"] = $Margin/CardText/Name
 	card_labels["Type"] = $Margin/CardText/Type
 	card_labels["Tags"] = $Margin/CardText/Tags
-	card_labels["Requirements"] = $Margin/CardText/Requirements
 	card_labels["Abilities"] = $Margin/CardText/Abilities
-	card_labels["Time"] = $Margin/CardText/HB/Time
-	card_labels["Value"] = $Margin/CardText/HB/Value
+	card_labels["Time"] = $Margin/CardText/HBC/Time
+	card_labels["Value"] = $Margin/CardText/HBC/Value
+	card_labels["skill_req"] = $Margin/CardText/skill_req
+	card_labels["cred_req"] = $Margin/CardText/cred_req
+	card_labels["motivation_req"] = $Margin/CardText/motivation_req
