@@ -3,7 +3,9 @@
 [ext_resource path="res://src/shader_wars/cards/ShaderFront.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/shader_wars/CardTemplate.tscn" type="PackedScene" id=2]
 
-[node name="Shader" instance=ExtResource( 2 )]
+[node name="Shader" groups=[
+"shaders",
+] instance=ExtResource( 2 )]
 board_placement = 2
 mandatory_grid_name = "Shaders"
 card_front_design = ExtResource( 1 )

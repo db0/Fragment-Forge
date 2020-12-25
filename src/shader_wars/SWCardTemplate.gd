@@ -11,3 +11,8 @@ func check_play_costs() -> bool:
 	if properties.get("motivation_req", 0) > cfc.NMAP.board.counters.get_counter("motivation"):
 		ret = false
 	return(ret)
+
+func common_move_scripts(new_container: Node, old_container: Node) -> void:
+	if new_container == cfc.NMAP.board and old_container == cfc.NMAP.hand:
+		cfc.NMAP.board.counters.mod_counter("time", -properties.get("Time",0))
+		cfc.NMAP.board.counters.mod_counter("cred", -properties.get("Cred",0))

@@ -3,7 +3,7 @@ extends Board
 
 var allCards := [] # A pseudo-deck array to hold the card objects we want to pull
 
-onready var counters : ShaderWarsCounters = $Counters
+onready var counters : ShaderWarsCounters = $Details/Counters
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -18,6 +18,7 @@ func _ready() -> void:
 	# Fill up the deck for demo purposes
 	if not get_tree().get_root().has_node('Gut'):
 		load_test_cards()
+	counters.mod_counter("time",10)
 
 
 # Reshuffles all Card objects created back into the deck

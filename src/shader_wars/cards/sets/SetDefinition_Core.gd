@@ -7,7 +7,6 @@ const CARDS := {
 	"Circle Shader": {
 		"Type": "Shader",
 		"Tags": [],
-		"Requirements": "",
 		"Abilities": "Create them circles",
 		"Time": 0,
 		"Value": 1,
@@ -18,11 +17,10 @@ const CARDS := {
 	"Advanced Shader": {
 		"Type": "Shader",
 		"Tags": [],
-		"Requirements": "",
 		"Abilities": "Some tricky stuff",
 		"Time": 1,
 		"Value": 2,
-		"skill_req": 1,
+		"skill_req": 0,
 		"cred_req": 0,
 		"motivation_req": 0,
 	},

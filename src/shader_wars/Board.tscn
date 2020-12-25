@@ -5,7 +5,7 @@
 [ext_resource path="res://src/shader_wars/Discard.gd" type="Script" id=3]
 [ext_resource path="res://src/core/Pile.tscn" type="PackedScene" id=4]
 [ext_resource path="res://src/shader_wars/Board.gd" type="Script" id=5]
-[ext_resource path="res://src/shader_wars/Counters.tscn" type="PackedScene" id=6]
+[ext_resource path="res://src/shader_wars/Details.tscn" type="PackedScene" id=6]
 [ext_resource path="res://src/shader_wars/Hand.gd" type="Script" id=7]
 [ext_resource path="res://src/shader_wars/ShadersGrid.tscn" type="PackedScene" id=8]
 
@@ -26,10 +26,12 @@ __meta__ = {
 }
 
 [node name="Deck" parent="." instance=ExtResource( 4 )]
+position = Vector2( -3.1748, 652.422 )
 script = ExtResource( 2 )
 placement = 8
 
 [node name="Discard" parent="." instance=ExtResource( 4 )]
+position = Vector2( 1542.95, 652.422 )
 script = ExtResource( 3 )
 placement = 6
 faceup_cards = true
@@ -38,7 +40,7 @@ faceup_cards = true
 custom_styles/panel = SubResource( 1 )
 
 [node name="Hand" parent="." instance=ExtResource( 1 )]
-position = Vector2( 1.12244, 0 )
+position = Vector2( 183.674, 658.771 )
 script = ExtResource( 7 )
 placement = 7
 
@@ -63,17 +65,18 @@ __meta__ = {
 }
 
 [node name="Debug" type="CheckButton" parent="."]
-margin_left = 789.192
-margin_top = 3.36737
-margin_right = 978.192
-margin_bottom = 43.3674
+margin_left = 9.7782
+margin_top = 158.933
+margin_right = 198.778
+margin_bottom = 198.933
 pressed = true
 text = "Debug"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Counters" parent="." instance=ExtResource( 6 )]
+[node name="Details" parent="." instance=ExtResource( 6 )]
+mouse_filter = 2
 
 [node name="Shaders" parent="." instance=ExtResource( 8 )]
 anchor_top = 1.0
