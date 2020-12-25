@@ -11,7 +11,7 @@ const CARDS := {
 		"Abilities": "Create them circles",
 		"Time": 0,
 		"Value": 1,
-		"skill_req": 1,
+		"skill_req": 0,
 		"cred_req": 0,
 		"motivation_req": 0,
 	},

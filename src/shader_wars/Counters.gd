@@ -5,11 +5,12 @@ var counters := {}
 var _labels := {}
 
 func _ready() -> void:
-	for c in ["time","skill","cred"]:
+	for c in ["time","skill","cred","motivation"]:
 		counters[c] = 0
 	_labels["time"] = $"PC/VBC/HBC/TimeAvailable"
 	_labels["skill"] = $"PC/VBC/HBC2/Skill"
 	_labels["cred"] = $"PC/VBC/HBC3/Cred"
+	_labels["motivation"] = $"PC/VBC/HBC4/Motivation"
 
 
 func mod_counter(counter_name: String, 

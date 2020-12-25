@@ -7,7 +7,7 @@
 highlight = Color( 0.4, 1.56, 0.4, 1 )
 
 [node name="GridContainer" parent="." index="0"]
-margin_right = 1747.0
+margin_right = 1622.0
 columns = 14
 
 [node name="BoardPlacementSlot2" parent="GridContainer" index="1" instance=ExtResource( 1 )]
@@ -59,4 +59,4 @@ margin_left = 1500.0
 margin_right = 1620.0
 
 [node name="Control" parent="." index="1"]
-margin_right = 1747.0
+margin_right = 1622.0
