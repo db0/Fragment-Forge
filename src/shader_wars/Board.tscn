@@ -78,17 +78,94 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Details" parent="." instance=ExtResource( 6 )]
+[node name="VBC" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Details" parent="VBC" instance=ExtResource( 6 )]
+anchor_right = 0.0
+margin_right = 1700.0
+margin_bottom = 106.0
 mouse_filter = 2
 
-[node name="Shaders" parent="." instance=ExtResource( 8 )]
-anchor_top = 1.0
-anchor_bottom = 1.0
-margin_left = 20.0
-margin_top = -450.0
-margin_right = 1019.0
-margin_bottom = -254.0
+[node name="MC-Expand" type="MarginContainer" parent="VBC"]
+margin_top = 110.0
+margin_right = 1700.0
+margin_bottom = 196.0
+mouse_filter = 2
+size_flags_vertical = 3
+
+[node name="MC-Resources" type="MarginContainer" parent="VBC"]
+margin_top = 200.0
+margin_right = 1700.0
+margin_bottom = 396.0
+mouse_filter = 2
+custom_constants/margin_right = 10
+custom_constants/margin_left = 30
+
+[node name="HBC" type="HBoxContainer" parent="VBC/MC-Resources"]
+margin_left = 30.0
+margin_right = 1690.0
+margin_bottom = 196.0
+
+[node name="MarginRight" type="MarginContainer" parent="VBC/MC-Resources/HBC"]
+margin_right = 14.0
+margin_bottom = 196.0
+size_flags_horizontal = 3
+
+[node name="Resources" parent="VBC/MC-Resources/HBC" instance=ExtResource( 8 )]
+margin_left = 18.0
+margin_right = 1642.0
+margin_bottom = 196.0
+highlight = Color( 0.572187, 0.4, 1.56, 1 )
+
+[node name="MarginLeft" type="MarginContainer" parent="VBC/MC-Resources/HBC"]
+margin_left = 1646.0
+margin_right = 1660.0
+margin_bottom = 196.0
+size_flags_horizontal = 3
+
+[node name="MC-Shaders" type="MarginContainer" parent="VBC"]
+margin_top = 400.0
+margin_right = 1700.0
+margin_bottom = 596.0
+mouse_filter = 2
+custom_constants/margin_right = 10
+custom_constants/margin_left = 30
+
+[node name="HBC" type="HBoxContainer" parent="VBC/MC-Shaders"]
+margin_left = 30.0
+margin_right = 1690.0
+margin_bottom = 196.0
+
+[node name="MarginRight" type="MarginContainer" parent="VBC/MC-Shaders/HBC"]
+margin_right = 14.0
+margin_bottom = 196.0
+size_flags_horizontal = 3
+
+[node name="Shaders" parent="VBC/MC-Shaders/HBC" instance=ExtResource( 8 )]
+margin_left = 18.0
+margin_right = 1642.0
+margin_bottom = 196.0
 grow_vertical = 0
+mouse_filter = 2
+
+[node name="MarginLeft" type="MarginContainer" parent="VBC/MC-Shaders/HBC"]
+margin_left = 1646.0
+margin_right = 1660.0
+margin_bottom = 196.0
+size_flags_horizontal = 3
+
+[node name="MC-Cards" type="MarginContainer" parent="VBC"]
+margin_top = 600.0
+margin_right = 1700.0
+margin_bottom = 900.0
+rect_min_size = Vector2( 0, 300 )
+mouse_filter = 2
 [connection signal="pressed" from="ReshuffleAllDeck" to="." method="_on_ReshuffleAllDeck_pressed"]
 [connection signal="pressed" from="ReshuffleAllDiscard" to="." method="_on_ReshuffleAllDiscard_pressed"]
 [connection signal="toggled" from="Debug" to="." method="_on_Debug_toggled"]

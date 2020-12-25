@@ -20,7 +20,7 @@ const CARDS := {
 		"Abilities": "Some tricky stuff",
 		"Time": 1,
 		"Value": 2,
-		"skill_req": 0,
+		"skill_req": 1,
 		"cred_req": 0,
 		"motivation_req": 0,
 	},

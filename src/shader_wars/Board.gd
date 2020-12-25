@@ -3,7 +3,8 @@ extends Board
 
 var allCards := [] # A pseudo-deck array to hold the card objects we want to pull
 
-onready var counters : ShaderWarsCounters = $Details/Counters
+onready var start_button := $VBC/Details/Start
+onready var counters : ShaderWarsCounters = $VBC/Details/Counters
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -15,7 +16,7 @@ func _ready() -> void:
 	# This way any they will work with any size of viewport in a game.
 	# Discard pile goes bottom right
 	$Debug.pressed = cfc._debug
-	$Details/Start.connect("pressed", self, "_on_Start_pressed")
+	start_button.connect("pressed", self, "_on_Start_pressed")
 	# Fill up the deck for demo purposes
 	if not get_tree().get_root().has_node('Gut'):
 		load_deck()
@@ -25,7 +26,7 @@ func _on_Start_pressed() -> void:
 	counters.mod_counter("time",10)
 	counters.mod_counter("motivation",5)
 	cfc.NMAP.hand.fill_starting_hand()
-	$Details/Start.visible = false
+	start_button.visible = false
 
 # Reshuffles all Card objects created back into the deck
 func _on_ReshuffleAllDeck_pressed() -> void:

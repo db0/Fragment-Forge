@@ -16,6 +16,9 @@ func _ready() -> void:
 	# fit the size of the cards on the board.
 	rect_min_size = CFConst.CARD_SIZE * CFConst.PLAY_AREA_SCALE
 	$Highlight.rect_min_size = rect_min_size
+	$Highlight/LeftRight.rect_min_size = rect_min_size
+	$Highlight/TopBottom.rect_min_size = rect_min_size
+	print(CFConst.CARD_SIZE * CFConst.PLAY_AREA_SCALE,$Highlight.rect_size.y)
 	$Area2D/CollisionShape2D.shape.extents = rect_min_size / 2
 	$Area2D/CollisionShape2D.position = rect_min_size / 2
 
