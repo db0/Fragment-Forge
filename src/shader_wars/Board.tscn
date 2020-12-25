@@ -45,6 +45,7 @@ script = ExtResource( 7 )
 placement = 7
 
 [node name="ReshuffleAllDeck" type="Button" parent="."]
+visible = false
 margin_left = 9.89948
 margin_top = 116.762
 margin_right = 200.899
@@ -55,6 +56,7 @@ __meta__ = {
 }
 
 [node name="ReshuffleAllDiscard" type="Button" parent="."]
+visible = false
 margin_left = 9.89948
 margin_top = 140.334
 margin_right = 200.899
@@ -65,6 +67,7 @@ __meta__ = {
 }
 
 [node name="Debug" type="CheckButton" parent="."]
+visible = false
 margin_left = 9.7782
 margin_top = 158.933
 margin_right = 198.778

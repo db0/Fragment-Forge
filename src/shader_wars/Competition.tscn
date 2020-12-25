@@ -31,7 +31,7 @@ margin_right = 616.0
 margin_bottom = 20.0
 
 [node name="DemoCompetitionTitle" type="Label" parent="VBC/HBC"]
-margin_right = 553.0
+margin_right = 502.0
 margin_bottom = 20.0
 size_flags_horizontal = 3
 custom_fonts/font = SubResource( 1 )
@@ -39,12 +39,12 @@ text = "Demo Competition Title"
 align = 1
 
 [node name="1stPlaceLabel" type="Label" parent="VBC/HBC"]
-margin_left = 557.0
+margin_left = 506.0
 margin_right = 590.0
 margin_bottom = 20.0
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 1, 0, 0, 1 )
-text = "1st:"
+text = "1st Place:"
 align = 1
 
 [node name="1stPlaceValue" type="Label" parent="VBC/HBC"]
@@ -78,17 +78,17 @@ align = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="VBC/HBC2"]
 margin_left = 190.0
-margin_right = 550.0
+margin_right = 499.0
 margin_bottom = 20.0
 size_flags_horizontal = 3
 
 [node name="2ndPlaceLabel" type="Label" parent="VBC/HBC2"]
-margin_left = 554.0
+margin_left = 503.0
 margin_right = 590.0
 margin_bottom = 20.0
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 1, 0, 0, 1 )
-text = "2nd:"
+text = "2nd Place:"
 align = 1
 
 [node name="2ndPlaceValue" type="Label" parent="VBC/HBC2"]
@@ -106,7 +106,7 @@ margin_right = 616.0
 margin_bottom = 68.0
 
 [node name="MarginContainer2" type="MarginContainer" parent="VBC/HBC3"]
-margin_right = 553.0
+margin_right = 502.0
 margin_bottom = 20.0
 size_flags_horizontal = 3
 __meta__ = {
@@ -114,12 +114,12 @@ __meta__ = {
 }
 
 [node name="3rdPlaceLabel" type="Label" parent="VBC/HBC3"]
-margin_left = 557.0
+margin_left = 506.0
 margin_right = 590.0
 margin_bottom = 20.0
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 1, 0, 0, 1 )
-text = "3rd:"
+text = "3rd Place:"
 align = 1
 
 [node name="3rdPlaceValue" type="Label" parent="VBC/HBC3"]

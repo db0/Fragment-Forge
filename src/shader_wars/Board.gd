@@ -15,11 +15,17 @@ func _ready() -> void:
 	# This way any they will work with any size of viewport in a game.
 	# Discard pile goes bottom right
 	$Debug.pressed = cfc._debug
+	$Details/Start.connect("pressed", self, "_on_Start_pressed")
 	# Fill up the deck for demo purposes
 	if not get_tree().get_root().has_node('Gut'):
-		load_test_cards()
-	counters.mod_counter("time",10)
+		load_deck()
 
+
+func _on_Start_pressed() -> void:
+	counters.mod_counter("time",10)
+	counters.mod_counter("motivation",5)
+	cfc.NMAP.hand.fill_starting_hand()
+	$Details/Start.visible = false
 
 # Reshuffles all Card objects created back into the deck
 func _on_ReshuffleAllDeck_pressed() -> void:
@@ -67,18 +73,16 @@ func load_test_cards(extras := 11) -> void:
 		#card.set_is_faceup(false,true)
 		card._determine_idle_state()
 		allCards.append(card) # Just keeping track of all the instanced card objects for demo purposes
-		#card.modulate.a = 0 # We use this for a nice transition effect
-#	$Deck.reorganize_stack()
-#	var test_card_array2 := []
-#	if extras == 11:
-#	# I ensure there's of each test card, for use in GUT
-#		for card_name in test_cards:
-#			test_card_array2.append(cfc.instance_card(card_name))
-#	for card in test_card_array2:
-#		$Deck2.add_child(card)
-#		# warning-ignore:return_value_discarded
-#		card.set_is_faceup(false,true)
-#		card._determine_idle_state()
-#		allCards.append(card) # Just keeping track of all the instanced card objects for demo purposes
-#		#card.modulate.a = 0 # We use this for a nice transition effect
-#	$Deck2.reorganize_stack()
+
+# Loads a sample set of cards to use for testing
+func load_deck() -> void:
+	var deck = load("res://src/shader_wars/decks/first_deck.gd")
+	var cards_array := []
+	for card_name in deck.CONTENTS:
+		for _iter in range(deck.CONTENTS[card_name]):
+			cards_array.append(cfc.instance_card(card_name))
+	for card in cards_array:
+		$Deck.add_child(card)
+		# warning-ignore:return_value_discarded
+		#card.set_is_faceup(false,true)
+		card._determine_idle_state()
