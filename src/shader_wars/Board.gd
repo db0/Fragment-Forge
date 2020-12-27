@@ -18,13 +18,15 @@ func _ready() -> void:
 	$Debug.pressed = cfc._debug
 	start_button.connect("pressed", self, "_on_Start_pressed")
 	# Fill up the deck for demo purposes
+	if not cfc.ut:
+		cfc.game_rng_seed = CFUtils.generate_random_seed()
 	if not get_tree().get_root().has_node('Gut'):
 		load_deck()
 
 
 func _on_Start_pressed() -> void:
 	counters.mod_counter("time",10)
-	counters.mod_counter("motivation",5)
+	counters.mod_counter("motivation",8)
 	cfc.NMAP.hand.fill_starting_hand()
 	start_button.visible = false
 
@@ -83,7 +85,9 @@ func load_deck() -> void:
 		for _iter in range(deck.CONTENTS[card_name]):
 			cards_array.append(cfc.instance_card(card_name))
 	for card in cards_array:
-		$Deck.add_child(card)
+		cfc.NMAP.deck.add_child(card)
 		# warning-ignore:return_value_discarded
 		#card.set_is_faceup(false,true)
 		card._determine_idle_state()
+	cfc.NMAP.deck.shuffle_cards()
+	cfc.NMAP.deck.shuffle_cards()

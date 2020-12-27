@@ -16,6 +16,8 @@ onready var placements = {
 	"second": [second_place,second_place_text],
 	"third": [third_place,third_place_text],
 }
+
+
 func _ready() -> void:
 	for placement in placements.values():
 		placement[0].set("custom_colors/font_color", _PLACE_UNACHIEVED_COLOR)

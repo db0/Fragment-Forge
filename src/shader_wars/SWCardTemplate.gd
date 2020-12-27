@@ -4,6 +4,8 @@ func check_play_costs() -> bool:
 	var ret := true
 	if properties.get("Time", 0) > cfc.NMAP.board.counters.get_counter("time"):
 		ret = false
+	if properties.get("Kudos", 0) > cfc.NMAP.board.counters.get_counter("kudos"):
+		ret = false
 	if properties.get("skill_req", 0) > \
 			cfc.NMAP.board.counters.get_counter("skill"):
 		ret = false
@@ -19,3 +21,12 @@ func common_move_scripts(new_container: Node, old_container: Node) -> void:
 	if new_container == cfc.NMAP.board and old_container == cfc.NMAP.hand:
 		cfc.NMAP.board.counters.mod_counter("time", -properties.get("Time",0))
 		cfc.NMAP.board.counters.mod_counter("cred", -properties.get("Cred",0))
+		cfc.NMAP.board.counters.mod_counter("kudos", -properties.get("Kudos",0))
+	elif new_container == cfc.NMAP.hand \
+			and old_container == cfc.NMAP.hand\
+			and properties.Type == "Prep":
+		cfc.NMAP.board.counters.mod_counter("time", -properties.get("Time",0))
+		cfc.NMAP.board.counters.mod_counter("cred", -properties.get("Cred",0))
+		cfc.NMAP.board.counters.mod_counter("kudos", -properties.get("Kudos",0))
+		execute_scripts()
+		move_to(cfc.NMAP.discard)

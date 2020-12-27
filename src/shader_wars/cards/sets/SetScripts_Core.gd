@@ -6,18 +6,26 @@ extends Reference
 # if no scripts have been defined, an empty dictionary is returned instead.
 func get_scripts(card_name: String) -> Dictionary:
 	var scripts := {
-#		"Circle Shader": {
-#			"card_moved_to_board": {
-#				"board": [
+		"Google-Fu!": {
+			"manual": {
+				"hand": [
+					{
+						"name": "move_card_to_container",
+						"src_container": cfc.NMAP.deck,
+						"dest_container": cfc.NMAP.hand,
+						"subject_count": 3,
+						"subject": "index",
+						"subject_index": "top",
+					},
 #					{
-#						"name": "modify_counter",
-#						"counter": "time",
-#						"modification": -1,
+#						"name": "move_card_to_container",
+#						"src_container": cfc.NMAP.hand,
+#						"dest_container": cfc.NMAP.discard,
+#						"subject": "self",
 #					},
-#				],
-#				"trigger": "self",
-#			},
-#		},
+				],
+			},
+		},
 #		"Advanced Shader": {
 #			"card_moved_to_board": {
 #				"board": [

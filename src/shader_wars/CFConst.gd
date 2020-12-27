@@ -116,6 +116,7 @@ const PATH_TOKENS := PATH_ASSETS + "tokens/"
 # The scripting engine functionality with your own tasks,
 # Point this to your own script file.
 const PATH_SCRIPTING_ENGINE := PATH_CUSTOM + "SWScriptingEngine.gd"
+const PATH_PER_ENGINE := PATH_CORE + "ScriptPer.gd"
 # The amount of distance neighboring cards are pushed during card focus
 #
 # It's based on the card width. Bigger percentage means larger push.
@@ -223,12 +224,5 @@ const DISABLE_DRAGGING_FROM_PILE := false
 #
 # This allows us to reuse a token image for more than 1 token type
 const TOKENS_MAP := {
-	'tech': 'blue.svg',
-	'plasma': 'blue.svg',
-	'bio': 'green.svg',
-	'industry': 'grey.svg',
-	'magic': 'purple.svg',
-	'blood': 'red.svg',
-	'gold coin': 'yellow.svg',
-	'void': 'black.svg',
+	'kudos': 'green.svg',
 }

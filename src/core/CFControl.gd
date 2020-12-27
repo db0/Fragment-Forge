@@ -45,7 +45,7 @@ var _ut_show_token_buttons := CFConst.SHOW_TOKEN_BUTTONS
 var are_all_nodes_mapped := false
 # The games initial Random Number Generator seed.
 # When this stays the same, the game randomness will always play the predictable.
-var game_rng_seed := "CFC Random Seed" setget set_seed
+var game_rng_seed = "CFC Random Seed" setget set_seed
 # This will store all card properties which are placed in the card labels
 var card_definitions := {}
 # This will store all card scripts
@@ -60,7 +60,18 @@ var card_drag_ongoing: Card = null
 var _debug := false
 # Game random number generator
 var game_rng: RandomNumberGenerator = RandomNumberGenerator.new()
-
+# We cannot preload the scripting engine as a const for the same reason
+# We cannot refer to it via class name.
+#
+# If we do, it is parsed by the compiler who then considers it
+# a cyclic reference as the scripting engine refers back to the Card class.
+var scripting_engine = load(CFConst.PATH_SCRIPTING_ENGINE)
+# We cannot preload the scripting engine as a const for the same reason
+# We cannot refer to it via class name.
+#
+# If we do, it is parsed by the compiler who then considers it
+# a cyclic reference as the scripting engine refers back to the Card class.
+var per_engine = load(CFConst.PATH_PER_ENGINE)
 
 func _ready() -> void:
 	# We reset our node mapping variables every time
@@ -127,8 +138,8 @@ func map_node(node) -> void:
 
 
 # Setter for the ranom seed.
-func set_seed(_seed: String) -> void:
-	game_rng_seed = _seed
+func set_seed(_seed) -> void:
+	game_rng_seed = str(_seed)
 	game_rng.set_seed(hash(game_rng_seed))
 
 

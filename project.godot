@@ -115,6 +115,16 @@ _global_script_classes=[ {
 "path": "res://src/shader_wars/SWSP.gd"
 }, {
 "base": "Reference",
+"class": "ScriptObject",
+"language": "GDScript",
+"path": "res://src/core/ScriptObject.gd"
+}, {
+"base": "ScriptObject",
+"class": "ScriptPer",
+"language": "GDScript",
+"path": "res://src/core/ScriptPer.gd"
+}, {
+"base": "Reference",
 "class": "ScriptTask",
 "language": "GDScript",
 "path": "res://src/core/ScriptTask.gd"
@@ -181,6 +191,8 @@ _global_script_class_icons={
 "Pile": "",
 "SP": "",
 "SWSP": "",
+"ScriptObject": "",
+"ScriptPer": "",
 "ScriptTask": "",
 "ScriptingEngine": "",
 "ShaderWarsCounters": "",
