@@ -4,7 +4,7 @@ extends Hand
 func _ready() -> void:
 	pass
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if hand_size != cfc.NMAP.board.counters.get_counter("motivation"):
 		hand_size = cfc.NMAP.board.counters.get_counter("motivation")
 

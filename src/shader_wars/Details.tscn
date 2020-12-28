@@ -19,21 +19,21 @@ __meta__ = {
 
 [node name="Start" type="Button" parent="."]
 margin_right = 158.0
-margin_bottom = 106.0
+margin_bottom = 130.0
 custom_fonts/font = SubResource( 1 )
 text = "Start Competition"
 
 [node name="MC2" type="MarginContainer" parent="."]
 margin_left = 162.0
 margin_right = 619.0
-margin_bottom = 106.0
+margin_bottom = 130.0
 mouse_filter = 2
 size_flags_horizontal = 3
 
 [node name="VBC" type="VBoxContainer" parent="."]
 margin_left = 623.0
 margin_right = 1081.0
-margin_bottom = 106.0
+margin_bottom = 130.0
 size_flags_horizontal = 3
 
 [node name="Competition" parent="VBC" instance=ExtResource( 2 )]
@@ -45,10 +45,11 @@ margin_bottom = 82.0
 [node name="MC" type="MarginContainer" parent="."]
 margin_left = 1085.0
 margin_right = 1542.0
-margin_bottom = 106.0
+margin_bottom = 130.0
 mouse_filter = 2
 size_flags_horizontal = 3
 
 [node name="Counters" parent="." instance=ExtResource( 1 )]
 margin_left = 1546.0
 margin_right = 1699.0
+margin_bottom = 130.0
