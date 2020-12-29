@@ -1,7 +1,7 @@
 class_name SWSP
 extends Reference
 
-const KEY_COUNTER := "counter"
+const KEY_COUNTER := "counter_name"
 const KEY_PER_COUNTER := "per_counter"
 
 # Returns the default value any script definition key should have

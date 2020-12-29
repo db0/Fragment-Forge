@@ -330,7 +330,8 @@ func _on_Card_gui_input(event) -> void:
 				and not tokens.are_hovered():
 			# If it's a double-click, then it's not a card drag
 			# But rather it's script execution
-			if event.doubleclick:
+			if event.doubleclick\
+					and check_play_costs() != CFConst.CostsState.IMPOSSIBLE:
 				cfc.card_drag_ongoing = null
 				execute_scripts()
 			# If it's a long click it might be because
@@ -342,7 +343,7 @@ func _on_Card_gui_input(event) -> void:
 					# See CFConst documentation.
 					if state == CardState.FOCUSED_IN_HAND \
 							and (CFConst.DISABLE_DRAGGING_FROM_HAND
-							or not check_play_costs()):
+							or check_play_costs() == CFConst.CostsState.IMPOSSIBLE):
 						return
 					if state == CardState.FOCUSED_ON_BOARD \
 							and CFConst.DISABLE_DRAGGING_FROM_BOARD:
@@ -993,6 +994,7 @@ func execute_scripts(
 		trigger_card: Card = self,
 		trigger: String = "manual",
 		signal_details: Dictionary = {}):
+	common_pre_execution_scripts(trigger)
 	var card_scripts
 	var sceng = null
 	# If scripts have been defined directly in this Card object
@@ -1095,6 +1097,7 @@ func execute_scripts(
 			sceng = cfc.scripting_engine.new(
 					self,
 					state_scripts)
+	common_post_execution_scripts(trigger)
 	return(sceng)
 
 
@@ -1339,8 +1342,8 @@ func animate_shuffle(anim_speed : float, style : int) -> void:
 #
 # If it returns false, the card will be highlighted with a red tint, and the
 # player will not be able to drag it out of the hand.
-func check_play_costs() -> bool:
-	return(true)
+func check_play_costs() -> Color:
+	return(CFConst.CostsState.OK)
 
 
 # This function can be overriden by any class extending Card, in order to provide
@@ -1352,7 +1355,27 @@ func check_play_costs() -> bool:
 # places on the table.
 # warning-ignore:unused_argument
 # warning-ignore:unused_argument
-func common_move_scripts(new_host: Node, old_host: Node):
+func common_move_scripts(new_host: Node, old_host: Node) -> void:
+	pass
+
+
+# This function can be overriden by any class extending Card, in order to provide
+# a way of running scripts for a whole class of cards, based on what the trigger was
+# before all normal scripts have been executed
+#
+# This is useful for example, for paying the costs of one-use cards before executing them
+# warning-ignore:unused_argument
+func common_pre_execution_scripts(trigger: String) -> void:
+	pass
+
+
+# This function can be overriden by any class extending Card, in order to provide
+# a way of running scripts for a whole class of cards, based on what the trigger was
+# after all normal scripts have been executed
+#
+# This is useful for example, for discarding one-use cards after playing them
+# warning-ignore:unused_argument
+func common_post_execution_scripts(trigger: String) -> void:
 	pass
 
 
@@ -1667,8 +1690,7 @@ func _process_card_state() -> void:
 			# always over its neighbours
 			z_index = 1
 			set_focus(true)
-			if not check_play_costs():
-				highlight.set_highlight(true,CFConst.CANNOT_PAY_COST_COLOUR)
+			highlight.set_highlight(true, check_play_costs())
 			set_control_mouse_filters(true)
 			buttons.set_active(false)
 			# warning-ignore:return_value_discarded

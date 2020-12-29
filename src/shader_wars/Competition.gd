@@ -24,7 +24,7 @@ func _ready() -> void:
 		placement[1].set("custom_colors/font_color", _PLACE_UNACHIEVED_COLOR)
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	var total_value := 0
 	for card in cfc.NMAP.board.get_all_cards():
 		if card.is_in_group("shaders"):

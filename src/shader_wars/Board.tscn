@@ -25,59 +25,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Deck" parent="." instance=ExtResource( 4 )]
-position = Vector2( -3.1748, 652.422 )
-script = ExtResource( 2 )
-placement = 8
-
-[node name="Discard" parent="." instance=ExtResource( 4 )]
-position = Vector2( 1542.95, 652.422 )
-script = ExtResource( 3 )
-placement = 6
-faceup_cards = true
-
-[node name="Control" parent="Discard" index="0"]
-custom_styles/panel = SubResource( 1 )
-
-[node name="Hand" parent="." instance=ExtResource( 1 )]
-position = Vector2( 183.674, 658.771 )
-script = ExtResource( 7 )
-placement = 7
-
-[node name="ReshuffleAllDeck" type="Button" parent="."]
-visible = false
-margin_left = 9.89948
-margin_top = 116.762
-margin_right = 200.899
-margin_bottom = 136.762
-text = "Reshuffle all cards into deck"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ReshuffleAllDiscard" type="Button" parent="."]
-visible = false
-margin_left = 9.89948
-margin_top = 140.334
-margin_right = 200.899
-margin_bottom = 160.334
-text = "Reshuffle all cards into discard"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Debug" type="CheckButton" parent="."]
-visible = false
-margin_left = 9.7782
-margin_top = 158.933
-margin_right = 198.778
-margin_bottom = 198.933
-pressed = true
-text = "Debug"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="VBC" type="VBoxContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -166,6 +113,58 @@ margin_right = 1700.0
 margin_bottom = 900.0
 rect_min_size = Vector2( 0, 300 )
 mouse_filter = 2
+
+[node name="Deck" parent="." instance=ExtResource( 4 )]
+position = Vector2( -3.1748, 652.422 )
+script = ExtResource( 2 )
+placement = 8
+
+[node name="Discard" parent="." instance=ExtResource( 4 )]
+position = Vector2( 1542.95, 652.422 )
+script = ExtResource( 3 )
+placement = 6
+faceup_cards = true
+
+[node name="Control" parent="Discard" index="0"]
+custom_styles/panel = SubResource( 1 )
+
+[node name="Hand" parent="." instance=ExtResource( 1 )]
+position = Vector2( 183.674, 658.771 )
+script = ExtResource( 7 )
+placement = 7
+
+[node name="ReshuffleAllDeck" type="Button" parent="."]
+visible = false
+margin_left = 9.89948
+margin_top = 116.762
+margin_right = 200.899
+margin_bottom = 136.762
+text = "Reshuffle all cards into deck"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ReshuffleAllDiscard" type="Button" parent="."]
+visible = false
+margin_left = 9.89948
+margin_top = 140.334
+margin_right = 200.899
+margin_bottom = 160.334
+text = "Reshuffle all cards into discard"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Debug" type="CheckButton" parent="."]
+margin_left = 9.7782
+margin_top = 158.933
+margin_right = 198.778
+margin_bottom = 198.933
+pressed = true
+text = "Debug"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="pressed" from="ReshuffleAllDeck" to="." method="_on_ReshuffleAllDeck_pressed"]
 [connection signal="pressed" from="ReshuffleAllDiscard" to="." method="_on_ReshuffleAllDiscard_pressed"]
 [connection signal="toggled" from="Debug" to="." method="_on_Debug_toggled"]

@@ -1,11 +1,11 @@
 # This file contains just card definitions. See also `CardConfig.gd`
-
 extends Reference
 
 const SET = "Core Set"
 const CARDS := {
-	"Circle Shader": {
-		"Type": "Shader",
+### BEGIN Shaders ###
+	"Super-Basic Shader": {
+		"Type": CardConfig.CardTypes.SHADER,
 		"Tags": [],
 		"Abilities": "Create them circles",
 		"Time": 0,
@@ -15,21 +15,78 @@ const CARDS := {
 		"cred_req": 0,
 		"motivation_req": 0,
 	},
-	"Advanced Shader": {
-		"Type": "Shader",
+	"Time-consuming Shader": {
+		"Type": CardConfig.CardTypes.SHADER,
+		"Tags": [],
+		"Abilities": "Takes a lot of time but is not hard",
+		"Time": 2,
+		"Value": 3,
+		"Kudos": 0,
+		"skill_req": 0,
+		"cred_req": 0,
+		"motivation_req": 0,
+	},
+	"Intermediate Shader": {
+		"Type": CardConfig.CardTypes.SHADER,
 		"Tags": [],
 		"Abilities": "Some tricky stuff",
 		"Time": 1,
-		"Value": 2,
+		"Value": 4,
 		"Kudos": 0,
 		"skill_req": 1,
 		"cred_req": 0,
 		"motivation_req": 0,
 	},
+	"Intermediate Difficult Shader": {
+		"Type": CardConfig.CardTypes.SHADER,
+		"Tags": [],
+		"Abilities": "Some tricky stuff",
+		"Time": 2,
+		"Value": 5,
+		"Kudos": 0,
+		"skill_req": 1,
+		"cred_req": 0,
+		"motivation_req": 0,
+	},
+	"Advanced Shader": {
+		"Type": CardConfig.CardTypes.SHADER,
+		"Tags": [],
+		"Abilities": "Some tricky stuff",
+		"Time": 1,
+		"Value": 6,
+		"Kudos": 0,
+		"skill_req": 2,
+		"cred_req": 0,
+		"motivation_req": 0,
+	},
+	"Tricky Shader": {
+		"Type": CardConfig.CardTypes.SHADER,
+		"Tags": [],
+		"Abilities": "Some tricky stuff",
+		"Time": 4,
+		"Value": 9,
+		"Kudos": 0,
+		"skill_req": 2,
+		"cred_req": 0,
+		"motivation_req": 0,
+	},
+	"Expert Shader": {
+		"Type": CardConfig.CardTypes.SHADER,
+		"Tags": [],
+		"Abilities": "Some tricky stuff",
+		"Time": 3,
+		"Value": 10,
+		"Kudos": 0,
+		"skill_req": 3,
+		"cred_req": 0,
+		"motivation_req": 0,
+	},
+### BEGIN Resources ###
 	"Newbie Tutor": {
-		"Type": "Resource",
+		"Type": CardConfig.CardTypes.RESOURCE,
 		"Tags": ["Tutor"],
-		"Abilities": "All skill_req 1 shaders are reduced to 0",
+		"Abilities": "You are considered to have 1 skill"\
+				+ "for shaders with skill_req 1.",
 		"Time": 1,
 		"Value": 0,
 		"Kudos": 0,
@@ -38,7 +95,7 @@ const CARDS := {
 		"motivation_req": 0,
 	},
 	"Cheerleader": {
-		"Type": "Resource",
+		"Type": CardConfig.CardTypes.RESOURCE,
 		"Tags": ["Collaborator"],
 		"Abilities": "After recruiting this tutor, lose 1 cred. " \
 				+ "You win extra 1 cred for winning a tournament",
@@ -50,7 +107,7 @@ const CARDS := {
 		"motivation_req": 4,
 	},
 	"Guru": {
-		"Type": "Resource",
+		"Type": CardConfig.CardTypes.RESOURCE,
 		"Tags": ["Tutor"],
 		"Abilities": "All skill_req 4+ shaders are reduced by 1",
 		"Time": 2,
@@ -61,7 +118,7 @@ const CARDS := {
 		"motivation_req": 0,
 	},
 	"Chiptunes Musician": {
-		"Type": "Resource",
+		"Type": CardConfig.CardTypes.RESOURCE,
 		"Tags": ["Collaborator"],
 		"Abilities": "Pay 4 Kudos to play.\n" \
 				+ "Increase the value of your Demo this round by 2. "\
@@ -74,7 +131,7 @@ const CARDS := {
 		"motivation_req": 0,
 	},
 	"Graphics Artist": {
-		"Type": "Resource",
+		"Type": CardConfig.CardTypes.RESOURCE,
 		"Tags": ["Collaborator"],
 		"Abilities": "Pay 4 Kudos to play.\n" \
 				+ "If you use at least 3 shaders of skill_req 1, "\
@@ -88,7 +145,7 @@ const CARDS := {
 		"motivation_req": 0,
 	},
 	"Git": {
-		"Type": "Resource",
+		"Type": CardConfig.CardTypes.RESOURCE,
 		"Tags": ["Knowledge"],
 		"Abilities": "Events that make you lose time, make you lose 1 less time. "\
 				+ "After your fourth shader to your demo, gain 1 time.",
@@ -99,8 +156,8 @@ const CARDS := {
 		"cred_req": 0,
 		"motivation_req": 0,
 	},
-	"IRC Mod": {
-		"Type": "Resource",
+	"Discord Mod": {
+		"Type": CardConfig.CardTypes.RESOURCE,
 		"Tags": ["Volunteering"],
 		"Abilities": "Comes into the game with 12 Kudos tokens\n\n"\
 				+ "1 Time: Take 2 Kudos tokens from this card. "\
@@ -112,8 +169,9 @@ const CARDS := {
 		"cred_req": 1,
 		"motivation_req": 7,
 	},
-	"Get Some IRC Advice": {
-		"Type": "Prep",
+### BEGIN Prep ###
+	"Get Some Advice": {
+		"Type": CardConfig.CardTypes.ACTION,
 		"Tags": [],
 		"Abilities": "Play a Shader as if you had +1 skill",
 		"Time": 1,
@@ -124,7 +182,7 @@ const CARDS := {
 		"motivation_req": 0,
 	},
 	"Google-Fu!": {
-		"Type": "Prep",
+		"Type": CardConfig.CardTypes.ACTION,
 		"Tags": [],
 		"Abilities": "Draw 3 cards",
 		"Time": 2,
@@ -135,7 +193,7 @@ const CARDS := {
 		"motivation_req": 0,
 	},
 	"Post Some Progress": {
-		"Type": "Prep",
+		"Type": CardConfig.CardTypes.ACTION,
 		"Tags": [],
 		"Abilities": "Gain 1 Cred",
 		"Time": 1,
@@ -146,7 +204,7 @@ const CARDS := {
 		"motivation_req": 0,
 	},
 	"Help out Some Newbs": {
-		"Type": "Prep",
+		"Type": CardConfig.CardTypes.ACTION,
 		"Tags": [],
 		"Abilities": "Gain 3 Kudos",
 		"Time": 1,

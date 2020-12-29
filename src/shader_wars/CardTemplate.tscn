@@ -15,3 +15,19 @@ card_front_design = ExtResource( 6 )
 [node name="ManipulationButtons" parent="Control" index="4"]
 script = ExtResource( 5 )
 manipulation_button = ExtResource( 2 )
+
+[node name="ModifiedCost" type="Label" parent="Debug" index="0"]
+margin_right = 40.0
+margin_bottom = 14.0
+
+[node name="id" parent="Debug" index="1"]
+visible = false
+
+[node name="state" parent="Debug" index="2"]
+visible = false
+
+[node name="index" parent="Debug" index="3"]
+visible = false
+
+[node name="parent" parent="Debug" index="4"]
+visible = false

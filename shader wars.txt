@@ -28,7 +28,8 @@ Each card you play, uses up the time you have. When you have no more time, you c
 	You can spend time to do smaller projects which might increase your cred
 	You can use your cred to find tutors, which can increase your skill level
 	You should be able to use your cred, to attack the cred or motivation or other players.
-* Kudos (Optional) (expansion?) (Maybe just tokens on cards?):  You gain these by increasing your social goodwill among the community. You can spend them for various effects
+* Skill: How good you are at coding shaders. Skill is a soft-limit to playing cards. You cannot play shaders of too high skill requirement on your own. But you can try to build slightly harder shaders by paying more time.
+* Kudos (Maybe just tokens on cards?):  You gain these by increasing your social goodwill among the community. You can spend them for various effects. Kudos can go negative, but you get penalty to your cred at the end of the game for them.
 * Money (Optional) (expansion?) (Maybe just tokens on cards?):  You gain these by taking jobs etc. You can spend them for various effects.
 
 How do you spend time? In your turn, you have the choice to play a card from your hand face-down with one of your time units on top. 
@@ -52,6 +53,29 @@ Shaders: The core concept of the game. These should be card with an actually run
 	skill_req: This is the skill required to implement this shader at the exact time_cost: You can implement something of 1 higher skill_req by increasing the time_cost by X. You cannot implement a shader of 2 or higher skill level than you have.
 		If your skill is higher than the skill req, then the time_req is reduced by the difference, to a maximum of half time..
 	text: Some shaders might have extra requirements or rewards for implementing. They will be listed here.
+	
+Addendum: Calculation of shader value: The value of a shader should be dependent on a formula to ensure we stay balanced. Abilities on the card should be evaluated to have a power, and the power should be added to the formula
+
+T = Time
+V = Value
+P = Ability Power
+S = skill_req
+
+Current Formula: V = T + S*2 + 1 - P
+
+So assuming P0
+T0, S0 = V1
+T1, S0 = V2
+T1, S1 = V4
+T2, S1 = V5
+T3, S1 = V6
+T1, S2 = V6
+etc
+
+
+
+
+
 	
 Resources: These are things like expert people that have agreed to help you in your efforts, as well as knowledge, software, and hardware that help you develop faster
 	time_cost: This is the time you need to spent to cajole the tutor ,or learn to use the new tool

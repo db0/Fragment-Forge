@@ -11,6 +11,13 @@
 class_name CardConfig
 extends Reference
 
+# I use this dict so I can quickly rename a whole card type to comething else
+# without breaking my code
+const CardTypes := {
+	"ACTION": "prep",
+	"SHADER": "shader",
+	"RESOURCE": "resource"
+}
 # Properties which are placed as they are in appropriate labels
 const PROPERTIES_STRINGS := ["Type", "Requirements", "Abilities"]
 # Properties which are converted into string using a format defined in setup()

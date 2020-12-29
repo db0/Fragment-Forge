@@ -1,32 +1,116 @@
 extends Card
 
-func check_play_costs() -> bool:
-	var ret := true
-	if properties.get("Time", 0) > cfc.NMAP.board.counters.get_counter("time"):
-		ret = false
-	if properties.get("Kudos", 0) > cfc.NMAP.board.counters.get_counter("kudos"):
-		ret = false
+func _process(delta: float) -> void:
+	if cfc._debug and not get_parent().is_in_group("piles"):
+		if properties.Type == CardConfig.CardTypes.SHADER:
+			$Debug/ModifiedCost.text = "ModCost: "\
+					+ str(get_skill_modified_shader_time_cost(
+						properties.get("skill_req", 0),
+						cfc.NMAP.board.counters.get_counter("skill"),
+						properties.get("Time", 0)
+					))
+
+func check_play_costs() -> Color:
+	var ret : Color = CFConst.CostsState.OK
+	var time_cost = get_modified_time_cost()
+	var kudos_cost = get_modified_kudos_cost()
+
+	if time_cost > cfc.NMAP.board.counters.get_counter("time"):
+		ret = CFConst.CostsState.IMPOSSIBLE
+	elif time_cost > properties.get("Time", 0):
+		ret = CFConst.CostsState.INCREASED
+	elif time_cost < properties.get("Time", 0):
+		ret = CFConst.CostsState.DECREASED
+
+	if kudos_cost > cfc.NMAP.board.counters.get_counter("kudos"):
+		ret = CFConst.CostsState.IMPOSSIBLE
+	# We only want the highlight to change if it's still the default
+	elif kudos_cost > properties.get("Kudos", 0) \
+			and ret == CFConst.CostsState.OK:
+		ret = CFConst.CostsState.INCREASED
+	elif kudos_cost < properties.get("Kudos", 0) \
+			and ret == CFConst.CostsState.OK:
+		ret = CFConst.CostsState.DECREASED
+	# For shaders, the skill_rqa is already taken into account 
+	# inside get_modified_time_cost()
 	if properties.get("skill_req", 0) > \
-			cfc.NMAP.board.counters.get_counter("skill"):
-		ret = false
+			cfc.NMAP.board.counters.get_counter("skill") \
+			and properties.Type != CardConfig.CardTypes.SHADER:
+		ret = CFConst.CostsState.IMPOSSIBLE
+
 	if properties.get("cred_req", 0) > \
 			cfc.NMAP.board.counters.get_counter("cred"):
-		ret = false
+		ret = CFConst.CostsState.IMPOSSIBLE
+
 	if properties.get("motivation_req", 0) > \
 			cfc.NMAP.board.counters.get_counter("motivation"):
-		ret = false
+		ret = CFConst.CostsState.IMPOSSIBLE
 	return(ret)
+
+func get_modified_time_cost() -> int:
+	var modified_cost : int = properties.get("Time", 0)
+	if properties.Type == CardConfig.CardTypes.SHADER:
+		modified_cost = get_skill_modified_shader_time_cost(
+				properties.get("skill_req", 0),
+				cfc.NMAP.board.counters.get_counter("skill"),
+				properties.get("Time", 0))
+	return(modified_cost)
+
+func get_modified_kudos_cost() -> int:
+	var modified_cost : int = properties.get("Kudos", 0)
+	return(modified_cost)
+
+static func get_skill_modified_shader_time_cost(
+		skill_req: int,
+		current_skill: int,
+		time_cost: int) -> int:
+	var final_cost : int
+	if current_skill + 1 < skill_req:
+		# We put a sufficiently large number to make the cost impossible
+		# When the skill req is higher by 2 or more
+		final_cost = 1000
+	elif current_skill < skill_req:
+		# Making more skill-advanced shaders doubles their time and adds 1 on top
+		final_cost = time_cost * 2 + 1
+	elif current_skill > skill_req:
+		# Making less advanced shaders simply reduces their time needs by 1
+		# to a maximum of half.
+		var max_reduction = time_cost / 2
+		final_cost = time_cost + skill_req - current_skill
+		if final_cost < max_reduction:
+			final_cost = max_reduction
+	else:
+		final_cost = time_cost
+	return(final_cost)
 
 func common_move_scripts(new_container: Node, old_container: Node) -> void:
 	if new_container == cfc.NMAP.board and old_container == cfc.NMAP.hand:
-		cfc.NMAP.board.counters.mod_counter("time", -properties.get("Time",0))
-		cfc.NMAP.board.counters.mod_counter("cred", -properties.get("Cred",0))
-		cfc.NMAP.board.counters.mod_counter("kudos", -properties.get("Kudos",0))
-	elif new_container == cfc.NMAP.hand \
-			and old_container == cfc.NMAP.hand\
-			and properties.Type == "Prep":
-		cfc.NMAP.board.counters.mod_counter("time", -properties.get("Time",0))
-		cfc.NMAP.board.counters.mod_counter("cred", -properties.get("Cred",0))
-		cfc.NMAP.board.counters.mod_counter("kudos", -properties.get("Kudos",0))
+		pay_play_costs()
+	if new_container == cfc.NMAP.hand \
+			and old_container == cfc.NMAP.hand \
+			and properties.Type == CardConfig.CardTypes.ACTION:
+		# We don't pay the costs for Prep cards, as this is handled
+		# in the common_pre_execution_scripts() method
 		execute_scripts()
-		move_to(cfc.NMAP.discard)
+
+func common_post_execution_scripts(trigger: String) -> void:
+	if trigger == "manual" and get_parent() == cfc.NMAP.hand:
+		# Prep cards automatically discard when played from hand
+		if properties.Type == CardConfig.CardTypes.ACTION:
+			move_to(cfc.NMAP.discard)
+		# All other cards should not typically have a manual script from hand
+		# but instead be autoplayed when double-clicked
+		else:
+			move_to(cfc.NMAP.board)
+
+
+func common_pre_execution_scripts(trigger: String) -> void:
+	if trigger == "manual" and get_parent() == cfc.NMAP.hand:
+		# We use this to make prep cards pay their costs when double-clicked
+		# as well as when dragged to the board
+		if properties.Type == CardConfig.CardTypes.ACTION:
+			pay_play_costs()
+
+func pay_play_costs() -> void:
+	cfc.NMAP.board.counters.mod_counter("time", -get_modified_time_cost())
+	cfc.NMAP.board.counters.mod_counter("kudos", get_modified_kudos_cost())

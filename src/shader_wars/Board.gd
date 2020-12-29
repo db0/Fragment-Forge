@@ -4,6 +4,7 @@ extends Board
 var allCards := [] # A pseudo-deck array to hold the card objects we want to pull
 
 onready var start_button := $VBC/Details/Start
+onready var debug_button := $VBC/Details/Debug
 onready var counters : ShaderWarsCounters = $VBC/Details/Counters
 
 # Called when the node enters the scene tree for the first time.
@@ -16,7 +17,9 @@ func _ready() -> void:
 	# This way any they will work with any size of viewport in a game.
 	# Discard pile goes bottom right
 	$Debug.pressed = cfc._debug
+# warning-ignore:return_value_discarded
 	start_button.connect("pressed", self, "_on_Start_pressed")
+	debug_button.connect("pressed", self, "_on_Debug_pressed")
 	# Fill up the deck for demo purposes
 	if not cfc.ut:
 		cfc.game_rng_seed = CFUtils.generate_random_seed()
@@ -25,10 +28,34 @@ func _ready() -> void:
 
 
 func _on_Start_pressed() -> void:
-	counters.mod_counter("time",10)
+# warning-ignore:return_value_discarded
+	counters.mod_counter("time",20)
+	if start_button.text != "Next Round":
+	# warning-ignore:return_value_discarded
+		counters.mod_counter("cred",0)
+	# warning-ignore:return_value_discarded
+		counters.mod_counter("skill",0)
+	# warning-ignore:return_value_discarded
+		counters.mod_counter("kudos",0)
+	# warning-ignore:return_value_discarded
+		counters.mod_counter("motivation",8)
+		cfc.NMAP.hand.fill_starting_hand()
+		start_button.text = "Next Round"
+	else:
+	# warning-ignore:return_value_discarded
+		counters.mod_counter("skill",1)
+
+func _on_Debug_pressed() -> void:
+# warning-ignore:return_value_discarded
+	counters.mod_counter("time",30)
+# warning-ignore:return_value_discarded
+	counters.mod_counter("cred",10)
+# warning-ignore:return_value_discarded
+	counters.mod_counter("skill",10)
+# warning-ignore:return_value_discarded
+	counters.mod_counter("kudos",10)
+# warning-ignore:return_value_discarded
 	counters.mod_counter("motivation",8)
-	cfc.NMAP.hand.fill_starting_hand()
-	start_button.visible = false
 
 # Reshuffles all Card objects created back into the deck
 func _on_ReshuffleAllDeck_pressed() -> void:

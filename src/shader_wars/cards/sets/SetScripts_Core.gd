@@ -17,27 +17,67 @@ func get_scripts(card_name: String) -> Dictionary:
 						"subject": "index",
 						"subject_index": "top",
 					},
-#					{
-#						"name": "move_card_to_container",
-#						"src_container": cfc.NMAP.hand,
-#						"dest_container": cfc.NMAP.discard,
-#						"subject": "self",
-#					},
 				],
 			},
 		},
-#		"Advanced Shader": {
-#			"card_moved_to_board": {
-#				"board": [
-#					{
-#						"name": "modify_counter",
-#						"counter": "time",
-#						"modification": 10,
-#					},
-#				],
-#				"trigger": "self",
-#			},
-#		},
+		"Discord Mod": {
+			"card_moved_to_board": {
+				"board": [
+					{
+						"name": "mod_tokens",
+						"modification": 12,
+						"token_name": "kudos",
+						"subject": "self"
+					},
+				],
+				"trigger": "self",
+			},
+			"manual": {
+				"board": [
+					{
+						"name": "mod_counter",
+						"modification": -1,
+						"counter_name": "time",
+						"is_cost": true,
+					},
+					{
+						"name": "mod_tokens",
+						"modification": -2,
+						"token_name": "kudos",
+						"is_cost": true,
+						"subject": "self"
+					},
+					{
+						"name": "mod_counter",
+						"modification": 2,
+						"counter_name": "kudos",
+					},
+				],
+			},
+			"card_token_modified": {
+				"board": [
+					{
+						"name": "move_card_to_container",
+						"dest_container": cfc.NMAP.discard,
+						"subject": "self"
+					},
+				],
+				"trigger": "self",
+				"filter_token_name": "kudos",
+				"filter_token_count": 0,
+			},
+		},
+		"Post Some Progress": {
+			"manual": {
+				"hand": [
+					{
+						"name": "mod_counter",
+						"counter_name": "cred",
+						"modification": 1,
+					},
+				],
+			},
+		},
 	}
 	# We return only the scripts that match the card name and trigger
 	return(scripts.get(card_name,{}))

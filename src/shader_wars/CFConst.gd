@@ -158,6 +158,17 @@ const ATTACHMENT_OFFSET := [
 #
 # Reduce the multiplier to reduce glow effect or stop it altogether
 const FOCUS_HOVER_COLOUR := Color(1, 1, 1) * 1
+# Returns a color code to be used to mark the state of cost to pay for a card
+# * IMPOSSIBLE: The cost of the card cannot be paid.
+# * INCREASED: The cost of the card can be paid but is increased for some reason.
+# * DECREASED: The cost of the card can be paid and is decreased for some reason.
+# * OK: The cost of the card can be paid exactly.
+const CostsState := {
+	"IMPOSSIBLE": Color(1, 0, 0) * 1.3,
+	"INCREASED": Color(1, 0.5, 0) * 1.3,
+	"DECREASED": Color(0.1, 1, 0.1) * 1.3,
+	"OK": FOCUS_HOVER_COLOUR,
+}
 # The colour to use when hovering over a card in hand and the
 # `_check_play_costs()` function returns false, signifying the card
 # should be be draggable out of the hand

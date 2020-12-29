@@ -214,7 +214,7 @@ func _discover_focus() -> void:
 # * A card has to be currently dragged
 # * It has to not be occupied by another card
 # * The card being dragged cannot be an attachment
-# or if it is an attachment, there have to be no potential hosts 
+# or if it is an attachment, there have to be no potential hosts
 # currently highlighted
 func _is_placement_slot_valid(slot: BoardPlacementSlot, potential_cards := []) -> bool:
 	var is_valid := true
@@ -253,4 +253,4 @@ func _is_placement_slot_valid(slot: BoardPlacementSlot, potential_cards := []) -
 		if cfc.card_drag_ongoing.board_placement in [Card.BoardPlacement.NONE]:
 				is_valid = false
 	return(is_valid)
-	
+

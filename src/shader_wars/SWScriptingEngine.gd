@@ -10,7 +10,7 @@ func _init(card_owner: Card,
 	pass
 
 # Task for modifying a a counter
-func modify_counter(script: ScriptTask) -> int:
+func mod_counter(script: ScriptTask) -> int:
 	var counter_name: String = script.get_property(SWSP.KEY_COUNTER)
 	var modification: int
 	if str(script.get_property(SP.KEY_MODIFICATION)) == SP.VALUE_RETRIEVE_INTEGER:
