@@ -1,6 +1,6 @@
 extends Card
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if cfc._debug and not get_parent().is_in_group("piles"):
 		if properties.Type == CardConfig.CardTypes.SHADER:
 			$Debug/ModifiedCost.text = "ModCost: "\

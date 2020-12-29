@@ -215,3 +215,6 @@ const CARDS := {
 		"motivation_req": 0,
 	},
 }
+
+# Ideas
+# Prep: Found out what the next tournament is

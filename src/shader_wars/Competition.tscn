@@ -1,9 +1,24 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://fonts/Xolonium-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://src/shader_wars/Competition.gd" type="Script" id=2]
 
+[sub_resource type="DynamicFont" id=2]
+size = 20
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+use_filter = true
+font_data = ExtResource( 1 )
+
 [sub_resource type="DynamicFont" id=1]
+size = 15
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+use_filter = true
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 12
 outline_size = 2
 outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
@@ -24,24 +39,25 @@ __meta__ = {
 margin_left = 7.0
 margin_top = 7.0
 margin_right = 623.0
-margin_bottom = 75.0
+margin_bottom = 90.0
 
 [node name="HBC" type="HBoxContainer" parent="VBC"]
 margin_right = 616.0
-margin_bottom = 20.0
+margin_bottom = 25.0
 
-[node name="DemoCompetitionTitle" type="Label" parent="VBC/HBC"]
-margin_right = 502.0
-margin_bottom = 20.0
+[node name="Title" type="Label" parent="VBC/HBC"]
+margin_right = 505.0
+margin_bottom = 25.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 text = "Demo Competition Title"
 align = 1
 
 [node name="1stPlaceLabel" type="Label" parent="VBC/HBC"]
-margin_left = 506.0
+margin_left = 509.0
+margin_top = 3.0
 margin_right = 590.0
-margin_bottom = 20.0
+margin_bottom = 22.0
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 1, 0, 0, 1 )
 text = "1st Place:"
@@ -49,43 +65,38 @@ align = 1
 
 [node name="1stPlaceValue" type="Label" parent="VBC/HBC"]
 margin_left = 594.0
+margin_top = 3.0
 margin_right = 616.0
-margin_bottom = 20.0
+margin_bottom = 22.0
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 1, 0, 0, 1 )
 text = "30"
 align = 1
 
 [node name="HBC2" type="HBoxContainer" parent="VBC"]
-margin_top = 24.0
+margin_top = 29.0
 margin_right = 616.0
-margin_bottom = 44.0
+margin_bottom = 48.0
 
-[node name="DemoValueLabel" type="Label" parent="VBC/HBC2"]
-margin_right = 171.0
-margin_bottom = 20.0
-custom_fonts/font = SubResource( 1 )
-text = "Current Demo Value:"
-align = 1
-
-[node name="DemoValue" type="Label" parent="VBC/HBC2"]
-margin_left = 175.0
-margin_right = 186.0
-margin_bottom = 20.0
-custom_fonts/font = SubResource( 1 )
-text = "0"
+[node name="Description" type="Label" parent="VBC/HBC2"]
+margin_top = 1.0
+margin_right = 154.0
+margin_bottom = 17.0
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0.823529, 0.721569, 0.0431373, 1 )
+text = "Tournament Description"
 align = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="VBC/HBC2"]
-margin_left = 190.0
-margin_right = 499.0
-margin_bottom = 20.0
+margin_left = 158.0
+margin_right = 501.0
+margin_bottom = 19.0
 size_flags_horizontal = 3
 
 [node name="2ndPlaceLabel" type="Label" parent="VBC/HBC2"]
-margin_left = 503.0
+margin_left = 505.0
 margin_right = 590.0
-margin_bottom = 20.0
+margin_bottom = 19.0
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 1, 0, 0, 1 )
 text = "2nd Place:"
@@ -94,29 +105,45 @@ align = 1
 [node name="2ndPlaceValue" type="Label" parent="VBC/HBC2"]
 margin_left = 594.0
 margin_right = 616.0
-margin_bottom = 20.0
+margin_bottom = 19.0
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 1, 0, 0, 1 )
 text = "20"
 align = 1
 
 [node name="HBC3" type="HBoxContainer" parent="VBC"]
-margin_top = 48.0
+margin_top = 52.0
 margin_right = 616.0
-margin_bottom = 68.0
+margin_bottom = 71.0
+
+[node name="DemoValueLabel" type="Label" parent="VBC/HBC3"]
+margin_right = 169.0
+margin_bottom = 19.0
+custom_fonts/font = SubResource( 1 )
+text = "Current Demo Value:"
+align = 1
+
+[node name="DemoValue" type="Label" parent="VBC/HBC3"]
+margin_left = 173.0
+margin_right = 184.0
+margin_bottom = 19.0
+custom_fonts/font = SubResource( 1 )
+text = "0"
+align = 1
 
 [node name="MarginContainer2" type="MarginContainer" parent="VBC/HBC3"]
-margin_right = 502.0
-margin_bottom = 20.0
+margin_left = 188.0
+margin_right = 504.0
+margin_bottom = 19.0
 size_flags_horizontal = 3
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="3rdPlaceLabel" type="Label" parent="VBC/HBC3"]
-margin_left = 506.0
+margin_left = 508.0
 margin_right = 590.0
-margin_bottom = 20.0
+margin_bottom = 19.0
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 1, 0, 0, 1 )
 text = "3rd Place:"
@@ -125,7 +152,7 @@ align = 1
 [node name="3rdPlaceValue" type="Label" parent="VBC/HBC3"]
 margin_left = 594.0
 margin_right = 616.0
-margin_bottom = 20.0
+margin_bottom = 19.0
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 1, 0, 0, 1 )
 text = "10"

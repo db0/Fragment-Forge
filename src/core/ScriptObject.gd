@@ -5,6 +5,7 @@ class_name ScriptObject
 extends Reference
 
 # Sent when the _init() method has completed
+# warning-ignore:unused_signal
 signal completed_init
 
 

@@ -148,7 +148,8 @@ func instance_card(card_name: String) -> Card:
 	# We discover the template from the "Type"  property defined
 	# in each card. Any property can be used
 	var template = load(CFConst.PATH_CARDS
-			+ card_definitions[card_name][CardConfig.SCENE_PROPERTY] + ".tscn")
+			+ card_definitions[card_name][CardConfig.SCENE_PROPERTY]
+			+ ".tscn")
 	var card = template.instance()
 	# We set the card_name variable so that it's able to be used later
 	card.card_name = card_name

@@ -47,7 +47,7 @@ size_flags_horizontal = 3
 margin_left = 0.0
 margin_top = 0.0
 margin_right = 418.0
-margin_bottom = 82.0
+margin_bottom = 64.0
 
 [node name="MC" type="MarginContainer" parent="."]
 margin_left = 1125.0
