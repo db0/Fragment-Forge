@@ -74,8 +74,8 @@ static func get_skill_modified_shader_time_cost(
 		final_cost = time_cost * 2 + 1
 	elif current_skill > skill_req:
 		# Making less advanced shaders simply reduces their time needs by 1
-		# to a maximum of half.
-		var max_reduction = time_cost / 2
+		# to a maximum of half (rounded up)
+		var max_reduction = round(float(time_cost) / 2)
 		final_cost = time_cost + skill_req - current_skill
 		if final_cost < max_reduction:
 			final_cost = max_reduction
