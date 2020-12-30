@@ -148,6 +148,8 @@ margin_bottom = 20.0
 position = Vector2( 183.674, 658.771 )
 script = ExtResource( 7 )
 placement = 7
+excess_discard_pile_name = "discard"
+hand_size = 0
 
 [node name="Shuffle" parent="Hand/Control/ManipulationButtons" index="0"]
 visible = false

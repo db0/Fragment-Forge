@@ -43,6 +43,7 @@ func _on_Start_pressed() -> void:
 		counters.mod_counter("kudos",0)
 	# warning-ignore:return_value_discarded
 		counters.mod_counter("motivation",8)
+		cfc.NMAP.hand.hand_size = 8
 		cfc.NMAP.hand.fill_starting_hand()
 		start_button.text = "Next Round"
 	else:
