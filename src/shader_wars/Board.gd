@@ -32,7 +32,6 @@ func _ready() -> void:
 
 
 func _on_Start_pressed() -> void:
-	competitions.next_competition()
 # warning-ignore:return_value_discarded
 	if start_button.text != "Next Round":
 	# warning-ignore:return_value_discarded
@@ -46,6 +45,7 @@ func _on_Start_pressed() -> void:
 		cfc.NMAP.hand.hand_size = 8
 		cfc.NMAP.hand.fill_starting_hand()
 		start_button.text = "Next Round"
+		competitions.next_competition()
 	else:
 	# warning-ignore:return_value_discarded
 		counters.mod_counter("skill",1)
@@ -54,6 +54,7 @@ func _on_Start_pressed() -> void:
 			if c.properties.Type == CardConfig.CardTypes.SHADER:
 				c.move_to(cfc.NMAP.discard)
 				yield(get_tree().create_timer(0.1), "timeout")	
+		competitions.next_competition()
 
 func start_turn() -> void:
 	pass

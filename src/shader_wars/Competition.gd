@@ -9,12 +9,12 @@ enum Place{
 # This allows me to adjust the difficulty of all tournaments in one place
 # Instead of adjusting each tournament dict every time
 # Each tourney dict has value requirements relevant to this number.
-const STD_VALUE_PER_RANK = 10
+const STD_VALUE_PER_RANK = 12
 # This is used to calculate how muc to multiple value reqs and cred rewards
 # for every further round. 
 # I.e. with  0.5, first round ,the multiplier will be 1
 # Second round 1.5. Third round 2 etc.
-const ROUND_MULTIPLIER_INCREASE = 0.5
+const ROUND_MULTIPLIER_INCREASE := 0.5
 # How many creds one gets for getting third, second, first place.
 const CRED_REWARDS = [1,2,4]
 const COMPETITIONS = [
@@ -24,7 +24,7 @@ const COMPETITIONS = [
 	"value_per_rank": STD_VALUE_PER_RANK},
 	{"name": "4Kb Competition",
 	"time": 20,
-	"description": "You cannot have more than 8 shaders in-play",
+	"description": "You cannot have more than 6 shaders in-play",
 	"value_per_rank": STD_VALUE_PER_RANK - 2},
 	{"name": "Demojam",
 	"time": 10,
@@ -49,7 +49,7 @@ var placement_requirements := [
 	STD_VALUE_PER_RANK * 3]
 var current_round := 0
 var current_place := -1
-var round_multiplier: int
+var round_multiplier: float
 
 onready var first_place := $"VBC/HBC/FirstPlace"
 onready var second_place := $"VBC/HBC2/SecondPlace"
@@ -86,6 +86,7 @@ func next_competition() -> void:
 		CFUtils.shuffle_array(available_tournaments)
 	# We want to set the multiplier before incrementing the round
 	# so that on the first turn, the multiplier increase is 0. (0 * 0.5)
+	current_place = -1
 	round_multiplier = 1 + current_round * ROUND_MULTIPLIER_INCREASE
 	current_round += 1
 	current_tournament = available_tournaments.pop_front()
@@ -110,4 +111,8 @@ func next_competition() -> void:
 	cfc.NMAP.board.counters.mod_counter("time",current_tournament.time, true)
 
 func get_cred_rewards() -> int:
-	return(CRED_REWARDS[current_place] * round_multiplier)
+	print_debug(current_place)
+	if current_place >= 0:
+		return(int(CRED_REWARDS[current_place] * round_multiplier))
+	else:
+		return(0)
