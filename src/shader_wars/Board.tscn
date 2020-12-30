@@ -119,6 +119,14 @@ position = Vector2( -3.1748, 652.422 )
 script = ExtResource( 2 )
 placement = 8
 
+[node name="View" parent="Deck/Control/ManipulationButtons" index="0"]
+visible = false
+
+[node name="Shuffle" parent="Deck/Control/ManipulationButtons" index="1"]
+visible = false
+margin_top = 0.0
+margin_bottom = 20.0
+
 [node name="Discard" parent="." instance=ExtResource( 4 )]
 position = Vector2( 1542.95, 652.422 )
 script = ExtResource( 3 )
@@ -128,10 +136,21 @@ faceup_cards = true
 [node name="Control" parent="Discard" index="0"]
 custom_styles/panel = SubResource( 1 )
 
+[node name="View" parent="Discard/Control/ManipulationButtons" index="0"]
+visible = false
+
+[node name="Shuffle" parent="Discard/Control/ManipulationButtons" index="1"]
+visible = false
+margin_top = 0.0
+margin_bottom = 20.0
+
 [node name="Hand" parent="." instance=ExtResource( 1 )]
 position = Vector2( 183.674, 658.771 )
 script = ExtResource( 7 )
 placement = 7
+
+[node name="Shuffle" parent="Hand/Control/ManipulationButtons" index="0"]
+visible = false
 
 [node name="ReshuffleAllDeck" type="Button" parent="."]
 visible = false
@@ -169,4 +188,8 @@ __meta__ = {
 [connection signal="pressed" from="ReshuffleAllDiscard" to="." method="_on_ReshuffleAllDiscard_pressed"]
 [connection signal="toggled" from="Debug" to="." method="_on_Debug_toggled"]
 
+[editable path="Deck"]
+
 [editable path="Discard"]
+
+[editable path="Hand"]

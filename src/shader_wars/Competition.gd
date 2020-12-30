@@ -1,7 +1,15 @@
 class_name Competitions
 extends Control
 
-const POSITION_MULTIPLIERS = [0, 1, 1.5, 2]
+enum Place{
+	THIRD
+	SECOND
+	FIRST
+}
+# First is 0 because we start counting on 1 (i.e. equal to round nr.)
+const ROUND_MULTIPLIERS = [0, 1, 1.5, 2]
+# How many creds one gets for getting third, second, first place.
+const CRED_REWARDS = [1,2,4]
 const COMPETITIONS = [
 	{"name": "Basic Competition",
 	"time": 20,
@@ -16,6 +24,12 @@ const COMPETITIONS = [
 	"description": "Only 10 available time",
 	"placements": [7,14,28]},
 ]
+# More ideas
+# Flamewar: Everyone loses 1 motivation at the start. 
+#	Multipler: Last player loses 1 extra. 
+#	Single player: If not second place at least, lose 1 extra.
+# Highly Publicized: Winner gains an extra Cred.
+
 const _PLACE_ACHIEVED_COLOR = Color(0,1,0)
 const _PLACE_UNACHIEVED_COLOR = Color(1,0,0)
 
@@ -67,8 +81,11 @@ func next_competition() -> void:
 	print_debug(current_round)
 	current_tournament = available_tournaments.pop_front()
 	title.text = current_tournament.name
-	third_place.text = str(int(current_tournament.placements[0] * POSITION_MULTIPLIERS[current_round]))
-	second_place.text = str(int(current_tournament.placements[1] * POSITION_MULTIPLIERS[current_round]))
-	first_place.text = str(int(current_tournament.placements[2] * POSITION_MULTIPLIERS[current_round]))
+	third_place.text = str(int(current_tournament.placements[Place.THIRD]\
+			* ROUND_MULTIPLIERS[current_round]))
+	second_place.text = str(int(current_tournament.placements[Place.SECOND]\
+			* ROUND_MULTIPLIERS[current_round]))
+	first_place.text = str(int(current_tournament.placements[Place.FIRST]\
+	* ROUND_MULTIPLIERS[current_round]))
 	description.text = current_tournament.description
 	cfc.NMAP.board.counters.mod_counter("time",current_tournament.time, true)
