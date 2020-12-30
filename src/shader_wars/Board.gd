@@ -49,6 +49,7 @@ func _on_Start_pressed() -> void:
 	else:
 	# warning-ignore:return_value_discarded
 		counters.mod_counter("skill",1)
+		counters.mod_counter("cred",competitions.get_cred_rewards())
 		for c in get_all_cards():
 			if c.properties.Type == CardConfig.CardTypes.SHADER:
 				c.move_to(cfc.NMAP.discard)

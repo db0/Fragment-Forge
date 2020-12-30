@@ -48,6 +48,8 @@ var placement_requirements := [
 	STD_VALUE_PER_RANK * 2,
 	STD_VALUE_PER_RANK * 3]
 var current_round := 0
+var current_place := -1
+var round_multiplier: int
 
 onready var first_place := $"VBC/HBC/FirstPlace"
 onready var second_place := $"VBC/HBC2/SecondPlace"
@@ -72,6 +74,8 @@ func _process(_delta: float) -> void:
 	demo_value.text = "Current Demo Value: " + str(total_value)
 	for p in Place.values():
 		if placement_requirements[p] <= total_value:
+			# In multiplayer this will be adjusted compared to other players too
+			current_place = p
 			placements_labels[p].set("custom_colors/font_color", _PLACE_ACHIEVED_COLOR)
 		else:
 			placements_labels[p].set("custom_colors/font_color", _PLACE_UNACHIEVED_COLOR)
@@ -82,7 +86,7 @@ func next_competition() -> void:
 		CFUtils.shuffle_array(available_tournaments)
 	# We want to set the multiplier before incrementing the round
 	# so that on the first turn, the multiplier increase is 0. (0 * 0.5)
-	var round_multiplier = 1 + current_round * ROUND_MULTIPLIER_INCREASE
+	round_multiplier = 1 + current_round * ROUND_MULTIPLIER_INCREASE
 	current_round += 1
 	current_tournament = available_tournaments.pop_front()
 	title.text = current_tournament.name
@@ -104,3 +108,6 @@ func next_competition() -> void:
 				+ " Cred"
 	description.text = current_tournament.description
 	cfc.NMAP.board.counters.mod_counter("time",current_tournament.time, true)
+
+func get_cred_rewards() -> int:
+	return(CRED_REWARDS[current_place] * round_multiplier)
