@@ -112,5 +112,25 @@ func common_pre_execution_scripts(trigger: String) -> void:
 			pay_play_costs()
 
 func pay_play_costs() -> void:
-	cfc.NMAP.board.counters.mod_counter("time", -get_modified_time_cost())
-	cfc.NMAP.board.counters.mod_counter("kudos", get_modified_kudos_cost())
+	var payment_script_template := {
+			"name": "mod_counter",
+			"modification": 0,
+			"tags": ["PlayCost"],
+			"counter_name":  "counter"}
+	var state_exec = get_state_exec()
+	scripts["payments"] = {}
+	scripts["payments"][state_exec] = []
+	var time_cost = get_modified_time_cost()
+	if time_cost:
+		var cost_script = payment_script_template.duplicate()
+		cost_script["modification"] = -time_cost
+		cost_script["counter_name"] = "time"
+		scripts["payments"][state_exec].append(cost_script)
+	var kudos_cost = get_modified_kudos_cost()
+	if kudos_cost:
+		var cost_script = payment_script_template.duplicate()
+		cost_script["modification"] = -kudos_cost
+		cost_script["counter_name"] = "kudos"
+		scripts["payments"][state_exec].append(cost_script)
+	execute_scripts(self,"payments")
+	scripts["payments"].clear()

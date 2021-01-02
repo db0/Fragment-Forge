@@ -108,7 +108,7 @@ const PATH_ASSETS := "res://assets/"
 const CARD_SET_NAME_PREPEND := "SetDefinition_"
 # The text which is prepended to files to signify the contain
 # script definitions for a specific set
-const SCRRIPT_SET_NAME_PREPEND := "SetScripts_"
+const SCRIPT_SET_NAME_PREPEND := "SetScripts_"
 # This specifies the location of your token images.
 # Tokens are always going to be seeked at this location
 const PATH_TOKENS := PATH_ASSETS + "tokens/"

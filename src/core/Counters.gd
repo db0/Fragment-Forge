@@ -97,4 +97,4 @@ func mod_counter(counter_name: String,
 
 # Returns the value of the specified counter.
 func get_counter(counter_name: String) -> int:
-	return(counters.get(counter_name))
+	return(counters[counter_name])
