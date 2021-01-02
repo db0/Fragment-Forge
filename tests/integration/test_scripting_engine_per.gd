@@ -19,26 +19,3 @@ func before_each():
 	card = cards[0]
 	target = cards[2]
 
-
-
-func test_per_counter():
-	board.counters.mod_counter("time", 3)
-	card.scripts = {"manual": {
-		"hand": [
-			{"name": "move_card_to_container",
-			"subject": "index",
-			"subject_count": "per_counter",
-			"src_container": deck,
-			"dest_container": hand,
-			"subject_index": "top",
-			"per_counter": {
-				"counter": "time"}
-			},
-		]}
-	}
-	card.execute_scripts()
-	yield(yield_for(0.5), YIELD)
-	assert_eq(hand.get_card_count(), 8,
-		"Draw 1 card per cost of this card.")
-
-

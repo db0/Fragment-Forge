@@ -5,7 +5,8 @@ func _ready() -> void:
 	pass
 
 func _process(_delta: float) -> void:
-	if hand_size != cfc.NMAP.board.counters.get_counter("motivation"):
+	if cfc.NMAP.board.counters.get_counter("motivation")\
+			and hand_size != cfc.NMAP.board.counters.get_counter("motivation"):
 		hand_size = cfc.NMAP.board.counters.get_counter("motivation")
 
 

@@ -78,6 +78,17 @@ func get_scripts(card_name: String) -> Dictionary:
 				],
 			},
 		},
+		"Newbie Tutor": {
+			"while_in_play": {
+				"modify_costs": [
+					{
+						"name": "mod_counter",
+						"counter_name": "cred",
+						"modification": 1,
+					},
+				],
+			},
+		},
 	}
 	# We return only the scripts that match the card name and trigger
 	return(scripts.get(card_name,{}))

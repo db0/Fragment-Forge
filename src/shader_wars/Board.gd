@@ -5,13 +5,14 @@ var allCards := [] # A pseudo-deck array to hold the card objects we want to pul
 
 onready var start_button := $VBC/Details/Start
 onready var debug_button := $VBC/Details/Debug
-onready var counters : ShaderWarsCounters = $VBC/Details/Counters
+
 onready var competitions : Competitions = $VBC/Details/VBC/Competition
 
 var tournament := 1
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	counters = $VBC/Details/Counters
 	cfc.map_node(self)
 	# We use the below while to wait until all the nodes we need have been mapped
 	# "hand" should be one of them.
@@ -34,14 +35,6 @@ func _ready() -> void:
 func _on_Start_pressed() -> void:
 # warning-ignore:return_value_discarded
 	if start_button.text != "Next Round":
-	# warning-ignore:return_value_discarded
-		counters.mod_counter("cred",0)
-	# warning-ignore:return_value_discarded
-		counters.mod_counter("skill",0)
-	# warning-ignore:return_value_discarded
-		counters.mod_counter("kudos",0)
-	# warning-ignore:return_value_discarded
-		counters.mod_counter("motivation",8)
 		cfc.NMAP.hand.hand_size = 8
 		cfc.NMAP.hand.fill_starting_hand()
 		start_button.text = "Next Round"
@@ -53,7 +46,7 @@ func _on_Start_pressed() -> void:
 		for c in get_all_cards():
 			if c.properties.Type == CardConfig.CardTypes.SHADER:
 				c.move_to(cfc.NMAP.discard)
-				yield(get_tree().create_timer(0.1), "timeout")	
+				yield(get_tree().create_timer(0.1), "timeout")
 		competitions.next_competition()
 
 func start_turn() -> void:

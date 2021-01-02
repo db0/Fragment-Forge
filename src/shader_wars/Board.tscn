@@ -36,11 +36,11 @@ __meta__ = {
 [node name="Details" parent="VBC" instance=ExtResource( 6 )]
 anchor_right = 0.0
 margin_right = 1700.0
-margin_bottom = 130.0
+margin_bottom = 85.0
 mouse_filter = 2
 
 [node name="MC-Expand" type="MarginContainer" parent="VBC"]
-margin_top = 134.0
+margin_top = 89.0
 margin_right = 1700.0
 margin_bottom = 196.0
 mouse_filter = 2

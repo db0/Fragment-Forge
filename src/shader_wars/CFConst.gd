@@ -116,7 +116,14 @@ const PATH_TOKENS := PATH_ASSETS + "tokens/"
 # The scripting engine functionality with your own tasks,
 # Point this to your own script file.
 const PATH_SCRIPTING_ENGINE := PATH_CUSTOM + "SWScriptingEngine.gd"
-const PATH_PER_ENGINE := PATH_CUSTOM + "SWScriptPer.gd"
+# This specifies the path to the [ScriptPer] class file.
+# We don't reference is by class name to avoid cyclic dependencies
+# And this also allows other developers to extend its functionality
+const PATH_SCRIPT_PER := PATH_CORE + "ScriptPer.gd"
+# This specifies the path to the Alterant Engine. If you wish to extend
+# The alterant engine functionality with your own tasks,
+# Point this to your own script file.
+const PATH_ALTERANT_ENGINE := PATH_CORE + "AlterantEngine.gd"
 # The amount of distance neighboring cards are pushed during card focus
 #
 # It's based on the card width. Bigger percentage means larger push.
