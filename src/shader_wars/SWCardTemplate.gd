@@ -31,7 +31,7 @@ func check_play_costs() -> Color:
 	elif kudos_cost < properties.get("Kudos", 0) \
 			and ret == CFConst.CostsState.OK:
 		ret = CFConst.CostsState.DECREASED
-	# For shaders, the skill_rqa is already taken into account 
+	# For shaders, the skill_rqa is already taken into account
 	# inside get_modified_time_cost()
 	if properties.get("skill_req", 0) > \
 			cfc.NMAP.board.counters.get_counter("skill") \
@@ -101,7 +101,10 @@ func common_post_execution_scripts(trigger: String) -> void:
 		# All other cards should not typically have a manual script from hand
 		# but instead be autoplayed when double-clicked
 		else:
-			move_to(cfc.NMAP.board)
+			var move_result = move_to(cfc.NMAP.board)
+			if move_result is GDScriptFunctionState: # Still working.
+				move_result = yield(move_result, "completed")
+			print_debug("b")
 
 
 func common_pre_execution_scripts(trigger: String) -> void:

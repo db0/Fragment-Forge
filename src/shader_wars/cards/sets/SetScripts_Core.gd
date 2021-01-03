@@ -89,6 +89,20 @@ func get_scripts(card_name: String) -> Dictionary:
 				],
 			},
 		},
+		"Get Some Advice": {
+			"manual": {
+				"hand": [
+					{
+						"name": "execute_scripts",
+						"subject": "target",
+						"exec_trigger":  "manual",
+						"exec_temp_mod_counters": {
+							"skill": 1},
+						"require_exec_state": "hand"
+					},
+				],
+			},
+		},
 	}
 	# We return only the scripts that match the card name and trigger
 	return(scripts.get(card_name,{}))

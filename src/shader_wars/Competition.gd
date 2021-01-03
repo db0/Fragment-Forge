@@ -111,7 +111,6 @@ func next_competition() -> void:
 	cfc.NMAP.board.counters.mod_counter("time",current_tournament.time, true)
 
 func get_cred_rewards() -> int:
-	print_debug(current_place)
 	if current_place >= 0:
 		return(int(CRED_REWARDS[current_place] * round_multiplier))
 	else:
