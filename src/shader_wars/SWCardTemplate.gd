@@ -93,50 +93,85 @@ func common_move_scripts(new_container: Node, old_container: Node) -> void:
 		# in the common_pre_execution_scripts() method
 		execute_scripts()
 
-func common_post_execution_scripts(trigger: String) -> void:
-	if trigger == "manual" and get_parent() == cfc.NMAP.hand:
-		# Prep cards automatically discard when played from hand
+#func common_post_execution_scripts(trigger: String) -> void:
+#	if trigger == "manual" and get_parent() == cfc.NMAP.hand:
+#		# Prep cards automatically discard when played from hand
+#		if properties.Type == CardConfig.CardTypes.ACTION:
+#			pass
+##			move_to(cfc.NMAP.discard)
+#		# All other cards should not typically have a manual script from hand
+#		# but instead be autoplayed when double-clicked
+#		else:
+#			var move_result = move_to(cfc.NMAP.board)
+#			if move_result is GDScriptFunctionState: # Still working.
+#				move_result = yield(move_result, "completed")
+
+# Retrieves the card scripts either from those defined on the card
+# itself, or from those defined in the script definition files
+#
+# Returns a dictionary of card scripts for this specific card
+# based on the current trigger.
+func retrieve_card_scripts(trigger: String) -> Dictionary:
+	var found_scripts = .retrieve_card_scripts(trigger)
+	if trigger == "manual" and get_state_exec() == "hand":
+		found_scripts = insert_payment_costs(found_scripts)
 		if properties.Type == CardConfig.CardTypes.ACTION:
-			move_to(cfc.NMAP.discard)
-		# All other cards should not typically have a manual script from hand
-		# but instead be autoplayed when double-clicked
+			found_scripts["hand"] += generate_discard_action_tasks()
 		else:
-			var move_result = move_to(cfc.NMAP.board)
-			if move_result is GDScriptFunctionState: # Still working.
-				move_result = yield(move_result, "completed")
-			print_debug("b")
-
-
-func common_pre_execution_scripts(trigger: String) -> void:
-	if trigger == "manual" and get_parent() == cfc.NMAP.hand:
-		# We use this to make prep cards pay their costs when double-clicked
-		# as well as when dragged to the board
-		if properties.Type == CardConfig.CardTypes.ACTION:
-			pay_play_costs()
-
+			found_scripts["hand"] += generate_install_tasks()
+	return(found_scripts)
+	
+func insert_payment_costs(found_scripts) -> Dictionary:
+	var array_with_costs := generate_play_costs_tasks()
+	array_with_costs += found_scripts.get("hand",[])
+	found_scripts["hand"] = array_with_costs
+	return(found_scripts)
+	
 func pay_play_costs() -> void:
+	var state_exec = get_state_exec()
+	scripts["payments"] = {}
+	scripts["payments"][state_exec] = generate_play_costs_tasks()
+	execute_scripts(self,"payments")
+	scripts["payments"].clear()
+	
+func generate_play_costs_tasks() -> Array:
 	var payment_script_template := {
 			"name": "mod_counter",
+			"is_cost": true,
 			"modification": 0,
 			"tags": ["PlayCost"],
 			"counter_name":  "counter"}
-	var state_exec = get_state_exec()
-	scripts["payments"] = {}
-	scripts["payments"][state_exec] = []
+	var pay_tasks = []
 	var time_cost = get_modified_time_cost()
 	if time_cost:
 		var cost_script = payment_script_template.duplicate()
 		cost_script["modification"] = -time_cost
 		cost_script["counter_name"] = "time"
-		scripts["payments"][state_exec].append(cost_script)
+		pay_tasks.append(cost_script)
 	var kudos_cost = get_modified_kudos_cost()
 	if kudos_cost:
 		var cost_script = payment_script_template.duplicate()
 		cost_script["modification"] = -kudos_cost
 		cost_script["counter_name"] = "kudos"
-		scripts["payments"][state_exec].append(cost_script)
-	execute_scripts(self,"payments")
-	scripts["payments"].clear()
+		pay_tasks.append(cost_script)
+	return(pay_tasks)
+	
+func generate_discard_action_tasks() -> Array:
+	var discard_script_template := {
+			"name": "move_card_to_container",
+			"subject": "self",
+			"dest_container": cfc.NMAP.discard}
+	var discard_tasks = [discard_script_template]
+	return(discard_tasks)
+	
+func generate_install_tasks() -> Array:
+	var install_script_template := {
+			"name": "move_card_to_board",
+			"subject": "self",
+			"is_cost": true,
+			SP.KEY_GRID_NAME: mandatory_grid_name}
+	var install_tasks = [install_script_template]
+	return(install_tasks)
 
 func get_altered_skill() -> int:
 	var altered_skill : int = cfc.NMAP.board.counters.get_counter("skill")
