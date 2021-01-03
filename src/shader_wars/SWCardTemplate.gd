@@ -52,7 +52,7 @@ func get_modified_time_cost() -> int:
 	if properties.Type == CardConfig.CardTypes.SHADER:
 		modified_cost = get_skill_modified_shader_time_cost(
 				properties.get("skill_req", 0),
-				cfc.NMAP.board.counters.get_counter("skill"),
+				get_altered_skill(),
 				properties.get("Time", 0))
 	return(modified_cost)
 
@@ -134,3 +134,7 @@ func pay_play_costs() -> void:
 		scripts["payments"][state_exec].append(cost_script)
 	execute_scripts(self,"payments")
 	scripts["payments"].clear()
+
+func get_altered_skill() -> int:
+	var altered_skill : int = cfc.NMAP.board.counters.get_counter("skill")
+	return(altered_skill)
