@@ -1,5 +1,9 @@
 extends Card
 
+# Switch to know when the player attempted to activate an action card 
+# by dragging it to the board area
+var attempted_action_drop_to_board := false
+
 func _process(_delta: float) -> void:
 	if cfc._debug and not get_parent().is_in_group("piles"):
 		if properties.Type == CardConfig.CardTypes.SHADER:
@@ -83,15 +87,22 @@ static func get_skill_modified_shader_time_cost(
 		final_cost = time_cost
 	return(final_cost)
 
-func common_move_scripts(new_container: Node, old_container: Node) -> void:
-	if new_container == cfc.NMAP.board and old_container == cfc.NMAP.hand:
-		pay_play_costs()
-	if new_container == cfc.NMAP.hand \
+func common_pre_move_scripts(new_container: Node, old_container: Node) -> Node:
+	var target_container := new_container
+	if new_container == cfc.NMAP.board \
 			and old_container == cfc.NMAP.hand \
 			and properties.Type == CardConfig.CardTypes.ACTION:
 		# We don't pay the costs for Prep cards, as this is handled
 		# in the common_pre_execution_scripts() method
+		attempted_action_drop_to_board = true
+	return(target_container)
+
+func common_post_move_scripts(new_container: Node, old_container: Node) -> void:
+	if new_container == cfc.NMAP.board and old_container == cfc.NMAP.hand:
+		pay_play_costs()
+	if attempted_action_drop_to_board:
 		execute_scripts()
+		attempted_action_drop_to_board = false
 
 #func common_post_execution_scripts(trigger: String) -> void:
 #	if trigger == "manual" and get_parent() == cfc.NMAP.hand:
@@ -120,20 +131,20 @@ func retrieve_card_scripts(trigger: String) -> Dictionary:
 		else:
 			found_scripts["hand"] += generate_install_tasks()
 	return(found_scripts)
-	
+
 func insert_payment_costs(found_scripts) -> Dictionary:
 	var array_with_costs := generate_play_costs_tasks()
 	array_with_costs += found_scripts.get("hand",[])
 	found_scripts["hand"] = array_with_costs
 	return(found_scripts)
-	
+
 func pay_play_costs() -> void:
 	var state_exec = get_state_exec()
 	scripts["payments"] = {}
 	scripts["payments"][state_exec] = generate_play_costs_tasks()
 	execute_scripts(self,"payments")
 	scripts["payments"].clear()
-	
+
 func generate_play_costs_tasks() -> Array:
 	var payment_script_template := {
 			"name": "mod_counter",
@@ -155,7 +166,7 @@ func generate_play_costs_tasks() -> Array:
 		cost_script["counter_name"] = "kudos"
 		pay_tasks.append(cost_script)
 	return(pay_tasks)
-	
+
 func generate_discard_action_tasks() -> Array:
 	var discard_script_template := {
 			"name": "move_card_to_container",
@@ -163,7 +174,7 @@ func generate_discard_action_tasks() -> Array:
 			"dest_container": cfc.NMAP.discard}
 	var discard_tasks = [discard_script_template]
 	return(discard_tasks)
-	
+
 func generate_install_tasks() -> Array:
 	var install_script_template := {
 			"name": "move_card_to_board",

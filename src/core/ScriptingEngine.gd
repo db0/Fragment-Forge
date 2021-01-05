@@ -473,7 +473,9 @@ func mod_counter(script: ScriptTask) -> int:
 	return(retcode)
 
 
-# Task for executing scripts on subject cards
+# Task for executing scripts on subject cards.
+# * Supports [KEY_IS_COST](SP#KEY_IS_COST). If it is set, the cost check
+#	will fail, if any of the target card's cost checks also fail.
 # * Requires the following keys:
 #	* [KEY_SUBJECT](SP#KEY_SUBJECT)
 # * Optionally uses the following keys:
