@@ -77,6 +77,7 @@ func _find_subjects(prev_subjects := [], stored_integer := 0) -> Array:
 				var c = _initiate_card_targeting()
 				if c is GDScriptFunctionState: # Still working.
 					c = yield(c, "completed")
+				# If the target is null, it means the player pointed at nothing
 				if c:
 					is_valid = SP.check_validity(c, script_definition, "subject")
 					subjects_array.append(c)

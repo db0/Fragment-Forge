@@ -95,6 +95,7 @@ func get_scripts(card_name: String) -> Dictionary:
 					{
 						"name": "execute_scripts",
 						"subject": "target",
+						"is_cost": true,
 						"exec_trigger":  "manual",
 						"exec_temp_mod_counters": {
 							"skill": 1},
