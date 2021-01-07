@@ -6,3 +6,4 @@
 [node name="Card" instance=ExtResource( 2 )]
 board_placement = 0
 card_front_design = ExtResource( 1 )
+hand_drag_starts_targeting = true
