@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://src/shader_wars/SWCardTemplate.gd" type="Script" id=1]
 [ext_resource path="res://src/shader_wars/CardManipulationButton.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://src/core/CardTemplate.tscn" type="PackedScene" id=4]
 [ext_resource path="res://src/shader_wars/ManipulationButtons.gd" type="Script" id=5]
 [ext_resource path="res://src/shader_wars/CardFront.tscn" type="PackedScene" id=6]
+[ext_resource path="res://src/shader_wars/ModifiedCosts.tscn" type="PackedScene" id=7]
 
 [node name="Card" instance=ExtResource( 4 )]
 script = ExtResource( 1 )
@@ -31,3 +32,9 @@ visible = false
 
 [node name="parent" parent="Debug" index="4"]
 visible = false
+
+[node name="ModifiedCostsPopup" parent="." index="5" instance=ExtResource( 7 )]
+margin_left = 152.202
+margin_top = -1.68178
+margin_right = 329.202
+margin_bottom = 98.3182

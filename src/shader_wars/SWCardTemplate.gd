@@ -1,10 +1,13 @@
 extends Card
 
-# Switch to know when the player attempted to activate an action card 
+# Switch to know when the player attempted to activate an action card
 # by dragging it to the board area
 var attempted_action_drop_to_board := false
 
+onready var modified_costs_popup = $ModifiedCostsPopup
+
 func _process(_delta: float) -> void:
+	_extra_state_processing()
 	if cfc._debug and not get_parent().is_in_group("piles"):
 		if properties.Type == CardConfig.CardTypes.SHADER:
 			$Debug/ModifiedCost.text = "ModCost: "\
@@ -16,7 +19,7 @@ func _process(_delta: float) -> void:
 
 func check_play_costs() -> Color:
 	var ret : Color = CFConst.CostsState.OK
-	var time_cost = get_modified_time_cost()
+	var time_cost = get_modified_time_cost()[0]
 	var kudos_cost = get_modified_kudos_cost()
 
 	if time_cost > cfc.NMAP.board.counters.get_counter("time"):
@@ -51,14 +54,17 @@ func check_play_costs() -> Color:
 		ret = CFConst.CostsState.IMPOSSIBLE
 	return(ret)
 
-func get_modified_time_cost() -> int:
-	var modified_cost : int = properties.get("Time", 0)
+func get_modified_time_cost() -> Array:
+	var original_cost : int = properties.get("Time", 0)
+	var modified_cost := original_cost
 	if properties.Type == CardConfig.CardTypes.SHADER:
 		modified_cost = get_skill_modified_shader_time_cost(
 				properties.get("skill_req", 0),
 				get_altered_skill(),
-				properties.get("Time", 0))
-	return(modified_cost)
+				original_cost)
+	var skill_modifier : int = modified_cost - original_cost
+	var cards_modifier := 0 # TBD
+	return([modified_cost,skill_modifier,cards_modifier])
 
 func get_modified_kudos_cost() -> int:
 	var modified_cost : int = properties.get("Kudos", 0)
@@ -153,7 +159,7 @@ func generate_play_costs_tasks() -> Array:
 			"tags": ["PlayCost"],
 			"counter_name":  "counter"}
 	var pay_tasks = []
-	var time_cost = get_modified_time_cost()
+	var time_cost = get_modified_time_cost()[0]
 	if time_cost:
 		var cost_script = payment_script_template.duplicate()
 		cost_script["modification"] = -time_cost
@@ -187,3 +193,29 @@ func generate_install_tasks() -> Array:
 func get_altered_skill() -> int:
 	var altered_skill : int = cfc.NMAP.board.counters.get_counter("skill")
 	return(altered_skill)
+
+func _extra_state_processing() -> void:
+	match state:
+		CardState.FOCUSED_IN_HAND:
+			var modified_time_costs := get_modified_time_cost()
+			modified_costs_popup.update_labels(
+					modified_time_costs[0],
+					properties.get("Time", 0),
+					modified_time_costs[1],
+					modified_time_costs[2])
+			modified_costs_popup.rect_global_position = Vector2(
+					global_position.x
+					+ 10
+					+ card_size.x
+					* scale.x,
+					global_position.y)
+			# Cannot use popup() here, is it somehow interrupts
+			# The card dropping.
+			if not modified_costs_popup.visible:
+				modified_costs_popup.reset_sizes()
+				modified_costs_popup.visible = true
+		_:
+			if modified_costs_popup.visible:
+				modified_costs_popup.visible = false
+
+
