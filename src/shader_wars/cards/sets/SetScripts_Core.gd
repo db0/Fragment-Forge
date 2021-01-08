@@ -97,9 +97,12 @@ func get_scripts(card_name: String) -> Dictionary:
 						"subject": "target",
 						"is_cost": true,
 						"exec_trigger":  "manual",
-						"exec_temp_mod_counters": {
+						"temp_mod_counters": {
 							"skill": 1},
-						"require_exec_state": "hand"
+						"require_exec_state": "hand",
+						"filter_state_subject": [{
+							"filter_properties": {"Type": "Shader"},
+						}],						
 					},
 				],
 			},

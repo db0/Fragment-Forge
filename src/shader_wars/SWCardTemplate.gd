@@ -112,19 +112,6 @@ func common_post_move_scripts(new_container: Node, old_container: Node, scripted
 		execute_scripts()
 		attempted_action_drop_to_board = false
 
-#func common_post_execution_scripts(trigger: String) -> void:
-#	if trigger == "manual" and get_parent() == cfc.NMAP.hand:
-#		# Prep cards automatically discard when played from hand
-#		if properties.Type == CardConfig.CardTypes.ACTION:
-#			pass
-##			move_to(cfc.NMAP.discard)
-#		# All other cards should not typically have a manual script from hand
-#		# but instead be autoplayed when double-clicked
-#		else:
-#			var move_result = move_to(cfc.NMAP.board)
-#			if move_result is GDScriptFunctionState: # Still working.
-#				move_result = yield(move_result, "completed")
-
 # Retrieves the card scripts either from those defined on the card
 # itself, or from those defined in the script definition files
 #
