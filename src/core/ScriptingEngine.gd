@@ -231,7 +231,7 @@ func move_card_to_board(script: ScriptTask) -> int:
 					if slot:
 						# Setting the highlight lets the move_to() method
 						# Know we're moving into that slot
-						card.move_to(cfc.NMAP.board, -1, slot)
+						card.move_to(cfc.NMAP.board, -1, slot, true)
 		else:
 			# If the named grid  was not found, we inform the developer.
 			print_debug("WARNING: Script from card '"

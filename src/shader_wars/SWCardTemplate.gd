@@ -93,7 +93,7 @@ static func get_skill_modified_shader_time_cost(
 		final_cost = time_cost
 	return(final_cost)
 
-func common_pre_move_scripts(new_container: Node, old_container: Node) -> Node:
+func common_pre_move_scripts(new_container: Node, old_container: Node, scripted_move: bool) -> Node:
 	var target_container := new_container
 	if new_container == cfc.NMAP.board \
 			and old_container == cfc.NMAP.hand \
@@ -103,8 +103,10 @@ func common_pre_move_scripts(new_container: Node, old_container: Node) -> Node:
 		attempted_action_drop_to_board = true
 	return(target_container)
 
-func common_post_move_scripts(new_container: Node, old_container: Node) -> void:
-	if new_container == cfc.NMAP.board and old_container == cfc.NMAP.hand:
+func common_post_move_scripts(new_container: Node, old_container: Node, scripted_move: bool) -> void:
+	if new_container == cfc.NMAP.board\
+			and old_container == cfc.NMAP.hand\
+			and not scripted_move:
 		pay_play_costs()
 	if attempted_action_drop_to_board:
 		execute_scripts()
