@@ -19,7 +19,7 @@ func _process(_delta: float) -> void:
 
 func check_play_costs() -> Color:
 	var ret : Color = CFConst.CostsState.OK
-	var time_cost = get_modified_time_cost()[0]
+	var time_cost = get_modified_time_cost().modified_cost
 	var kudos_cost = get_modified_kudos_cost()
 
 	if time_cost > cfc.NMAP.board.counters.get_counter("time", self):
@@ -54,17 +54,43 @@ func check_play_costs() -> Color:
 		ret = CFConst.CostsState.IMPOSSIBLE
 	return(ret)
 
-func get_modified_time_cost() -> Array:
+func get_modified_time_cost() -> Dictionary:
+	var time_cost_details : Dictionary =\
+			get_property_and_alterants("Time")
 	var original_cost : int = properties.get("Time", 0)
-	var modified_cost := original_cost
+	var modified_cost : int = time_cost_details.value
+	var time_alterant_cards := []
+	var skill_alterant_cards := []
+	for c in time_cost_details.alteration.alterants_details.keys():
+		if c as Card and time_cost_details.alteration.alterants_details[c] != 0:
+			time_alterant_cards.append(c)
+	var skill_counter_details = {
+		"count": 0,
+		"alteration": {
+			"value_alteration": 0,
+			"alterants_details": {}
+		}
+	}			
 	if properties.Type == CardConfig.CardTypes.SHADER:
+		skill_counter_details =\
+				cfc.NMAP.board.counters.get_counter_and_alterants("skill", self)
+		for c in skill_counter_details.alteration.alterants_details.keys():
+			if c as Card and skill_counter_details.alteration.alterants_details[c] != 0:
+				skill_alterant_cards.append(c)
 		modified_cost = get_skill_modified_shader_time_cost(
 				properties.get("skill_req", 0),
-				get_altered_skill(),
+				skill_counter_details.count,
 				original_cost)
-	var skill_modifier : int = modified_cost - original_cost
-	var cards_modifier := 0 # TBD
-	return([modified_cost,skill_modifier,cards_modifier])
+	var return_dict = {
+		"modified_cost": modified_cost,
+		"skill_modifier": modified_cost - time_cost_details.value,
+		"cards_modifier": time_cost_details.alteration.value_alteration,
+		"alterant_cards": {
+			"time": time_cost_details.alteration.alterants_details,
+			"skill": skill_counter_details.alteration.alterants_details
+		}
+	}
+	return(return_dict)
 
 func get_modified_kudos_cost() -> int:
 	var modified_cost : int = properties.get("Kudos", 0)
@@ -148,7 +174,7 @@ func generate_play_costs_tasks() -> Array:
 			"tags": ["PlayCost"],
 			"counter_name":  "counter"}
 	var pay_tasks = []
-	var time_cost = get_modified_time_cost()[0]
+	var time_cost = get_modified_time_cost().modified_cost
 	if time_cost:
 		var cost_script = payment_script_template.duplicate()
 		cost_script["modification"] = -time_cost
@@ -188,10 +214,11 @@ func _extra_state_processing() -> void:
 		CardState.FOCUSED_IN_HAND:
 			var modified_time_costs := get_modified_time_cost()
 			modified_costs_popup.update_labels(
-					modified_time_costs[0],
+					modified_time_costs.modified_cost,
 					properties.get("Time", 0),
-					modified_time_costs[1],
-					modified_time_costs[2])
+					modified_time_costs.skill_modifier,
+					modified_time_costs.cards_modifier,
+					modified_time_costs.alterant_cards)
 			modified_costs_popup.rect_global_position = Vector2(
 					global_position.x
 					+ 10

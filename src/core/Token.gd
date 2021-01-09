@@ -55,7 +55,7 @@ func set_count(value := 1) -> void:
 
 # Returns the amount of tokens of this type
 func get_count() -> int:
-	var alteration = 0
+	var alteration = [0,{}]
 	# We do this check because in UT the token might not be
 	# assigned to a token_drawer
 	if token_drawer:
@@ -66,7 +66,7 @@ func get_count() -> int:
 			count)
 		if alteration is GDScriptFunctionState:
 			alteration = yield(alteration, "completed")
-	return(count + alteration)
+	return(count + alteration.value_alteration)
 
 
 # Reveals the Name label.
