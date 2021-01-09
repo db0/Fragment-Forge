@@ -1,3 +1,4 @@
+class_name SWCard
 extends Card
 
 # Switch to know when the player attempted to activate an action card
@@ -54,10 +55,20 @@ func check_play_costs() -> Color:
 		ret = CFConst.CostsState.IMPOSSIBLE
 	return(ret)
 
+# Calculates how much time a card will cost, after taking into account
+# player skill level (shaders only) and alterants on the table.
+#
+# Returns a dictionary with the following keys:
+# * modified_cost (int): The final cost of the card
+# * skill_modifier (int): The modifier to the time cost due to the player's skill
+#	level
+# * cards_modifier: The modifier to the time cost due to alterants on the board
+# * alterant_cards: A dictionary with two keys, "time" and "skill". 
+#	Each key holds a dictionary with the alterants_details, as returned
+#	from CFScriptUtils.get_altered_value()
 func get_modified_time_cost() -> Dictionary:
 	var time_cost_details : Dictionary =\
 			get_property_and_alterants("Time")
-	var original_cost : int = properties.get("Time", 0)
 	var modified_cost : int = time_cost_details.value
 	var time_alterant_cards := []
 	var skill_alterant_cards := []
@@ -80,7 +91,7 @@ func get_modified_time_cost() -> Dictionary:
 		modified_cost = get_skill_modified_shader_time_cost(
 				properties.get("skill_req", 0),
 				skill_counter_details.count,
-				original_cost)
+				properties.get("Time", 0))
 	var return_dict = {
 		"modified_cost": modified_cost,
 		"skill_modifier": modified_cost - time_cost_details.value,
@@ -96,6 +107,7 @@ func get_modified_kudos_cost() -> int:
 	var modified_cost : int = properties.get("Kudos", 0)
 	return(modified_cost)
 
+# Calculates the time cost of a shader adjusted by the player's skill
 static func get_skill_modified_shader_time_cost(
 		skill_req: int,
 		current_skill: int,
@@ -119,6 +131,8 @@ static func get_skill_modified_shader_time_cost(
 		final_cost = time_cost
 	return(final_cost)
 
+# Sets a flag when an actio card is dragged to the board manually
+# which will trigger the game to execute its scripts
 func common_pre_move_scripts(new_container: Node, old_container: Node, scripted_move: bool) -> Node:
 	var target_container := new_container
 	if new_container == cfc.NMAP.board \
@@ -129,11 +143,15 @@ func common_pre_move_scripts(new_container: Node, old_container: Node, scripted_
 		attempted_action_drop_to_board = true
 	return(target_container)
 
+# Executes some extra logic depending on the type of card moved
 func common_post_move_scripts(new_container: Node, old_container: Node, scripted_move: bool) -> void:
+	# If a non-shader was moved to the board from hand, we want to pay its costs
 	if new_container == cfc.NMAP.board\
 			and old_container == cfc.NMAP.hand\
 			and not scripted_move:
 		pay_play_costs()
+	# if an action was dragged to the board, it will have returned to hand now
+	# and have a special flag set. Therefore we execute its scripts
 	if attempted_action_drop_to_board:
 		execute_scripts()
 		attempted_action_drop_to_board = false
@@ -153,12 +171,16 @@ func retrieve_card_scripts(trigger: String) -> Dictionary:
 			found_scripts["hand"] += generate_install_tasks()
 	return(found_scripts)
 
+# Inserts time and kudos payment costs into a card's scripts
+# so that they are all processed by the ScriptingEngine
 func insert_payment_costs(found_scripts) -> Dictionary:
 	var array_with_costs := generate_play_costs_tasks()
 	array_with_costs += found_scripts.get("hand",[])
 	found_scripts["hand"] = array_with_costs
 	return(found_scripts)
 
+# Adds payment costs into a card's custom scripts under a special trigger
+# and executes them so that they are all processed by the ScriptingEngine
 func pay_play_costs() -> void:
 	var state_exec = get_state_exec()
 	scripts["payments"] = {}
@@ -166,6 +188,9 @@ func pay_play_costs() -> void:
 	execute_scripts(self,"payments")
 	scripts["payments"].clear()
 
+# Uses a template to create task definitions for paying time and kudos costs
+# then returns it to the calling function to execute or insert it into
+# the cards existing scripts for its state.
 func generate_play_costs_tasks() -> Array:
 	var payment_script_template := {
 			"name": "mod_counter",
@@ -188,6 +213,9 @@ func generate_play_costs_tasks() -> Array:
 		pay_tasks.append(cost_script)
 	return(pay_tasks)
 
+# Uses a template to create task definitions for discarding a card
+# then returns it to the calling function to execute or insert it into
+# the cards existing scripts for its state.
 func generate_discard_action_tasks() -> Array:
 	var discard_script_template := {
 			"name": "move_card_to_container",
@@ -196,6 +224,9 @@ func generate_discard_action_tasks() -> Array:
 	var discard_tasks = [discard_script_template]
 	return(discard_tasks)
 
+# Uses a template to create task definitions for placing a card to the table
+# then returns it to the calling function to execute or insert it into
+# the cards existing scripts for its state.
 func generate_install_tasks() -> Array:
 	var install_script_template := {
 			"name": "move_card_to_board",
@@ -205,12 +236,11 @@ func generate_install_tasks() -> Array:
 	var install_tasks = [install_script_template]
 	return(install_tasks)
 
-func get_altered_skill() -> int:
-	var altered_skill : int = cfc.NMAP.board.counters.get_counter("skill", self)
-	return(altered_skill)
-
+# Extra _process logic for SW
 func _extra_state_processing() -> void:
 	match state:
+		# If a card is focused in hand, we want to also display its
+		# Modified time cost popup.
 		CardState.FOCUSED_IN_HAND:
 			var modified_time_costs := get_modified_time_cost()
 			modified_costs_popup.update_labels(
