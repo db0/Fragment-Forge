@@ -79,12 +79,18 @@ func get_scripts(card_name: String) -> Dictionary:
 			},
 		},
 		"Newbie Tutor": {
-			"while_in_play": {
-				"modify_costs": [
+			"alterants": {
+				"board": [
 					{
-						"name": "mod_counter",
-						"counter_name": "cred",
-						"modification": 1,
+						"filter_task": "get_counter",
+						"filter_counter_name": "skill",
+						"alteration": 1,
+						"filter_state_trigger": [
+							{"filter_properties": {
+								"Type": "Shader",
+								"skill_req": 1
+							}}
+						]
 					},
 				],
 			},

@@ -15,7 +15,7 @@ func _ready() -> void:
 			 "CounterTitle": "Cred: ",
 			"Value": 0},
 		"kudos":{
-			 "CounterTitle": "Cred: ",
+			 "CounterTitle": "Kudos: ",
 			"Value": 0},
 		"motivation":{
 			 "CounterTitle": "Motivation: ",

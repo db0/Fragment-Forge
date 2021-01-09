@@ -85,7 +85,7 @@ const CARDS := {
 	"Newbie Tutor": {
 		"Type": CardConfig.CardTypes.RESOURCE,
 		"Tags": ["Tutor"],
-		"Abilities": "You are considered to have 1 skill"\
+		"Abilities": "If you have 0 skill, you are considered to have 1 skill "\
 				+ "for shaders with skill_req 1.",
 		"Time": 1,
 		"Value": 0,

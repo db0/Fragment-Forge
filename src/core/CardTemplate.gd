@@ -186,6 +186,10 @@ var _placement_slot : BoardPlacementSlot = null
 # This hold modifiers to card properties that will be active temporarily.
 # This avoids triggering the card_properties_modified signal.
 #
+# Each key is a ScriptingEngine reference, and each value is a dictionary
+# with  property names as keys and modifiers as their values
+# This means multiple modifiers may be active at the same time.
+#
 # Typically used during
 # an [execute_scripts()](ScriptingEngine#execute_scripts] task.
 var temp_properties_modifiers := {}
@@ -194,7 +198,9 @@ var temp_properties_modifiers := {}
 var _debugger_hook := false
 # Debug for stuck tweens
 var _tween_stuck_time = 0
-
+# This variable is being used to avoid an infinite loop when alterants
+# are altering get_property based on filtering properties of cards
+var _is_property_being_altered := false
 # The node which has the design of the card back
 # And the methods which are used for its potential animation.
 # This will be loaded in `_init_card_back()`
@@ -527,6 +533,7 @@ func modify_property(property: String, value, is_init = false, check := false) -
 
 # Retrieves the value of a property. This should always be used instead of
 # properties.get() as it takes into account the temp_properties_modifiers var
+# and also checks for alterant scripts
 func get_property(property: String):
 	var property_value = properties.get(property)
 	if property in CardConfig.PROPERTIES_NUMBERS:
@@ -534,6 +541,19 @@ func get_property(property: String):
 		for modifier in temp_properties_modifiers.values():
 			prop_mod += modifier.get(property,0)
 		property_value += prop_mod
+		# We use this flag to avoid an alteranty which alters get_property
+		# by filtering the card's properties, causing an infinite loop.
+		if not _is_property_being_altered:
+			_is_property_being_altered = true
+			var alteration = CFScriptUtils.get_altered_value(
+				self,
+				"get_property",
+				{SP.KEY_PROPERTY_NAME: property,},
+				properties.get(property))
+			if alteration is GDScriptFunctionState:
+				alteration = yield(alteration, "completed")
+			_is_property_being_altered = false
+			property_value += alteration
 		if property_value < 0:
 			property_value = 0
 	return(property_value)
@@ -1478,7 +1498,7 @@ func common_post_execution_scripts(trigger: String) -> void:
 
 # Returns true is the card has hand_drag_starts_targeting set to true
 # is currently in hand, and has a targetting task.
-# 
+#
 # This is used by the _on_Card_gui_input to determine if it should fire
 # scripts on the card during an attempt to drag it from hand.
 func _has_targeting_cost_hand_script() -> bool:

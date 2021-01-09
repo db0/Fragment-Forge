@@ -13,7 +13,7 @@ func _process(_delta: float) -> void:
 			$Debug/ModifiedCost.text = "ModCost: "\
 					+ str(get_skill_modified_shader_time_cost(
 						properties.get("skill_req", 0),
-						cfc.NMAP.board.counters.get_counter("skill"),
+						cfc.NMAP.board.counters.get_counter("skill", self),
 						properties.get("Time", 0)
 					))
 
@@ -22,14 +22,14 @@ func check_play_costs() -> Color:
 	var time_cost = get_modified_time_cost()[0]
 	var kudos_cost = get_modified_kudos_cost()
 
-	if time_cost > cfc.NMAP.board.counters.get_counter("time"):
+	if time_cost > cfc.NMAP.board.counters.get_counter("time", self):
 		ret = CFConst.CostsState.IMPOSSIBLE
 	elif time_cost > properties.get("Time", 0):
 		ret = CFConst.CostsState.INCREASED
 	elif time_cost < properties.get("Time", 0):
 		ret = CFConst.CostsState.DECREASED
 
-	if kudos_cost > cfc.NMAP.board.counters.get_counter("kudos"):
+	if kudos_cost > cfc.NMAP.board.counters.get_counter("kudos", self):
 		ret = CFConst.CostsState.IMPOSSIBLE
 	# We only want the highlight to change if it's still the default
 	elif kudos_cost > properties.get("Kudos", 0) \
@@ -41,16 +41,16 @@ func check_play_costs() -> Color:
 	# For shaders, the skill_rqa is already taken into account
 	# inside get_modified_time_cost()
 	if properties.get("skill_req", 0) > \
-			cfc.NMAP.board.counters.get_counter("skill") \
+			cfc.NMAP.board.counters.get_counter("skill", self) \
 			and properties.Type != CardConfig.CardTypes.SHADER:
 		ret = CFConst.CostsState.IMPOSSIBLE
 
 	if properties.get("cred_req", 0) > \
-			cfc.NMAP.board.counters.get_counter("cred"):
+			cfc.NMAP.board.counters.get_counter("cred", self):
 		ret = CFConst.CostsState.IMPOSSIBLE
 
 	if properties.get("motivation_req", 0) > \
-			cfc.NMAP.board.counters.get_counter("motivation"):
+			cfc.NMAP.board.counters.get_counter("motivation", self):
 		ret = CFConst.CostsState.IMPOSSIBLE
 	return(ret)
 
@@ -180,7 +180,7 @@ func generate_install_tasks() -> Array:
 	return(install_tasks)
 
 func get_altered_skill() -> int:
-	var altered_skill : int = cfc.NMAP.board.counters.get_counter("skill")
+	var altered_skill : int = cfc.NMAP.board.counters.get_counter("skill", self)
 	return(altered_skill)
 
 func _extra_state_processing() -> void:
