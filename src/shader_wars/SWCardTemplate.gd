@@ -70,24 +70,9 @@ func get_modified_time_cost() -> Dictionary:
 	var time_cost_details : Dictionary =\
 			get_property_and_alterants("Time")
 	var modified_cost : int = time_cost_details.value
-	var time_alterant_cards := []
-	var skill_alterant_cards := []
-	for c in time_cost_details.alteration.alterants_details.keys():
-		if c as Card and time_cost_details.alteration.alterants_details[c] != 0:
-			time_alterant_cards.append(c)
-	var skill_counter_details = {
-		"count": 0,
-		"alteration": {
-			"value_alteration": 0,
-			"alterants_details": {}
-		}
-	}			
+	var skill_counter_details : Dictionary =\
+			cfc.NMAP.board.counters.get_counter_and_alterants("skill", self)
 	if properties.Type == CardConfig.CardTypes.SHADER:
-		skill_counter_details =\
-				cfc.NMAP.board.counters.get_counter_and_alterants("skill", self)
-		for c in skill_counter_details.alteration.alterants_details.keys():
-			if c as Card and skill_counter_details.alteration.alterants_details[c] != 0:
-				skill_alterant_cards.append(c)
 		modified_cost = get_skill_modified_shader_time_cost(
 				properties.get("skill_req", 0),
 				skill_counter_details.count,
@@ -97,11 +82,21 @@ func get_modified_time_cost() -> Dictionary:
 		"skill_modifier": modified_cost - time_cost_details.value,
 		"cards_modifier": time_cost_details.alteration.value_alteration,
 		"alterant_cards": {
-			"time": time_cost_details.alteration.alterants_details,
-			"skill": skill_counter_details.alteration.alterants_details
+			"time": merge_modifier_dicts(time_cost_details),
+			"skill": merge_modifier_dicts(skill_counter_details)
 		}
 	}
 	return(return_dict)
+
+func merge_modifier_dicts(container_dict) -> Dictionary:
+	var modifier_details : Dictionary =\
+			container_dict.alteration.alterants_details.duplicate()
+	for c in container_dict.temp_modifiers.modifier_details:
+		if c in modifier_details.keys():
+			modifier_details[c] += container_dict.temp_modifiers.modifier_details[c]
+		else:
+			modifier_details[c] = container_dict.temp_modifiers.modifier_details[c]
+	return(modifier_details)
 
 func get_modified_kudos_cost() -> int:
 	var modified_cost : int = properties.get("Kudos", 0)
