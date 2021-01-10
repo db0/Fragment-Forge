@@ -29,7 +29,7 @@ const CARDS := {
 	"Intermediate Shader": {
 		"Type": CardConfig.CardTypes.SHADER,
 		"Tags": [],
-		"Abilities": "Some tricky stuff",
+		"Abilities": "Some intermediate stuff",
 		"Time": 1,
 		"Value": 4,
 		"Kudos": 0,
@@ -37,10 +37,10 @@ const CARDS := {
 		"cred_req": 0,
 		"motivation_req": 0,
 	},
-	"Intermediate Difficult Shader": {
+	"Difficult Shader": {
 		"Type": CardConfig.CardTypes.SHADER,
 		"Tags": [],
-		"Abilities": "Some tricky stuff",
+		"Abilities": "Some difficult stuff",
 		"Time": 2,
 		"Value": 5,
 		"Kudos": 0,
@@ -51,7 +51,7 @@ const CARDS := {
 	"Advanced Shader": {
 		"Type": CardConfig.CardTypes.SHADER,
 		"Tags": [],
-		"Abilities": "Some tricky stuff",
+		"Abilities": "Some advanced stuff",
 		"Time": 1,
 		"Value": 6,
 		"Kudos": 0,
@@ -73,7 +73,7 @@ const CARDS := {
 	"Expert Shader": {
 		"Type": CardConfig.CardTypes.SHADER,
 		"Tags": [],
-		"Abilities": "Some tricky stuff",
+		"Abilities": "Some expert stuff",
 		"Time": 3,
 		"Value": 10,
 		"Kudos": 0,
@@ -133,13 +133,12 @@ const CARDS := {
 	"Graphics Artist": {
 		"Type": CardConfig.CardTypes.RESOURCE,
 		"Tags": ["Collaborator"],
-		"Abilities": "Pay 4 Kudos to play.\n" \
-				+ "If you use at least 3 shaders of skill_req 1, "\
+		"Abilities": "If you use at least 3 shaders of skill_req 1, "\
 				+ "increase your Demo value by 2."\
 				+ "Discard after this round ends",
 		"Time": 2,
 		"Value": 0,
-		"Kudos": 0,
+		"Kudos": 4,
 		"skill_req": 0,
 		"cred_req": 2,
 		"motivation_req": 0,

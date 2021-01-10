@@ -78,6 +78,17 @@ func get_scripts(card_name: String) -> Dictionary:
 				],
 			},
 		},
+		"Help out Some Newbs": {
+			"manual": {
+				"hand": [
+					{
+						"name": "mod_counter",
+						"counter_name": "kudos",
+						"modification": 3,
+					},
+				],
+			},
+		},
 		"Newbie Tutor": {
 			"alterants": {
 				"board": [

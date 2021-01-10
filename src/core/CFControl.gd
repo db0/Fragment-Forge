@@ -194,7 +194,8 @@ func load_script_definitions() -> Dictionary:
 class SignalPropagator:
 
 	# The working signals cards might send depending on their status changes
-	const known_card_signals := [
+	# this array can be extended by signals added by other games
+	var known_card_signals := [
 		"card_rotated",
 		"card_flipped",
 		"card_viewed",
@@ -208,20 +209,19 @@ class SignalPropagator:
 		"card_properties_modified",
 		]
 
-
 	# When a new card is instanced, it connects all its known signals
 	# to the SignalPropagator
 	func connect_new_card(card):
 		for sgn in known_card_signals:
-			card.connect(sgn, self, "_on_Card_signal_received")
+			card.connect(sgn, self, "_on_signal_received")
 
 
 	# When a known signal is received, it asks all existing cards to check
 	# If this triggers an automation for them
 	#
-	# This method requires that each signal also passes its own name in the
+	# This method requirses that each signal also passes its own name in the
 	# trigger variable, is this is the key sought in the CardScriptDefinitions
-	func _on_Card_signal_received(
+	func _on_signal_received(
 			trigger_card: Card, trigger: String, details: Dictionary):
 		# We use Godot groups to ask every card to check if they
 		# have [ScriptingEngine] triggers for this signal.
@@ -232,5 +232,9 @@ class SignalPropagator:
 		# drags the card on the grid itself. If the player drags the card
 		# To an empty spot, it works fine
 		# It also fails to execute if I use any other flag than GROUP_CALL_UNIQUE
-		cfc.get_tree().call_group_flags(SceneTree.GROUP_CALL_UNIQUE  ,"cards",
-				"execute_scripts",trigger_card,trigger,details)
+		if trigger == "counter_modified":
+			pass
+		for card in cfc.get_tree().get_nodes_in_group("cards"):
+			card.execute_scripts(trigger_card,trigger,details)
+#		cfc.get_tree().call_group_flags(SceneTree.GROUP_CALL_UNIQUE  ,"cards",
+#				"execute_scripts",trigger_card,trigger,details)
