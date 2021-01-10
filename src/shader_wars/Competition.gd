@@ -1,6 +1,8 @@
 class_name Competitions
 extends Control
 
+signal competition_ended(card,trigger,details)
+
 enum Place{
 	THIRD
 	SECOND
@@ -50,6 +52,7 @@ var placement_requirements := [
 var current_round := 0
 var current_place := -1
 var round_multiplier: float
+var current_demo_value: int
 
 onready var first_place := $"VBC/HBC/FirstPlace"
 onready var second_place := $"VBC/HBC2/SecondPlace"
@@ -62,7 +65,8 @@ onready var placements_labels = [third_place,second_place,first_place]
 
 
 func _ready() -> void:
-	pass
+	# warning-ignore:return_value_discarded
+	self.connect("competition_ended", cfc.signal_propagator, "_on_signal_received")
 	
 
 
@@ -71,6 +75,15 @@ func _process(_delta: float) -> void:
 	for card in cfc.NMAP.board.get_all_cards():
 		if card.is_in_group("shaders"):
 			total_value += card.properties.get("Value",0)
+	var alteration = CFScriptUtils.get_altered_value(
+			null, "get_demo_value", {}, total_value)
+	if alteration is GDScriptFunctionState:
+		alteration = yield(alteration, "completed")
+	total_value += alteration.value_alteration
+	# We set it as an extra step, so that there's no change we grab the value
+	# while it's still calculating
+	if current_demo_value != total_value:
+		current_demo_value = total_value
 	demo_value.text = "Current Demo Value: " + str(total_value)
 	for p in Place.values():
 		if placement_requirements[p] <= total_value:
@@ -86,6 +99,11 @@ func next_competition() -> void:
 		CFUtils.shuffle_array(available_tournaments)
 	# We want to set the multiplier before incrementing the round
 	# so that on the first turn, the multiplier increase is 0. (0 * 0.5)
+	if current_round > 0:
+		emit_signal("competition_ended", null, "competition_ended",
+				{"competition_name": current_tournament.name,
+				"demo_value": current_demo_value,
+				"current_place": current_place})
 	current_place = -1
 	round_multiplier = 1 + current_round * ROUND_MULTIPLIER_INCREASE
 	current_round += 1

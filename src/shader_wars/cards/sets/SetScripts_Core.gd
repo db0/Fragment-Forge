@@ -64,7 +64,7 @@ func get_scripts(card_name: String) -> Dictionary:
 				],
 				"trigger": "self",
 				"filter_token_name": "kudos",
-				"filter_token_count": 0,
+				"filter_count": 0,
 			},
 		},
 		"Post Some Progress": {
@@ -85,6 +85,36 @@ func get_scripts(card_name: String) -> Dictionary:
 						"name": "mod_counter",
 						"counter_name": "kudos",
 						"modification": 3,
+					},
+				],
+			},
+		},
+		"Graphics Artist": {
+			"competition_ended": {
+				"board": [
+					{
+						"name": "move_card_to_container",
+						"dest_container": cfc.NMAP.discard,
+						"subject": "self"
+					},
+				],
+			},
+			"alterants": {
+				"board": [
+					{
+						"filter_task": "get_demo_value",
+						"alteration": 2,
+						"filter_per_boardseek_count": {
+							"subject": "boardseek",
+							"subject_count": "all",
+							"filter_card_count": 3,
+							"comparison": "ge",
+							"filter_state_seek": [
+								{"filter_properties": {
+									"Type": "Shader",
+									"skill_req": 1}}
+							],
+						}
 					},
 				],
 			},
@@ -119,7 +149,7 @@ func get_scripts(card_name: String) -> Dictionary:
 						"require_exec_state": "hand",
 						"filter_state_subject": [{
 							"filter_properties": {"Type": "Shader"},
-						}],						
+						}],
 					},
 				],
 			},

@@ -10,8 +10,9 @@ const CONTENTS = {
 	"Newbie Tutor": 3,
 #	"Cheerleader": 2,
 #	"Chiptunes Musician": 2,
+	"Graphics Artist": 2,
 	"Google-Fu!": 3,
-	"Get Some Advice": 3
-#	"Discord Mod": 3,
-#	"Post Some Progress": 3,
+#	"Get Some Advice": 3
+	"Discord Mod": 3,
+	"Post Some Progress": 3,
 }
