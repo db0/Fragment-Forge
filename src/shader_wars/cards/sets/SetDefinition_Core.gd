@@ -120,12 +120,11 @@ const CARDS := {
 	"Chiptunes Musician": {
 		"Type": CardConfig.CardTypes.RESOURCE,
 		"Tags": ["Collaborator"],
-		"Abilities": "Pay 4 Kudos to play.\n" \
-				+ "Increase the value of your Demo this round by 2. "\
+		"Abilities": "Increase the value of your Demo this round by 2. "\
 				+ "Discard after this round ends",
-		"Time": 2,
+		"Time": 1,
 		"Value": 0,
-		"Kudos": 0,
+		"Kudos": 4,
 		"skill_req": 0,
 		"cred_req": 1,
 		"motivation_req": 0,
@@ -136,7 +135,7 @@ const CARDS := {
 		"Abilities": "If you use at least 3 shaders of skill_req 1, "\
 				+ "increase your Demo value by 2."\
 				+ "Discard after this round ends",
-		"Time": 2,
+		"Time": 1,
 		"Value": 0,
 		"Kudos": 4,
 		"skill_req": 0,
@@ -147,7 +146,7 @@ const CARDS := {
 		"Type": CardConfig.CardTypes.RESOURCE,
 		"Tags": ["Knowledge"],
 		"Abilities": "Events that make you lose time, make you lose 1 less time. "\
-				+ "After your fourth shader to your demo, gain 1 time.",
+				+ "After you add the fourth shader to your demo, gain 1 time.",
 		"Time": 1,
 		"Value": 0,
 		"Kudos": 0,
@@ -167,6 +166,17 @@ const CARDS := {
 		"skill_req": 0,
 		"cred_req": 1,
 		"motivation_req": 7,
+	},
+	"Private Forum Mod": {
+		"Type": CardConfig.CardTypes.RESOURCE,
+		"Tags": ["Volunteering"],
+		"Abilities": "Pay 1 Time: Draw 1 card and gain 1 Kudos",
+		"Time": 1,
+		"Value": 0,
+		"Kudos": 5,
+		"skill_req": 0,
+		"cred_req": 3,
+		"motivation_req": 0,
 	},
 ### BEGIN Prep ###
 	"Get Some Advice": {
@@ -212,6 +222,17 @@ const CARDS := {
 		"skill_req": 1,
 		"cred_req": 0,
 		"motivation_req": 0,
+	},
+	"Networking": {
+		"Type": CardConfig.CardTypes.ACTION,
+		"Tags": [],
+		"Abilities": "Discard a Tutor to gain 2 Cred",
+		"Time": 1,
+		"Value": 0,
+		"Kudos": 0,
+		"skill_req": 0,
+		"cred_req": 0,
+		"motivation_req": 5,
 	},
 }
 

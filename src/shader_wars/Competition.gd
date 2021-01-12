@@ -67,7 +67,6 @@ onready var placements_labels = [third_place,second_place,first_place]
 func _ready() -> void:
 	# warning-ignore:return_value_discarded
 	self.connect("competition_ended", cfc.signal_propagator, "_on_signal_received")
-	
 
 
 func _process(_delta: float) -> void:

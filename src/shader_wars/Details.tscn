@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://src/shader_wars/Counters.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/shader_wars/Competition.tscn" type="PackedScene" id=2]
 [ext_resource path="res://fonts/Xolonium-Regular.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://src/shader_wars/GameGoal.tscn" type="PackedScene" id=4]
 
 [sub_resource type="DynamicFont" id=1]
 outline_size = 2
@@ -12,7 +13,9 @@ font_data = ExtResource( 3 )
 
 [node name="Details" type="HBoxContainer"]
 anchor_right = 1.0
-margin_bottom = 82.0
+margin_right = 0.00012207
+margin_bottom = 85.0
+size_flags_horizontal = 3
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -32,31 +35,38 @@ text = "Debug Game"
 
 [node name="MC2" type="MarginContainer" parent="."]
 margin_left = 281.0
-margin_right = 745.0
+margin_right = 703.0
 margin_bottom = 85.0
 mouse_filter = 2
 size_flags_horizontal = 3
 
+[node name="VBC2" type="VBoxContainer" parent="."]
+margin_left = 707.0
+margin_right = 829.0
+margin_bottom = 85.0
+
+[node name="GameGoal" parent="VBC2" instance=ExtResource( 4 )]
+
 [node name="VBC" type="VBoxContainer" parent="."]
-margin_left = 749.0
-margin_right = 1213.0
+margin_left = 833.0
+margin_right = 1255.0
 margin_bottom = 85.0
 size_flags_horizontal = 3
 
 [node name="Competition" parent="VBC" instance=ExtResource( 2 )]
 margin_left = 0.0
 margin_top = 0.0
-margin_right = 464.0
+margin_right = 422.0
+margin_bottom = 85.0
+
+[node name="Counters" parent="." instance=ExtResource( 1 )]
+margin_left = 1259.0
+margin_right = 1273.0
 margin_bottom = 85.0
 
 [node name="MC" type="MarginContainer" parent="."]
-margin_left = 1217.0
-margin_right = 1682.0
+margin_left = 1277.0
+margin_right = 1700.0
 margin_bottom = 85.0
 mouse_filter = 2
 size_flags_horizontal = 3
-
-[node name="Counters" parent="." instance=ExtResource( 1 )]
-margin_left = 1686.0
-margin_right = 1700.0
-margin_bottom = 85.0

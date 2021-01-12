@@ -124,4 +124,9 @@ func load_deck() -> void:
 		#card.set_is_faceup(false,true)
 		card._determine_idle_state()
 	cfc.NMAP.deck.shuffle_cards()
-	cfc.NMAP.deck.shuffle_cards()
+
+
+func reset_game() -> void:
+	for c in get_tree().get_nodes_in_group("cards"):
+		c.queue_free()
+		

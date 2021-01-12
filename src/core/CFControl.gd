@@ -188,7 +188,15 @@ func load_script_definitions() -> Dictionary:
 				combined_scripts[card_name] = card_script
 	return(combined_scripts)
 
-
+func reset_game() -> void:
+	var main = cfc.NMAP.main
+	are_all_nodes_mapped = false
+	card_drag_ongoing = null
+	cfc.NMAP.board.queue_free()
+	yield(get_tree().create_timer(0.1), "timeout")
+	NMAP.clear()
+	main._ready()
+	
 # The SignalPropagator is responsible for collecting all card signals
 # and asking all cards to check if there's any automation they need to perform
 class SignalPropagator:
@@ -238,3 +246,4 @@ class SignalPropagator:
 			card.execute_scripts(trigger_card,trigger,details)
 #		cfc.get_tree().call_group_flags(SceneTree.GROUP_CALL_UNIQUE  ,"cards",
 #				"execute_scripts",trigger_card,trigger,details)
+

@@ -154,6 +154,50 @@ func get_scripts(card_name: String) -> Dictionary:
 				],
 			},
 		},
+		"Networking": {
+			"manual": {
+				"hand": [
+					{
+						"name": "move_card_to_container",
+						SP.KEY_DEST_CONTAINER: cfc.NMAP.discard,
+						"subject": "target",
+						"is_cost": true,
+						"filter_state_subject": [{
+							"filter_properties": {"Tags": "Tutor"},
+						}],
+					},
+					{
+						"name": "mod_counter",
+						"counter_name": "cred",
+						"modification": 2,
+					},
+				],
+			},
+		},
+		"Private Forum Mod": {
+			"manual": {
+				"board": [
+					{
+						"name": "mod_counter",
+						"counter_name": "time",
+						"is_cost": true,
+						"modification": -1,
+					},
+					{
+						"name": "move_card_to_container",
+						"src_container": cfc.NMAP.deck,
+						"dest_container": cfc.NMAP.hand,
+						"subject": "index",
+						"subject_index": "top",
+					},
+					{
+						"name": "mod_counter",
+						"counter_name": "kudos",
+						"modification": 1,
+					},
+				],
+			},
+		},
 	}
 	# We return only the scripts that match the card name and trigger
 	return(scripts.get(card_name,{}))
