@@ -7,6 +7,7 @@ onready var start_button := $VBC/Details/Start
 onready var debug_button := $VBC/Details/Debug
 
 onready var competitions : Competitions = $VBC/Details/VBC/Competition
+onready var game_goal := $VBC/Details/VBC2/GameGoal
 
 var tournament := 1
 
@@ -53,6 +54,7 @@ func start_turn() -> void:
 	pass
 
 func _on_Debug_pressed() -> void:
+	game_goal.cred_goal = 30
 # warning-ignore:return_value_discarded
 	counters.mod_counter("time",30)
 # warning-ignore:return_value_discarded
@@ -63,6 +65,7 @@ func _on_Debug_pressed() -> void:
 	counters.mod_counter("kudos",10)
 # warning-ignore:return_value_discarded
 	counters.mod_counter("motivation",8)
+
 
 # Reshuffles all Card objects created back into the deck
 func _on_ReshuffleAllDeck_pressed() -> void:

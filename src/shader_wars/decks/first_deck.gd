@@ -7,7 +7,7 @@ const CONTENTS = {
 	"Difficult Shader": 3,
 	"Advanced Shader": 3,
 	"Tricky Shader": 3,
-	"Newbie Tutor": 3,
+	"Newbie Tutor": 23,
 #	"Cheerleader": 2,
 	"Chiptunes Musician": 3,
 	"Graphics Artist": 2,

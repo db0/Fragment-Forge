@@ -867,6 +867,8 @@ func move_to(targetHost: Node,
 #		# We make to sure to clear the viewport focus because
 #		# the mouse exited signal will not fire after drag&drop in a container
 #		cfc.NMAP.main.unfocus()
+	# We clear all caches every time the board state changes
+	cfc.flush_cache()
 	# We need to store the parent, because we won't be able to know it later
 	var parentHost = get_parent()
 	# We want to keep the token drawer closed during movement
@@ -2068,7 +2070,7 @@ func _process_card_state() -> void:
 			_organize_attachments()
 
 		CardState.DROPPING_TO_BOARD:
-			z_index = 0			
+			z_index = 0
 			set_control_mouse_filters(true)
 			buttons.set_active(false)
 			# Used when dropping the cards to the table

@@ -251,22 +251,22 @@ func _extra_state_processing() -> void:
 		# If a card is focused in hand, we want to also display its
 		# Modified time cost popup.
 		CardState.FOCUSED_IN_HAND:
-			var modified_time_costs := get_modified_time_cost()
-			modified_costs_popup.update_labels(
-					modified_time_costs.modified_cost,
-					properties.get("Time", 0),
-					modified_time_costs.skill_modifier,
-					modified_time_costs.cards_modifier,
-					modified_time_costs.alterant_cards)
 			modified_costs_popup.rect_global_position = Vector2(
 					global_position.x
 					+ 10
 					+ card_size.x
 					* scale.x,
 					global_position.y)
-			# Cannot use popup() here, is it somehow interrupts
-			# The card dropping.
 			if not modified_costs_popup.visible:
+				var modified_time_costs := get_modified_time_cost()
+				modified_costs_popup.update_labels(
+						modified_time_costs.modified_cost,
+						properties.get("Time", 0),
+						modified_time_costs.skill_modifier,
+						modified_time_costs.cards_modifier,
+						modified_time_costs.alterant_cards)
+				# Cannot use popup() here, is it somehow interrupts
+				# The card dropping.
 				modified_costs_popup.reset_sizes()
 				modified_costs_popup.visible = true
 		_:
