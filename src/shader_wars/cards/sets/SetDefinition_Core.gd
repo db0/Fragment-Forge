@@ -120,7 +120,7 @@ const CARDS := {
 	"Chiptunes Musician": {
 		"Type": CardConfig.CardTypes.RESOURCE,
 		"Tags": ["Collaborator"],
-		"Abilities": "Increase the value of your Demo this round by 2. "\
+		"Abilities": "Increase the value of your Demo this round by 3. "\
 				+ "Discard after this round ends",
 		"Time": 1,
 		"Value": 0,
@@ -132,12 +132,12 @@ const CARDS := {
 	"Graphics Artist": {
 		"Type": CardConfig.CardTypes.RESOURCE,
 		"Tags": ["Collaborator"],
-		"Abilities": "If you use at least 3 shaders of skill_req 1, "\
-				+ "increase your Demo value by 2."\
+		"Abilities": "If you use at least 2 shaders of skill_req 1, "\
+				+ "increase your Demo value by 3."\
 				+ "Discard after this round ends",
 		"Time": 1,
 		"Value": 0,
-		"Kudos": 4,
+		"Kudos": 1,
 		"skill_req": 0,
 		"cred_req": 2,
 		"motivation_req": 0,
@@ -226,7 +226,8 @@ const CARDS := {
 	"Networking": {
 		"Type": CardConfig.CardTypes.ACTION,
 		"Tags": [],
-		"Abilities": "Discard a Tutor to gain 2 Cred",
+		"Abilities": "Discard an Installed Tutor to gain 3 Cred.\n\n"\
+				+ "Discard a Volunteering Resource in hand to gain 2 Cred.",
 		"Time": 1,
 		"Value": 0,
 		"Kudos": 0,

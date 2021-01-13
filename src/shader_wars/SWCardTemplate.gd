@@ -63,7 +63,7 @@ func check_play_costs() -> Color:
 # * skill_modifier (int): The modifier to the time cost due to the player's skill
 #	level
 # * cards_modifier: The modifier to the time cost due to alterants on the board
-# * alterant_cards: A dictionary with two keys, "time" and "skill". 
+# * alterant_cards: A dictionary with two keys, "time" and "skill".
 #	Each key holds a dictionary with the alterants_details, as returned
 #	from CFScriptUtils.get_altered_value()
 func get_modified_time_cost() -> Dictionary:
@@ -160,18 +160,32 @@ func retrieve_card_scripts(trigger: String) -> Dictionary:
 	var found_scripts = .retrieve_card_scripts(trigger)
 	if trigger == "manual" and get_state_exec() == "hand":
 		found_scripts = insert_payment_costs(found_scripts)
-		if properties.Type == CardConfig.CardTypes.ACTION:
-			found_scripts["hand"] += generate_discard_action_tasks()
+		if typeof(found_scripts["hand"]) == TYPE_ARRAY:
+			if properties.Type == CardConfig.CardTypes.ACTION:
+				found_scripts["hand"] += generate_discard_action_tasks()
+			else:
+				found_scripts["hand"] += generate_install_tasks()
 		else:
-			found_scripts["hand"] += generate_install_tasks()
+			for key in found_scripts["hand"]:
+				if properties.Type == CardConfig.CardTypes.ACTION:
+					found_scripts["hand"][key] += generate_discard_action_tasks()
+				else:
+					found_scripts["hand"][key] += generate_install_tasks()
 	return(found_scripts)
 
 # Inserts time and kudos payment costs into a card's scripts
 # so that they are all processed by the ScriptingEngine
 func insert_payment_costs(found_scripts) -> Dictionary:
 	var array_with_costs := generate_play_costs_tasks()
-	array_with_costs += found_scripts.get("hand",[])
-	found_scripts["hand"] = array_with_costs
+	var state_scripts = found_scripts.get("hand",[])
+	if typeof(state_scripts) == TYPE_ARRAY:
+		array_with_costs += state_scripts
+		found_scripts["hand"] = array_with_costs
+	else:
+		for key in state_scripts:
+			var temp_array = array_with_costs.duplicate()
+			temp_array += state_scripts[key]
+			found_scripts["hand"][key] = temp_array
 	return(found_scripts)
 
 # Adds payment costs into a card's custom scripts under a special trigger

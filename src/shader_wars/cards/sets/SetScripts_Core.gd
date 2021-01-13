@@ -107,7 +107,7 @@ func get_scripts(card_name: String) -> Dictionary:
 						"filter_per_boardseek_count": {
 							"subject": "boardseek",
 							"subject_count": "all",
-							"filter_card_count": 3,
+							"filter_card_count": 2,
 							"comparison": "ge",
 							"filter_state_seek": [
 								{"filter_properties": {
@@ -115,6 +115,25 @@ func get_scripts(card_name: String) -> Dictionary:
 									"skill_req": 1}}
 							],
 						}
+					},
+				],
+			},
+		},
+		"Chiptunes Musician": {
+			"competition_ended": {
+				"board": [
+					{
+						"name": "move_card_to_container",
+						"dest_container": cfc.NMAP.discard,
+						"subject": "self"
+					},
+				],
+			},
+			"alterants": {
+				"board": [
+					{
+						"filter_task": "get_demo_value",
+						"alteration": 2,
 					},
 				],
 			},
@@ -156,7 +175,8 @@ func get_scripts(card_name: String) -> Dictionary:
 		},
 		"Networking": {
 			"manual": {
-				"hand": [
+				"hand": {
+					"Discard an Installed Tutor": [
 					{
 						"name": "move_card_to_container",
 						SP.KEY_DEST_CONTAINER: cfc.NMAP.discard,
@@ -169,10 +189,26 @@ func get_scripts(card_name: String) -> Dictionary:
 					{
 						"name": "mod_counter",
 						"counter_name": "cred",
+						"modification": 3,
+					},
+				],
+					"Discard a Volunteering in hand": [
+					{
+						"name": "move_card_to_container",
+						SP.KEY_DEST_CONTAINER: cfc.NMAP.discard,
+						"subject": "target",
+						"is_cost": true,
+						"filter_state_subject": [{
+							"filter_properties": {"Tags": "Volunteering"},
+						}],
+					},
+					{
+						"name": "mod_counter",
+						"counter_name": "cred",
 						"modification": 2,
 					},
 				],
-			},
+			}},
 		},
 		"Private Forum Mod": {
 			"manual": {

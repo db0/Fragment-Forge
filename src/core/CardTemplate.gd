@@ -2056,6 +2056,7 @@ func _process_card_state() -> void:
 
 		CardState.ON_PLAY_BOARD:
 			# Used when the card is idle on the board
+			z_index = 0
 			set_focus(false)
 			set_control_mouse_filters(true)
 			buttons.set_active(false)
@@ -2067,6 +2068,7 @@ func _process_card_state() -> void:
 			_organize_attachments()
 
 		CardState.DROPPING_TO_BOARD:
+			z_index = 0			
 			set_control_mouse_filters(true)
 			buttons.set_active(false)
 			# Used when dropping the cards to the table
@@ -2095,6 +2097,7 @@ func _process_card_state() -> void:
 				state = CardState.ON_PLAY_BOARD
 
 		CardState.FOCUSED_ON_BOARD:
+			z_index = 0
 			# Used when card is focused on by the mouse hovering over it while it is on the board.
 			set_focus(true)
 			set_control_mouse_filters(true)
@@ -2103,6 +2106,7 @@ func _process_card_state() -> void:
 			_organize_attachments()
 
 		CardState.IN_PILE:
+			z_index = 0
 			set_focus(false)
 			set_control_mouse_filters(false)
 			buttons.set_active(false)
@@ -2113,6 +2117,7 @@ func _process_card_state() -> void:
 			set_is_faceup(get_parent().faceup_cards, true)
 
 		CardState.IN_POPUP:
+			z_index = 0
 			# We make sure that a card in a popup stays in its position
 			# Unless moved
 			set_focus(false)
@@ -2128,6 +2133,7 @@ func _process_card_state() -> void:
 				position = Vector2(0,0)
 
 		CardState.FOCUSED_IN_POPUP:
+			z_index = 0
 			# Used when the card is displayed in the popup grid container
 			set_focus(true)
 			# warning-ignore:return_value_discarded
