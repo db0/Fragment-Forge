@@ -7,7 +7,7 @@ func _ready() -> void:
 	needed_counters = {
 		"time": {
 			"CounterTitle": "Time Available: ",
-			"Value": 20},
+			"Value": 0},
 		"skill":{
 			 "CounterTitle": "Skill: ",
 			"Value": 0},

@@ -64,7 +64,31 @@ func _find_subjects(prev_subjects := [], stored_integer := 0) -> Array:
 		# if the value "previous" is given to the "subjects" key,
 		# it simple reuses the same ones.
 		SP.KEY_SUBJECT_V_PREVIOUS:
-			subjects_array = prev_subjects
+			for c in prev_subjects:
+				if SP.check_validity(c, script_definition, "subject"):
+					subjects_array.append(c)
+			# If we have requested to use the previous target,
+			# but the subject_array is empty, we check if there's a dry
+			# run target available and try to use that instead.
+			# This allows a "previous" subject task, to be placed before
+			# the task which requires a target, as long as the targetting task
+			# is_cost.
+			# This is useful for example, when the targeting task would move
+			# The subject to another pile but we want to check (#SUBJECT_PARENT)
+			# against the parent it had before it moved.
+			if subjects_array.empty():
+				if owner_card.targeting_arrow.target_dry_run_card\
+						and SP.check_validity(
+						owner_card.targeting_arrow.target_dry_run_card,
+						script_definition,
+						"subject"):
+					# Unlike the KEY_SUBJECT_V_TARGET, using the
+					# dry_run_card with the KEY_SUBJECT_V_PREVIOUS value
+					# does not clear the target_dry_run_card value
+					subjects_array.append(
+							owner_card.targeting_arrow.target_dry_run_card)
+				else:
+					is_valid = false
 		SP.KEY_SUBJECT_V_TARGET:
 			if owner_card.targeting_arrow.target_dry_run_card:
 				is_valid = SP.check_validity(
@@ -109,6 +133,9 @@ func _find_subjects(prev_subjects := [], stored_integer := 0) -> Array:
 				subject_count -= 1
 				if subject_count == 0:
 					break
+			if requested_subjects > 0\
+					and subjects_array.size() < requested_subjects:
+				is_valid = false
 		SP.KEY_SUBJECT_V_TUTOR:
 			# When we're tutoring for a subjects, we expect a
 			# source CardContainer to have been provided.
@@ -129,6 +156,9 @@ func _find_subjects(prev_subjects := [], stored_integer := 0) -> Array:
 					subject_count -= 1
 					if subject_count == 0:
 						break
+			if requested_subjects > 0\
+					and subjects_array.size() < requested_subjects:
+				is_valid = false
 		SP.KEY_SUBJECT_V_INDEX:
 			# When we're seeking for index, we expect a
 			# source CardContainer to have been provided.
@@ -187,6 +217,9 @@ func _find_subjects(prev_subjects := [], stored_integer := 0) -> Array:
 					if index - iter < 0:
 						break
 					subjects_array.append(src_container.get_card(index - iter))
+			if requested_subjects > 0\
+					and subjects_array.size() < requested_subjects:
+				is_valid = false
 		SP.KEY_SUBJECT_V_TRIGGER:
 			# We check, just to make sure we didn't mess up
 			if trigger_card:

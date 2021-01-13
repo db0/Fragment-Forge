@@ -29,11 +29,6 @@ var can_all_costs_be_paid := true
 var all_tasks_completed := false
 # Stores the inputed integer from the ask_integer task
 var stored_integer: int
-# These task will require input from the player, so the subsequent task execution
-# needs to wait for their completion
-#
-# This variable can be extended when this class is extended with new tasks
-var wait_for_tasks = ["ask_integer","execute_scripts"]
 
 
 # Called when the node enters the scene tree for the first time.
@@ -111,8 +106,7 @@ func run_next_script(card_owner: Card,
 							.duplicate()
 				}
 			var retcode = call(script.script_name, script)
-			if script.script_name in wait_for_tasks \
-					and retcode is GDScriptFunctionState:
+			if retcode is GDScriptFunctionState:
 				retcode = yield(retcode, "completed")
 			if costs_dry_run:
 				if retcode != CFConst.ReturnCode.CHANGED:
@@ -185,12 +179,9 @@ func flip_card(script: ScriptTask) -> int:
 #	* [KEY_SRC_CONTAINER](SP#KEY_SRC_CONTAINER)
 func move_card_to_container(script: ScriptTask) -> int:
 	var retcode: int = CFConst.ReturnCode.CHANGED
-	var dest_container: CardContainer = script.get_property(SP.KEY_DEST_CONTAINER)
-	var dest_index = script.get_property(SP.KEY_DEST_INDEX)
-	if costs_dry_run:
-		if len(script.subjects) < script.requested_subjects:
-			retcode = CFConst.ReturnCode.FAILED
-	else:
+	if not costs_dry_run:
+		var dest_container: CardContainer = script.get_property(SP.KEY_DEST_CONTAINER)
+		var dest_index = script.get_property(SP.KEY_DEST_INDEX)
 		if str(dest_index) == SP.KEY_SUBJECT_INDEX_V_TOP:
 			dest_index = -1
 		elif str(dest_index) == SP.KEY_SUBJECT_INDEX_V_BOTTOM:
@@ -220,8 +211,6 @@ func move_card_to_container(script: ScriptTask) -> int:
 #	* [KEY_SRC_CONTAINER](SP#KEY_SRC_CONTAINER)
 func move_card_to_board(script: ScriptTask) -> int:
 	var retcode: int = CFConst.ReturnCode.CHANGED
-	if len(script.subjects) < script.requested_subjects:
-		retcode = CFConst.ReturnCode.FAILED
 	var grid_name: String = script.get_property(SP.KEY_GRID_NAME)
 	if grid_name:
 		var grid: BoardPlacementGrid

@@ -175,40 +175,42 @@ func get_scripts(card_name: String) -> Dictionary:
 		},
 		"Networking": {
 			"manual": {
-				"hand": {
-					"Discard an Installed Tutor": [
+				"hand":[
+					# This has to go before the move, or the check for
+					# the parent will happen after the card is already
+					# in the discard pile
+					{
+						"name": "mod_counter",
+						"counter_name": "cred",
+						"modification": 1,
+						"subject": "previous",
+						"filter_state_subject": [
+							{"filter_parent": cfc.NMAP.board},
+						],
+					},
 					{
 						"name": "move_card_to_container",
 						SP.KEY_DEST_CONTAINER: cfc.NMAP.discard,
 						"subject": "target",
 						"is_cost": true,
-						"filter_state_subject": [{
-							"filter_properties": {"Tags": "Tutor"},
-						}],
+						"filter_state_subject": [
+							{"filter_properties1": {"Tags": "Tutor"}},
+							{"filter_properties1": {"Tags": "Collaborator"}},
+							{"filter_properties1": {"Tags": "Volunteering"}},
+						],
 					},
 					{
 						"name": "mod_counter",
 						"counter_name": "cred",
-						"modification": 3,
-					},
-				],
-					"Discard a Volunteering in hand": [
-					{
-						"name": "move_card_to_container",
-						SP.KEY_DEST_CONTAINER: cfc.NMAP.discard,
-						"subject": "target",
-						"is_cost": true,
-						"filter_state_subject": [{
-							"filter_properties": {"Tags": "Volunteering"},
-						}],
+						"modification": 1,
 					},
 					{
 						"name": "mod_counter",
-						"counter_name": "cred",
+						"counter_name": "kudos",
 						"modification": 2,
 					},
 				],
-			}},
+			},
 		},
 		"Private Forum Mod": {
 			"manual": {
