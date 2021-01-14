@@ -176,6 +176,7 @@ __meta__ = {
 }
 
 [node name="Debug" type="CheckButton" parent="."]
+visible = false
 margin_left = 9.7782
 margin_top = 158.933
 margin_right = 198.778

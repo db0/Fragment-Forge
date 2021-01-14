@@ -27,6 +27,7 @@ custom_fonts/font = SubResource( 1 )
 text = "Start Competition"
 
 [node name="Debug" type="Button" parent="."]
+visible = false
 margin_left = 162.0
 margin_right = 277.0
 margin_bottom = 85.0
@@ -34,38 +35,38 @@ custom_fonts/font = SubResource( 1 )
 text = "Debug Game"
 
 [node name="MC2" type="MarginContainer" parent="."]
-margin_left = 281.0
-margin_right = 703.0
+margin_left = 162.0
+margin_right = 624.0
 margin_bottom = 85.0
 mouse_filter = 2
 size_flags_horizontal = 3
 
 [node name="VBC2" type="VBoxContainer" parent="."]
-margin_left = 707.0
-margin_right = 829.0
+margin_left = 628.0
+margin_right = 750.0
 margin_bottom = 85.0
 
 [node name="GameGoal" parent="VBC2" instance=ExtResource( 4 )]
 
 [node name="VBC" type="VBoxContainer" parent="."]
-margin_left = 833.0
-margin_right = 1255.0
+margin_left = 754.0
+margin_right = 1216.0
 margin_bottom = 85.0
 size_flags_horizontal = 3
 
 [node name="Competition" parent="VBC" instance=ExtResource( 2 )]
 margin_left = 0.0
 margin_top = 0.0
-margin_right = 422.0
+margin_right = 462.0
 margin_bottom = 85.0
 
 [node name="Counters" parent="." instance=ExtResource( 1 )]
-margin_left = 1259.0
-margin_right = 1273.0
+margin_left = 1220.0
+margin_right = 1234.0
 margin_bottom = 85.0
 
 [node name="MC" type="MarginContainer" parent="."]
-margin_left = 1277.0
+margin_left = 1238.0
 margin_right = 1700.0
 margin_bottom = 85.0
 mouse_filter = 2
