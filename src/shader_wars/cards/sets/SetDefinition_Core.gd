@@ -226,7 +226,7 @@ const CARDS := {
 	"Networking": {
 		"Type": CardConfig.CardTypes.ACTION,
 		"Tags": [],
-		"Abilities": "Discard a Tutor/Collaborator or Volunteering Resource"\
+		"Abilities": "Discard a Tutor, Collaborator, or Volunteering Resource"\
 				+ " from hand or board to gain 1 Cred and 2 Kudos.\n\n"\
 				+ "If the resource was installed, gain 1 more Cred.",
 		"Time": 1,
