@@ -21,7 +21,7 @@ func _process(_delta: float) -> void:
 func check_play_costs() -> Color:
 	var ret : Color = CFConst.CostsState.OK
 	var time_cost = get_modified_time_cost().modified_cost
-	var kudos_cost = get_modified_kudos_cost()
+	var kudos_cost = get_modified_kudos_cost().modified_cost
 
 	if time_cost > cfc.NMAP.board.counters.get_counter("time", self):
 		ret = CFConst.CostsState.IMPOSSIBLE
@@ -85,12 +85,32 @@ func get_modified_time_cost() -> Dictionary:
 		"skill_modifier": modified_cost - time_cost_details.value,
 		"cards_modifier": time_cost_details.alteration.value_alteration,
 		"alterant_cards": {
-			"time": merge_modifier_dicts(time_cost_details),
+			"card": merge_modifier_dicts(time_cost_details),
 			"skill": merge_modifier_dicts(skill_counter_details)
 		}
 	}
 	return(return_dict)
 
+# Calculates how much kudos a card will cost, after taking into account
+# alterants on the table.
+#
+# Returns a dictionary with the following keys:
+# * modified_cost (int): The final kudos cost of the card
+# * cards_modifier: The modifier to the kudos cost due to alterants on the board
+# * alterant_cards: A dictionary with the alterants_details, as returned
+#	from CFScriptUtils.get_altered_value()
+func get_modified_kudos_cost() -> Dictionary:
+	var kudos_cost_details : Dictionary =\
+			get_property_and_alterants("Kudos")
+	var modified_cost : int = kudos_cost_details.value
+	var return_dict = {
+		"modified_cost": modified_cost,
+		"cards_modifier": kudos_cost_details.alteration.value_alteration,
+		"alterant_cards": merge_modifier_dicts(kudos_cost_details)
+	}
+	return(return_dict)
+
+# Merges alterant modifiers with temp_modifiers into one Dictionary
 func merge_modifier_dicts(container_dict) -> Dictionary:
 	var modifier_details : Dictionary =\
 			container_dict.alteration.alterants_details.duplicate()
@@ -100,10 +120,6 @@ func merge_modifier_dicts(container_dict) -> Dictionary:
 		else:
 			modifier_details[c] = container_dict.temp_modifiers.modifier_details[c]
 	return(modifier_details)
-
-func get_modified_kudos_cost() -> int:
-	var modified_cost : int = properties.get("Kudos", 0)
-	return(modified_cost)
 
 # Calculates the time cost of a shader adjusted by the player's skill
 static func get_skill_modified_shader_time_cost(
@@ -217,7 +233,7 @@ func generate_play_costs_tasks() -> Array:
 		cost_script["modification"] = -time_cost
 		cost_script["counter_name"] = "time"
 		pay_tasks.append(cost_script)
-	var kudos_cost = get_modified_kudos_cost()
+	var kudos_cost = get_modified_kudos_cost().modified_cost
 	if kudos_cost:
 		var cost_script = payment_script_template.duplicate()
 		cost_script["modification"] = -kudos_cost
@@ -252,7 +268,7 @@ func generate_install_tasks() -> Array:
 func _extra_state_processing() -> void:
 	match state:
 		# If a card is focused in hand, we want to also display its
-		# Modified time cost popup.
+		# Modified time cost popup on the side.
 		CardState.FOCUSED_IN_HAND:
 			modified_costs_popup.rect_global_position = Vector2(
 					global_position.x
@@ -260,14 +276,31 @@ func _extra_state_processing() -> void:
 					+ card_size.x
 					* scale.x,
 					global_position.y)
+			# To avoid the Kudos cost falling outside the viewport
+			# When the length of the popup is too big, we reposition it
+			# to the top of the card
+			if modified_costs_popup.rect_global_position.x\
+					+ modified_costs_popup.rect_size.x > get_viewport().size.x:
+				modified_costs_popup.rect_global_position = Vector2(
+						global_position.x
+						+ card_size.x / 2 * scale.x
+						- modified_costs_popup.rect_size.x / 2,
+						global_position.y
+						- modified_costs_popup.rect_size.y - 10)
 			if not modified_costs_popup.visible:
 				var modified_time_costs := get_modified_time_cost()
-				modified_costs_popup.update_labels(
+				modified_costs_popup.update_time_labels(
 						modified_time_costs.modified_cost,
 						properties.get("Time", 0),
 						modified_time_costs.skill_modifier,
 						modified_time_costs.cards_modifier,
 						modified_time_costs.alterant_cards)
+				var modified_kudos_costs := get_modified_kudos_cost()
+				modified_costs_popup.update_kudos_labels(
+						modified_kudos_costs.modified_cost,
+						properties.get("Kudos", 0),
+						modified_kudos_costs.cards_modifier,
+						modified_kudos_costs.alterant_cards)
 				# Cannot use popup() here, is it somehow interrupts
 				# The card dropping.
 				modified_costs_popup.reset_sizes()

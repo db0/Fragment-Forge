@@ -2,76 +2,123 @@
 extends PopupPanel
 #extends PanelContainer
 
-onready var modified_cost = $"VBC/ModifiedCost"
-onready var printed_cost = $"VBC/HBC/VBC/PrintedCost"
-onready var modifier := {
-	"skill": $VBC/HBC/VBC/SkillModifier,
-	"time": $VBC/HBC/VBC/CardsModifier
+onready var modified_time_cost = $"HBC/TimeCosts/ModifiedCost"
+onready var printed_time_cost = $"HBC/TimeCosts/HBC/VBC/PrintedCost"
+onready var time_modifier := {
+	"skill": $HBC/TimeCosts/HBC/VBC/SkillModifier,
+	"card": $HBC/TimeCosts/HBC/VBC/CardsModifier
 }
-onready var alterant_container := {
-	"skill": $VBC/HBC/VBC/SkillAlterants/VBC,
-	"time": $VBC/HBC/VBC/TimeAlterants/VBC
+onready var time_alterant_container := {
+	"skill": $HBC/TimeCosts/HBC/VBC/SkillAlterants/VBC,
+	"card": $HBC/TimeCosts/HBC/VBC/TimeAlterants/VBC
 }
-var alterants_cards_displayed := {
+
+onready var modified_kudos_cost = $"HBC/KudosCosts/ModifiedCost"
+onready var printed_kudos_cost = $"HBC/KudosCosts/HBC/VBC/PrintedCost"
+onready var kudos_modifier = $HBC/KudosCosts/HBC/VBC/CardsModifier
+onready var kudos_alterant_container = $HBC/KudosCosts/HBC/VBC/TimeAlterants/VBC
+
+var time_alterants_cards_displayed := {
 	"skill": {},
-	"time": {}
+	"card": {}
 }
+var kudos_alterants_cards_displayed := {}
 
 func _ready() -> void:
 	pass
 
-func update_labels(
+func update_time_labels(
 			modified: int,
 			printed: int,
 			skill_mod := 0,
 			card_mod := 0,
-			alterants := {"skill": {}, "time": {}}) -> void:
+			alterants := {"skill": {}, "card": {}}) -> void:
 	if modified == 1000:
-		modified_cost.text = "Impossible due to low skill"
+		modified_time_cost.text = "Impossible due to low skill"
 	else:
-		modified_cost.text = "Modified Time Cost: " + str(modified)
-	printed_cost.text = "Printed Cost: " + str(printed)
+		modified_time_cost.text = "Modified Time Cost: " + str(modified)
+	printed_time_cost.text = "Printed Cost: " + str(printed)
 	if modified == 1000:
-		modifier["skill"].text = "Skill Modifier: " + (char(8734))
+		time_modifier["skill"].text = "Skill Modifier: " + (char(8734))
 	else:
-		modifier["skill"].text = "Skill Modifier: " + strint(skill_mod)
-	modifier["time"].text = "Card Modifier: " + strint(card_mod)
+		time_modifier["skill"].text = "Skill Modifier: " + strint(skill_mod)
+	time_modifier["card"].text = "Card Modifier: " + strint(card_mod)
 	if modified == 1000:
-		modified_cost.set("custom_colors/font_color",
+		modified_time_cost.set("custom_colors/font_color",
 				# We multiply with 0.8 to remove the glow
 				CFConst.CostsState.IMPOSSIBLE * 0.8)
 	elif modified > printed:
-		modified_cost.set("custom_colors/font_color",
+		modified_time_cost.set("custom_colors/font_color",
 				# We multiply with 0.8 to remove the glow
 				CFConst.CostsState.INCREASED * 0.8)
 	elif modified < printed:
-		modified_cost.set("custom_colors/font_color",
+		modified_time_cost.set("custom_colors/font_color",
 				CFConst.CostsState.DECREASED * 0.8)
 	else:
-		modified_cost.set("custom_colors/font_color",
+		modified_time_cost.set("custom_colors/font_color",
 				CFConst.CostsState.OK)
 	if modified == 1000:
-		modifier["skill"].set("custom_colors/font_color",
+		time_modifier["skill"].set("custom_colors/font_color",
 				CFConst.CostsState.IMPOSSIBLE * 0.8)
 	else:
-		modifier["skill"].set("custom_colors/font_color",
+		time_modifier["skill"].set("custom_colors/font_color",
 				get_colour_for_modifier(skill_mod))
-	modifier["time"].set("custom_colors/font_color",
+	time_modifier["card"].set("custom_colors/font_color",
 			get_colour_for_modifier(card_mod))
 	for type in alterants.keys():
 		for card in alterants[type]:
-			if not card in alterants_cards_displayed[type].keys() \
+			if not card in time_alterants_cards_displayed[type].keys() \
 					and alterants[type][card] != 0:
-				var alterant_label = modifier[type].duplicate()
-				alterants_cards_displayed[type][card] = alterant_label
+				var alterant_label = time_modifier[type].duplicate()
+				time_alterants_cards_displayed[type][card] = alterant_label
 				alterant_label.text = card.card_name
 				alterant_label.set("custom_colors/font_color",
 						get_colour_for_alterant(type, alterants[type][card]))
-				alterant_container[type].add_child(alterant_label)
-		for card in alterants_cards_displayed[type]:
+				time_alterant_container[type].add_child(alterant_label)
+		for card in time_alterants_cards_displayed[type]:
 			if not card in alterants[type]:
-				alterants_cards_displayed[type][card].queue_free()
-				alterants_cards_displayed[type].erase(card)
+				time_alterants_cards_displayed[type][card].queue_free()
+				time_alterants_cards_displayed[type].erase(card)
+
+func update_kudos_labels(
+			modified: int,
+			printed: int,
+			card_mod := 0,
+			alterants := {}) -> void:
+	modified_kudos_cost.text = "Modified Kudos Cost: " + str(modified)
+	printed_kudos_cost.text = "Printed Cost: " + str(printed)
+	kudos_modifier.text = "Card Modifier: " + strint(card_mod)
+	if modified > printed:
+		modified_kudos_cost.set("custom_colors/font_color",
+				# We multiply with 0.8 to remove the glow
+				CFConst.CostsState.INCREASED * 0.8)
+	elif modified < printed:
+		modified_kudos_cost.set("custom_colors/font_color",
+				CFConst.CostsState.DECREASED * 0.8)
+	else:
+		modified_kudos_cost.set("custom_colors/font_color",
+				CFConst.CostsState.OK)
+	kudos_modifier.set("custom_colors/font_color",
+			get_colour_for_modifier(card_mod))
+	for card in alterants:
+		if not card in kudos_alterants_cards_displayed.keys() \
+				and alterants[card] != 0:
+			var alterant_label = kudos_modifier.duplicate()
+			kudos_alterants_cards_displayed[card] = alterant_label
+			alterant_label.text = card.card_name
+			alterant_label.set("custom_colors/font_color",
+					get_colour_for_alterant("card", alterants[card]))
+			kudos_alterant_container.add_child(alterant_label)
+	for card in kudos_alterants_cards_displayed:
+		if not card in alterants:
+			kudos_alterants_cards_displayed[card].queue_free()
+			kudos_alterants_cards_displayed.erase(card)
+	if printed > 0 or modified > 0:
+		$HBC/Separator.visible = true
+		$HBC/KudosCosts.visible = true
+	else:
+		$HBC/Separator.visible = false
+		$HBC/KudosCosts.visible = false
 
 
 func get_colour_for_modifier(modifier: int, reversed := false) -> Color:
@@ -101,7 +148,7 @@ func strint(number: int) -> String:
 	return(strint)
 
 func reset_sizes() -> void:
-	$VBC/HBC/VBC.rect_size = Vector2(0,0)
-	$VBC/HBC.rect_size = Vector2(0,0)
-	$VBC.rect_size = Vector2(0,0)
+	$HBC/TimeCosts/HBC/VBC.rect_size = Vector2(0,0)
+	$HBC/TimeCosts/HBC.rect_size = Vector2(0,0)
+	$HBC/TimeCosts.rect_size = Vector2(0,0)
 	rect_size = Vector2(0,0)
