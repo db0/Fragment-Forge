@@ -53,6 +53,9 @@ func check_play_costs() -> Color:
 	if properties.get("motivation_req", 0) > \
 			cfc.NMAP.board.counters.get_counter("motivation", self):
 		ret = CFConst.CostsState.IMPOSSIBLE
+
+	if check_unique_conflict():
+		ret = CFConst.CostsState.IMPOSSIBLE
 	return(ret)
 
 # Calculates how much time a card will cost, after taking into account
@@ -76,7 +79,7 @@ func get_modified_time_cost() -> Dictionary:
 		modified_cost = get_skill_modified_shader_time_cost(
 				properties.get("skill_req", 0),
 				skill_counter_details.count,
-				properties.get("Time", 0))
+				modified_cost)
 	var return_dict = {
 		"modified_cost": modified_cost,
 		"skill_modifier": modified_cost - time_cost_details.value,
@@ -274,3 +277,10 @@ func _extra_state_processing() -> void:
 				modified_costs_popup.visible = false
 
 
+func check_unique_conflict() -> bool:
+	var unique_conflict := false
+	if "Unique" in properties.get("Tags", []):
+		for card in cfc.NMAP.board.get_all_cards():
+			if card.card_name == card_name:
+				unique_conflict = true
+	return(unique_conflict)

@@ -12,6 +12,7 @@
 script = ExtResource( 1 )
 card_back_design = ExtResource( 3 )
 card_front_design = ExtResource( 6 )
+disable_dropping_to_cardcontainers = true
 
 [node name="ManipulationButtons" parent="Control" index="4"]
 script = ExtResource( 5 )

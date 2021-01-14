@@ -11,6 +11,11 @@ func get_scripts(card_name: String) -> Dictionary:
 				"hand": [
 					{
 						"name": "move_card_to_container",
+						"dest_container": cfc.NMAP.discard,
+						"subject": "self",
+					},
+					{
+						"name": "move_card_to_container",
 						"src_container": cfc.NMAP.deck,
 						"dest_container": cfc.NMAP.hand,
 						"subject_count": 3,
@@ -103,7 +108,7 @@ func get_scripts(card_name: String) -> Dictionary:
 				"board": [
 					{
 						"filter_task": "get_demo_value",
-						"alteration": 2,
+						"alteration": 5,
 						"filter_per_boardseek_count": {
 							"subject": "boardseek",
 							"subject_count": "all",
@@ -133,7 +138,7 @@ func get_scripts(card_name: String) -> Dictionary:
 				"board": [
 					{
 						"filter_task": "get_demo_value",
-						"alteration": 2,
+						"alteration": 5,
 					},
 				],
 			},
@@ -173,7 +178,7 @@ func get_scripts(card_name: String) -> Dictionary:
 				],
 			},
 		},
-		"Networking": {
+		"Social Networking": {
 			"manual": {
 				"hand":[
 					# This has to go before the move, or the check for
@@ -181,8 +186,8 @@ func get_scripts(card_name: String) -> Dictionary:
 					# in the discard pile
 					{
 						"name": "mod_counter",
-						"counter_name": "cred",
-						"modification": 1,
+						"counter_name": "kudos",
+						"modification": 3,
 						"subject": "previous",
 						"filter_state_subject": [
 							{"filter_parent": cfc.NMAP.board},
@@ -232,6 +237,31 @@ func get_scripts(card_name: String) -> Dictionary:
 						"name": "mod_counter",
 						"counter_name": "kudos",
 						"modification": 1,
+					},
+				],
+			},
+		},
+		"Hacking Buddy": {
+			"competition_ended": {
+				"board": [
+					{
+						"name": "move_card_to_container",
+						"dest_container": cfc.NMAP.discard,
+						"subject": "self"
+					},
+				],
+			},
+			"alterants": {
+				"board": [
+					{
+						"filter_task": "get_property",
+						"filter_property_name": "Time",
+						"alteration": -1,
+						"filter_state_trigger": [
+							{"filter_properties": {
+								"Type": "Shader",
+							}}
+						]
 					},
 				],
 			},

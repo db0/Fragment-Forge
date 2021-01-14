@@ -28,7 +28,7 @@ func _process(_delta: float) -> void:
 func win_game() -> void:
 	end_game_popup.window_title = "Congratulations!"
 	end_game_popup.dialog_text = "You have amassed the required cred "\
-			+ "to win this game.\n\nPress OK to play again."
+			+ "to become the envy of your peers. Well done!\n\nPress OK to play again."
 	finish_game()
 
 

@@ -11,7 +11,7 @@ enum Place{
 # This allows me to adjust the difficulty of all tournaments in one place
 # Instead of adjusting each tournament dict every time
 # Each tourney dict has value requirements relevant to this number.
-const STD_VALUE_PER_RANK = 10
+const STD_VALUE_PER_RANK = 9
 # This is used to calculate how muc to multiple value reqs and cred rewards
 # for every further round. 
 # I.e. with  0.5, first round ,the multiplier will be 1

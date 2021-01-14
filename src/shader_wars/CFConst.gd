@@ -228,4 +228,5 @@ const SHOW_TOKEN_BUTTONS := false
 # This allows us to reuse a token image for more than 1 token type
 const TOKENS_MAP := {
 	'kudos': 'green.svg',
+	'time': 'yellow.svg',
 }

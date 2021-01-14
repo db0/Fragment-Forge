@@ -120,7 +120,7 @@ const CARDS := {
 	"Chiptunes Musician": {
 		"Type": CardConfig.CardTypes.RESOURCE,
 		"Tags": ["Collaborator"],
-		"Abilities": "Increase the value of your Demo this round by 3. "\
+		"Abilities": "Increase the value of your Demo this round by 5.\n"\
 				+ "Discard after this round ends",
 		"Time": 1,
 		"Value": 0,
@@ -133,8 +133,8 @@ const CARDS := {
 		"Type": CardConfig.CardTypes.RESOURCE,
 		"Tags": ["Collaborator"],
 		"Abilities": "If you use at least 2 shaders of skill_req 1, "\
-				+ "increase your Demo value by 3."\
-				+ "Discard after this round ends",
+				+ "increase your Demo value by 4.\n"\
+				+ "Discard after this competition ends",
 		"Time": 1,
 		"Value": 0,
 		"Kudos": 1,
@@ -173,9 +173,21 @@ const CARDS := {
 		"Abilities": "Pay 1 Time: Draw 1 card and gain 1 Kudos",
 		"Time": 1,
 		"Value": 0,
-		"Kudos": 5,
+		"Kudos": 3,
 		"skill_req": 0,
 		"cred_req": 3,
+		"motivation_req": 0,
+	},
+	"Hacking Buddy": {
+		"Type": CardConfig.CardTypes.RESOURCE,
+		"Tags": ["Collaborator", "Unique"],
+		"Abilities": "Reduce the time cost of all Shaders by 1.\n"\
+				+ "Discard after this competition ends",
+		"Time": 0,
+		"Value": 0,
+		"Kudos": 5,
+		"skill_req": 0,
+		"cred_req": 0,
 		"motivation_req": 0,
 	},
 ### BEGIN Prep ###
@@ -183,7 +195,7 @@ const CARDS := {
 		"Type": CardConfig.CardTypes.ACTION,
 		"Tags": [],
 		"Abilities": "Play a Shader as if you had +1 skill",
-		"Time": 1,
+		"Time": 0,
 		"Value": 0,
 		"Kudos": 0,
 		"skill_req": 0,
@@ -194,12 +206,12 @@ const CARDS := {
 		"Type": CardConfig.CardTypes.ACTION,
 		"Tags": [],
 		"Abilities": "Draw 3 cards",
-		"Time": 2,
+		"Time": 1,
 		"Value": 0,
 		"Kudos": 0,
 		"skill_req": 0,
 		"cred_req": 0,
-		"motivation_req": 0,
+		"motivation_req": 5,
 	},
 	"Post Some Progress": {
 		"Type": CardConfig.CardTypes.ACTION,
@@ -215,7 +227,7 @@ const CARDS := {
 	"Help out Some Newbs": {
 		"Type": CardConfig.CardTypes.ACTION,
 		"Tags": [],
-		"Abilities": "Gain 3 Kudos",
+		"Abilities": "Gain 5 Kudos",
 		"Time": 1,
 		"Value": 0,
 		"Kudos": 0,
@@ -223,12 +235,12 @@ const CARDS := {
 		"cred_req": 0,
 		"motivation_req": 0,
 	},
-	"Networking": {
+	"Social Networking": {
 		"Type": CardConfig.CardTypes.ACTION,
 		"Tags": [],
 		"Abilities": "Discard a Tutor, Collaborator, or Volunteering Resource"\
 				+ " from hand or board to gain 1 Cred and 2 Kudos.\n\n"\
-				+ "If the resource was installed, gain 1 more Cred.",
+				+ "If the Resource was installed, gain 3 more Kudos.",
 		"Time": 1,
 		"Value": 0,
 		"Kudos": 0,
