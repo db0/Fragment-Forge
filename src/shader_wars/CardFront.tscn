@@ -202,9 +202,8 @@ valign = 1
 
 [node name="Value" type="Label" parent="Margin/CardText/HBC"]
 margin_left = 97.0
-margin_top = -1.0
 margin_right = 146.0
-margin_bottom = 12.0
+margin_bottom = 13.0
 rect_min_size = Vector2( 0, 13 )
 size_flags_horizontal = 3
 custom_fonts/font = SubResource( 8 )
