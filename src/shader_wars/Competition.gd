@@ -112,11 +112,11 @@ func next_competition() -> void:
 	# place with very low value, just because the other players didn't play well
 	# There's other competitors after all.
 	placement_requirements = [
-		current_tournament.value_per_rank * round_multiplier,
+		int(current_tournament.value_per_rank * round_multiplier),
 		# Second position requirements are doubled
-		current_tournament.value_per_rank * 2 * round_multiplier,
+		int(current_tournament.value_per_rank * 2 * round_multiplier),
 		# Third position requirements are tripled
-		current_tournament.value_per_rank * 3 * round_multiplier,
+		int(current_tournament.value_per_rank * 3 * round_multiplier),
 	]
 	for p in Place.values():
 		placements_labels[p].text = PLACE_NAMES[p] + " Place: "\
