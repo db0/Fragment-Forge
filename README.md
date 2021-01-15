@@ -1,4 +1,4 @@
-# Shader Wars v0.1
+# Shader Wars v0.2
 
 Shader Wars is a card game simulating the rise to fame of a new demo effects coder.
 
