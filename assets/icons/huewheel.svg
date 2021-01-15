@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-505 -505 1010 1010">
+	<defs>
+		<path id="w" d="m-58-486a490 490 0 0 1 116 0l-34 278a210 210 0 0 0 -46 0z"/>
+	</defs>
+
+	<g>
+		<title>The Hue Wheel, by Adam Stanislav</title>
+
+		<path d="m0-500a500 500 0 1 1 0 1000 500 500 0 1 1 0-1000m0 300a200 200 0 1 0 0 400 200 200 0 1 0 0-400z"/>
+		<use xlink:href="#w" fill="rgb(100%,0%,0%)" transform="rotate(90)"/>
+		<use xlink:href="#w" fill="rgb(100%,25%,0%)" transform="rotate(75)"/>
+		<use xlink:href="#w" fill="rgb(100%,50%,0%)" transform="rotate(60)"/>
+		<use xlink:href="#w" fill="rgb(100%,75%,0%)" transform="rotate(45)"/>
+		<use xlink:href="#w" fill="rgb(100%,100%,0%)" transform="rotate(30)"/>
+		<use xlink:href="#w" fill="rgb(75%,100%,0%)" transform="rotate(15)"/>
+		<use xlink:href="#w" fill="rgb(50%,100%,0%)"/>
+		<use xlink:href="#w" fill="rgb(25%,100%,0%)" transform="rotate(-15)"/>
+		<use xlink:href="#w" fill="rgb(0%,100%,0%)" transform="rotate(-30)"/>
+		<use xlink:href="#w" fill="rgb(0%,100%,25%)" transform="rotate(-45)"/>
+		<use xlink:href="#w" fill="rgb(0%,100%,50%)" transform="rotate(-60)"/>
+		<use xlink:href="#w" fill="rgb(0%,100%,75%)" transform="rotate(-75)"/>
+		<use xlink:href="#w" fill="rgb(0%,100%,100%)" transform="rotate(-90)"/>
+		<use xlink:href="#w" fill="rgb(0%,75%,100%)" transform="rotate(-105)"/>
+		<use xlink:href="#w" fill="rgb(0%,50%,100%)" transform="rotate(-120)"/>
+		<use xlink:href="#w" fill="rgb(0%,25%,100%)" transform="rotate(-135)"/>
+		<use xlink:href="#w" fill="rgb(0%,0%,100%)" transform="rotate(-150)"/>
+		<use xlink:href="#w" fill="rgb(25%,0%,100%)" transform="rotate(-165)"/>
+		<use xlink:href="#w" fill="rgb(50%,0%,100%)" transform="rotate(180)"/>
+		<use xlink:href="#w" fill="rgb(75%,0%,100%)" transform="rotate(165)"/>
+		<use xlink:href="#w" fill="rgb(100%,0%,100%)" transform="rotate(150)"/>
+		<use xlink:href="#w" fill="rgb(100%,0%,75%)" transform="rotate(135)"/>
+		<use xlink:href="#w" fill="rgb(100%,0%,50%)" transform="rotate(120)"/>
+		<use xlink:href="#w" fill="rgb(100%,0%,25%)" transform="rotate(105)"/>
+	</g>
+</svg>
