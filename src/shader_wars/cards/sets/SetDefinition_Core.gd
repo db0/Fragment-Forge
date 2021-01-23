@@ -167,7 +167,7 @@ const CARDS := {
 		"Kudos": 0,
 		"skill_req": 0,
 		"cred_req": 1,
-		"motivation_req": 7,
+		"motivation_req": 4,
 	},
 	"Private Forum Mod": {
 		"Type": CardConfig.CardTypes.RESOURCE,

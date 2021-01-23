@@ -13,6 +13,25 @@ func _ready() -> void:
 	connect("draw_card", cfc.NMAP.hand, "draw_card")
 	#print(get_signal_connection_list("input_event")[0]['target'].name)
 
+func _process(_delta: float) -> void:
+	if cfc.NMAP.board.mouse_pointer in get_overlapping_areas()\
+			and not cfc.card_drag_ongoing:
+		display_draw_time_cost()
+	else:
+		$TimeCostPopup.visible = false
+		
+
 func _on_Deck_input_event(event) -> void:
 	if event.is_pressed() and event.get_button_index() == 1:
 		emit_signal("draw_card", self)
+
+func display_draw_time_cost():
+	var draw_time_cost: int = cfc.NMAP.hand.get_manual_draw_cost()
+	$TimeCostPopup/TimeCost.text = "Time Cost: " + str(draw_time_cost)
+	if not $TimeCostPopup.visible:
+		$TimeCostPopup.rect_global_position = Vector2(
+				global_position.x
+				+ $Control.rect_size.x,
+				global_position.y - 50)
+		$TimeCostPopup.visible = true
+

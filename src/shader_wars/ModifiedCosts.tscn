@@ -21,7 +21,6 @@ color = Color( 1, 1, 1, 1 )
 vertical = true
 
 [node name="ModifiedCostsPopup" type="PopupPanel"]
-visible = true
 mouse_filter = 2
 script = ExtResource( 1 )
 

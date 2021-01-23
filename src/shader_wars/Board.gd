@@ -36,7 +36,6 @@ func _ready() -> void:
 func _on_Start_pressed() -> void:
 # warning-ignore:return_value_discarded
 	if start_button.text != "Next Competition":
-		cfc.NMAP.hand.hand_size = 8
 		cfc.NMAP.hand.fill_starting_hand()
 		start_button.text = "Next Competition"
 		competitions.next_competition()

@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://src/core/Hand.tscn" type="PackedScene" id=1]
-[ext_resource path="res://src/shader_wars/Deck.gd" type="Script" id=2]
+[ext_resource path="res://src/shader_wars/Deck.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/shader_wars/Discard.gd" type="Script" id=3]
 [ext_resource path="res://src/core/Pile.tscn" type="PackedScene" id=4]
 [ext_resource path="res://src/shader_wars/Board.gd" type="Script" id=5]
@@ -113,18 +113,10 @@ margin_bottom = 900.0
 rect_min_size = Vector2( 0, 300 )
 mouse_filter = 2
 
-[node name="Deck" parent="." instance=ExtResource( 4 )]
-position = Vector2( -3.1748, 652.422 )
-script = ExtResource( 2 )
+[node name="Deck" parent="." instance=ExtResource( 2 )]
+position = Vector2( 1.88773, 653.569 )
 placement = 8
-
-[node name="View" parent="Deck/Control/ManipulationButtons" index="0"]
-visible = false
-
-[node name="Shuffle" parent="Deck/Control/ManipulationButtons" index="1"]
-visible = false
-margin_top = 0.0
-margin_bottom = 20.0
+pile_name = "Deck"
 
 [node name="Discard" parent="." instance=ExtResource( 4 )]
 position = Vector2( 1542.95, 652.422 )

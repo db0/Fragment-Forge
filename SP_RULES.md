@@ -2,7 +2,7 @@
 
 You're a newbie coder who's trying to become known for his demo effect skills, and decided to try and compete in a few prestigious demoparty competitions.
 
-This is  a card Game, where you're trying to build up the skill set to create the best demo you can during each "round" or Competition. The objective is to reach your Cred goal until the end of the third competition.
+This is a card Game, where you're trying to build up the skill set to create the best demo you can during each "round" or Competition. The objective is to reach your Cred goal until the end of the third competition.
 
 ## Terminology:
 
@@ -56,7 +56,8 @@ If highlighted red, it's not playable.
 
 Check the cost breakdown to see what modifies a card's cost and why. Card which alter the cost will be mentioned in the breakdown.
 
-You can draw more cards by double-clicking on your deck to the left. Each card you draw, costs you one type (representing the effort of seeking new information on the net). 
+You can draw more cards by double-clicking on your deck to the left. Each card you draw, costs time (representing the effort of seeking new information on the net). The amount of time is dependent on your motivation and the
+amount of cards already in your hand. To draw cards up to your motivation, costs 1 time, Cards over your motivation cost 2 time (representing the overheads of onboarding too many projects). Your maximum hand-size is 10.
 
 You can have as many cards in your hand as your motivation. Once your hand is full, you cannot draw any more.
 

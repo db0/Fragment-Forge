@@ -19,6 +19,6 @@ func _ready() -> void:
 			"Value": 0},
 		"motivation":{
 			 "CounterTitle": "Motivation: ",
-			"Value": 8},
+			"Value": 5},
 	}
 	spawn_needed_counters()
