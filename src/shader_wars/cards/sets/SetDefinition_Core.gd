@@ -192,6 +192,19 @@ const CARDS := {
 		"cred_req": 0,
 		"motivation_req": 0,
 	},
+	"Search Engine Expertise": {
+		"Type": CardConfig.CardTypes.RESOURCE,
+		"Tags": ["Knowledge"],
+		"Abilities": "Once per Competition, you may look "\
+				+ "at the top card of the deck\n\n"\
+				+ "Discard this card: Draw one card",
+		"Time": 1,
+		"Value": 0,
+		"Kudos": 0,
+		"skill_req": 0,
+		"cred_req": 0,
+		"motivation_req": 0,
+	},	
 ### BEGIN Prep ###
 	"Get Some Advice": {
 		"Type": CardConfig.CardTypes.ACTION,

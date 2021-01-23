@@ -10,7 +10,7 @@ const CONTENTS = {
 	"Newbie Tutor": 2,
 #	"Cheerleader": 2,
 	"Chiptunes Musician": 2,
-	"Graphics Artist": 2,
+	"Graphics Artist": 1,
 	"Google-Fu!": 3,
 	"Get Some Advice": 3,
 	"Discord Mod": 2,
@@ -18,4 +18,5 @@ const CONTENTS = {
 	"Social Networking": 3,
 	"Private Forum Mod": 1,
 	"Hacking Buddy": 2,
+	"Search Engine Expertise": 2,
 }

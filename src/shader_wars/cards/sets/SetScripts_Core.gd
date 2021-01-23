@@ -266,6 +266,41 @@ func get_scripts(card_name: String) -> Dictionary:
 				],
 			},
 		},
+		"Search Engine Expertise": {
+			"manual": {
+				"board": {
+					"Once per turn, Look at the top card of the deck": [
+						{
+							"name": "rotate_card",
+							"subject": "self",
+							"degrees": 90,
+							"is_cost": true
+						},
+						{
+							"name": "view_card",
+							"src_container": cfc.NMAP.deck,
+							"subject": "index",
+							"subject_index": "top"
+						},
+					],
+					"Discard to draw a card": [
+						{
+							"name": "move_card_to_container",
+							"dest_container": cfc.NMAP.discard,
+							"subject": "self",
+						},
+						{
+							"name": "move_card_to_container",
+							"src_container": cfc.NMAP.deck,
+							"dest_container": cfc.NMAP.hand,
+							"subject_count": 1,
+							"subject": "index",
+							"subject_index": "top",
+						},
+					],
+				},
+			},
+		},
 	}
 	# We return only the scripts that match the card name and trigger
 	return(scripts.get(card_name,{}))
