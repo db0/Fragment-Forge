@@ -18,6 +18,27 @@ func _process(_delta: float) -> void:
 						properties.get("Time", 0)
 					))
 
+func setup() -> void:
+	.setup()
+	if properties.Type == CardConfig.CardTypes.SHADER:
+#		print_debug(card_front.art.material)
+		var shader_name: String = "res://shaders/" + card_name + ".shader"
+		var check_shader = File.new()
+		if check_shader.file_exists(shader_name):
+			card_front.material = ShaderMaterial.new()
+			card_front.material.shader = load("res://shaders/" + card_name + ".shader")
+			match card_name:
+				"Simple Colours":
+					card_front.material.set_shader_param(
+							'speed_color1',
+							cfc.game_rng.randf_range(0.3,1.0))
+					card_front.material.set_shader_param(
+							'speed_color2',
+							cfc.game_rng.randf_range(0.3,1.0))
+					card_front.material.set_shader_param(
+							'style',
+							cfc.game_rng.randi()%2)
+
 func check_play_costs() -> Color:
 	var ret : Color = CFConst.CostsState.OK
 	var time_cost = get_modified_time_cost().modified_cost

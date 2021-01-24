@@ -1,6 +1,6 @@
-# Shader Wars v0.2
+# Fragment Forge v0.3
 
-Shader Wars is a card game simulating the rise to fame of a new demo effects coder.
+Fragment Forge is a card game simulating the rise to fame of a new demo effects coder.
 
 This a very rough release using a hardcoded deck but it should be playable with full rules enforcement.
 

@@ -1,5 +1,7 @@
 extends CardFront
 
+onready var art = $Margin/CardText/Art
+
 func _ready() -> void:
 	text_expansion_multiplier = {
 		"Name": 2,

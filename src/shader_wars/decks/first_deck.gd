@@ -1,7 +1,7 @@
 extends Reference
 
 const CONTENTS = {
-	"Super-Basic Shader": 3,
+	"Simple Colours": 3,
 	"Intermediate Shader": 3,
 	"Time-consuming Shader": 3,
 	"Difficult Shader": 3,

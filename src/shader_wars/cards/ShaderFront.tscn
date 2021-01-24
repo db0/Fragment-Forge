@@ -10,6 +10,32 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
-[node name="CreatureFront" instance=ExtResource( 2 )]
+[node name="ShaderFront" instance=ExtResource( 2 )]
 custom_styles/panel = SubResource( 1 )
 script = ExtResource( 3 )
+
+[node name="Art" parent="Margin/CardText" index="1"]
+visible = false
+
+[node name="Type" parent="Margin/CardText" index="2"]
+margin_top = 23.0
+margin_bottom = 36.0
+
+[node name="Tags" parent="Margin/CardText" index="3"]
+margin_top = 40.0
+margin_bottom = 57.0
+
+[node name="skill_req" parent="Margin/CardText" index="4"]
+margin_top = 61.0
+margin_bottom = 75.0
+
+[node name="cred_req" parent="Margin/CardText" index="5"]
+margin_top = 79.0
+margin_bottom = 93.0
+
+[node name="motivation_req" parent="Margin/CardText" index="6"]
+margin_top = 97.0
+margin_bottom = 111.0
+
+[node name="Abilities" parent="Margin/CardText" index="7"]
+margin_top = 115.0

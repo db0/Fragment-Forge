@@ -1,4 +1,4 @@
-# Shader Wars (Single-Player) v0.1
+# Fragment Forge (Single-Player) v0.1
 
 You're a newbie coder who's trying to become known for his demo effect skills, and decided to try and compete in a few prestigious demoparty competitions.
 
@@ -59,7 +59,7 @@ Check the cost breakdown to see what modifies a card's cost and why. Card which 
 You can draw more cards by double-clicking on your deck to the left. Each card you draw, costs time (representing the effort of seeking new information on the net). The amount of time is dependent on your motivation and the
 amount of cards already in your hand. To draw cards up to your motivation, costs 1 time, Cards over your motivation cost 2 time (representing the overheads of onboarding too many projects). Your maximum hand-size is 10.
 
-You can have as many cards in your hand as your motivation. Once your hand is full, you cannot draw any more. If your deck runs out, nothing happens, but you cannot draw anymore cards.
+If your deck runs out, nothing happens, but you cannot draw anymore cards.
 
 To play a card from your hand, either double click on it, or drag it to the board. If it's a Prep, it will be discarded after being used. Otherwise it will be Installed. You can specify the install position by dragging it to the spot you want in the correct grid for the type.
 

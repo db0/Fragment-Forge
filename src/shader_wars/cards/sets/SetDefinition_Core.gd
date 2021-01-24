@@ -6,10 +6,10 @@ extends Reference
 const SET = "Core Set"
 const CARDS := {
 ### BEGIN Shaders ###
-	"Super-Basic Shader": {
+	"Simple Colours": {
 		"Type": CardConfig.CardTypes.SHADER,
 		"Tags": [],
-		"Abilities": "Create them circles",
+		"Abilities": " ",
 		"Time": 0,
 		"Value": 1,
 		"Kudos": 0,
