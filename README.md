@@ -23,3 +23,9 @@ See the issue tracker for progress and more ideas and feel free to suggest more.
 Built with [Godot](https://godotengine.org/) and the [Card Game Framework](https://github.com/db0/godot-card-game-framework)
 
 Some influences from [Android:Netrunner](https://en.wikipedia.org/wiki/Android:_Netrunner)
+
+## License
+
+Everything except Assets and Shaders is licensed under the AGPL3
+
+Assets and Shaders will list their individual licenses in their respective folders or code.

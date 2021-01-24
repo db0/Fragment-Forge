@@ -1,20 +1,19 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://shaders/Cloud.shader" type="Shader" id=1]
+[ext_resource path="res://shaders/Mandelbrot.shader" type="Shader" id=1]
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 1 )
-shader_param/depth = 70.0
-shader_param/fogSize = 25.0
+shader_param/seed = 0.0
+shader_param/zoom_choice = 5
 
 [node name="ShaderToy" type="Panel"]
 material = SubResource( 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 2.51984
-margin_top = -2.01996
-margin_right = -1397.48
-margin_bottom = -422.02
+margin_left = 3.0
+margin_right = -1397.0
+margin_bottom = -420.0
 __meta__ = {
 "_edit_use_anchors_": false
 }

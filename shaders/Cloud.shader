@@ -5,11 +5,15 @@ shader_type canvas_item;
 // https://www.shadertoy.com/view/4dS3Wd
 //jojobavg for the cloud shader
 // https://www.shadertoy.com/view/tdGBRG
+// Ported to Godot by Db0
 
+// Licence: Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License
+// https://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_US
 uniform float depth = 70.0;
 uniform float fogSize = 25.0;
 //const float fogCoef = 1.0/(depth-fogSize);
 //const float PI = acos(-1.0);
+uniform float seed = 0.0;
 
 float random (in float x) {
 	return fract(sin(x)*1e4);
@@ -65,7 +69,7 @@ float cloud(in vec3 p, float scale, float time) {
 }
 
 float mapHyper(vec3 p, float time){
-	return cloud(p,0.5,time);
+	return cloud(p,0.5,time+seed);
 }  
 
 //void mainImage(out vec4 fragColor, in vec2 fragCoord)

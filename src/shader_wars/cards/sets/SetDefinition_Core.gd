@@ -17,10 +17,10 @@ const CARDS := {
 		"cred_req": 0,
 		"motivation_req": 0,
 	},
-	"Time-consuming Shader": {
+	"Light": {
 		"Type": CardConfig.CardTypes.SHADER,
 		"Tags": [],
-		"Abilities": "Takes a lot of time but is not hard",
+		"Abilities": " ",
 		"Time": 2,
 		"Value": 3,
 		"Kudos": 0,
@@ -28,7 +28,7 @@ const CARDS := {
 		"cred_req": 0,
 		"motivation_req": 0,
 	},
-	"Cloud": {
+	"Fractal Pyramid": {
 		"Type": CardConfig.CardTypes.SHADER,
 		"Tags": [],
 		"Abilities": " ",
@@ -39,10 +39,10 @@ const CARDS := {
 		"cred_req": 0,
 		"motivation_req": 0,
 	},
-	"Difficult Shader": {
+	"Mandelbrot": {
 		"Type": CardConfig.CardTypes.SHADER,
 		"Tags": [],
-		"Abilities": "Some difficult stuff",
+		"Abilities": " ",
 		"Time": 2,
 		"Value": 5,
 		"Kudos": 0,
@@ -50,10 +50,10 @@ const CARDS := {
 		"cred_req": 0,
 		"motivation_req": 0,
 	},
-	"Advanced Shader": {
+	"Cloud": {
 		"Type": CardConfig.CardTypes.SHADER,
 		"Tags": [],
-		"Abilities": "Some advanced stuff",
+		"Abilities": " ",
 		"Time": 1,
 		"Value": 6,
 		"Kudos": 0,

@@ -38,6 +38,14 @@ func setup() -> void:
 					card_front.material.set_shader_param(
 							'style',
 							cfc.game_rng.randi()%2)
+				"Mandelbrot":
+					card_front.material.set_shader_param(
+							'zoom_choice',
+							cfc.game_rng.randi()%6)
+				_:
+					card_front.material.set_shader_param(
+							'seed',
+							cfc.game_rng.randf_range(0.1,100.0))
 
 func check_play_costs() -> Color:
 	var ret : Color = CFConst.CostsState.OK
