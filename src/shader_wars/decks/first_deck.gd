@@ -2,7 +2,7 @@ extends Reference
 
 const CONTENTS = {
 	"Simple Colours": 3,
-	"Intermediate Shader": 3,
+	"Cloud": 3,
 	"Time-consuming Shader": 3,
 	"Difficult Shader": 3,
 	"Advanced Shader": 3,

@@ -28,10 +28,10 @@ const CARDS := {
 		"cred_req": 0,
 		"motivation_req": 0,
 	},
-	"Intermediate Shader": {
+	"Cloud": {
 		"Type": CardConfig.CardTypes.SHADER,
 		"Tags": [],
-		"Abilities": "Some intermediate stuff",
+		"Abilities": " ",
 		"Time": 1,
 		"Value": 4,
 		"Kudos": 0,

@@ -10,7 +10,7 @@ void fragment() {
 	float color1_t_y = cos(TIME * speed_color1) / 2.0;
 	float color1_time_x = abs(sin(TIME * speed_color1));
 	float color1_time_y = abs(cos(TIME * speed_color1));
-	vec2 st = FRAGCOORD.xy/(1.0/SCREEN_PIXEL_SIZE);
+	vec2 st = UV;
 	float color1_x = (st.x * color1_time_x / (1.0 + color1_time_x));
 	float color1_y = (st.y * color1_time_y / (1.0 + color1_time_y));
 	if (color1_t_x > 0.0){
