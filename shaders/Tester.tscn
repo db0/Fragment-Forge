@@ -5,7 +5,7 @@
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 1 )
 shader_param/seed = 0.0
-shader_param/zoom_choice = 5
+shader_param/zoom_choice = 9
 
 [node name="ShaderToy" type="Panel"]
 material = SubResource( 1 )

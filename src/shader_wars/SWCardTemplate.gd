@@ -41,7 +41,10 @@ func setup() -> void:
 				"Mandelbrot":
 					card_front.material.set_shader_param(
 							'zoom_choice',
-							cfc.game_rng.randi()%6)
+							cfc.game_rng.randi()%9)
+					card_front.material.set_shader_param(
+							'seed',
+							cfc.game_rng.randf_range(0.1,100.0))
 				_:
 					card_front.material.set_shader_param(
 							'seed',

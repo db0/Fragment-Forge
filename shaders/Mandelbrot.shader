@@ -9,7 +9,7 @@ shader_type canvas_item;
 // https://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_US
 
 uniform float seed = 0.0;
-uniform int zoom_choice = 5;
+uniform int zoom_choice = 9;
 
 float distanceToMandelbrot( in vec2 c )
 {
@@ -53,7 +53,7 @@ void fragment()
    vec2 p = uv;
 
     // animation	
-	float tz = 0.5 - 0.5*cos(0.325*TIME);
+	float tz = 0.5 - 0.5*cos(0.325*(TIME+seed));
     float zoo = pow( 0.5, 15.0*tz );
 	vec2 zoom_coords;
 	switch(zoom_choice){
@@ -64,10 +64,10 @@ void fragment()
 			zoom_coords = vec2(-1.781112019099124,-0.0000136376471796);
 			break;
 		case 2:
-			zoom_coords = vec2(0.25006685121166483,8.022145399780844e-7);
+			zoom_coords = vec2(0.35630947083789705,-0.648757851006298);
 			break;
 		case 3:
-			zoom_coords = vec2(-0.7508899233296824,0.0011295180722891533);
+			zoom_coords = vec2(-1.768778833,-0.001738996);
 			break;
 		case 4:
 			zoom_coords = vec2(-1.295325656318456,-0.4413355214180586);
@@ -77,6 +77,15 @@ void fragment()
 			break;
 		case 6:
 			zoom_coords = vec2(0.4245124140026012,-0.2075295589317497);
+			break;
+		case 7:
+			zoom_coords = vec2(0.018879985495961128,-0.6582934744125648);
+			break;
+		case 8:
+			zoom_coords = vec2(-0.7711605143050897,-0.11535251780381468);
+			break;
+		case 9:
+			zoom_coords = vec2(-0.9396421133753767,0.2657828189979378);
 			break;
 	}
 	vec2 c = zoom_coords + p*zoo;
