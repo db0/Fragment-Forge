@@ -248,7 +248,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Shader Wars"
+config/name="Fragment Forge"
 run/main_scene="res://src/shader_wars/Main.tscn"
 config/icon="res://icon.png"
 
