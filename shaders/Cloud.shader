@@ -3,6 +3,8 @@ shader_type canvas_item;
 
 //Morgan McGuire for the noise function
 // https://www.shadertoy.com/view/4dS3Wd
+//jojobavg for the cloud shader
+// https://www.shadertoy.com/view/tdGBRG
 
 uniform float depth = 70.0;
 uniform float fogSize = 25.0;
@@ -90,11 +92,11 @@ void fragment()
 	float d;
 	float seuil=5.1;
 	float c= 0.0;
-	float distMax =100.0;
+	float distMax =50.0;
 	float steps = 300.0;
 	float color = 0.0;
 	float cl;
-	float dist = clamp((1.0-dot(vec3(0,0,-1.0),r))*1.0,1.0,1.0);
+	float dist = clamp((1.0-dot(vec3(0,0,-1.0),r))*4.0,0.0,1.0);
 	int cc =int(mix(300.0,1000.0,dist));
 	float uu =mix(1.0,0.25,dist);
 	vec3 p3 = vec3(0);
@@ -113,7 +115,7 @@ void fragment()
 				d2 = 5.2;
 				if(d2>seuil)
 				{
-					color = color*0.9 + d2*0.02*0.1;
+					color = color*0.8 + d2*0.02*0.2;
 				}
 				p2 +=normalize(vec3(-0.0,-0.0,-5.0))*0.42;
 			} 
@@ -128,9 +130,9 @@ void fragment()
 
 	//compositing
 	vec3 col=vec3(0);
-	col = mix(vec3(0.0,0.0,0.2),vec3(0.88,0.88,0.9),cl);
-	float fogCoef = 1.0/(depth-fogSize);
-	float fog = clamp((length(p3-s)-fogSize)*fogCoef,0.0,1.0);
+	col = mix(vec3(0.0,0.0,0.2),vec3(0.88,0.88,0.9),max(cl-0.5,0.0)*2.0);
+	float fogCoef=1.0/(depth-fogSize);
+	float fog =  clamp((length(p3-s)-fogSize)*fogCoef,0.0,1.0);
 	col = mix(col,vec3(0.88,0.88,0.9),fog);
 	COLOR = vec4(col,1.0);
 }
