@@ -4,10 +4,11 @@ extends Card
 # Switch to know when the player attempted to activate an action card
 # by dragging it to the board area
 var attempted_action_drop_to_board := false
+var shader_time := 0.0
 
 onready var modified_costs_popup = $ModifiedCostsPopup
 
-func _process(_delta: float) -> void:
+func _process(delta: float) -> void:
 	_extra_state_processing()
 	if cfc._debug and not get_parent().is_in_group("piles"):
 		if properties.Type == CardConfig.CardTypes.SHADER:
@@ -17,6 +18,20 @@ func _process(_delta: float) -> void:
 						cfc.NMAP.board.counters.get_counter("skill", self),
 						properties.get("Time", 0)
 					))
+	if properties.Type == CardConfig.CardTypes.SHADER\
+			and card_front.material\
+			and is_faceup:
+		card_front.material.set_shader_param(
+					'gdstime', shader_time)
+		# Pauses animations while the card is not focused
+		match state:
+			CardState.FOCUSED_IN_HAND,\
+			CardState.FOCUSED_ON_BOARD,\
+			CardState.FOCUSED_IN_POPUP,\
+			CardState.VIEWPORT_FOCUS,\
+			CardState.DRAGGED,\
+			CardState.VIEWED_IN_PILE:
+				shader_time += delta
 
 func setup() -> void:
 	.setup()
@@ -298,6 +313,7 @@ func generate_install_tasks() -> Array:
 
 # Extra _process logic for SW
 func _extra_state_processing() -> void:
+
 	match state:
 		# If a card is focused in hand, we want to also display its
 		# Modified time cost popup on the side.
@@ -340,6 +356,7 @@ func _extra_state_processing() -> void:
 		_:
 			if modified_costs_popup.visible:
 				modified_costs_popup.visible = false
+
 
 
 func check_unique_conflict() -> bool:

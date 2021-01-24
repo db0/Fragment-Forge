@@ -9,11 +9,11 @@ shader_type canvas_item;
 
 // Licence: Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License
 // https://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_US
+
 uniform float depth = 70.0;
 uniform float fogSize = 25.0;
-//const float fogCoef = 1.0/(depth-fogSize);
-//const float PI = acos(-1.0);
 uniform float seed = 0.0;
+uniform float gdstime;
 
 float random (in float x) {
 	return fract(sin(x)*1e4);
@@ -81,16 +81,16 @@ void fragment()
 	uv -= 0.5;
 	uv /= vec2(iResolution.y / iResolution.x, 1);
 	vec3 s=vec3(0.5,0.5,100);
-	float t2=(TIME*1.5);
+	float t2=(gdstime*1.5);
 	s.xz *= rot(sin(t2)*0.005);
 	vec3 t=vec3(0,0,0);
-	s.x += cos(t2*0.2)*0.10*sin(TIME*0.01);
-	s.y += sin(t2*0.2)*0.10*sin(TIME*0.01+10.0);
+	s.x += cos(t2*0.2)*0.10*sin(gdstime*0.01);
+	s.y += sin(t2*0.2)*0.10*sin(gdstime*0.01+10.0);
 	vec3 cz=normalize(t-s);
 	vec3 cx=normalize(cross(cz,vec3(0,1,0)));
 	vec3 cy=normalize(cross(cz,cx));
 	vec3 r=normalize(uv.x*cx+uv.y*cy+cz*0.7);
-	s.z+=TIME*-8.0;
+	s.z+=gdstime*-8.0;
 	
 	vec3 p=s;
 	float d;
@@ -107,14 +107,14 @@ void fragment()
 	for(int i=0; i<cc; ++i) {
 		float d2 ;
 //		float d;
-		if(color<0.001)d = mapHyper(p, TIME);
+		if(color<0.001)d = mapHyper(p, gdstime);
 		c =d;  
 		if( c>seuil )
 		{vec3 p2 =p;
 			if(p3.x==0.0)p3=p;
 			for(int j;j<20;j++)
 			{
-				if(color<0.2)d2= mapHyper(p2, TIME);
+				if(color<0.2)d2= mapHyper(p2, gdstime);
 				else
 				d2 = 5.2;
 				if(d2>seuil)
@@ -130,9 +130,9 @@ void fragment()
 	}
 
 	vec2 off=vec2(1.1,0.0);
-	vec3 n=normalize(mapHyper(p3, TIME)-vec3(mapHyper(p3-off.xyy, TIME), mapHyper(p3-off.yxy, TIME), mapHyper(p3-off.yyx, TIME)));
+	vec3 n=normalize(mapHyper(p3, gdstime)-vec3(mapHyper(p3-off.xyy, gdstime), mapHyper(p3-off.yxy, gdstime), mapHyper(p3-off.yyx, gdstime)));
 
-	//compositing
+//	//compositing
 	vec3 col=vec3(0);
 	col = mix(vec3(0.0,0.0,0.2),vec3(0.88,0.88,0.9),max(cl-0.5,0.0)*2.0);
 	float fogCoef=1.0/(depth-fogSize);

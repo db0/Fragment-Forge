@@ -9,6 +9,7 @@ shader_type canvas_item;
 // https://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_US
 
 uniform float seed = 0.0;
+uniform float gdstime;
 
 vec3 palette(float d){
 	return mix(vec3(0.2,0.7,0.9),vec3(1.,0.,1.),d);
@@ -55,7 +56,7 @@ void fragment()
 	vec2 uv = UV;
 	uv -= 0.5;
 	vec3 ro = vec3(0.,0.,-50.);
-    ro.xz = rotate(ro.xz,TIME);
+    ro.xz = rotate(ro.xz,gdstime);
     vec3 cf = normalize(-ro);
     vec3 cs = normalize(cross(cf,vec3(0.,1.,0.)));
     vec3 cu = normalize(cross(cf,cs));
@@ -64,7 +65,7 @@ void fragment()
     
     vec3 rd = normalize(uuv-ro);
     
-    vec4 col = rm(ro,rd,TIME+seed);
+    vec4 col = rm(ro,rd,gdstime+seed);
     
     COLOR = col;
 }

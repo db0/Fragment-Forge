@@ -6,6 +6,7 @@
 shader = ExtResource( 1 )
 shader_param/seed = 0.0
 shader_param/zoom_choice = 9
+shader_param/gdstime = null
 
 [node name="ShaderToy" type="Panel"]
 material = SubResource( 1 )
