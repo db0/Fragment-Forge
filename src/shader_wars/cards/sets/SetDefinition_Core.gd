@@ -61,10 +61,10 @@ const CARDS := {
 		"cred_req": 0,
 		"motivation_req": 0,
 	},
-	"Tricky Shader": {
+	"Strings": {
 		"Type": CardConfig.CardTypes.SHADER,
 		"Tags": [],
-		"Abilities": "Some tricky stuff",
+		"Abilities": " ",
 		"Time": 4,
 		"Value": 9,
 		"Kudos": 0,
@@ -75,7 +75,7 @@ const CARDS := {
 	"Expert Shader": {
 		"Type": CardConfig.CardTypes.SHADER,
 		"Tags": [],
-		"Abilities": "Some expert stuff",
+		"Abilities": " ",
 		"Time": 3,
 		"Value": 10,
 		"Kudos": 0,

@@ -7,6 +7,7 @@ shader_type canvas_item;
 
 uniform vec2 size = vec2(1.);
 uniform float gdstime;
+uniform float seed;
 
 void fragment(){
     vec2 r = vec2(1., 1.) * size;

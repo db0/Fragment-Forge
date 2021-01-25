@@ -1,20 +1,23 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://shaders/Mandelbrot.shader" type="Shader" id=1]
+[ext_resource path="res://shaders/Strings.shader" type="Shader" id=1]
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 1 )
 shader_param/seed = 0.0
+shader_param/form = Vector3( 2, -3, 4 )
 shader_param/zoom_choice = 9
 shader_param/gdstime = null
+shader_param/ANTIALIASING = true
+shader_param/SLOW_ANTIALIAS = false
 
 [node name="ShaderToy" type="Panel"]
 material = SubResource( 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 3.0
-margin_right = -1397.0
-margin_bottom = -420.0
+margin_right = -1428.0
+margin_bottom = -469.0
 __meta__ = {
 "_edit_use_anchors_": false
 }

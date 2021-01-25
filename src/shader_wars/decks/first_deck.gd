@@ -6,7 +6,7 @@ const CONTENTS = {
 	"Fractal Pyramid": 3,
 	"Mandelbrot": 3,
 	"Cloud": 3,
-	"Tricky Shader": 3,
+	"Strings": 3,
 	"Newbie Tutor": 2,
 #	"Cheerleader": 2,
 	"Chiptunes Musician": 2,

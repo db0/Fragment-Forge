@@ -42,6 +42,9 @@ func setup() -> void:
 		if check_shader.file_exists(shader_name):
 			card_front.material = ShaderMaterial.new()
 			card_front.material.shader = load("res://shaders/" + card_name + ".shader")
+			card_front.material.set_shader_param(
+					'seed',
+					cfc.game_rng.randf_range(0.1,100.0))
 			match card_name:
 				"Simple Colours":
 					card_front.material.set_shader_param(
@@ -57,13 +60,14 @@ func setup() -> void:
 					card_front.material.set_shader_param(
 							'zoom_choice',
 							cfc.game_rng.randi()%9)
+				"Strings":
 					card_front.material.set_shader_param(
-							'seed',
-							cfc.game_rng.randf_range(0.1,100.0))
+							'form',
+							Vector3(cfc.game_rng.randf_range(-2.0,2.0),
+									cfc.game_rng.randf_range(-4.0,4.0),
+									cfc.game_rng.randf_range(-4.0,4.0)))
 				_:
-					card_front.material.set_shader_param(
-							'seed',
-							cfc.game_rng.randf_range(0.1,100.0))
+					pass
 
 func check_play_costs() -> Color:
 	var ret : Color = CFConst.CostsState.OK
