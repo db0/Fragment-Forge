@@ -22,35 +22,35 @@ outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=5]
+[sub_resource type="DynamicFont" id=4]
 size = 10
 outline_size = 2
 outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=6]
+[sub_resource type="DynamicFont" id=5]
 size = 13
 outline_size = 2
 outline_color = Color( 0.243137, 0.243137, 0.243137, 1 )
 use_filter = true
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=7]
+[sub_resource type="DynamicFont" id=6]
 size = 11
 outline_size = 2
 outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=8]
+[sub_resource type="DynamicFont" id=7]
 size = 20
 outline_size = 2
 outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=9]
+[sub_resource type="DynamicFont" id=8]
 size = 10
 outline_size = 2
 outline_color = Color( 0, 0, 0, 1 )
@@ -114,7 +114,7 @@ margin_right = 146.0
 margin_bottom = 36.0
 rect_min_size = Vector2( 146, 13 )
 size_flags_vertical = 1
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 4 )
 text = "Type"
 align = 1
 valign = 1
@@ -127,7 +127,7 @@ margin_right = 146.0
 margin_bottom = 57.0
 rect_min_size = Vector2( 146, 17 )
 size_flags_vertical = 1
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 5 )
 text = "Tag1 - Tag2"
 align = 1
 valign = 1
@@ -139,7 +139,7 @@ margin_top = 61.0
 margin_right = 146.0
 margin_bottom = 75.0
 rect_min_size = Vector2( 146, 14 )
-custom_fonts/font = SubResource( 7 )
+custom_fonts/font = SubResource( 6 )
 custom_colors/font_color = Color( 0.290196, 0.752941, 0, 1 )
 text = "skill_req: 1"
 align = 1
@@ -151,7 +151,7 @@ margin_top = 79.0
 margin_right = 146.0
 margin_bottom = 93.0
 rect_min_size = Vector2( 146, 14 )
-custom_fonts/font = SubResource( 7 )
+custom_fonts/font = SubResource( 6 )
 custom_colors/font_color = Color( 0.290196, 0.752941, 0, 1 )
 text = "cred_req: 1"
 align = 1
@@ -163,7 +163,7 @@ margin_top = 97.0
 margin_right = 146.0
 margin_bottom = 111.0
 rect_min_size = Vector2( 146, 14 )
-custom_fonts/font = SubResource( 7 )
+custom_fonts/font = SubResource( 6 )
 custom_colors/font_color = Color( 0.290196, 0.752941, 0, 1 )
 text = "motivation_req: 1"
 align = 1
@@ -174,9 +174,9 @@ autowrap = true
 margin_top = 115.0
 margin_right = 146.0
 margin_bottom = 223.0
-rect_min_size = Vector2( 146, 50 )
+rect_min_size = Vector2( 146, 100 )
 size_flags_vertical = 3
-custom_fonts/font = SubResource( 8 )
+custom_fonts/font = SubResource( 7 )
 text = "Text"
 align = 1
 valign = 1
@@ -192,7 +192,7 @@ mouse_filter = 2
 margin_right = 40.0
 margin_bottom = 13.0
 rect_min_size = Vector2( 39, 13 )
-custom_fonts/font = SubResource( 9 )
+custom_fonts/font = SubResource( 8 )
 custom_colors/font_color = Color( 0.658824, 0.541176, 0, 1 )
 text = "Time: 0"
 valign = 1
@@ -202,7 +202,7 @@ margin_left = 44.0
 margin_right = 93.0
 margin_bottom = 13.0
 rect_min_size = Vector2( 39, 13 )
-custom_fonts/font = SubResource( 9 )
+custom_fonts/font = SubResource( 8 )
 custom_colors/font_color = Color( 0.658824, 0.541176, 0, 1 )
 text = "Kudos: 0"
 valign = 1
@@ -213,7 +213,7 @@ margin_right = 146.0
 margin_bottom = 13.0
 rect_min_size = Vector2( 0, 13 )
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 9 )
+custom_fonts/font = SubResource( 8 )
 custom_colors/font_color = Color( 0.658824, 0.541176, 0, 1 )
 text = "Value: 0"
 align = 2
