@@ -9,11 +9,11 @@ This is a card Game, where you're trying to build up the skill set to create the
 * Cred: A slang for "Credibility". How accepted you are as a coder in the demoscene. Effectively Victory Points
 * Kudos: Your social credit with other members of the demoscene. How much you have helped others determines how much they're willing to help you back.
 * Time: How much time you have to complete you demo in each Competition
-* Skill: How good you are at writing Shaders.
-* Motivation: How motivated you are to improve your demo. Your hand size is equal to this amount.
+* Skill: How good you are at writing Fragment Shaders.
+* Motivation: How motivated you are to improve your demo. The cost to draw new cards is affected by this amount.
 * Shader: A type of card which adds value to your demo. See Card Types.
 * Resource: A type of card which provides supporting effects. See Card Types.
-* Prep: A type of card which rerpesents you PREParing for the competition. See Card Types.
+* Prep: A type of card which rerpesents you **prep**aring for the competition. See Card Types.
 * Install: To play a card on the board
 * Value: How impressive a Shader is or how Impressive your demo is.
 * Demo: Each Installed Shader adds it value to your total for this competition. The total value amount of installed Shaders is your demo value.
@@ -61,11 +61,11 @@ amount of cards already in your hand. To draw cards up to your motivation, costs
 
 If your deck runs out, nothing happens, but you cannot draw anymore cards.
 
-To play a card from your hand, either double click on it, or drag it to the board. If it's a Prep, it will be discarded after being used. Otherwise it will be Installed. You can specify the install position by dragging it to the spot you want in the correct grid for the type.
+To play a card from your hand, either double click on it, or drag it to the board. If it's a Prep, it will be discarded after being used. Otherwise it will be Installed. You can specify the install position by dragging it to the spot you want in the correct grid for the type. You can play more than 1 card with the same name, unless it has the 'Unique' tag.
 
 Shaders are a bit special to pay for.
 * If you have as much skill as the shader's skill_req, then you can play it with the time cost written on it.
-* If you have 1 less skill than the shader, then you have to pay double its time cost on top of the normal time cost (representing the effort of trying to develop something exceeding your talents)
+* If you have 1 less skill than the shader, then you have to pay double its time cost + one, (representing the effort of trying to develop something exceeding your talents)
 * If you have more skill than the shader, then you reduce its time cost by 1 for each skill you have more, to a minimum of half.
 
 ### Board
