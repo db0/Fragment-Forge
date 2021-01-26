@@ -19,4 +19,5 @@ const CONTENTS = {
 	"Private Forum Mod": 1,
 	"Hacking Buddy": 2,
 	"Search Engine Expertise": 2,
+#	"Twister": 10,
 }

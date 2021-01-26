@@ -28,6 +28,17 @@ const CARDS := {
 		"cred_req": 0,
 		"motivation_req": 0,
 	},
+	"Twister": {
+		"Type": CardConfig.CardTypes.SHADER,
+		"Tags": [],
+		"Abilities": " ",
+		"Time": 5,
+		"Value": 6,
+		"Kudos": 0,
+		"skill_req": 0,
+		"cred_req": 0,
+		"motivation_req": 0,
+	},
 	"Fractal Pyramid": {
 		"Type": CardConfig.CardTypes.SHADER,
 		"Tags": [],

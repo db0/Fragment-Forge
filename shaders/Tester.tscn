@@ -1,15 +1,15 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://shaders/Strings.shader" type="Shader" id=1]
+[ext_resource path="res://shaders/Twister.shader" type="Shader" id=1]
+[ext_resource path="res://shaders/textures/cc0textures/MetalPlates008_1K_Color.jpg" type="Texture" id=2]
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 1 )
 shader_param/seed = 0.0
-shader_param/form = Vector3( 2, -3, 4 )
-shader_param/zoom_choice = 9
 shader_param/gdstime = null
-shader_param/ANTIALIASING = true
-shader_param/SLOW_ANTIALIAS = false
+shader_param/multiplier = 7.5
+shader_param/columns = false
+shader_param/iChannel1 = ExtResource( 2 )
 
 [node name="ShaderToy" type="Panel"]
 material = SubResource( 1 )

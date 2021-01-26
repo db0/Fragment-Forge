@@ -104,6 +104,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/shader_wars/cards/CustomScripts.gd"
 }, {
+"base": "Reference",
+"class": "FFUtils",
+"language": "GDScript",
+"path": "res://src/shader_wars/FFUtils.gd"
+}, {
 "base": "CardContainer",
 "class": "Hand",
 "language": "GDScript",
@@ -224,6 +229,7 @@ _global_script_class_icons={
 "Competitions": "",
 "Counters": "",
 "CustomScripts": "",
+"FFUtils": "",
 "Hand": "",
 "Highlight": "",
 "ManipulationButtons": "",

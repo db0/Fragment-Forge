@@ -49,23 +49,33 @@ func setup() -> void:
 				"Simple Colours":
 					card_front.material.set_shader_param(
 							'speed_color1',
-							cfc.game_rng.randf_range(0.3,1.0))
+							 CFUtils.randf_range(0.3,1.0))
 					card_front.material.set_shader_param(
 							'speed_color2',
-							cfc.game_rng.randf_range(0.3,1.0))
+							 CFUtils.randf_range(0.3,1.0))
 					card_front.material.set_shader_param(
 							'style',
-							cfc.game_rng.randi()%2)
+							 CFUtils.randi()%2)
 				"Mandelbrot":
 					card_front.material.set_shader_param(
 							'zoom_choice',
-							cfc.game_rng.randi()%9)
+							 CFUtils.randi()%9)
 				"Strings":
 					card_front.material.set_shader_param(
 							'form',
-							Vector3(cfc.game_rng.randf_range(-2.0,2.0),
-									cfc.game_rng.randf_range(-4.0,4.0),
-									cfc.game_rng.randf_range(-4.0,4.0)))
+							Vector3(CFUtils.randf_range(-2.0,2.0),
+									CFUtils.randf_range(-4.0,4.0),
+									CFUtils.randf_range(-4.0,4.0)))
+				"Twister":
+					card_front.material.set_shader_param(
+							'multiplier',
+							CFUtils.randf_range(5.0,10.0))
+					var texture = FFUtils.grab_random_texture()
+					card_front.material.set_shader_param(
+							'iChannel1', texture)
+					if not CFUtils.randi() % 8:
+						card_front.material.set_shader_param(
+								'columns', true)
 				_:
 					pass
 
