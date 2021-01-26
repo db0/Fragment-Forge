@@ -5,6 +5,7 @@ extends Card
 # by dragging it to the board area
 var attempted_action_drop_to_board := false
 var shader_time := 0.0
+var shader_params := {}
 
 onready var modified_costs_popup = $ModifiedCostsPopup
 
@@ -42,42 +43,33 @@ func setup() -> void:
 		if check_shader.file_exists(shader_name):
 			card_front.material = ShaderMaterial.new()
 			card_front.material.shader = load("res://shaders/" + card_name + ".shader")
-			card_front.material.set_shader_param(
-					'seed',
-					cfc.game_rng.randf_range(0.1,100.0))
-			match card_name:
-				"Simple Colours":
-					card_front.material.set_shader_param(
-							'speed_color1',
-							 CFUtils.randf_range(0.3,1.0))
-					card_front.material.set_shader_param(
-							'speed_color2',
-							 CFUtils.randf_range(0.3,1.0))
-					card_front.material.set_shader_param(
-							'style',
-							 CFUtils.randi()%2)
-				"Mandelbrot":
-					card_front.material.set_shader_param(
-							'zoom_choice',
-							 CFUtils.randi()%9)
-				"Strings":
-					card_front.material.set_shader_param(
-							'form',
-							Vector3(CFUtils.randf_range(-2.0,2.0),
-									CFUtils.randf_range(-4.0,4.0),
-									CFUtils.randf_range(-4.0,4.0)))
-				"Twister":
-					card_front.material.set_shader_param(
-							'multiplier',
-							CFUtils.randf_range(5.0,10.0))
-					var texture = FFUtils.grab_random_texture()
-					card_front.material.set_shader_param(
-							'iChannel1', texture)
-					if not CFUtils.randi() % 8:
-						card_front.material.set_shader_param(
-								'columns', true)
-				_:
-					pass
+			if state == CardState.VIEWPORT_FOCUS:
+				var source_card : Card = cfc.NMAP.main._current_focus_source
+				for param in source_card.shader_params:
+					_set_shader_param(param, source_card.shader_params[param])
+					shader_time = source_card.shader_time
+			else:
+				_set_shader_param('seed', cfc.game_rng.randf_range(0.1,100.0))
+				match card_name:
+					"Simple Colours":
+						_set_shader_param('speed_color1', CFUtils.randf_range(0.3,1.0))
+						_set_shader_param('speed_color2', CFUtils.randf_range(0.3,1.0))
+						_set_shader_param('style', CFUtils.randi()%2)
+					"Mandelbrot":
+						_set_shader_param('zoom_choice', CFUtils.randi()%9)
+					"Strings":
+						_set_shader_param('form', Vector3(
+										CFUtils.randf_range(-2.0,2.0),
+										CFUtils.randf_range(-4.0,4.0),
+										CFUtils.randf_range(-4.0,4.0)))
+					"Twister":
+						_set_shader_param('multiplier', CFUtils.randf_range(5.0,10.0))
+						var texture = FFUtils.grab_random_texture()
+						_set_shader_param('iChannel1', texture)
+						if not CFUtils.randi() % 8:
+							_set_shader_param('columns', true)
+					_:
+						pass
 
 func check_play_costs() -> Color:
 	var ret : Color = CFConst.CostsState.OK
@@ -380,3 +372,10 @@ func check_unique_conflict() -> bool:
 			if card.card_name == card_name:
 				unique_conflict = true
 	return(unique_conflict)
+
+
+# Sets parameters for the shader, and also stores them in a dictionary to be
+# reused by the viewport duplicate.
+func _set_shader_param(parameter: String, value) -> void:
+	card_front.material.set_shader_param(parameter, value)
+	shader_params[parameter] = value
