@@ -1,4 +1,4 @@
-class_name SWCard
+class_name FFCard
 extends Card
 
 # Switch to know when the player attempted to activate an action card
@@ -325,7 +325,7 @@ func generate_install_tasks() -> Array:
 	var install_tasks = [install_script_template]
 	return(install_tasks)
 
-# Extra _process logic for SW
+# Extra _process logic for FF
 func _extra_state_processing() -> void:
 
 	match state:

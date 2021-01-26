@@ -1,9 +1,10 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://src/shader_wars/CardFront.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/fragment_forge/CardFront.tscn" type="PackedScene" id=1]
+
 
 [sub_resource type="StyleBoxFlat" id=1]
-bg_color = Color( 0.356863, 0, 0.6, 1 )
+bg_color = Color( 0.811765, 0.596078, 0.0862745, 1 )
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10

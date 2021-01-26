@@ -1,4 +1,4 @@
-class_name SWSP
+class_name FFSP
 extends Reference
 
 # Returns the default value any script definition key should have

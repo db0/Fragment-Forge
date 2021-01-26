@@ -1,6 +1,6 @@
 # This class is responsible for looking up the amount of per count
 # that has been requested in a [ScripTask](#ScriptTask)
-class_name SWScriptPer
+class_name FFScriptPer
 extends ScriptPer
 
 # prepares the properties needed by the task to function.

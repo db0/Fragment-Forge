@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=2]
 
-[ext_resource path="res://fonts/Xolonium-Regular.ttf" type="DynamicFontData" id=1]
-[ext_resource path="res://src/shader_wars/CardFront.gd" type="Script" id=2]
+[ext_resource path="res://src/fragment_forge/CardFront.gd" type="Script" id=1]
+[ext_resource path="res://fonts/Xolonium-Regular.ttf" type="DynamicFontData" id=2]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.145098, 0.145098, 0.145098, 1 )
@@ -20,42 +20,42 @@ size = 15
 outline_size = 2
 outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
-font_data = ExtResource( 1 )
+font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=4]
 size = 10
 outline_size = 2
 outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
-font_data = ExtResource( 1 )
+font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=5]
 size = 13
 outline_size = 2
 outline_color = Color( 0.243137, 0.243137, 0.243137, 1 )
 use_filter = true
-font_data = ExtResource( 1 )
+font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=6]
 size = 11
 outline_size = 2
 outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
-font_data = ExtResource( 1 )
+font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=7]
 size = 20
 outline_size = 2
 outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
-font_data = ExtResource( 1 )
+font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=8]
 size = 10
 outline_size = 2
 outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
-font_data = ExtResource( 1 )
+font_data = ExtResource( 2 )
 
 [node name="Front" type="Panel"]
 anchor_right = 1.0
@@ -64,7 +64,7 @@ margin_right = -1550.0
 margin_bottom = -660.0
 mouse_filter = 2
 custom_styles/panel = SubResource( 1 )
-script = ExtResource( 2 )
+script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

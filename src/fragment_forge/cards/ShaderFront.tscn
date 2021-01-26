@@ -1,7 +1,8 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://src/shader_wars/CardFront.tscn" type="PackedScene" id=2]
-[ext_resource path="res://src/shader_wars/cards/ShaderFront.gd" type="Script" id=3]
+[ext_resource path="res://src/fragment_forge/CardFront.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/fragment_forge/cards/ShaderFront.gd" type="Script" id=3]
+
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.254902, 0.517647, 0.305882, 1 )

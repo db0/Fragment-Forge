@@ -1,4 +1,4 @@
-class_name ShaderWarsScriptingEngine
+class_name FragmentForgeScriptingEngine
 extends ScriptingEngine
 
 # Just calls the parent class.

@@ -93,7 +93,7 @@ const CARD_SCALE_WHILE_DRAGGING := Vector2(0.4, 0.4)
 const PATH_CORE := "res://src/core/"
 # The path where scenes and scripts customized for this specific game exist
 # (e.g. board, card back etc)
-const PATH_CUSTOM := "res://src/shader_wars/"
+const PATH_CUSTOM := "res://src/fragment_forge/"
 # The path where card template scenes exist.
 # These is usually one scene per type of card in the game
 const PATH_CARDS := PATH_CUSTOM + "cards/"
@@ -115,7 +115,7 @@ const PATH_TOKENS := PATH_ASSETS + "tokens/"
 # This specifie the path the the Scripting Engine. If you wish to extend
 # The scripting engine functionality with your own tasks,
 # Point this to your own script file.
-const PATH_SCRIPTING_ENGINE := PATH_CUSTOM + "SWScriptingEngine.gd"
+const PATH_SCRIPTING_ENGINE := PATH_CUSTOM + "FFScriptingEngine.gd"
 # This specifies the path to the [ScriptPer] class file.
 # We don't reference is by class name to avoid cyclic dependencies
 # And this also allows other developers to extend its functionality

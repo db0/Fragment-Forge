@@ -115,7 +115,7 @@ func load_test_cards(extras := 11) -> void:
 
 # Loads a sample set of cards to use for testing
 func load_deck() -> void:
-	var deck = load("res://src/shader_wars/decks/first_deck.gd")
+	var deck = load("res://src/fragment_forge/decks/first_deck.gd")
 	var cards_array := []
 	for card_name in deck.CONTENTS:
 		for _iter in range(deck.CONTENTS[card_name]):
