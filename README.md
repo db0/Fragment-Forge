@@ -22,6 +22,8 @@ See the issue tracker for progress and more ideas and feel free to suggest more.
 
 Built with [Godot](https://godotengine.org/) and the [Card Game Framework](https://github.com/db0/godot-card-game-framework)
 
+(Most) Shader is ported by hand to Godot from [ShaderToy](https://www.shadertoy.com). Extra thanks to [Inigo Quilez](https://www.iquilezles.org) for releasing so many of them in the Creative Commons. Links and credits for each Shader are inside their code.
+
 Some influences from [Android:Netrunner](https://en.wikipedia.org/wiki/Android:_Netrunner)
 
 ## License
