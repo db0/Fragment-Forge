@@ -6,6 +6,7 @@ extends Card
 var attempted_action_drop_to_board := false
 var shader_time := 0.0
 var shader_params := {}
+var shader_time_offset := 0.0
 
 onready var modified_costs_popup = $ModifiedCostsPopup
 
@@ -23,7 +24,7 @@ func _process(delta: float) -> void:
 			and card_front.material\
 			and is_faceup:
 		card_front.material.set_shader_param(
-					'gdstime', shader_time)
+					'iTime', shader_time + shader_time_offset)
 		# Pauses animations while the card is not focused
 		match state:
 			CardState.FOCUSED_IN_HAND,\
@@ -47,8 +48,10 @@ func setup() -> void:
 				var source_card : Card = cfc.NMAP.main._current_focus_source
 				for param in source_card.shader_params:
 					_set_shader_param(param, source_card.shader_params[param])
+					shader_time_offset = source_card.shader_time_offset
 					shader_time = source_card.shader_time
 			else:
+				shader_time_offset = CFUtils.randf_range(0.1,100.0)
 				_set_shader_param('seed', cfc.game_rng.randf_range(0.1,100.0))
 				match card_name:
 					"Simple Colours":
@@ -68,6 +71,20 @@ func setup() -> void:
 						_set_shader_param('iChannel1', texture)
 						if not CFUtils.randi() % 8:
 							_set_shader_param('columns', true)
+					"Voronoi Column Tracing":
+						var USE_COLORS = CFUtils.randi()%3
+						if USE_COLORS == 0:
+							USE_COLORS = 3
+						_set_shader_param('USE_COLORS', USE_COLORS)
+						# I want 1/5 shaders of this type to not rotate
+						if not CFUtils.randi() % 5:
+							_set_shader_param('ROTATE', 0)
+						# I want 1/5 shaders of this type to not wave
+						if not CFUtils.randi() % 5:
+							_set_shader_param('WAVING', 0)
+						_set_shader_param('ANIM_SPEED', CFUtils.randf_range(0.1,1.0))
+						var texture = FFUtils.grab_random_texture()
+						_set_shader_param('iChannel1', texture)
 					_:
 						pass
 

@@ -9,8 +9,7 @@ shader_type canvas_item;
 // Licence: Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License
 // https://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_US
 
-uniform float seed = 0.0;
-uniform float gdstime;
+uniform float iTime;
 uniform float multiplier = 7.5;
 uniform bool columns = false;
 uniform sampler2D iChannel1;
@@ -60,7 +59,7 @@ void fragment()
     for( int j=0; j<numSamples; j++ )
     {
         float h = float(j)/float(numSamples);
-        float time = gdstime + h*(1.0/30.0);
+        float time = iTime + h*(1.0/30.0);
         
         vec3 col = vec3(0.2)*(1.0-0.08*st.x);
 

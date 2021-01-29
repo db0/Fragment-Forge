@@ -9,7 +9,7 @@ shader_type canvas_item;
 // Licence: Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License
 // https://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_US
 
-uniform float seed = 0.0;
+uniform float iTime = 0.0;
 
 float hash(vec2 p) {
 	return 0.5*(
@@ -39,7 +39,7 @@ float map_octave(vec2 uv) {
   return val;
 }
 
-float map(vec3 p, float iTime) {
+float map(vec3 p) {
   vec2 uv = p.xz + iTime/2.;
   float amp = 0.6, freq = 2.0, val = 0.0;
   for(int i = 0; i < 3; ++i) {
@@ -60,23 +60,23 @@ float map(vec3 p, float iTime) {
   return val + 3.0 - p.y;
 }
 
-vec3 getNormal(vec3 p, vec2 iResolution, float iTime) {
+vec3 getNormal(vec3 p, vec2 iResolution) {
   float eps = 1./iResolution.x;
   vec3 px = p + vec3(eps, 0, 0);
   vec3 pz = p + vec3(0, 0, eps);
-  return normalize(vec3(map(px, iTime),eps,map(pz, iTime)));
+  return normalize(vec3(map(px),eps,map(pz)));
 }
 
 // raymarch inspiration
 // Alexander Alekseev - Seascape
 // https://www.shadertoy.com/view/Ms2SD1
-float raymarch(vec3 ro, vec3 rd, out vec3 outP, out float outT, float iTime, vec2 iResolution) {
+float raymarch(vec3 ro, vec3 rd, out vec3 outP, out float outT, vec2 iResolution) {
     float l = 0., r = 26.;
     int i = 0, steps = 16;
     float dist = 1000000.;
     for(i = 0; i < steps; ++i) {
         float mid = (r+l)/2.;
-        float mapmid = map(ro + rd*mid, iTime);
+        float mapmid = map(ro + rd*mid);
         dist = min(dist, abs(mapmid));
         if(mapmid > 0.) {
         	l = mid;
@@ -101,7 +101,7 @@ float fbm(vec2 n) {
 	return total;
 }
 
-float lightShafts(vec2 st, float iTime) {
+float lightShafts(vec2 st) {
     float angle = -0.2;
     vec2 _st = st;
     float t = iTime / 16.;
@@ -115,7 +115,7 @@ float lightShafts(vec2 st, float iTime) {
 	return pow(val*mask, 2.0);
 }
 
-vec2 bubble(vec2 uv, float scale, float iTime) {
+vec2 bubble(vec2 uv, float scale) {
     if(uv.y > 0.2) return vec2(0.);
     float t = iTime/4.;
     vec2 st = uv * scale;
@@ -144,7 +144,7 @@ void fragment() {
 //    uv = (-iResolution.xy + 2.0*uv) / iResolution.y;
     uv.y *= 0.5;
     uv.x *= 0.45;
-    uv += bubble(uv, 12., TIME) + bubble(uv, 24., TIME); // add bubbles
+    uv += bubble(uv, 12.) + bubble(uv, 24.); // add bubbles
 
     vec3 rd = normalize(vec3(uv, -1.));
     vec3 hitPos;
@@ -153,18 +153,18 @@ void fragment() {
     vec3 color;
     
     // waves
-    float dist = raymarch(ro, rd, hitPos, hitT, TIME, iResolution);
-    float diffuse = dot(getNormal(hitPos, iResolution, TIME), rd) * 0.5 + 0.5;
+    float dist = raymarch(ro, rd, hitPos, hitT, iResolution);
+    float diffuse = dot(getNormal(hitPos, iResolution), rd) * 0.5 + 0.5;
     color = mix(seaColor, vec3(15,120,152)/255., diffuse);
     color += pow(diffuse, 12.0);
 	// refraction
-    vec3 ref = normalize(refract(hitPos-lightPos, getNormal(hitPos, iResolution, TIME), 0.05));
+    vec3 ref = normalize(refract(hitPos-lightPos, getNormal(hitPos, iResolution), 0.05));
     float refraction = clamp(dot(ref, rd), 0., 1.0);
     color += vec3(245,250,220)/255. * 0.6 * pow(refraction, 1.5);
 
     vec3 col = vec3(0.);
     col = mix(color, seaColor, pow(clamp(0., 1., dist), 0.2)); // glow edge
-    col += vec3(225,230,200)/255. * lightShafts(uv, TIME); // light shafts
+    col += vec3(225,230,200)/255. * lightShafts(uv); // light shafts
 
     // tone map
     col = (col*col + sin(col))/vec3(1.8, 1.8, 1.9);

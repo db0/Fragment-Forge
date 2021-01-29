@@ -8,9 +8,8 @@ shader_type canvas_item;
 // Licence: Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License
 // https://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_US
 
-uniform float seed = 0.0;
 uniform int zoom_choice = 9;
-uniform float gdstime;
+uniform float iTime;
 
 float distanceToMandelbrot( in vec2 c )
 {
@@ -54,7 +53,7 @@ void fragment()
    vec2 p = uv;
 
     // animation
-	float tz = 0.5 - 0.5*cos(0.325*(gdstime+seed));
+	float tz = 0.5 - 0.5*cos(0.325*(iTime));
 	// We can only do a max of 15x zoom before the math breaks down
 	// Due to 32bit limits on floats in Godot shaders.
     float zoo = pow( 0.5, 15.0*tz );

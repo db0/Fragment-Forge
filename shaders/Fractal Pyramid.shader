@@ -8,8 +8,7 @@ shader_type canvas_item;
 // Licence: Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License
 // https://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_US
 
-uniform float seed = 0.0;
-uniform float gdstime;
+uniform float iTime;
 
 vec3 palette(float d){
 	return mix(vec3(0.2,0.7,0.9),vec3(1.,0.,1.),d);
@@ -21,7 +20,7 @@ vec2 rotate(vec2 p,float a){
     return p*mat2(vec2(c,s),vec2(-s,c));
 }
 
-float map(vec3 p, float iTime){
+float map(vec3 p){
     for( int i = 0; i<8; ++i){
         float t = iTime*0.2;
         p.xz =rotate(p.xz,t);
@@ -32,13 +31,13 @@ float map(vec3 p, float iTime){
 	return dot(sign(p),p)/5.;
 }
 
-vec4 rm (vec3 ro, vec3 rd, float iTime){
+vec4 rm (vec3 ro, vec3 rd){
     float t = 0.;
     vec3 col = vec3(0.);
     float d;
     for(float i =0.; i<64.; i++){
 		vec3 p = ro + rd*t;
-        d = map(p, iTime)*.5;
+        d = map(p)*.5;
         if(d<0.02){
             break;
         }
@@ -56,7 +55,7 @@ void fragment()
 	vec2 uv = UV;
 	uv -= 0.5;
 	vec3 ro = vec3(0.,0.,-50.);
-    ro.xz = rotate(ro.xz,gdstime);
+    ro.xz = rotate(ro.xz,iTime);
     vec3 cf = normalize(-ro);
     vec3 cs = normalize(cross(cf,vec3(0.,1.,0.)));
     vec3 cu = normalize(cross(cf,cs));
@@ -65,7 +64,7 @@ void fragment()
     
     vec3 rd = normalize(uuv-ro);
     
-    vec4 col = rm(ro,rd,gdstime+seed);
+    vec4 col = rm(ro,rd);
     
     COLOR = col;
 }

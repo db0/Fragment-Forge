@@ -83,12 +83,12 @@ const CARDS := {
 		"cred_req": 0,
 		"motivation_req": 0,
 	},
-	"Expert Shader": {
+	"Voronoi Column Tracing": {
 		"Type": CardConfig.CardTypes.SHADER,
 		"Tags": [],
-		"Abilities": " ",
-		"Time": 3,
-		"Value": 10,
+		"Abilities": "After you play this card, draw a card.",
+		"Time": 6,
+		"Value": 12,
 		"Kudos": 0,
 		"skill_req": 3,
 		"cred_req": 0,

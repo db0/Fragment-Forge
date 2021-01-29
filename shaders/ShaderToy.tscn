@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://shaders/ShaderToy.gd" type="Script" id=1]
+[ext_resource path="res://shaders/Cloud.shader" type="Shader" id=2]
+
+[sub_resource type="ShaderMaterial" id=1]
+shader = ExtResource( 2 )
+shader_param/depth = 70.0
+shader_param/fogSize = 25.0
+shader_param/iTime = 4056.98
+
+[node name="ShaderToy" type="Panel"]
+material = SubResource( 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 0.158144
+margin_top = -1.5163
+margin_right = -1430.84
+margin_bottom = -470.516
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}

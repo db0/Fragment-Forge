@@ -6,13 +6,12 @@ shader_type canvas_item;
 // Ported to Godot by Lord_Tomorrow
 
 uniform vec2 size = vec2(1.);
-uniform float gdstime;
-uniform float seed;
+uniform float iTime;
 
 void fragment(){
     vec2 r = vec2(1., 1.) * size;
     vec3 c;
-    float l,z = gdstime;
+    float l,z = iTime;
     for(int i=0;i<3;i++) {
         vec2 uv,p=UV.xy / r * size;
         uv=p;

@@ -8,10 +8,9 @@ shader_type canvas_item;
 // Licence: Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License
 // https://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_US
 
-uniform float seed = 0.0;
 uniform vec3 form = vec3(2.0,-3.0, 4.0);
 uniform int zoom_choice = 9;
-uniform float gdstime;
+uniform float iTime;
 uniform bool ANTIALIASING = true;
 uniform bool SLOW_ANTIALIAS = false;
 
@@ -26,7 +25,7 @@ vec2 sdSegment( in vec3 p, in vec3 a, in vec3 b )
 
 vec3 opU( vec3 d1, vec3 d2 ) { return (d1.x<d2.x) ? d1 : d2; }
 
-vec3 map( vec3 p, float iTime )
+vec3 map( vec3 p)
 {
     vec2 id = floor( (p.xz+1.0)/2.0);
     p.xz = mod( p.xz+1.0, 2.0 ) - 1.0;
@@ -50,16 +49,16 @@ vec3 map( vec3 p, float iTime )
 
 //-------------------------------------------------------
 
-vec3 calcNormal( in vec3 pos, in float dt, float iTime )
+vec3 calcNormal( in vec3 pos, in float dt)
 {
     vec2 e = vec2(1.0,-1.0)*dt;
-    return normalize( e.xyy*map( pos + e.xyy,iTime ).x + 
-					  e.yyx*map( pos + e.yyx,iTime ).x + 
-					  e.yxy*map( pos + e.yxy,iTime ).x + 
-					  e.xxx*map( pos + e.xxx,iTime ).x );
+    return normalize( e.xyy*map( pos + e.xyy).x + 
+					  e.yyx*map( pos + e.yyx).x + 
+					  e.yxy*map( pos + e.yxy).x + 
+					  e.xxx*map( pos + e.xxx).x );
 }
 
-float calcOcc( in vec3 pos, in vec3 nor, float iTime )
+float calcOcc( in vec3 pos, in vec3 nor)
 {
     const float h = 0.15;
 	float ao = 0.0;
@@ -67,21 +66,21 @@ float calcOcc( in vec3 pos, in vec3 nor, float iTime )
     {
         vec3 dir = sin( float(i)*vec3(1.0,7.13,13.71)+vec3(0.0,2.0,4.0) );
         dir = dir + 2.5*nor*max(0.0,-dot(nor,dir));            
-        float d = map( pos + h*dir, iTime ).x;
+        float d = map( pos + h*dir).x;
         ao += max(0.0,h-d);
     }
     return clamp( 1.0 - 0.7*ao, 0.0, 1.0 );
 }
 
 //-------------------------------------------------------
-vec3 shade( in float t, in float m, in float v, in vec3 ro, in vec3 rd, float iTime )
+vec3 shade( in float t, in float m, in float v, in vec3 ro, in vec3 rd)
 {
     float px = 0.0001;//(2.0/iResolution.y)*(1.0/3.0);
     float eps = px*t;
 
     vec3  pos = ro + t*rd;
-    vec3  nor = calcNormal( pos, eps,iTime );
-    float occ = calcOcc( pos, nor,iTime );
+    vec3  nor = calcNormal( pos, eps);
+    float occ = calcOcc( pos, nor);
 
     vec3 col = 0.5 + 0.5*cos( m*vec3(1.4,1.2,1.0) + vec3(0.0,1.0,2.0) );
     col += 0.05*nor;
@@ -100,12 +99,7 @@ vec3 shade( in float t, in float m, in float v, in vec3 ro, in vec3 rd, float iT
 
 void fragment()
 {	
-	float time = gdstime+seed;
-//	if (gdstime > 0.0){
-//		time = gdstime+seed
-//	} else {
-//		time = TIME
-//	}
+
 	vec2 iResolution =  1.0 / SCREEN_PIXEL_SIZE;	
 //	vec2 p = (-iResolution.xy+2.0*FRAGCOORD.xy)/iResolution.y;
 	vec2 uv = UV;
@@ -143,7 +137,7 @@ void fragment()
     
     for( int i=0; i<128; i++ )
     {
-	    vec3 h = map( ro + t*rd, time );
+	    vec3 h = map( ro + t*rd);
         float th1 = px*t;
         res = vec3( t, h.yz );
         if( h.x<th1 || t>maxdist ) break;
@@ -155,7 +149,7 @@ void fragment()
         {
             float lalp = 1.0 - (h.x-th1)/(th2-th1);
             if (SLOW_ANTIALIAS){
-             vec3  lcol = shade( t, oh.y, oh.z, ro, rd, time );
+             vec3  lcol = shade( t, oh.y, oh.z, ro, rd);
              tmp.xyz += (1.0-tmp.w)*lalp*lcol;
              tmp.w   += (1.0-tmp.w)*lalp;
              if( tmp.w>0.99 ) break;
@@ -173,7 +167,7 @@ void fragment()
     }
     
     if( t < maxdist )
-        col = shade( res.x, res.y, res.z, ro, rd, time );
+        col = shade( res.x, res.y, res.z, ro, rd);
     
     if (ANTIALIASING){
 		col = mix( col, tmp.xyz/(0.001+tmp.w), tmp.w );

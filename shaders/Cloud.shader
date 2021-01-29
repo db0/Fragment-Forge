@@ -12,8 +12,7 @@ shader_type canvas_item;
 
 uniform float depth = 70.0;
 uniform float fogSize = 25.0;
-uniform float seed = 0.0;
-uniform float gdstime;
+uniform float iTime;
 
 float random (in float x) {
 	return fract(sin(x)*1e4);
@@ -55,21 +54,21 @@ mat2 rot(float a) {
 	return mat2(vec2(ca,sa),vec2(-sa,ca));
 }
 
-float cloud(in vec3 p, float scale, float time) {
+float cloud(in vec3 p, float scale) {
 	float l = length(p*0.1);
-	vec3 d = vec3(p.x+sin(l+time)*2.0,p.y+sin(l)*2.0,0.0);
+	vec3 d = vec3(p.x+sin(l+iTime)*2.0,p.y+sin(l)*2.0,0.0);
 	float coef = max(length(d)-1.5,0.0);
 	float c=1.0;
 	float n1=1.0;
 	for(int i=0; i<8; ++i) {
-		n1+=1.0/c*abs(noise((p*c+time*1.0)*scale));
+		n1+=1.0/c*abs(noise((p*c+iTime*1.0)*scale));
 		c*=2.0;
 	}
 	return n1+(coef);
 }
 
-float mapHyper(vec3 p, float time){
-	return cloud(p,0.5,time+seed);
+float mapHyper(vec3 p){
+	return cloud(p,0.5);
 }  
 
 //void mainImage(out vec4 fragColor, in vec2 fragCoord)
@@ -81,16 +80,16 @@ void fragment()
 	uv -= 0.5;
 	uv /= vec2(iResolution.y / iResolution.x, 1);
 	vec3 s=vec3(0.5,0.5,100);
-	float t2=(gdstime*1.5);
+	float t2=(iTime*1.5);
 	s.xz *= rot(sin(t2)*0.005);
 	vec3 t=vec3(0,0,0);
-	s.x += cos(t2*0.2)*0.10*sin(gdstime*0.01);
-	s.y += sin(t2*0.2)*0.10*sin(gdstime*0.01+10.0);
+	s.x += cos(t2*0.2)*0.10*sin(iTime*0.01);
+	s.y += sin(t2*0.2)*0.10*sin(iTime*0.01+10.0);
 	vec3 cz=normalize(t-s);
 	vec3 cx=normalize(cross(cz,vec3(0,1,0)));
 	vec3 cy=normalize(cross(cz,cx));
 	vec3 r=normalize(uv.x*cx+uv.y*cy+cz*0.7);
-	s.z+=gdstime*-8.0;
+	s.z+=iTime*-8.0;
 	
 	vec3 p=s;
 	float d;
@@ -107,14 +106,14 @@ void fragment()
 	for(int i=0; i<cc; ++i) {
 		float d2 ;
 //		float d;
-		if(color<0.001)d = mapHyper(p, gdstime);
+		if(color<0.001)d = mapHyper(p);
 		c =d;  
 		if( c>seuil )
 		{vec3 p2 =p;
 			if(p3.x==0.0)p3=p;
 			for(int j;j<20;j++)
 			{
-				if(color<0.2)d2= mapHyper(p2, gdstime);
+				if(color<0.2)d2= mapHyper(p2);
 				else
 				d2 = 5.2;
 				if(d2>seuil)
@@ -130,7 +129,7 @@ void fragment()
 	}
 
 	vec2 off=vec2(1.1,0.0);
-	vec3 n=normalize(mapHyper(p3, gdstime)-vec3(mapHyper(p3-off.xyy, gdstime), mapHyper(p3-off.yxy, gdstime), mapHyper(p3-off.yyx, gdstime)));
+	vec3 n=normalize(mapHyper(p3)-vec3(mapHyper(p3-off.xyy), mapHyper(p3-off.yxy), mapHyper(p3-off.yyx)));
 
 //	//compositing
 	vec3 col=vec3(0);
