@@ -89,6 +89,19 @@ func setup() -> void:
 						_set_shader_param('SEA_CHOPPY', CFUtils.randf_range(2.0,6.0))
 						_set_shader_param('SEA_SPEED', CFUtils.randf_range(0.7,2.0))
 						_set_shader_param('WATER_TYPE', CFUtils.randi()%4)
+					"Fractal Tiling":
+						_set_shader_param('contrast', Vector3(
+								CFUtils.randf_range(0.5,1.0),
+								CFUtils.randf_range(0.5,1.0),
+								CFUtils.randf_range(0.5,1.0)))
+						_set_shader_param('zoom', CFUtils.randf_range(96.0,256.0))
+						_set_shader_param('speed_x', CFUtils.randf_range(1.0,5.0))
+						_set_shader_param('speed_y', CFUtils.randf_range(1.0,5.0))
+						if not CFUtils.randi() % 2:
+							_set_shader_param('direction_x', -1.0)
+						if not CFUtils.randi() % 2:
+							_set_shader_param('direction_y', -1.0)
+						
 					_:
 						pass
 

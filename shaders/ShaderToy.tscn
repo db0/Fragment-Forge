@@ -1,16 +1,17 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://shaders/ShaderToy.gd" type="Script" id=1]
-[ext_resource path="res://shaders/Seascape.shader" type="Shader" id=2]
+[ext_resource path="res://shaders/Fractal Tiling.shader" type="Shader" id=2]
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 2 )
-shader_param/iTime = 3185.87
-shader_param/AA = false
-shader_param/SEA_HEIGHT = 0.6
-shader_param/SEA_CHOPPY = 4.0
-shader_param/SEA_SPEED = 1.5
-shader_param/WATER_TYPE = 0
+shader_param/iTime = 5541.95
+shader_param/contrast = Vector3( 0.5, 0.7, 0.8 )
+shader_param/zoom = 128.0
+shader_param/direction_x = 1.0
+shader_param/direction_y = 1.0
+shader_param/speed_x = 2.0
+shader_param/speed_y = 2.0
 
 [sub_resource type="Environment" id=2]
 background_mode = 4

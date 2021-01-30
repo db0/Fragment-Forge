@@ -17,6 +17,17 @@ const CARDS := {
 		"cred_req": 0,
 		"motivation_req": 0,
 	},
+	"Fractal Tiling": {
+		"Type": CardConfig.CardTypes.SHADER,
+		"Tags": [],
+		"Abilities": "Some lvl 0 effect",
+		"Time": 1,
+		"Value": 2,
+		"Kudos": 0,
+		"skill_req": 0,
+		"cred_req": 0,
+		"motivation_req": 0,
+	},
 	"Light": {
 		"Type": CardConfig.CardTypes.SHADER,
 		"Tags": [],
