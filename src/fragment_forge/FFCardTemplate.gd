@@ -84,6 +84,11 @@ func setup() -> void:
 						_set_shader_param('ANIM_SPEED', CFUtils.randf_range(0.1,1.0))
 						var texture = FFUtils.grab_random_texture()
 						_set_shader_param('iChannel1', texture)
+					"Seascape":
+						_set_shader_param('SEA_HEIGHT', CFUtils.randf_range(0.3,0.8))
+						_set_shader_param('SEA_CHOPPY', CFUtils.randf_range(2.0,6.0))
+						_set_shader_param('SEA_SPEED', CFUtils.randf_range(0.7,2.0))
+						_set_shader_param('WATER_TYPE', CFUtils.randi()%4)
 					_:
 						pass
 

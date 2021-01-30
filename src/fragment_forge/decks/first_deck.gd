@@ -21,5 +21,5 @@ const CONTENTS = {
 	"Search Engine Expertise": 2,
 #	"Twister": 10,
 #	"Seascape": 20,
-#	"Voronoi Column Tracing": 0,
+#	"Voronoi Column Tracing": 10,
 }

@@ -8,7 +8,6 @@ shader_type canvas_item;
 // Licence: Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License
 // https://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_US
 
-uniform int zoom_choice = 9;
 uniform float iTime;
 uniform bool AA = false;
 
@@ -19,12 +18,11 @@ const float EPSILON	= 1e-3;
 // sea
 const int ITER_GEOMETRY = 3;
 const int ITER_FRAGMENT = 5;
-const float SEA_HEIGHT = 0.6;
-const float SEA_CHOPPY = 4.0;
-const float SEA_SPEED = 0.8;
+uniform float SEA_HEIGHT = 0.6;
+uniform float SEA_CHOPPY = 4.0;
+uniform float SEA_SPEED = 1.5;
 const float SEA_FREQ = 0.16;
-const vec3 SEA_BASE = vec3(0.0,0.09,0.18);
-const vec3 SEA_WATER_COLOR = vec3(0.8,0.9,0.6)*0.6;
+uniform int WATER_TYPE = 0;
 const mat2 octave_m = mat2(vec2(1.6,1.2),vec2(-1.2,1.6));
 
 // math
@@ -115,7 +113,27 @@ float map_detailed(vec3 p) {
 vec3 getSeaColor(vec3 p, vec3 n, vec3 l, vec3 eye, vec3 dist) {  
     float fresnel = clamp(1.0 - dot(n,-eye), 0.0, 1.0);
     fresnel = pow(fresnel,3.0) * 0.5;
-        
+	vec3 SEA_BASE;
+	vec3 SEA_WATER_COLOR;
+	switch(WATER_TYPE){
+		// Some interesting zoom locations discovered via exploration.
+		case 0:
+			SEA_BASE = vec3(0.0,0.09,0.18);
+			SEA_WATER_COLOR = vec3(0.8,0.9,0.6)*0.6;
+			break;
+		case 1:
+			SEA_BASE = vec3(0.05,0.09,0.10);
+			SEA_WATER_COLOR = vec3(0.8,3.0,1.0)*0.6;
+			break;
+		case 2:
+			SEA_BASE = vec3(0.0,0.0,0.0);
+			SEA_WATER_COLOR = vec3(1.0,1.0,0.0)*0.4;
+			break;
+		case 3:
+			SEA_BASE = vec3(0.18,0.10,0.05);
+			SEA_WATER_COLOR = vec3(2.8,0.8,0.8)*0.6;
+			break;
+	}
     vec3 reflected = getSkyColor(reflect(eye,n));    
     vec3 refracted = SEA_BASE + diffuse(n,l,80.0) * SEA_WATER_COLOR * 0.12; 
     
