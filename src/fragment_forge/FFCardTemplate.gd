@@ -52,7 +52,6 @@ func setup() -> void:
 					shader_time = source_card.shader_time
 			else:
 				shader_time_offset = CFUtils.randf_range(0.1,100.0)
-				_set_shader_param('seed', cfc.game_rng.randf_range(0.1,100.0))
 				match card_name:
 					"Simple Colours":
 						_set_shader_param('speed_color1', CFUtils.randf_range(0.3,1.0))

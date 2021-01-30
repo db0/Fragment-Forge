@@ -8,5 +8,4 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	material.set_shader_param('iTime', shader_time)
-	material.set_shader_param('gdstime', shader_time)
 	shader_time += delta

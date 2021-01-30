@@ -20,5 +20,6 @@ const CONTENTS = {
 	"Hacking Buddy": 2,
 	"Search Engine Expertise": 2,
 #	"Twister": 10,
-#	"Voronoi Column Tracing": 10,
+#	"Seascape": 20,
+#	"Voronoi Column Tracing": 0,
 }
