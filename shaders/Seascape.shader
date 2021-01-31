@@ -7,7 +7,7 @@ shader_type canvas_item;
 
 // Licence: Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License
 // https://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_US
-
+uniform bool is_card = true;
 uniform float iTime;
 uniform bool AA = false;
 
@@ -181,7 +181,7 @@ float heightMapTracing(vec3 ori, vec3 dir, out vec3 p) {
 
 vec3 getPixel(in vec2 coord, float time, vec2 iResolution) {
 	vec2 uv;
-	if (AA){
+	if (!is_card){
 		uv = coord / iResolution.xy;
 	    uv = uv * 2.0 - 1.0;
 	    uv.x *= iResolution.x / iResolution.y;
@@ -231,6 +231,9 @@ void fragment() {
 	vec2 uv = -UV;
 	uv += 1.0;
     color = getPixel(uv, time,iResolution);
+	if (!is_card){
+		color = getPixel(FRAGCOORD.xy, time, iResolution);
+	}
 	
 }
     

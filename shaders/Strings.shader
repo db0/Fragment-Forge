@@ -8,8 +8,8 @@ shader_type canvas_item;
 // Licence: Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License
 // https://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_US
 
+uniform bool is_card = true;
 uniform vec3 form = vec3(2.0,-3.0, 4.0);
-uniform int zoom_choice = 9;
 uniform float iTime;
 uniform bool ANTIALIASING = true;
 uniform bool SLOW_ANTIALIAS = false;
@@ -102,9 +102,14 @@ void fragment()
 
 	vec2 iResolution =  1.0 / SCREEN_PIXEL_SIZE;	
 //	vec2 p = (-iResolution.xy+2.0*FRAGCOORD.xy)/iResolution.y;
-	vec2 uv = UV;
-	uv -= 0.5;
+	vec2 uv = iResolution.xy*UV/iResolution.y;
+	float mult = 2.0;
+	uv *= mult;
+	uv -= 0.5 * mult;
 	vec2 p = uv;	
+	if (!is_card){
+		p = (-iResolution.xy+2.0*FRAGCOORD.xy)/iResolution.y;
+	}
     
 	vec3 ro = 0.6*form;
 	vec3 ta = 0.5*vec3(0.0, 4.0,-4.0);

@@ -8,6 +8,7 @@ shader_type canvas_item;
 // Licence: Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License
 // https://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_US
 
+uniform bool is_card = true;
 uniform int zoom_choice = 9;
 uniform float iTime;
 
@@ -47,10 +48,13 @@ float distanceToMandelbrot( in vec2 c )
 
 void fragment()
 {
-//   vec2 iResolution = 1.0 / SCREEN_PIXEL_SIZE; 
+   vec2 iResolution = 1.0 / SCREEN_PIXEL_SIZE; 
    vec2 uv = UV;
    uv -= 0.5;
    vec2 p = uv;
+   if (!is_card){
+		p = (2.0*FRAGCOORD.xy-iResolution.xy)/iResolution.y;
+}
 
     // animation
 	float tz = 0.5 - 0.5*cos(0.325*(iTime));

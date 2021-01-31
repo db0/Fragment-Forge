@@ -102,6 +102,11 @@ func setup() -> void:
 						if not CFUtils.randi() % 2:
 							_set_shader_param('direction_y', -1.0)
 						
+					"Sierpinski":
+						# One in four sierpinski shaders will be upside down
+						if not CFUtils.randi() % 4:
+							_set_shader_param('orient', -1.0)
+						
 					_:
 						pass
 

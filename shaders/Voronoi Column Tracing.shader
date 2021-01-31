@@ -17,9 +17,8 @@ shader_type canvas_item;
 
 // Licence: Creative Commons CC BY-SA
 
-
+uniform bool is_card = true;
 uniform float seed = 0.0;
-uniform int zoom_choice = 9;
 uniform sampler2D iChannel0;
 uniform sampler2D iChannel1;
 uniform float iTime;
@@ -447,11 +446,11 @@ if (USE_COLORS == 0){
 
 void fragment()
 {
-	vec2 iResolution =  1.0 / SCREEN_PIXEL_SIZE;
+   vec2 iResolution =  1.0 / SCREEN_PIXEL_SIZE;
    vec2 uv = (FRAGCOORD.xy - iResolution.xy*0.5) / iResolution.y;
-
+   if (is_card){
    uv = -UV;
-   uv += .5;
+   uv += .5;}
 //   vec2 uv = -UV;
    //vec3 light_dir = normalize(vec3(.5, 1.0, .25));
    vec3 light_dir = normalize(vec3(.25, .7, .25));
