@@ -1,5 +1,5 @@
 tool
-extends PanelContainer
+extends Panel
 
 var shader_time := 0.0
 var frame := 0
@@ -13,6 +13,8 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	material.set_shader_param('iTime', shader_time)
 	material.set_shader_param('iFrame', frame)
+	if Engine.editor_hint:	
+		material.set_shader_param('is_card', false)
 	shader_time += delta
 	change_time += delta
 	frame += 1
@@ -23,9 +25,17 @@ func _process(delta: float) -> void:
 func change_shader(shader_name = null) -> void:
 	material = ShaderMaterial.new()
 	if not shader_name:
+		# These are shaders which don't looks that good in a bigger version
+		# So we want to avoid having them in the main menu background
+		var unimpressive_shaders = [
+			"Light",
+			"Cloud",
+			"Fractal Tiling",
+			]
 		# Using split() instead of rstrip() as the later seems to be eating
 		# characters for some reason
-		shader_name = grab_random_shader().split(".")[0]
+		while not shader_name or shader_name in unimpressive_shaders:
+			shader_name = grab_random_shader().split(".")[0]
 	material.shader = load("res://shaders/" + shader_name + ".shader")
 	shader_properties = ShaderProperties.new(material)
 	shader_properties.init_shader(shader_name, false)
