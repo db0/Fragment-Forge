@@ -13,14 +13,25 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	material.set_shader_param('iTime', shader_time)
 	material.set_shader_param('iFrame', frame)
-	if Engine.editor_hint:	
+	if Engine.editor_hint:
 		material.set_shader_param('is_card', false)
 	shader_time += delta
 	change_time += delta
 	frame += 1
-	if not Engine.editor_hint and change_time >=10: 
-		change_time = 0.0
-		change_shader()
+	if not Engine.editor_hint and change_time >=10:
+		if not $Tween.is_active():
+			$Tween.interpolate_property(self,'self_modulate',
+					self_modulate, Color(0,0,0), 2.0,
+					Tween.TRANS_QUAD, Tween.EASE_IN)
+			$Tween.start()
+			yield($Tween, "tween_all_completed")
+			change_time = 0.0
+			change_shader()
+			self_modulate = Color(0,0,0)
+			$Tween.interpolate_property(self,'self_modulate',
+					self_modulate, Color(1,1,1), 2.0,
+					Tween.TRANS_SINE, Tween.EASE_OUT)
+			$Tween.start()
 
 func change_shader(shader_name = null) -> void:
 	material = ShaderMaterial.new()
@@ -45,7 +56,7 @@ func change_shader(shader_name = null) -> void:
 static func grab_random_shader() -> String:
 	var files := []
 	var dir := Directory.new()
-	
+
 	# warning-ignore:return_value_discarded
 	dir.open("res://shaders")
 	# warning-ignore:return_value_discarded
