@@ -6,7 +6,8 @@ extends Card
 var attempted_action_drop_to_board := false
 var shader_time := 0.0
 var shader_params := {}
-var shader_time_offset := 0.0
+var shader_properties: ShaderProperties
+
 
 onready var modified_costs_popup = $ModifiedCostsPopup
 
@@ -24,7 +25,7 @@ func _process(delta: float) -> void:
 			and card_front.material\
 			and is_faceup:
 		card_front.material.set_shader_param(
-					'iTime', shader_time + shader_time_offset)
+					'iTime', shader_time + shader_properties.shader_time_offset)
 		# Pauses animations while the card is not focused
 		match state:
 			CardState.FOCUSED_IN_HAND,\
@@ -34,6 +35,12 @@ func _process(delta: float) -> void:
 			CardState.DRAGGED,\
 			CardState.VIEWED_IN_PILE:
 				shader_time += delta
+			CardState.IN_HAND, CardState.PUSHED_ASIDE:
+				if cfc.game_settings.animate_in_hand:
+					shader_time += delta
+			CardState.ON_PLAY_BOARD:
+				if cfc.game_settings.animate_on_board:
+					shader_time += delta
 
 func setup() -> void:
 	.setup()
@@ -43,72 +50,16 @@ func setup() -> void:
 		var check_shader = File.new()
 		if check_shader.file_exists(shader_name):
 			card_front.material = ShaderMaterial.new()
-			card_front.material.shader = load("res://shaders/" + card_name + ".shader")
+			shader_properties = ShaderProperties.new(card_front.material)
+			shader_properties.material.shader = load("res://shaders/" + card_name + ".shader")
 			if state == CardState.VIEWPORT_FOCUS:
 				var source_card : Card = cfc.NMAP.main._current_focus_source
-				for param in source_card.shader_params:
-					_set_shader_param(param, source_card.shader_params[param])
-					shader_time_offset = source_card.shader_time_offset
-					shader_time = source_card.shader_time
+				shader_properties.shader_time_offset = source_card.shader_properties.shader_time_offset
+				shader_time = source_card.shader_time
+				for param in source_card.shader_properties.shader_params:
+					shader_properties._set_shader_param(param, source_card.shader_properties.shader_params[param])
 			else:
-				shader_time_offset = CFUtils.randf_range(0.1,100.0)
-				match card_name:
-					"Simple Colours":
-						_set_shader_param('speed_color1', CFUtils.randf_range(0.3,1.0))
-						_set_shader_param('speed_color2', CFUtils.randf_range(0.3,1.0))
-						_set_shader_param('style', CFUtils.randi()%2)
-					"Mandelbrot":
-						_set_shader_param('zoom_choice', CFUtils.randi()%9)
-					"Strings":
-						_set_shader_param('form', Vector3(
-										CFUtils.randf_range(-2.0,2.0),
-										CFUtils.randf_range(-4.0,4.0),
-										CFUtils.randf_range(-4.0,4.0)))
-					"Twister":
-						_set_shader_param('multiplier', CFUtils.randf_range(5.0,10.0))
-						var texture = FFUtils.grab_random_texture()
-						_set_shader_param('iChannel1', texture)
-						if not CFUtils.randi() % 8:
-							_set_shader_param('columns', true)
-					"Voronoi Column Tracing":
-						var USE_COLORS = CFUtils.randi()%3
-						if USE_COLORS == 0:
-							USE_COLORS = 3
-						_set_shader_param('USE_COLORS', USE_COLORS)
-						# I want 1/5 shaders of this type to not rotate
-						if not CFUtils.randi() % 5:
-							_set_shader_param('ROTATE', 0)
-						# I want 1/5 shaders of this type to not wave
-						if not CFUtils.randi() % 5:
-							_set_shader_param('WAVING', 0)
-						_set_shader_param('ANIM_SPEED', CFUtils.randf_range(0.1,1.0))
-						var texture = FFUtils.grab_random_texture()
-						_set_shader_param('iChannel1', texture)
-					"Seascape":
-						_set_shader_param('SEA_HEIGHT', CFUtils.randf_range(0.3,0.8))
-						_set_shader_param('SEA_CHOPPY', CFUtils.randf_range(2.0,6.0))
-						_set_shader_param('SEA_SPEED', CFUtils.randf_range(0.7,2.0))
-						_set_shader_param('WATER_TYPE', CFUtils.randi()%4)
-					"Fractal Tiling":
-						_set_shader_param('contrast', Vector3(
-								CFUtils.randf_range(0.5,1.0),
-								CFUtils.randf_range(0.5,1.0),
-								CFUtils.randf_range(0.5,1.0)))
-						_set_shader_param('zoom', CFUtils.randf_range(96.0,256.0))
-						_set_shader_param('speed_x', CFUtils.randf_range(1.0,5.0))
-						_set_shader_param('speed_y', CFUtils.randf_range(1.0,5.0))
-						if not CFUtils.randi() % 2:
-							_set_shader_param('direction_x', -1.0)
-						if not CFUtils.randi() % 2:
-							_set_shader_param('direction_y', -1.0)
-						
-					"Sierpinski":
-						# One in four sierpinski shaders will be upside down
-						if not CFUtils.randi() % 4:
-							_set_shader_param('orient', -1.0)
-						
-					_:
-						pass
+				shader_properties.init_shader(card_name)
 
 func check_play_costs() -> Color:
 	var ret : Color = CFConst.CostsState.OK

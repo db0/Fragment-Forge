@@ -6,9 +6,14 @@ var frame := 0
 var change_time := 0.0
 var shader_properties: ShaderProperties
 
+onready var main_menu := $MainMenu
+onready var settings_menu := $SettingsMenu
+
 func _ready() -> void:
 	cfc.game_rng.randomize()
 	change_shader()
+	settings_menu.rect_position.x = get_viewport().size.x
+	settings_menu.back_button.connect("pressed", self, "_on_Back_pressed")
 
 func _process(delta: float) -> void:
 	material.set_shader_param('iTime', shader_time)
@@ -75,3 +80,22 @@ static func grab_random_shader() -> String:
 
 func _on_NewGame_pressed() -> void:
 	get_tree().change_scene("res://src/fragment_forge/Main.tscn")
+
+
+func _on_Settings_pressed() -> void:
+	$MenuTween.interpolate_property(main_menu,'rect_position:x',
+			main_menu.rect_position.x, -get_viewport().size.x, 0.75,
+			Tween.TRANS_BACK, Tween.EASE_IN_OUT)
+	$MenuTween.interpolate_property(settings_menu,'rect_position:x',
+			settings_menu.rect_position.x, 0, 0.75,
+			Tween.TRANS_BACK, Tween.EASE_IN_OUT)
+	$MenuTween.start()
+
+func _on_Back_pressed() -> void:
+	$MenuTween.interpolate_property(settings_menu,'rect_position:x',
+			settings_menu.rect_position.x, get_viewport().size.x, 0.75,
+			Tween.TRANS_BACK, Tween.EASE_IN_OUT)
+	$MenuTween.interpolate_property(main_menu,'rect_position:x',
+			main_menu.rect_position.x, 0, 0.75,
+			Tween.TRANS_BACK, Tween.EASE_IN_OUT)
+	$MenuTween.start()

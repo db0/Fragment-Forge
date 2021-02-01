@@ -3,11 +3,14 @@ extends Reference
 
 var shader_params := {}
 var material: Material
+var shader_time_offset := 0.0
 
 func _init(_material: Material) -> void:
 	material = _material
 
 func init_shader(shader_name: String, is_card := true) -> void:
+	if is_card:
+		shader_time_offset = CFUtils.randf_range(0.1,100.0)
 	match shader_name:
 		"Simple Colours":
 			_set_shader_param('speed_color1', CFUtils.randf_range(0.3,1.0))

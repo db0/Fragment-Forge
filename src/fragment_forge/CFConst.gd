@@ -88,6 +88,8 @@ const HAND_USE_OVAL_SHAPE := true
 #
 # if you don't want this behaviour, change it to Vector2(1,1)
 const CARD_SCALE_WHILE_DRAGGING := Vector2(0.4, 0.4)
+# The location and name of the file into which to store game settings
+const SETTINGS_FILENAME := "user://FFSettings.json"
 # The path where the Card Game Framework core files exist.
 # (i.e. mandatory scenes and scripts)
 const PATH_CORE := "res://src/core/"
