@@ -261,7 +261,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Fragment Forge"
-run/main_scene="res://src/fragment_forge/Main.tscn"
+run/main_scene="res://src/fragment_forge/MainMenu.tscn"
 config/icon="res://icon.png"
 
 [autoload]

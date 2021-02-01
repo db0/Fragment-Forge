@@ -7,7 +7,7 @@
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 2 )
 shader_param/is_card = false
-shader_param/iTime = 79.1167
+shader_param/iTime = 686.317
 shader_param/AA = false
 shader_param/SEA_HEIGHT = 0.6
 shader_param/SEA_CHOPPY = 4.0
@@ -43,21 +43,21 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="CenterContainer" type="CenterContainer" parent="."]
+[node name="CC" type="CenterContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="PanelContainer" type="PanelContainer" parent="CenterContainer"]
+[node name="PC" type="PanelContainer" parent="CC"]
 self_modulate = Color( 1, 1, 1, 0.690196 )
 margin_left = 731.0
 margin_top = 253.0
 margin_right = 969.0
 margin_bottom = 647.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/PanelContainer"]
+[node name="VBC" type="VBoxContainer" parent="CC/PC"]
 margin_left = 7.0
 margin_top = 7.0
 margin_right = 231.0
@@ -65,37 +65,39 @@ margin_bottom = 387.0
 size_flags_horizontal = 3
 custom_constants/separation = 40
 
-[node name="NewGame" type="Button" parent="CenterContainer/PanelContainer/VBoxContainer"]
+[node name="NewGame" type="Button" parent="CC/PC/VBC"]
 margin_right = 224.0
 margin_bottom = 100.0
 rect_min_size = Vector2( 0, 100 )
 custom_fonts/font = SubResource( 2 )
 text = "New Game"
 
-[node name="DeckEditor" type="Button" parent="CenterContainer/PanelContainer/VBoxContainer"]
+[node name="DeckEditor" type="Button" parent="CC/PC/VBC"]
 margin_top = 140.0
 margin_right = 224.0
 margin_bottom = 240.0
 rect_min_size = Vector2( 0, 100 )
 custom_fonts/font = SubResource( 2 )
+disabled = true
 text = "Deck Editor"
 
-[node name="Settings" type="Button" parent="CenterContainer/PanelContainer/VBoxContainer"]
+[node name="Settings" type="Button" parent="CC/PC/VBC"]
 margin_top = 280.0
 margin_right = 224.0
 margin_bottom = 380.0
 rect_min_size = Vector2( 0, 100 )
 custom_fonts/font = SubResource( 2 )
+disabled = true
 text = "Settings"
 
-[node name="HBoxContainer" type="CenterContainer" parent="."]
+[node name="HBC" type="CenterContainer" parent="."]
 anchor_right = 1.0
 rect_min_size = Vector2( 0, 200 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer"]
+[node name="PC" type="PanelContainer" parent="HBC"]
 self_modulate = Color( 1, 1, 1, 0.717647 )
 margin_left = 593.0
 margin_top = 63.0
@@ -103,10 +105,12 @@ margin_right = 1106.0
 margin_bottom = 136.0
 custom_styles/panel = SubResource( 4 )
 
-[node name="Label" type="Label" parent="HBoxContainer/PanelContainer"]
+[node name="Label" type="Label" parent="HBC/PC"]
 margin_right = 513.0
 margin_bottom = 73.0
 custom_fonts/font = SubResource( 3 )
 text = "Fragment Forge"
 
 [node name="Tween" type="Tween" parent="."]
+
+[connection signal="pressed" from="CC/PC/VBC/NewGame" to="." method="_on_NewGame_pressed"]

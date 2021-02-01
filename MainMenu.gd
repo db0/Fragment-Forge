@@ -39,6 +39,7 @@ func change_shader(shader_name = null) -> void:
 		# These are shaders which don't looks that good in a bigger version
 		# So we want to avoid having them in the main menu background
 		var unimpressive_shaders = [
+			"Simple Colours",
 			"Light",
 			"Cloud",
 			"Fractal Tiling",
@@ -72,3 +73,5 @@ static func grab_random_shader() -> String:
 	return(files[0])
 
 
+func _on_NewGame_pressed() -> void:
+	get_tree().change_scene("res://src/fragment_forge/Main.tscn")
