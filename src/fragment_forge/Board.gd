@@ -1,15 +1,18 @@
 # Code for a sample playspace, you're expected to provide your own ;)
 extends Board
 
+const settings_scene = preload("res://src/fragment_forge/SettingsMenu.tscn")
 var allCards := [] # A pseudo-deck array to hold the card objects we want to pull
 
 onready var start_button := $VBC/Details/Start
 onready var debug_button := $VBC/Details/Debug
+onready var settings_button := $VBC/Details/Settings
 
 onready var competitions : Competitions = $VBC/Details/VBC/Competition
 onready var game_goal := $VBC/Details/VBC2/GameGoal
 
 var tournament := 1
+var popup_settings : PopupPanel
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -22,9 +25,11 @@ func _ready() -> void:
 	# This way any they will work with any size of viewport in a game.
 	# Discard pile goes bottom right
 	$Debug.pressed = cfc._debug
-# warning-ignore:return_value_discarded
+	# warning-ignore:return_value_discarded
 	start_button.connect("pressed", self, "_on_Start_pressed")
-# warning-ignore:return_value_discarded
+	# warning-ignore:return_value_discarded
+	settings_button.connect("pressed", self, "_on_Settings_pressed")
+	# warning-ignore:return_value_discarded
 	debug_button.connect("pressed", self, "_on_Debug_pressed")
 	# Fill up the deck for demo purposes
 	if not cfc.ut:
@@ -49,8 +54,48 @@ func _on_Start_pressed() -> void:
 				yield(get_tree().create_timer(0.1), "timeout")
 		competitions.next_competition()
 
+
+func _on_Settings_pressed() -> void:
+	_pause_board()
+	popup_settings = PopupPanel.new()
+	self.add_child(popup_settings)
+	var settings_menu = settings_scene.instance()
+	popup_settings.add_child(settings_menu)
+	yield(get_tree().create_timer(0.1), "timeout")
+	popup_settings.popup_centered()
+	popup_settings.set_as_minsize()
+	settings_menu.back_button.text = "Close"
+	settings_menu.back_button.connect('pressed', self, '_on_Settings_hide')
+	popup_settings.connect('popup_hide', self, '_on_Settings_hide')
+
+
+func _on_Settings_hide() -> void:
+	popup_settings.queue_free()
+	_unpause_board()
+
 func start_turn() -> void:
 	pass
+
+
+func _pause_board() -> void:
+	cfc.game_paused = true
+	start_button.disabled = true
+	settings_button.disabled = true
+	$BoardTween.interpolate_property(self,'modulate',
+			Color(1,1,1), Color(0.4,0.4,0.4), 0.75,
+			Tween.TRANS_SINE, Tween.EASE_IN)
+	$BoardTween.start()
+
+
+func _unpause_board() -> void:
+	$BoardTween.interpolate_property(self,'modulate',
+			Color(0.4,0.4,0.4), Color(1,1,1), 0.75,
+			Tween.TRANS_SINE, Tween.EASE_OUT)
+	$BoardTween.start()
+	cfc.game_paused = false
+	start_button.disabled = false
+	settings_button.disabled = false
+
 
 func _on_Debug_pressed() -> void:
 	game_goal.cred_goal = 30
@@ -131,4 +176,4 @@ func load_deck() -> void:
 func reset_game() -> void:
 	for c in get_tree().get_nodes_in_group("cards"):
 		c.queue_free()
-		
+

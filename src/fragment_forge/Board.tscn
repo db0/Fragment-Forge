@@ -9,7 +9,6 @@
 [ext_resource path="res://src/fragment_forge/Hand.gd" type="Script" id=7]
 [ext_resource path="res://src/fragment_forge/ShadersGrid.tscn" type="PackedScene" id=8]
 
-
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0, 0, 0, 1 )
 corner_radius_top_left = 25
@@ -179,12 +178,13 @@ text = "Debug"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="BoardTween" type="Tween" parent="."]
+
 [connection signal="pressed" from="ReshuffleAllDeck" to="." method="_on_ReshuffleAllDeck_pressed"]
 [connection signal="pressed" from="ReshuffleAllDiscard" to="." method="_on_ReshuffleAllDiscard_pressed"]
 [connection signal="toggled" from="Debug" to="." method="_on_Debug_toggled"]
 
 [editable path="Deck"]
-
 [editable path="Discard"]
-
 [editable path="Hand"]
