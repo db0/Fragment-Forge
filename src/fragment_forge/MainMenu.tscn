@@ -1,14 +1,15 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://MainMenu.gd" type="Script" id=1]
 [ext_resource path="res://shaders/Seascape.shader" type="Shader" id=2]
 [ext_resource path="res://fonts/Xolonium-Regular.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://src/fragment_forge/SettingsMenu.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/fragment_forge/DeckBuilder.tscn" type="PackedScene" id=5]
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 2 )
 shader_param/is_card = false
-shader_param/iTime = 454.498
+shader_param/iTime = 0.215187
 shader_param/AA = false
 shader_param/SEA_HEIGHT = 0.6
 shader_param/SEA_CHOPPY = 4.0
@@ -43,6 +44,10 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="DeckBuilder" parent="." instance=ExtResource( 5 )]
+
+[node name="SettingsMenu" parent="." instance=ExtResource( 4 )]
 
 [node name="MainMenu" type="CenterContainer" parent="."]
 anchor_right = 1.0
@@ -79,7 +84,6 @@ margin_right = 243.0
 margin_bottom = 240.0
 rect_min_size = Vector2( 0, 100 )
 custom_fonts/font = SubResource( 2 )
-disabled = true
 text = "Deck Builder"
 
 [node name="Settings" type="Button" parent="MainMenu/PC/VBC"]
@@ -90,16 +94,14 @@ rect_min_size = Vector2( 0, 100 )
 custom_fonts/font = SubResource( 2 )
 text = "Settings"
 
-[node name="SettingsMenu" parent="." instance=ExtResource( 4 )]
-
-[node name="HBC" type="CenterContainer" parent="."]
+[node name="Title" type="CenterContainer" parent="."]
 anchor_right = 1.0
 rect_min_size = Vector2( 0, 200 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="PC" type="PanelContainer" parent="HBC"]
+[node name="PC" type="PanelContainer" parent="Title"]
 self_modulate = Color( 1, 1, 1, 0.717647 )
 margin_left = 593.0
 margin_top = 63.0
@@ -107,7 +109,7 @@ margin_right = 1106.0
 margin_bottom = 136.0
 custom_styles/panel = SubResource( 4 )
 
-[node name="Label" type="Label" parent="HBC/PC"]
+[node name="Label" type="Label" parent="Title/PC"]
 margin_right = 513.0
 margin_bottom = 73.0
 custom_fonts/font = SubResource( 3 )
@@ -118,4 +120,5 @@ text = "Fragment Forge"
 [node name="MenuTween" type="Tween" parent="."]
 
 [connection signal="pressed" from="MainMenu/PC/VBC/NewGame" to="." method="_on_NewGame_pressed"]
+[connection signal="pressed" from="MainMenu/PC/VBC/DeckBuilder" to="." method="_on_DeckBuilder_pressed"]
 [connection signal="pressed" from="MainMenu/PC/VBC/Settings" to="." method="_on_Settings_pressed"]

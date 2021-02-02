@@ -8,12 +8,16 @@ var shader_properties: ShaderProperties
 
 onready var main_menu := $MainMenu
 onready var settings_menu := $SettingsMenu
+onready var deck_builder := $DeckBuilder
+onready var title := $Title
 
 func _ready() -> void:
 	cfc.game_rng.randomize()
 	change_shader()
 	settings_menu.rect_position.x = get_viewport().size.x
-	settings_menu.back_button.connect("pressed", self, "_on_Back_pressed")
+	deck_builder.rect_position.x = -get_viewport().size.x
+	settings_menu.back_button.connect("pressed", self, "_on_Setings_Back_pressed")
+	deck_builder.back_button.connect("pressed", self, "_on_DeckBuilder_Back_pressed")
 
 func _process(delta: float) -> void:
 	material.set_shader_param('iTime', shader_time)
@@ -91,11 +95,35 @@ func _on_Settings_pressed() -> void:
 			Tween.TRANS_BACK, Tween.EASE_IN_OUT)
 	$MenuTween.start()
 
-func _on_Back_pressed() -> void:
+func _on_Setings_Back_pressed() -> void:
 	$MenuTween.interpolate_property(settings_menu,'rect_position:x',
 			settings_menu.rect_position.x, get_viewport().size.x, 0.75,
 			Tween.TRANS_BACK, Tween.EASE_IN_OUT)
 	$MenuTween.interpolate_property(main_menu,'rect_position:x',
 			main_menu.rect_position.x, 0, 0.75,
+			Tween.TRANS_BACK, Tween.EASE_IN_OUT)
+	$MenuTween.start()
+	
+func _on_DeckBuilder_pressed() -> void:
+	$MenuTween.interpolate_property(main_menu,'rect_position:x',
+			main_menu.rect_position.x, get_viewport().size.x, 0.75,
+			Tween.TRANS_BACK, Tween.EASE_IN_OUT)
+	$MenuTween.interpolate_property(title,'rect_position:x',
+			title.rect_position.x, get_viewport().size.x, 0.75,
+			Tween.TRANS_BACK, Tween.EASE_IN_OUT)
+	$MenuTween.interpolate_property(deck_builder,'rect_position:x',
+			deck_builder.rect_position.x, 0, 0.75,
+			Tween.TRANS_BACK, Tween.EASE_IN_OUT)
+	$MenuTween.start()
+
+func _on_DeckBuilder_Back_pressed() -> void:
+	$MenuTween.interpolate_property(deck_builder,'rect_position:x',
+			deck_builder.rect_position.x, -get_viewport().size.x, 0.75,
+			Tween.TRANS_BACK, Tween.EASE_IN_OUT)
+	$MenuTween.interpolate_property(main_menu,'rect_position:x',
+			main_menu.rect_position.x, 0, 0.75,
+			Tween.TRANS_BACK, Tween.EASE_IN_OUT)
+	$MenuTween.interpolate_property(title,'rect_position:x',
+			title.rect_position.x, 0, 0.75,
 			Tween.TRANS_BACK, Tween.EASE_IN_OUT)
 	$MenuTween.start()
