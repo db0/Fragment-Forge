@@ -12,12 +12,6 @@ font_data = ExtResource( 1 )
 
 [node name="DeckBuilder" instance=ExtResource( 2 )]
 script = ExtResource( 3 )
-random_adjective_miss = 1.1
-random_append_miss = 2
-max_quantity = 3
-deck_minimum = 52
-deck_maximum = 60
-filter_button_properties = [ "Type" ]
 
 [node name="MC" type="MarginContainer" parent="VBC/HBC/MC/CurrentDeck/Buttons" index="3"]
 margin_left = 179.0
@@ -31,3 +25,16 @@ margin_right = 843.0
 margin_bottom = 26.0
 custom_fonts/font = SubResource( 1 )
 text = "Back"
+
+[node name="FilterLine" parent="VBC/HBC/MC2/AvailableCards" index="0"]
+criteria_map = {
+"a": "Abilities",
+"c": "cred_req",
+"g": "Tags",
+"i": "Time",
+"k": "Kudos",
+"m": "motivation_req",
+"s": "skill_req",
+"t": "Type",
+"v": "Value"
+}

@@ -9,7 +9,7 @@ onready var fancy_movement = $PC/VBC/FancyMovement
 func _ready() -> void:
 	cfc.game_settings['animate_in_hand'] = cfc.game_settings.get('animate_in_hand', false)
 	cfc.game_settings['animate_on_board'] = cfc.game_settings.get('animate_on_board', false)
-	cfc.game_settings['animate_in_deckbuilder'] = cfc.game_settings.get('animate_in_deckbuilder', false)
+	cfc.game_settings['animate_in_deckbuilder'] = cfc.game_settings.get('animate_in_deckbuilder', true)
 	cfc.game_settings['fancy_movement'] = cfc.game_settings.get('fancy_movement', CFConst.FANCY_MOVEMENT)
 	animate_in_hand.pressed = cfc.game_settings.animate_in_hand
 	animate_on_board.pressed = cfc.game_settings.animate_on_board
