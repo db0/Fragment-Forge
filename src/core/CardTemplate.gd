@@ -23,11 +23,12 @@ enum CardState {
 	DROPPING_TO_BOARD		#6
 	ON_PLAY_BOARD			#7
 	FOCUSED_ON_BOARD		#8
-	IN_PILE					#10
-	VIEWED_IN_PILE			#11
-	IN_POPUP				#12
-	FOCUSED_IN_POPUP		#13
-	VIEWPORT_FOCUS			#14
+	IN_PILE					#9
+	VIEWED_IN_PILE			#10
+	IN_POPUP				#11
+	FOCUSED_IN_POPUP		#12
+	VIEWPORT_FOCUS			#13
+	IN_DECKBUILDER			#14
 }
 # Specifies where a card is allowed to drop on the board
 #
@@ -2179,7 +2180,6 @@ func _process_card_state() -> void:
 			if not is_faceup:
 				if is_viewed:
 					_flip_card($Control/Back,$Control/Front, true)
-
 
 # Get the angle on the ellipse
 func _get_angle_by_index(index_diff = null) -> float:

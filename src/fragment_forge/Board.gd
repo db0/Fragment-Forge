@@ -62,8 +62,7 @@ func _on_Settings_pressed() -> void:
 	var settings_menu = settings_scene.instance()
 	popup_settings.add_child(settings_menu)
 	yield(get_tree().create_timer(0.1), "timeout")
-	popup_settings.popup_centered()
-	popup_settings.set_as_minsize()
+	popup_settings.popup_centered_minsize()
 	settings_menu.back_button.text = "Close"
 	settings_menu.back_button.connect('pressed', self, '_on_Settings_hide')
 	popup_settings.connect('popup_hide', self, '_on_Settings_hide')

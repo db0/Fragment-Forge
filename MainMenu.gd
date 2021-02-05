@@ -1,6 +1,8 @@
 tool
 extends Panel
 
+const menu_switch_time = 0.35
+
 var shader_time := 0.0
 var frame := 0
 var change_time := 0.0
@@ -88,42 +90,42 @@ func _on_NewGame_pressed() -> void:
 
 func _on_Settings_pressed() -> void:
 	$MenuTween.interpolate_property(main_menu,'rect_position:x',
-			main_menu.rect_position.x, -get_viewport().size.x, 0.75,
+			main_menu.rect_position.x, -get_viewport().size.x, menu_switch_time,
 			Tween.TRANS_BACK, Tween.EASE_IN_OUT)
 	$MenuTween.interpolate_property(settings_menu,'rect_position:x',
-			settings_menu.rect_position.x, 0, 0.75,
+			settings_menu.rect_position.x, 0, menu_switch_time,
 			Tween.TRANS_BACK, Tween.EASE_IN_OUT)
 	$MenuTween.start()
 
 func _on_Setings_Back_pressed() -> void:
 	$MenuTween.interpolate_property(settings_menu,'rect_position:x',
-			settings_menu.rect_position.x, get_viewport().size.x, 0.75,
+			settings_menu.rect_position.x, get_viewport().size.x, menu_switch_time,
 			Tween.TRANS_BACK, Tween.EASE_IN_OUT)
 	$MenuTween.interpolate_property(main_menu,'rect_position:x',
-			main_menu.rect_position.x, 0, 0.75,
+			main_menu.rect_position.x, 0, menu_switch_time,
 			Tween.TRANS_BACK, Tween.EASE_IN_OUT)
 	$MenuTween.start()
 	
 func _on_DeckBuilder_pressed() -> void:
 	$MenuTween.interpolate_property(main_menu,'rect_position:x',
-			main_menu.rect_position.x, get_viewport().size.x, 0.75,
+			main_menu.rect_position.x, get_viewport().size.x, menu_switch_time,
 			Tween.TRANS_BACK, Tween.EASE_IN_OUT)
 	$MenuTween.interpolate_property(title,'rect_position:x',
-			title.rect_position.x, get_viewport().size.x, 0.75,
+			title.rect_position.x, get_viewport().size.x, menu_switch_time,
 			Tween.TRANS_BACK, Tween.EASE_IN_OUT)
 	$MenuTween.interpolate_property(deck_builder,'rect_position:x',
-			deck_builder.rect_position.x, 0, 0.75,
+			deck_builder.rect_position.x, 0, menu_switch_time,
 			Tween.TRANS_BACK, Tween.EASE_IN_OUT)
 	$MenuTween.start()
 
 func _on_DeckBuilder_Back_pressed() -> void:
 	$MenuTween.interpolate_property(deck_builder,'rect_position:x',
-			deck_builder.rect_position.x, -get_viewport().size.x, 0.75,
+			deck_builder.rect_position.x, -get_viewport().size.x, menu_switch_time,
 			Tween.TRANS_BACK, Tween.EASE_IN_OUT)
 	$MenuTween.interpolate_property(main_menu,'rect_position:x',
-			main_menu.rect_position.x, 0, 0.75,
+			main_menu.rect_position.x, 0, menu_switch_time,
 			Tween.TRANS_BACK, Tween.EASE_IN_OUT)
 	$MenuTween.interpolate_property(title,'rect_position:x',
-			title.rect_position.x, 0, 0.75,
+			title.rect_position.x, 0, menu_switch_time,
 			Tween.TRANS_BACK, Tween.EASE_IN_OUT)
 	$MenuTween.start()
