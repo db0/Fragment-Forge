@@ -41,6 +41,9 @@ func _process(delta: float) -> void:
 			CardState.ON_PLAY_BOARD:
 				if cfc.game_settings.animate_on_board:
 					shader_time += delta
+			CardState.PREVIEW:
+				if cfc.game_settings.animate_in_deckbuilder:
+					shader_time += delta
 
 func setup() -> void:
 	.setup()

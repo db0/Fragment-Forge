@@ -1,76 +1,33 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://fonts/Xolonium-Regular.ttf" type="DynamicFontData" id=1]
-[ext_resource path="res://src/fragment_forge/DeckBuilder.gd" type="Script" id=2]
+[ext_resource path="res://src/core/DeckBuilder/DeckBuilder.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/fragment_forge/DeckBuilder.gd" type="Script" id=3]
 
 [sub_resource type="DynamicFont" id=1]
-size = 30
 outline_size = 2
 outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=2]
-size = 23
-outline_size = 2
-outline_color = Color( 0, 0, 0, 1 )
-use_filter = true
-font_data = ExtResource( 1 )
+[node name="DeckBuilder" instance=ExtResource( 2 )]
+script = ExtResource( 3 )
+random_adjective_miss = 1.1
+random_append_miss = 2
+max_quantity = 3
+deck_minimum = 52
+deck_maximum = 60
+filter_button_properties = [ "Type" ]
 
-[node name="DeckBuilder" type="CenterContainer"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-script = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="MC" type="MarginContainer" parent="VBC/HBC/MC/CurrentDeck/Buttons" index="3"]
+margin_left = 179.0
+margin_right = 785.0
+margin_bottom = 26.0
+size_flags_horizontal = 3
 
-[node name="PC" type="PanelContainer" parent="."]
-margin_left = 250.0
-margin_top = 49.0
-margin_right = 1450.0
-margin_bottom = 849.0
-rect_min_size = Vector2( 1200, 800 )
-
-[node name="VBC" type="VBoxContainer" parent="PC"]
-margin_left = 7.0
-margin_top = 7.0
-margin_right = 1193.0
-margin_bottom = 793.0
-
-[node name="Label" type="Label" parent="PC/VBC"]
-margin_right = 1186.0
-margin_bottom = 37.0
-custom_fonts/font = SubResource( 1 )
-text = "Deck Builder"
-align = 1
-
-[node name="MarginContainer" type="MarginContainer" parent="PC/VBC"]
-margin_top = 41.0
-margin_right = 1186.0
-margin_bottom = 339.0
-size_flags_vertical = 3
-
-[node name="Label3" type="Label" parent="PC/VBC"]
-margin_top = 343.0
-margin_right = 1186.0
-margin_bottom = 436.0
-custom_fonts/font = SubResource( 2 )
-custom_colors/font_color = Color( 0.866667, 0.509804, 0.0117647, 1 )
-text = "This is still a Work In Progress. 
-
-Please check back later."
-align = 1
-
-[node name="MarginContainer2" type="MarginContainer" parent="PC/VBC"]
-margin_top = 440.0
-margin_right = 1186.0
-margin_bottom = 739.0
-size_flags_vertical = 3
-
-[node name="Back" type="Button" parent="PC/VBC"]
-margin_top = 743.0
-margin_right = 1186.0
-margin_bottom = 786.0
+[node name="Back" type="Button" parent="VBC/HBC/MC/CurrentDeck/Buttons" index="4"]
+margin_left = 789.0
+margin_right = 843.0
+margin_bottom = 26.0
 custom_fonts/font = SubResource( 1 )
 text = "Back"
