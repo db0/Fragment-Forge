@@ -45,7 +45,7 @@ var card_drag_ongoing: Card = null
 # Switch used for seeing debug info
 var _debug := false
 # Game random number generator
-var game_rng: RandomNumberGenerator = RandomNumberGenerator.new()
+var game_rng := RandomNumberGenerator.new()
 # We cannot preload the scripting engine as a const for the same reason
 # We cannot refer to it via class name.
 #
