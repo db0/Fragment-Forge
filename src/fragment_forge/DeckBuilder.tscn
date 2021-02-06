@@ -90,6 +90,17 @@ margin_right = 838.0
 
 [node name="FilterLine" parent="VBC/HBC/MC2/AvailableCards/HBC" index="1"]
 margin_right = 838.0
+criteria_map = {
+"a": "Abilities",
+"c": "cred_req",
+"g": "Tags",
+"i": "Time",
+"k": "Kudos",
+"m": "motivation_req",
+"s": "skill_req",
+"t": "Type",
+"v": "Value"
+}
 
 [node name="CC" parent="VBC/HBC/MC2/AvailableCards" index="1"]
 margin_right = 838.0
