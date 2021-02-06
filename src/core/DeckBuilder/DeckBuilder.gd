@@ -10,9 +10,12 @@ export(Script) var deck_name_randomizer
 # to get an adjective
 export var random_adjective_miss := 1.1
 # Controls how often an random append will 
-# not appear in front of the deck name. The higher the number, the less likely
-# to get an append
+# not appear in front of the deck name. 
+# The higher the number, the less likely to get an append
 export var random_append_miss := 2
+# Controls how often a second noun will appear in the name.
+# The higher the number, the less likely a second nount to appear
+export var second_noun_miss := 3
 # The maximum amount of each card allowed in a deck.
 # Individual cards can modify  this
 export var max_quantity: int = 3
@@ -51,14 +54,14 @@ const _FILTER_BUTTON_SCENE_FILE = CFConst.PATH_CORE\
 const _FILTER_BUTTON_SCENE = preload(_FILTER_BUTTON_SCENE_FILE)
 
 
-onready var _available_cards = $VBC/HBC/MC2/AvailableCards/ScrollContainer/CardList
-onready var _deck_cards = $VBC/HBC/MC/CurrentDeck/CardsInDeck
-onready var _deck_name = $VBC/HBC/MC/CurrentDeck/DeckNameEdit
-onready var _deck_min_label = $VBC/HBC/MC/CurrentDeck/DeckDetails/CardCount
-onready var _load_button = $VBC/HBC/MC/CurrentDeck/Buttons/Load
-onready var _filter_line = $VBC/HBC/MC2/AvailableCards/HBC/FilterLine
-onready var _filter_buttons = $VBC/HBC/MC2/AvailableCards/CC/ButtonFilters
-onready var _notice = $VBC/HBC/MC/CurrentDeck/HBoxContainer/NoticeLabel
+onready var _available_cards := $VBC/HBC/MC2/AvailableCards/ScrollContainer/CardList
+onready var _deck_cards := $VBC/HBC/MC/CurrentDeck/CardsInDeck
+onready var _deck_name := $VBC/HBC/MC/CurrentDeck/DeckNameEdit
+onready var _deck_min_label := $VBC/HBC/MC/CurrentDeck/DeckDetails/CardCount
+onready var _load_button := $VBC/HBC/MC/CurrentDeck/Buttons/Load
+onready var _filter_line := $VBC/HBC/MC2/AvailableCards/HBC/FilterLine
+onready var _filter_buttons := $VBC/HBC/MC2/AvailableCards/CC/ButtonFilters
+onready var _notice := $VBC/HBC/MC/CurrentDeck/HBoxContainer/NoticeLabel
 
 func _ready() -> void:
 	_load_button.connect("deck_loaded", self,"_on_deck_loaded")
@@ -190,8 +193,13 @@ func generate_random_deck_name() -> String:
 		# warning-ignore:return_value_discarded
 		deck_name.insert(0,name_randomizer.adjectives[rng])
 	rng = CFUtils.randi_range(0,name_randomizer.nouns.size() - 1)
+	var noun = name_randomizer.nouns[rng]
+	rng = CFUtils.randi_range(0,name_randomizer.nouns.size() - 1)
+	var second_noun = name_randomizer.nouns[rng]
+	if not CFUtils.randi_range(0,second_noun_miss) and noun != second_noun:
+		noun += " " + second_noun
 	# warning-ignore:return_value_discarded
-	deck_name.insert(1,name_randomizer.nouns[rng])
+	deck_name.insert(1,noun)
 	rng = CFUtils.randi_range(0,name_randomizer.appends.size() * random_append_miss)
 	if rng < name_randomizer.appends.size():
 		# warning-ignore:return_value_discarded
@@ -202,8 +210,12 @@ func generate_random_deck_name() -> String:
 func _on_Reset_pressed() -> void:
 	for card_object in _available_cards.get_children():
 		card_object.quantity = 0
+	_set_notice("Deck list reset")
+
+
+func _on_RandomizeName_pressed() -> void:
 	_deck_name.text = generate_random_deck_name()
-	_set_notice("Deck list and name reset")
+
 
 # evaluates all cards in available_cards against each filter returned by the
 # FilterLine. Cards that don't match, are set invisible.
