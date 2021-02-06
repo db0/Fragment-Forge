@@ -1,8 +1,10 @@
 tool
 extends Panel
 
+# The time it takes to switch from one menu tab to another
 const menu_switch_time = 0.35
 
+# Shader properties.
 var shader_time := 0.0
 var frame := 0
 var change_time := 0.0
@@ -20,6 +22,7 @@ func _ready() -> void:
 	deck_builder.rect_position.x = -get_viewport().size.x
 	settings_menu.back_button.connect("pressed", self, "_on_Setings_Back_pressed")
 	deck_builder.back_button.connect("pressed", self, "_on_DeckBuilder_Back_pressed")
+	initiate_sample_decks()
 
 func _process(delta: float) -> void:
 	material.set_shader_param('iTime', shader_time)
@@ -64,6 +67,25 @@ func change_shader(shader_name = null) -> void:
 	shader_properties.init_shader(shader_name, false)
 	material.set_shader_param('is_card', false)
 
+
+func initiate_sample_decks() -> void:
+	cfc.game_settings['sample_decks_loaded'] = cfc.game_settings.get('sample_decks_loaded', false)
+	if not cfc.game_settings.sample_decks_loaded:
+		var dir = Directory.new()
+		if not dir.dir_exists(CFConst.DECKS_PATH):
+			dir.make_dir(CFConst.DECKS_PATH)
+		var sample_decks = load(CFConst.PATH_CUSTOM + "decks/SampleDecks.gd")
+		for deck in sample_decks.decks:
+			deck['total'] = 0
+			for card in deck.cards:
+				deck['total'] += deck.cards[card]
+			var file = File.new()
+			file.open(CFConst.DECKS_PATH + deck.name + '.json', File.WRITE)
+			file.store_string(JSON.print(deck, '\t'))
+			file.close()
+	cfc.set_setting('sample_decks_loaded',true)
+
+
 # Returns a Dictionary with the combined Script definitions of all set files
 static func grab_random_shader() -> String:
 	var files := []
@@ -84,7 +106,9 @@ static func grab_random_shader() -> String:
 	return(files[0])
 
 
-func _on_NewGame_pressed() -> void:
+func _on_NewGame_deck_loaded(deck) -> void:
+	ffc.current_deck = deck.cards
+	# warning-ignore:return_value_discarded
 	get_tree().change_scene("res://src/fragment_forge/Main.tscn")
 
 
@@ -105,7 +129,7 @@ func _on_Setings_Back_pressed() -> void:
 			main_menu.rect_position.x, 0, menu_switch_time,
 			Tween.TRANS_BACK, Tween.EASE_IN_OUT)
 	$MenuTween.start()
-	
+
 func _on_DeckBuilder_pressed() -> void:
 	$MenuTween.interpolate_property(main_menu,'rect_position:x',
 			main_menu.rect_position.x, get_viewport().size.x, menu_switch_time,

@@ -159,10 +159,15 @@ func load_test_cards(extras := 11) -> void:
 
 # Loads a sample set of cards to use for testing
 func load_deck() -> void:
-	var deck = load("res://src/fragment_forge/decks/first_deck.gd")
+	var deck: Dictionary
+	if not ffc.current_deck:
+		var sample_decks = load(CFConst.PATH_CUSTOM + "decks/SampleDecks.gd")
+		deck = sample_decks.decks[0].cards
+	else:
+		deck = ffc.current_deck
 	var cards_array := []
-	for card_name in deck.CONTENTS:
-		for _iter in range(deck.CONTENTS[card_name]):
+	for card_name in deck:
+		for _iter in range(deck[card_name]):
 			cards_array.append(cfc.instance_card(card_name))
 	for card in cards_array:
 		cfc.NMAP.deck.add_child(card)

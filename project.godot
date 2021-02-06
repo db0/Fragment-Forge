@@ -140,6 +140,11 @@ _global_script_classes=[ {
 "path": "res://src/core/DeckBuilder/DeckBuilder.gd"
 }, {
 "base": "Reference",
+"class": "DeckLoader",
+"language": "GDScript",
+"path": "res://src/core/DeckBuilder/DeckLoader.gd"
+}, {
+"base": "Reference",
 "class": "DeckNameRandomizer",
 "language": "GDScript",
 "path": "res://src/core/DeckBuilder/DeckNameRandomizer.gd"
@@ -291,6 +296,7 @@ _global_script_class_icons={
 "DBFilterLine": "",
 "DBListCardObject": "",
 "DeckBuilder": "",
+"DeckLoader": "",
 "DeckNameRandomizer": "",
 "FFCard": "",
 "FFSP": "",
@@ -327,6 +333,7 @@ config/icon="res://icon.png"
 [autoload]
 
 cfc="*res://src/core/CFControl.gd"
+ffc="*res://src/fragment_forge/FFControl.gd"
 
 [display]
 
