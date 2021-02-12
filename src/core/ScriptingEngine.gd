@@ -29,7 +29,8 @@ var can_all_costs_be_paid := true
 var all_tasks_completed := false
 # Stores the inputed integer from the ask_integer task
 var stored_integer: int
-
+var trigger_details : Dictionary
+var trigger_card: Card
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -39,7 +40,11 @@ func _ready() -> void:
 # Simply initiates the [run_next_script()](#run_next_script) loop
 func _init(card_owner: Card,
 		scripts_queue: Array,
-		check_costs := false) -> void:
+		check_costs := false,
+		_trigger_card: Card = null,
+		_trigger_details = {}) -> void:
+	trigger_details = _trigger_details
+	trigger_card = _trigger_card
 	costs_dry_run = check_costs
 	run_next_script(card_owner,
 			scripts_queue.duplicate())
@@ -77,7 +82,9 @@ func run_next_script(card_owner: Card,
 				scripts_queue.pop_front(),
 				prev_subjects,
 				costs_dry_run,
-				stored_integer)
+				stored_integer,
+				trigger_card,
+				trigger_details)
 		# In case the task involves targetting, we need to wait on further
 		# execution until targetting has completed
 		cfc.NMAP.board.counters.temp_count_modifiers[self] = {
@@ -95,7 +102,7 @@ func run_next_script(card_owner: Card,
 			# card.
 			var custom := CustomScripts.new(costs_dry_run)
 			custom.custom_script(script)
-		elif script.is_valid \
+		elif not script.is_skipped and script.is_valid \
 				and (not costs_dry_run
 					or (costs_dry_run and script.get_property(SP.KEY_IS_COST))):
 			#print(script.is_valid,':',costs_dry_run)
@@ -129,6 +136,8 @@ func run_next_script(card_owner: Card,
 		# If a cost script is not valid
 		# (such as because the subjects cannot be matched)
 		# Then we consider the costs cannot be paid.
+		# However is the task was merely skipped (because filters didn't match)
+		# we don't consider the whole script failed
 		elif not script.is_valid and script.get_property(SP.KEY_IS_COST):
 			can_all_costs_be_paid = false
 		# At the end of the task run, we loop back to the start, but of course
@@ -282,10 +291,13 @@ func mod_tokens(script: ScriptTask) -> int:
 	if str(script.get_property(SP.KEY_MODIFICATION)) == SP.VALUE_RETRIEVE_INTEGER:
 		modification = stored_integer
 	elif SP.VALUE_PER in str(script.get_property(SP.KEY_MODIFICATION)):
-		modification = CFMoreScriptUtils.count_per(
+		var per_msg = perMessage.new(
 				script.get_property(SP.KEY_MODIFICATION),
 				script.owner_card,
-				script.get_property(script.get_property(SP.KEY_MODIFICATION)))
+				script.get_property(script.get_property(SP.KEY_MODIFICATION)),
+				null,
+				script.subjects)
+		modification = per_msg.found_things
 	else:
 		modification = script.get_property(SP.KEY_MODIFICATION)
 	var set_to_mod: bool = script.get_property(SP.KEY_SET_TO_MOD)
@@ -317,10 +329,13 @@ func spawn_card(script: ScriptTask) -> void:
 	if str(script.get_property(SP.KEY_OBJECT_COUNT)) == SP.VALUE_RETRIEVE_INTEGER:
 		count = stored_integer
 	elif SP.VALUE_PER in str(script.get_property(SP.KEY_OBJECT_COUNT)):
-		count = CFMoreScriptUtils.count_per(
+		var per_msg = perMessage.new(
 				script.get_property(SP.KEY_OBJECT_COUNT),
 				script.owner_card,
-				script.get_property(script.get_property(SP.KEY_OBJECT_COUNT)))
+				script.get_property(script.get_property(SP.KEY_OBJECT_COUNT)),
+				null,
+				script.subjects)
+		count = per_msg.found_things
 	else:
 		count = script.get_property(SP.KEY_OBJECT_COUNT)
 	alteration = _check_for_alterants(script, count)
@@ -394,9 +409,13 @@ func modify_properties(script: ScriptTask) -> int:
 					properties[property],
 					false,
 					costs_dry_run)
-			if ret_once == CFConst.ReturnCode.CHANGED:
+			if ret_once == CFConst.ReturnCode.FAILED:
+				retcode = ret_once
+			elif ret_once == CFConst.ReturnCode.CHANGED\
+					and retcode != CFConst.ReturnCode.FAILED:
 				# We only need one of the properties requested to be
 				# modified before we consider that we changed something.
+				# But only if any of the other modifications hasn't failed
 				retcode = ret_once
 	return(retcode)
 
@@ -470,10 +489,13 @@ func mod_counter(script: ScriptTask) -> int:
 	if str(script.get_property(SP.KEY_MODIFICATION)) == SP.VALUE_RETRIEVE_INTEGER:
 		modification = stored_integer
 	elif SP.VALUE_PER in str(script.get_property(SP.KEY_MODIFICATION)):
-		modification = CFMoreScriptUtils.count_per(
+		var per_msg = perMessage.new(
 				script.get_property(SP.KEY_MODIFICATION),
 				script.owner_card,
-				script.get_property(script.get_property(SP.KEY_MODIFICATION)))
+				script.get_property(script.get_property(SP.KEY_MODIFICATION)),
+				null,
+				script.subjects)
+		modification = per_msg.found_things
 	else:
 		modification = script.get_property(SP.KEY_MODIFICATION)
 	var set_to_mod: bool = script.get_property(SP.KEY_SET_TO_MOD)

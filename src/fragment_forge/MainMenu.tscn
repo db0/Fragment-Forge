@@ -10,7 +10,7 @@
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 2 )
 shader_param/is_card = false
-shader_param/iTime = 72800.9
+shader_param/iTime = 11788.4
 shader_param/AA = false
 shader_param/SEA_HEIGHT = 0.6
 shader_param/SEA_CHOPPY = 4.0
@@ -47,6 +47,8 @@ __meta__ = {
 }
 
 [node name="DeckBuilder" parent="." instance=ExtResource( 5 )]
+deck_minimum = 30
+deck_maximum = 0
 
 [node name="SettingsMenu" parent="." instance=ExtResource( 4 )]
 

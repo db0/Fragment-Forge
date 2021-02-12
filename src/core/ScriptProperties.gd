@@ -37,11 +37,16 @@ const KEY_SUBJECT_V_TARGET := "target"
 # If this is the value of the [KEY_SUBJECT](#KEY_SUBJECT) key,
 # then the task affects the owner card only.
 const KEY_SUBJECT_V_SELF := "self"
-# This is only used during [KEY_ALTERANTS](#KEY_ALTERANTS) scripts
-# using [KEY_PER](#KEY_PER)
+# If this is the value of the [KEY_SUBJECT](#KEY_SUBJECT) key,
+# during [KEY_ALTERANTS](#KEY_ALTERANTS) scripts using [KEY_PER](#KEY_PER)
+# then the script will check against trigger card only.
 #
 # If this is the value of the [KEY_SUBJECT](#KEY_SUBJECT) key,
-# Then the script will count the properties of the trigger card only.
+# during normal scripts tasks then the 
+# tasks that do not match the triggers will be skipped
+# but the script will still pass its cost check
+# This allows the same trigger, to have different tasks firing, depending
+# on the trigger card.
 const KEY_SUBJECT_V_TRIGGER := "trigger"
 # If this is the value of the [KEY_SUBJECT](#KEY_SUBJECT) key,
 # then we search all cards on the table
@@ -1069,10 +1074,11 @@ static func filter_trigger(
 
 	# Card Count on board filter check
 	if is_valid and card_scripts.get(FILTER_PER_BOARDSEEK):
-		var found_count = CFMoreScriptUtils.count_per(
+		var per_msg = perMessage.new(
 				KEY_PER_BOARDSEEK,
 				owner_card,
 				card_scripts.get(FILTER_PER_BOARDSEEK))
+		var found_count = per_msg.found_things
 		var required_count = card_scripts.\
 				get(FILTER_PER_BOARDSEEK).get(FILTER_CARD_COUNT)
 		var comparison_type = card_scripts.get(FILTER_PER_BOARDSEEK).get(
@@ -1085,10 +1091,11 @@ static func filter_trigger(
 
 	# Card Count in CardContainer filter check
 	if is_valid and card_scripts.get(FILTER_PER_TUTOR):
-		var found_count = CFMoreScriptUtils.count_per(
+		var per_msg = perMessage.new(
 				KEY_PER_TUTOR,
 				owner_card,
 				card_scripts.get(FILTER_PER_TUTOR))
+		var found_count = per_msg.found_things
 		var required_count = card_scripts.\
 				get(FILTER_PER_TUTOR).get(FILTER_CARD_COUNT)
 		var comparison_type = card_scripts.get(FILTER_PER_TUTOR).get(

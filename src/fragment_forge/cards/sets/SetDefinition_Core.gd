@@ -2,7 +2,7 @@
 extends Reference
 
 
-
+const GEN = -1
 const SET = "Core Set"
 const CARDS := {
 ### BEGIN Shaders ###
@@ -20,31 +20,35 @@ const CARDS := {
 	"Fractal Tiling": {
 		"Type": CardConfig.CardTypes.SHADER,
 		"Tags": [],
-		"Abilities": "TODO",
-		"Time": 1,
-		"Value": 0,
+		"Abilities": "After you play this Shader, discard a random card",
+		"Time": 2,
+		"Value": GEN,
 		"Kudos": 0,
 		"skill_req": 0,
 		"cred_req": 0,
 		"motivation_req": 0,
+		"_abilities_power": -2
 	},
 	"Sierpinski": {
 		"Type": CardConfig.CardTypes.SHADER,
 		"Tags": [],
-		"Abilities": "TODO",
-		"Time": 1,
-		"Value": 0,
+		"Abilities": "Comes with 1 Activation token"\
+				+ "After you play a shader, remove an activation token"\
+				+ "to give that Shader +2 Value",
+		"Time": 4,
+		"Value": GEN,
 		"Kudos": 0,
 		"skill_req": 1,
 		"cred_req": 0,
 		"motivation_req": 0,
+		"_abilities_power": 2
 	},
 	"Light": {
 		"Type": CardConfig.CardTypes.SHADER,
 		"Tags": [],
 		"Abilities": " ",
-		"Time": 2,
-		"Value": 3,
+		"Time": 3,
+		"Value": GEN,
 		"Kudos": 0,
 		"skill_req": 0,
 		"cred_req": 0,
@@ -55,7 +59,7 @@ const CARDS := {
 		"Tags": [],
 		"Abilities": " ",
 		"Time": 5,
-		"Value": 6,
+		"Value": GEN,
 		"Kudos": 0,
 		"skill_req": 0,
 		"cred_req": 0,
@@ -66,7 +70,7 @@ const CARDS := {
 		"Tags": [],
 		"Abilities": " ",
 		"Time": 1,
-		"Value": 4,
+		"Value": GEN,
 		"Kudos": 0,
 		"skill_req": 1,
 		"cred_req": 0,
@@ -77,7 +81,7 @@ const CARDS := {
 		"Tags": [],
 		"Abilities": " ",
 		"Time": 2,
-		"Value": 5,
+		"Value": GEN,
 		"Kudos": 0,
 		"skill_req": 1,
 		"cred_req": 0,
@@ -88,7 +92,7 @@ const CARDS := {
 		"Tags": [],
 		"Abilities": " ",
 		"Time": 1,
-		"Value": 6,
+		"Value": GEN,
 		"Kudos": 0,
 		"skill_req": 2,
 		"cred_req": 0,
@@ -99,7 +103,7 @@ const CARDS := {
 		"Tags": [],
 		"Abilities": " ",
 		"Time": 4,
-		"Value": 9,
+		"Value": GEN,
 		"Kudos": 0,
 		"skill_req": 2,
 		"cred_req": 0,
@@ -115,13 +119,14 @@ const CARDS := {
 		"skill_req": 2,
 		"cred_req": 0,
 		"motivation_req": 0,
+		"_abilities_power": 1,
 	},
 	"Seascape": {
 		"Type": CardConfig.CardTypes.SHADER,
 		"Tags": [],
 		"Abilities": " ",
 		"Time": 2,
-		"Value": 10,
+		"Value": GEN,
 		"Kudos": 0,
 		"skill_req": 3,
 		"cred_req": 0,
@@ -250,6 +255,17 @@ const CARDS := {
 		"motivation_req": 0,
 	},	
 ### BEGIN Prep ###
+	"Collaboration": {
+		"Type": CardConfig.CardTypes.ACTION,
+		"Tags": [],
+		"Abilities": "Discard an installed Shader to gain Kudos equal to its value",
+		"Time": 1,
+		"Value": 0,
+		"Kudos": 0,
+		"skill_req": 0,
+		"cred_req": 0,
+		"motivation_req": 0,
+	},
 	"Get Some Advice": {
 		"Type": CardConfig.CardTypes.ACTION,
 		"Tags": [],

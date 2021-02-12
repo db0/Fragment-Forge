@@ -240,4 +240,5 @@ const SHOW_TOKEN_BUTTONS := false
 const TOKENS_MAP := {
 	'kudos': 'green.svg',
 	'time': 'yellow.svg',
+	'activation': 'blue.svg',
 }

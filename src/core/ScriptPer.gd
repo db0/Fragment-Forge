@@ -5,13 +5,13 @@ extends ScriptObject
 
 
 # prepares the properties needed by the task to function.
-func _init(owner_card: Card,
-		script: Dictionary,
-		per_seek: String,
-		trigger_card = null).(owner_card, script, trigger_card) -> void:
+func _init(per_msg: perMessage).(
+		per_msg.script_owner, 
+		per_msg.per_definitions, 
+		per_msg.trigger_card) -> void:
 	# The name of the type of per we're seeking gets its own var
-	script_name = per_seek
-	var ret =_find_subjects()
+	script_name = per_msg.per_seek
+	var ret =_find_subjects(per_msg.subjects)
 	if ret is GDScriptFunctionState: # Still working.
 		ret = yield(ret, "completed")
 	# We emit a signal when done so that our ScriptingEngine

@@ -263,12 +263,9 @@ static func count_per(
 			per_definitions: Dictionary,
 			_trigger_card = null) -> int:
 	var found_things := 0
-	var per_discovery = cfc.script_per.new(
+	var per_msg := perMessage.new(
+			per_seek,
 			script_owner,
 			per_definitions,
-			per_seek,
 			_trigger_card)
-#	if not per_discovery.has_init_completed:
-#		yield(per_discovery,"completed_init")
-	found_things = per_discovery.return_per_count()
-	return(found_things)
+	return(per_msg.found_things)

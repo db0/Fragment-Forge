@@ -266,6 +266,28 @@ func get_scripts(card_name: String) -> Dictionary:
 				],
 			},
 		},
+		"Collaboration": {
+			"manual": {
+				"hand": [
+					{
+						"name": "move_card_to_container",
+						"dest_container": cfc.NMAP.discard,
+						"subject": "target",
+						"filter_state_subject": [{"filter_parent": cfc.NMAP.board}],
+						"is_cost": true
+					},
+					{
+						"name": "mod_counter",
+						"counter_name": "kudos",
+						"modification": "per_property",
+						"subject": "previous",
+						"per_property": {
+							"subject": "previous",
+							"property_name": "Value"}
+					},
+				],
+			},
+		},
 		"Search Engine Expertise": {
 			"manual": {
 				"board": {
@@ -299,6 +321,46 @@ func get_scripts(card_name: String) -> Dictionary:
 						},
 					],
 				},
+			},
+		},
+		"Sierpinski": {
+			"card_moved_to_board": {
+				"board": [
+					{
+						"name": "mod_tokens",
+						"modification": 1,
+						"token_name": "activation",
+						"subject": "self",
+						"trigger": "self",
+					},
+					{
+						"name": "mod_tokens",
+						"modification": -1,
+						"token_name": "activation",
+						"subject": "self",
+						"trigger": "another",
+					},
+					{
+						"name": "modify_properties",
+						"set_properties": {"Value": "+2"},
+						"subject": "trigger",
+						"trigger": "another",
+					},
+				],
+			},
+		},
+		"Fractal Tiling": {
+			"card_moved_to_board": {
+				"board": [
+					{
+						"name": "move_card_to_container",
+						"dest_container": cfc.NMAP.discard,
+						"src_container": cfc.NMAP.hand,
+						"subject": "index",
+						"trigger": "self",
+						"subject_index": "random",
+					},
+				],
 			},
 		},
 	}

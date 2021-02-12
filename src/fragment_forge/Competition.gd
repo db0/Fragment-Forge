@@ -73,7 +73,7 @@ func _process(_delta: float) -> void:
 	var total_value := 0
 	for card in cfc.NMAP.board.get_all_cards():
 		if card.is_in_group("shaders"):
-			total_value += card.properties.get("Value",0)
+			total_value += card.get_property("Value")
 	var alteration = CFScriptUtils.get_altered_value(
 			null, "get_demo_value", {}, total_value)
 	if alteration is GDScriptFunctionState:

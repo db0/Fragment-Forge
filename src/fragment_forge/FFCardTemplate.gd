@@ -1,6 +1,7 @@
 class_name FFCard
 extends Card
 
+const GEN = -1
 # Switch to know when the player attempted to activate an action card
 # by dragging it to the board area
 var attempted_action_drop_to_board := false
@@ -44,10 +45,24 @@ func _process(delta: float) -> void:
 			CardState.PREVIEW:
 				if cfc.game_settings.animate_in_deckbuilder:
 					shader_time += delta
+#
+#func modify_property(property: String, value, is_init = false, check := false) -> int:
+#	if property == "Value" and value == 'gen':
+#		value = properties.Time + 1\
+#				+ properties.skill_req * 2\
+#				- properties.get("_abilities_power",0)
+#	return(.modify_property(property, value, is_init, check))
+#
 
 func setup() -> void:
 	.setup()
 	if properties.Type == CardConfig.CardTypes.SHADER:
+		# If the value is 'gen', we calculate it with a formula
+		if properties.Value == GEN :
+			modify_property("Value", 
+					properties.Time + 1
+					+ properties.skill_req * 2
+					- properties.get("_abilities_power",0))
 #		print_debug(card_front.art.material)
 		var shader_name: String = "res://shaders/" + card_name + ".shader"
 		var check_shader = File.new()
