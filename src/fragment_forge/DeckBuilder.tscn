@@ -12,6 +12,7 @@ font_data = ExtResource( 1 )
 
 [node name="DeckBuilder" instance=ExtResource( 2 )]
 script = ExtResource( 3 )
+generation_keys = [ -1 ]
 
 [node name="VBC" parent="." index="0"]
 margin_right = 1700.0
@@ -43,14 +44,14 @@ margin_right = 843.0
 
 [node name="CardsInDeck" parent="VBC/HBC/MC/CurrentDeck" index="2"]
 margin_right = 843.0
-margin_bottom = 770.0
+margin_bottom = 763.0
 
 [node name="HBoxContainer" parent="VBC/HBC/MC/CurrentDeck" index="3"]
-margin_top = 774.0
+margin_top = 767.0
 margin_right = 843.0
 margin_bottom = 793.0
 
-[node name="NoticeLabel" parent="VBC/HBC/MC/CurrentDeck/HBoxContainer" index="1"]
+[node name="NoticeLabel" parent="VBC/HBC/MC/CurrentDeck/HBoxContainer" index="2"]
 margin_right = 843.0
 
 [node name="DeckNameEdit" parent="VBC/HBC/MC/CurrentDeck" index="4"]

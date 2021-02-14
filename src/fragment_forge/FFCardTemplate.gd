@@ -60,9 +60,10 @@ func setup() -> void:
 		# If the value is 'gen', we calculate it with a formula
 		if properties.Value == GEN :
 			modify_property("Value",
-					properties.Time + 1
-					+ properties.skill_req * 2
-					- properties.get("_abilities_power",0))
+					generate_shader_value(
+					properties.Time, 
+					properties.skill_req, 
+					properties.get("_abilities_power",0)))
 #		print_debug(card_front.art.material)
 		var shader_name: String = "res://shaders/" + card_name + ".shader"
 		var check_shader = File.new()
@@ -78,6 +79,12 @@ func setup() -> void:
 					shader_properties._set_shader_param(param, source_card.shader_properties.shader_params[param])
 			else:
 				shader_properties.init_shader(card_name)
+
+
+static func generate_shader_value(time: int, skill_req: int, power: int) -> int:
+	return(time + 1 + skill_req * 2 - power)
+	
+	
 
 func check_play_costs() -> Color:
 	var ret : Color = CFConst.CostsState.OK

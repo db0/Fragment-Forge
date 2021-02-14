@@ -10,7 +10,7 @@
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 2 )
 shader_param/is_card = false
-shader_param/iTime = 39097.9
+shader_param/iTime = 142.665
 shader_param/AA = false
 shader_param/SEA_HEIGHT = 0.6
 shader_param/SEA_CHOPPY = 4.0

@@ -92,6 +92,8 @@ In the top middle part, you will see details about the competition.
 Once you run out of time (or you don't want to spend any more), press "Next Competition". In the standard game mode, you take part in 3 competitions.
 You can see on which competition you are on the left of the Competition Details.
 
+Be aware: If you do not make any placement in the competition, you will lose 2 motivation. However if you earn the first place, you will instead gain 1 motivation!
+
 ### Game Goal
 
 The game goal is to amass a specified amount of Cred, based on the difficulty. The amount you need is written to the left of the Competition details

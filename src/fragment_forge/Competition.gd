@@ -104,6 +104,10 @@ func next_competition() -> void:
 				{"competition_name": current_tournament.name,
 				"demo_value": current_demo_value,
 				"current_place": current_place})
+		if current_place == -1:
+			cfc.NMAP.board.counters.mod_counter("motivation",-2)
+		elif current_place == Place.FIRST:
+			cfc.NMAP.board.counters.mod_counter("motivation",+1)
 	current_place = -1
 	round_multiplier = 1 + current_round * ROUND_MULTIPLIER_INCREASE
 	current_round += 1
