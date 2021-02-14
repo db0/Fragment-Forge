@@ -9,6 +9,8 @@ func get_scripts(card_name: String) -> Dictionary:
 		"Google-Fu!": {
 			"manual": {
 				"hand": [
+					# We have a function to discard manually to ensure
+					# it's not counted for checking if the hand is full
 					{
 						"name": "move_card_to_container",
 						"dest_container": cfc.NMAP.discard,
@@ -502,6 +504,42 @@ func get_scripts(card_name: String) -> Dictionary:
 								}
 							]
 						}
+					},
+				],
+			},
+		},
+		"Fresh Start": {
+			"manual": {
+				"hand": [
+					{
+						"name": "move_card_to_container",
+						"src_container": cfc.NMAP.hand,
+						"dest_container": cfc.NMAP.discard,
+						"subject_count": "all",
+						"subject": "index",
+						"subject_index": "top",
+					},
+					{
+						"name": "move_card_to_container",
+						"src_container": cfc.NMAP.deck,
+						"dest_container": cfc.NMAP.hand,
+						"subject_count": "per_counter",
+						"subject": "index",
+						"subject_index": "top",
+						"per_counter": {
+							"counter_name": "motivation"}
+					},
+				],
+			},
+		},
+		"Frustrating Shader": {
+			"card_moved_to_board": {
+				"board": [
+					{
+						"name": "mod_counter",
+						"modification": -1,
+						"counter_name": "motivation",
+						"trigger": "self",
 					},
 				],
 			},

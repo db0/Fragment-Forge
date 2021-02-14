@@ -29,32 +29,6 @@ const CARDS := {
 		"motivation_req": 0,
 		"_abilities_power": -2
 	},
-	"Sierpinski": {
-		"Type": CardConfig.CardTypes.SHADER,
-		"Tags": [],
-		"Abilities": "Comes with 1 Activation token\n"\
-				+ "After you install a shader, remove an activation token"\
-				+ "to give that Shader +2 Value",
-		"Time": 4,
-		"Value": GEN,
-		"Kudos": 0,
-		"skill_req": 1,
-		"cred_req": 0,
-		"motivation_req": 0,
-		"_abilities_power": 2
-	},
-	"Consuming Shader": {
-		"Type": CardConfig.CardTypes.SHADER,
-		"Tags": [],
-		"Abilities": "After you install this Shader, discard an installed Shader",
-		"Time": 1,
-		"Value": GEN,
-		"Kudos": 0,
-		"skill_req": 2,
-		"cred_req": 0,
-		"motivation_req": 0,
-		"_abilities_power": -4
-	},
 	"Light": {
 		"Type": CardConfig.CardTypes.SHADER,
 		"Tags": [],
@@ -77,6 +51,7 @@ const CARDS := {
 		"cred_req": 0,
 		"motivation_req": 0,
 	},
+#### skill_req 1
 	"Fractal Pyramid": {
 		"Type": CardConfig.CardTypes.SHADER,
 		"Tags": [],
@@ -92,13 +67,40 @@ const CARDS := {
 		"Type": CardConfig.CardTypes.SHADER,
 		"Tags": [],
 		"Abilities": " ",
-		"Time": 2,
+		"Time": 6,
 		"Value": GEN,
 		"Kudos": 0,
 		"skill_req": 1,
 		"cred_req": 0,
 		"motivation_req": 0,
 	},
+	"Sierpinski": {
+		"Type": CardConfig.CardTypes.SHADER,
+		"Tags": [],
+		"Abilities": "Comes with 1 Activation token\n"\
+				+ "After you install a shader, remove an activation token"\
+				+ "to give that Shader +2 Value",
+		"Time": 4,
+		"Value": GEN,
+		"Kudos": 0,
+		"skill_req": 1,
+		"cred_req": 0,
+		"motivation_req": 0,
+		"_abilities_power": 2
+	},
+	"Frustrating Shader": {
+		"Type": CardConfig.CardTypes.SHADER,
+		"Tags": [],
+		"Abilities": "After you install this shader, lose 1 motivation",
+		"Time": 1,
+		"Value": GEN,
+		"Kudos": 0,
+		"skill_req": 1,
+		"cred_req": 0,
+		"motivation_req": 0,
+		"_abilities_power": -3,
+	},
+#### skill_req 2
 	"Cloud": {
 		"Type": CardConfig.CardTypes.SHADER,
 		"Tags": [],
@@ -133,11 +135,24 @@ const CARDS := {
 		"motivation_req": 0,
 		"_abilities_power": 1,
 	},
+	"Consuming Shader": {
+		"Type": CardConfig.CardTypes.SHADER,
+		"Tags": [],
+		"Abilities": "After you install this Shader, discard an installed Shader",
+		"Time": 1,
+		"Value": GEN,
+		"Kudos": 0,
+		"skill_req": 2,
+		"cred_req": 0,
+		"motivation_req": 0,
+		"_abilities_power": -4
+	},
+#### skill_req 3
 	"Seascape": {
 		"Type": CardConfig.CardTypes.SHADER,
 		"Tags": [],
 		"Abilities": " ",
-		"Time": 10,
+		"Time": 5,
 		"Value": GEN,
 		"Kudos": 0,
 		"skill_req": 3,
@@ -358,6 +373,17 @@ const CARDS := {
 		"skill_req": 0,
 		"cred_req": 0,
 		"motivation_req": 4,
+	},
+	"Fresh Start": {
+		"Type": CardConfig.CardTypes.ACTION,
+		"Tags": [],
+		"Abilities": "Discard your hand and draw cards equal to your motivation",
+		"Time": 2,
+		"Value": 0,
+		"Kudos": 0,
+		"skill_req": 0,
+		"cred_req": 0,
+		"motivation_req": 6,
 	},
 }
 
