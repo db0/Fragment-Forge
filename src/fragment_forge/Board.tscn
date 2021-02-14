@@ -122,6 +122,7 @@ pile_name = "Deck"
 position = Vector2( 1542.95, 652.422 )
 script = ExtResource( 3 )
 placement = 6
+pile_name = "Discard"
 faceup_cards = true
 
 [node name="Control" parent="Discard" index="0"]

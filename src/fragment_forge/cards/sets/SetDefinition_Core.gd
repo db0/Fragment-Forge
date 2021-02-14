@@ -20,7 +20,7 @@ const CARDS := {
 	"Fractal Tiling": {
 		"Type": CardConfig.CardTypes.SHADER,
 		"Tags": [],
-		"Abilities": "After you play this Shader, discard a random card",
+		"Abilities": "After you install this Shader, discard a random card",
 		"Time": 2,
 		"Value": GEN,
 		"Kudos": 0,
@@ -32,8 +32,8 @@ const CARDS := {
 	"Sierpinski": {
 		"Type": CardConfig.CardTypes.SHADER,
 		"Tags": [],
-		"Abilities": "Comes with 1 Activation token"\
-				+ "After you play a shader, remove an activation token"\
+		"Abilities": "Comes with 1 Activation token\n"\
+				+ "After you install a shader, remove an activation token"\
 				+ "to give that Shader +2 Value",
 		"Time": 4,
 		"Value": GEN,
@@ -42,6 +42,18 @@ const CARDS := {
 		"cred_req": 0,
 		"motivation_req": 0,
 		"_abilities_power": 2
+	},
+	"Consuming Shader": {
+		"Type": CardConfig.CardTypes.SHADER,
+		"Tags": [],
+		"Abilities": "After you install this Shader, discard an installed Shader",
+		"Time": 1,
+		"Value": GEN,
+		"Kudos": 0,
+		"skill_req": 2,
+		"cred_req": 0,
+		"motivation_req": 0,
+		"_abilities_power": -4
 	},
 	"Light": {
 		"Type": CardConfig.CardTypes.SHADER,
@@ -91,7 +103,7 @@ const CARDS := {
 		"Type": CardConfig.CardTypes.SHADER,
 		"Tags": [],
 		"Abilities": " ",
-		"Time": 1,
+		"Time": 4,
 		"Value": GEN,
 		"Kudos": 0,
 		"skill_req": 2,
@@ -102,7 +114,7 @@ const CARDS := {
 		"Type": CardConfig.CardTypes.SHADER,
 		"Tags": [],
 		"Abilities": " ",
-		"Time": 4,
+		"Time": 6,
 		"Value": GEN,
 		"Kudos": 0,
 		"skill_req": 2,
@@ -113,8 +125,8 @@ const CARDS := {
 		"Type": CardConfig.CardTypes.SHADER,
 		"Tags": [],
 		"Abilities": "After you play this card, draw a card.",
-		"Time": 6,
-		"Value": 10,
+		"Time": 9,
+		"Value": GEN,
 		"Kudos": 0,
 		"skill_req": 2,
 		"cred_req": 0,
@@ -215,7 +227,7 @@ const CARDS := {
 		"Value": 0,
 		"Kudos": 0,
 		"skill_req": 0,
-		"cred_req": 1,
+		"cred_req": 0,
 		"motivation_req": 4,
 	},
 	"Private Forum Mod": {
@@ -253,7 +265,7 @@ const CARDS := {
 		"skill_req": 0,
 		"cred_req": 0,
 		"motivation_req": 0,
-	},	
+	},
 ### BEGIN Prep ###
 	"Collaboration": {
 		"Type": CardConfig.CardTypes.ACTION,
@@ -322,6 +334,31 @@ const CARDS := {
 		"skill_req": 0,
 		"cred_req": 0,
 		"motivation_req": 5,
+	},
+	"Creative Block": {
+		"Type": CardConfig.CardTypes.ACTION,
+		"Tags": [],
+		"Abilities": "This card cannot be played\n\n"\
+				+ "After this card is discarded from hand, draw three cards\n\n"\
+				+ "After this card is drawn, draw a card",
+		"Time": 0,
+		"Value": 0,
+		"Kudos": 0,
+		"skill_req": 0,
+		"cred_req": 0,
+		"motivation_req": 0,
+		"_is_unplayable": true
+	},
+	"Presentation": {
+		"Type": CardConfig.CardTypes.ACTION,
+		"Tags": [],
+		"Abilities": "Gain 1 Kudos for each installed Shader",
+		"Time": 0,
+		"Value": 0,
+		"Kudos": 0,
+		"skill_req": 0,
+		"cred_req": 0,
+		"motivation_req": 4,
 	},
 }
 

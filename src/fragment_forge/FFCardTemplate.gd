@@ -59,7 +59,7 @@ func setup() -> void:
 	if properties.Type == CardConfig.CardTypes.SHADER:
 		# If the value is 'gen', we calculate it with a formula
 		if properties.Value == GEN :
-			modify_property("Value", 
+			modify_property("Value",
 					properties.Time + 1
 					+ properties.skill_req * 2
 					- properties.get("_abilities_power",0))
@@ -116,6 +116,9 @@ func check_play_costs() -> Color:
 		ret = CFConst.CostsState.IMPOSSIBLE
 
 	if check_unique_conflict():
+		ret = CFConst.CostsState.IMPOSSIBLE
+
+	if properties.get("_is_unplayable", false):
 		ret = CFConst.CostsState.IMPOSSIBLE
 	return(ret)
 

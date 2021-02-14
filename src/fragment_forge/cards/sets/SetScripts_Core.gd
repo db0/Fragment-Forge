@@ -339,12 +339,24 @@ func get_scripts(card_name: String) -> Dictionary:
 						"token_name": "activation",
 						"subject": "self",
 						"trigger": "another",
+						"filter_state_trigger": [
+							{
+								"filter_properties": \
+										{"Type": CardConfig.CardTypes.SHADER},
+							}
+						],
 					},
 					{
 						"name": "modify_properties",
 						"set_properties": {"Value": "+2"},
 						"subject": "trigger",
 						"trigger": "another",
+						"filter_state_trigger": [
+							{
+								"filter_properties": \
+										{"Type": CardConfig.CardTypes.SHADER},
+							}
+						],
 					},
 				],
 			},
@@ -359,6 +371,81 @@ func get_scripts(card_name: String) -> Dictionary:
 						"subject": "index",
 						"trigger": "self",
 						"subject_index": "random",
+					},
+				],
+			},
+		},
+		"Consuming Shader": {
+			"card_moved_to_board": {
+				"board": [
+					{
+						"name": "move_card_to_container",
+						"dest_container": cfc.NMAP.discard,
+						"subject": "target",
+						"trigger": "self",
+						"is_cost": true,
+						"filter_state_subject": [{
+							"filter_properties": {"Type": CardConfig.CardTypes.SHADER},
+							"filter_parent": cfc.NMAP.board
+						}],
+					},
+					{
+						"name": "move_card_to_container",
+						"dest_container": cfc.NMAP.discard,
+						"subject": "self",
+						"trigger": "self",
+						"is_else": true,
+					},
+				],
+			},
+		},
+		"Creative Block": {
+			"card_moved_to_hand": {
+				"hand": [
+					{
+						"name": "move_card_to_container",
+						"src_container": cfc.NMAP.deck,
+						"dest_container": cfc.NMAP.hand,
+						"subject_count": 1,
+						"subject": "index",
+						"trigger": "self",
+						"subject_index": "top",
+					},
+				],
+			"filter_source": cfc.NMAP.deck,
+			},
+			"card_moved_to_pile": {
+				"pile": [
+					{
+						"name": "move_card_to_container",
+						"src_container": cfc.NMAP.deck,
+						"dest_container": cfc.NMAP.hand,
+						"subject_count": 3,
+						"subject": "index",
+						"trigger": "self",
+						"subject_index": "top",
+					},
+				],
+			"filter_source": cfc.NMAP.hand,
+			"filter_destination": cfc.NMAP.discard
+			},
+		},
+		"Presentation": {
+			"manual": {
+				"hand": [
+					{
+						"name": "mod_counter",
+						"modification": "per_boardseek",
+						"counter_name":  "kudos",
+						"per_boardseek": {
+							"subject": "boardseek",
+							"subject_count": "all",
+							"filter_state_seek": [
+								{"filter_properties": {
+									"Type": CardConfig.CardTypes.SHADER}
+								}
+							]
+						}
 					},
 				],
 			},
