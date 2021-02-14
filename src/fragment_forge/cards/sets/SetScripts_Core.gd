@@ -143,6 +143,43 @@ func get_scripts(card_name: String) -> Dictionary:
 				],
 			},
 		},
+		"Cheerleader": {
+			"competition_ended": {
+				"board": [
+					{
+						"name": "mod_counter",
+						"counter_name": "cred",
+						"modification": 1,
+					},
+				],
+				"filter_current_place": Competitions.Place.FIRST,
+			},
+			"card_moved_to_board": {
+				"board": [
+					{
+						"name": "mod_counter",
+						"modification": -1,
+						"counter_name": "cred",
+						"trigger": "self",
+					},
+				],
+			},
+		},
+		"Voronoi Column Tracing": {
+			"card_moved_to_board": {
+				"board": [
+					{
+						"name": "move_card_to_container",
+						"src_container": cfc.NMAP.deck,
+						"dest_container": cfc.NMAP.hand,
+						"subject_count": 1,
+						"subject": "index",
+						"trigger": "self",
+						"subject_index": "top",
+					},
+				],
+			},
+		},
 		"Newbie Tutor": {
 			"alterants": {
 				"board": [
@@ -151,9 +188,28 @@ func get_scripts(card_name: String) -> Dictionary:
 						"filter_counter_name": "skill",
 						"alteration": 1,
 						"filter_state_trigger": [
-							{"filter_properties": {
-								"Type": "Shader",
-								"skill_req": 1
+							{"filter_properties": {"Type": "Shader"}},
+							{"filter_properties2": {
+								"skill_req": 1,
+								"comparison": "le",
+							}}
+						]
+					},
+				],
+			},
+		},
+		"Guru": {
+			"alterants": {
+				"board": [
+					{
+						"filter_task": "get_counter",
+						"filter_counter_name": "skill",
+						"alteration": 1,
+						"filter_state_trigger": [
+							{"filter_properties": {"Type": "Shader"}},
+							{"filter_properties2": {
+								"skill_req": 3,
+								"comparison": "ge",
 							}}
 						]
 					},

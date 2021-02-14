@@ -48,11 +48,11 @@ func _on_Start_pressed() -> void:
 	# warning-ignore:return_value_discarded
 		counters.mod_counter("skill",1)
 		counters.mod_counter("cred",competitions.get_cred_rewards())
+		competitions.next_competition()
 		for c in get_all_cards():
 			if c.properties.Type == CardConfig.CardTypes.SHADER:
 				c.move_to(cfc.NMAP.discard)
 				yield(get_tree().create_timer(0.1), "timeout")
-		competitions.next_competition()
 
 
 func _on_Settings_pressed() -> void:
@@ -65,6 +65,7 @@ func _on_Settings_pressed() -> void:
 	popup_settings.popup_centered_minsize()
 	settings_menu.back_button.text = "Close"
 	settings_menu.back_button.connect('pressed', self, '_on_Settings_hide')
+	# warning-ignore:return_value_discarded
 	popup_settings.connect('popup_hide', self, '_on_Settings_hide')
 
 
@@ -98,15 +99,15 @@ func _unpause_board() -> void:
 
 func _on_Debug_pressed() -> void:
 	game_goal.cred_goal = 30
-# warning-ignore:return_value_discarded
+	# warning-ignore:return_value_discarded
 	counters.mod_counter("time",30)
-# warning-ignore:return_value_discarded
+	# warning-ignore:return_value_discarded
 	counters.mod_counter("cred",10)
-# warning-ignore:return_value_discarded
+	# warning-ignore:return_value_discarded
 	counters.mod_counter("skill",10)
-# warning-ignore:return_value_discarded
+	# warning-ignore:return_value_discarded
 	counters.mod_counter("kudos",10)
-# warning-ignore:return_value_discarded
+	# warning-ignore:return_value_discarded
 	counters.mod_counter("motivation",8)
 
 

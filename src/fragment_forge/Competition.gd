@@ -99,6 +99,7 @@ func next_competition() -> void:
 	# We want to set the multiplier before incrementing the round
 	# so that on the first turn, the multiplier increase is 0. (0 * 0.5)
 	if current_round > 0:
+		print_debug(current_demo_value,current_place)
 		emit_signal("competition_ended", null, "competition_ended",
 				{"competition_name": current_tournament.name,
 				"demo_value": current_demo_value,
