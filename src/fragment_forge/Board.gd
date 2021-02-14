@@ -6,7 +6,8 @@ var allCards := [] # A pseudo-deck array to hold the card objects we want to pul
 
 onready var start_button := $VBC/Details/Start
 onready var debug_button := $VBC/Details/Debug
-onready var settings_button := $VBC/Details/Settings
+onready var settings_button := $VBC/Details/VBC3/Settings
+onready var back_button := $VBC/Details/VBC3/Back
 
 onready var competitions : Competitions = $VBC/Details/VBC/Competition
 onready var game_goal := $VBC/Details/VBC2/GameGoal
@@ -29,6 +30,8 @@ func _ready() -> void:
 	start_button.connect("pressed", self, "_on_Start_pressed")
 	# warning-ignore:return_value_discarded
 	settings_button.connect("pressed", self, "_on_Settings_pressed")
+	# warning-ignore:return_value_discarded
+	back_button.connect("pressed", self, "_on_Back_pressed")
 	# warning-ignore:return_value_discarded
 	debug_button.connect("pressed", self, "_on_Debug_pressed")
 	# Fill up the deck for demo purposes
@@ -54,6 +57,10 @@ func _on_Start_pressed() -> void:
 				c.move_to(cfc.NMAP.discard)
 				yield(get_tree().create_timer(0.1), "timeout")
 
+
+func _on_Back_pressed() -> void:
+	get_tree().change_scene("res://src/fragment_forge/MainMenu.tscn")
+	cfc.NMAP.clear()
 
 func _on_Settings_pressed() -> void:
 	_pause_board()
