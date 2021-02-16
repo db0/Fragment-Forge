@@ -7,7 +7,7 @@ onready var deck_details = $PC/VBC/DeckDetails
 onready var difficulty_level = $PC/VBC/Difficulty/Level
 onready var diff_popup = $PC/VBC/Difficulty/Level/Difficulties
 onready var diff_title = $PC/VBC/DifficultyLabel
-onready var diff_legend = $PC/VBC/Difficulty/Level/Difficulties/VBC/DifficultyLegend
+onready var diff_legend = $PC/VBC/Difficulty/Level/Difficulties/MC/VBC/DifficultyLegend
 
 func _ready() -> void:
 	_adjust_difficulty()
@@ -61,7 +61,7 @@ func _on_Level_mouse_exited() -> void:
 func _adjust_difficulty_legend() -> void:
 	var diff_text = ''
 	if ffc.difficulty == 0:
-		diff_text = "0: Normal Game"
+		diff_text = "0: Normal Difficulty"
 		diff_title.text = "Normal"
 	elif ffc.difficulty > 0:
 		print_debug(diff_title.text)
@@ -74,7 +74,9 @@ func _adjust_difficulty_legend() -> void:
 		for difficulty in range(1,ffc.difficulty+1):
 			diff_text += str(difficulty) + ': ' + ffc.DIFFICULTIES[difficulty] + '\n'
 	else:
-		if ffc.difficulty < 0:
+		if ffc.difficulty <= -4:
+			diff_title.text = "Trivial"
+		elif ffc.difficulty < 0:
 			diff_title.text = "Easy"
 		for difficulty in range(ffc.difficulty, 0):
 			diff_text += str(difficulty) + ': ' + ffc.DIFFICULTIES[difficulty] + '\n'

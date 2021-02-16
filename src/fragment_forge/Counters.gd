@@ -21,4 +21,6 @@ func _ready() -> void:
 			 "CounterTitle": "Motivation: ",
 			"Value": 5},
 	}
+	if ffc.difficulty >= 5:
+		needed_counters["motivation"]["Value"] -= 1
 	spawn_needed_counters()

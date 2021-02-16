@@ -17,8 +17,8 @@ const DIFFICULTIES = {
 	9: "Penalty for having lower skill than the shader increased",
 	10: "+1 cred needed to win",
 	11: "+1 Tournament value requirements",
-
 }
+
 var current_deck: Dictionary
 var difficulty: int setget set_difficulty
 

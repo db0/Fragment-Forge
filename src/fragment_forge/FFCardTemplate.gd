@@ -206,7 +206,10 @@ static func get_skill_modified_shader_time_cost(
 		# Making more skill-advanced shaders 
 		# increases their time by their skill_req
 		# Then increases the time cost by 50%
-		final_cost = skill_req + round(float(time_cost) * 1.5)
+		var time_multiplier = 1.5
+		if ffc.difficulty >= 9:
+			time_multiplier = 2.0
+		final_cost = skill_req + round(float(time_cost) * time_multiplier)
 	elif current_skill > skill_req:
 		# Making less advanced shaders simply reduces their time needs by 1
 		# to a maximum of half (rounded up)

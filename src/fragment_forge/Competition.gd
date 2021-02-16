@@ -30,7 +30,7 @@ const COMPETITIONS = [
 ]
 # More ideas
 # Flamewar: Everyone loses 1 motivation at the start.
-#	Multipler: Last player loses 1 extra.
+#	Multiplaer: Last player loses 1 extra.
 #	Single player: If not second place at least, lose 1 extra.
 # Highly Publicized: Winner gains an extra Cred.
 
@@ -111,15 +111,18 @@ func next_competition() -> void:
 	# We want to set the multiplier before incrementing the round
 	# so that on the first turn, the multiplier increase is 0. (0 * 0.5)
 	if current_round > 0:
-		print_debug(current_demo_value,current_place)
 		emit_signal("competition_ended", null, "competition_ended",
 				{"competition_name": current_tournament.name,
 				"demo_value": current_demo_value,
 				"current_place": current_place})
 		if current_place == -1:
-			cfc.NMAP.board.counters.mod_counter("motivation",-2)
+			if ffc.difficulty >= 0:
+				cfc.NMAP.board.counters.mod_counter("motivation",-2)
+			if ffc.difficulty >= 7:
+				cfc.NMAP.board.counters.mod_counter("motivation",-1)
 		elif current_place == Place.FIRST:
-			cfc.NMAP.board.counters.mod_counter("motivation",+1)
+			if ffc.difficulty < 8:
+				cfc.NMAP.board.counters.mod_counter("motivation",+1)
 	current_place = -1
 	round_multiplier = 1 + current_round * round_multiplier_increase
 	current_round += 1

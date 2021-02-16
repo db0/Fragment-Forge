@@ -127,8 +127,16 @@ margin_bottom = 61.0
 mouse_filter = 2
 custom_styles/panel = SubResource( 6 )
 
-[node name="VBC" type="VBoxContainer" parent="PC/VBC/Difficulty/Level/Difficulties"]
-margin_right = 148.0
+[node name="MC" type="MarginContainer" parent="PC/VBC/Difficulty/Level/Difficulties"]
+margin_right = 158.0
+margin_bottom = 61.0
+custom_constants/margin_right = 5
+custom_constants/margin_left = 5
+custom_constants/margin_bottom = 0
+
+[node name="VBC" type="VBoxContainer" parent="PC/VBC/Difficulty/Level/Difficulties/MC"]
+margin_left = 5.0
+margin_right = 153.0
 margin_bottom = 61.0
 mouse_filter = 2
 custom_constants/separation = 10
@@ -136,14 +144,14 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="DifficultiesTitle" type="Label" parent="PC/VBC/Difficulty/Level/Difficulties/VBC"]
+[node name="DifficultiesTitle" type="Label" parent="PC/VBC/Difficulty/Level/Difficulties/MC/VBC"]
 margin_right = 148.0
 margin_bottom = 30.0
 custom_fonts/font = SubResource( 3 )
 text = "Difficulty"
 align = 1
 
-[node name="DifficultyLegend" type="Label" parent="PC/VBC/Difficulty/Level/Difficulties/VBC"]
+[node name="DifficultyLegend" type="Label" parent="PC/VBC/Difficulty/Level/Difficulties/MC/VBC"]
 margin_top = 40.0
 margin_right = 148.0
 margin_bottom = 61.0

@@ -47,6 +47,7 @@ func _on_Start_pressed() -> void:
 		cfc.NMAP.hand.fill_starting_hand()
 		start_button.text = "Next Competition"
 		competitions.next_competition()
+
 	else:
 	# warning-ignore:return_value_discarded
 		counters.mod_counter("skill",1)

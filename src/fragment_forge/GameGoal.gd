@@ -16,6 +16,8 @@ func _ready() -> void:
 		cred_goal += 1
 	if ffc.difficulty >= 10:
 		cred_goal += 1
+	if ffc.difficulty <= 4:
+		max_competitions += 1
 	game_goal.text = "Game Goal: " + str(cred_goal) + " Cred"
 	difficulty.text = "Difficulty: " + str(ffc.difficulty)
 

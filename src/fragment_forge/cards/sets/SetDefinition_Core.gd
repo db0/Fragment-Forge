@@ -126,7 +126,7 @@ const CARDS := {
 	"Voronoi Column Tracing": {
 		"Type": CardConfig.CardTypes.SHADER,
 		"Tags": [],
-		"Abilities": "After you install this card, draw a card.",
+		"Abilities": "After you install this Shader, draw a card.",
 		"Time": 9,
 		"Value": GEN,
 		"Kudos": 0,
