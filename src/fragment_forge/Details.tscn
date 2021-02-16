@@ -47,6 +47,7 @@ margin_right = 714.0
 margin_bottom = 85.0
 
 [node name="GameGoal" parent="VBC2" instance=ExtResource( 4 )]
+margin_bottom = 82.0
 
 [node name="VBC" type="VBoxContainer" parent="."]
 margin_left = 718.0

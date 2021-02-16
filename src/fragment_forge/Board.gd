@@ -59,6 +59,7 @@ func _on_Start_pressed() -> void:
 
 
 func _on_Back_pressed() -> void:
+	# warning-ignore:return_value_discarded
 	get_tree().change_scene("res://src/fragment_forge/MainMenu.tscn")
 	cfc.NMAP.clear()
 

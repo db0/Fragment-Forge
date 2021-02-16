@@ -5,12 +5,12 @@
 [ext_resource path="res://fonts/Xolonium-Regular.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://src/fragment_forge/SettingsMenu.tscn" type="PackedScene" id=4]
 [ext_resource path="res://src/fragment_forge/DeckBuilder.tscn" type="PackedScene" id=5]
-[ext_resource path="res://src/core/DeckBuilder/DeckLoader.gd" type="Script" id=6]
+[ext_resource path="res://src/fragment_forge/NewGame.tscn" type="PackedScene" id=7]
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 2 )
 shader_param/is_card = false
-shader_param/iTime = 13.3884
+shader_param/iTime = 2.39974
 shader_param/AA = false
 shader_param/SEA_HEIGHT = 0.6
 shader_param/SEA_CHOPPY = 4.0
@@ -52,6 +52,8 @@ deck_maximum = 0
 
 [node name="SettingsMenu" parent="." instance=ExtResource( 4 )]
 
+[node name="NewGame" parent="." instance=ExtResource( 7 )]
+
 [node name="MainMenu" type="CenterContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -74,14 +76,12 @@ margin_bottom = 387.0
 size_flags_horizontal = 3
 custom_constants/separation = 40
 
-[node name="NewGame" type="MenuButton" parent="MainMenu/PC/VBC"]
+[node name="NewGame" type="Button" parent="MainMenu/PC/VBC"]
 margin_right = 243.0
 margin_bottom = 100.0
 rect_min_size = Vector2( 0, 100 )
 custom_fonts/font = SubResource( 2 )
 text = "New Game"
-flat = false
-script = ExtResource( 6 )
 
 [node name="DeckBuilder" type="Button" parent="MainMenu/PC/VBC"]
 margin_top = 140.0
@@ -124,6 +124,6 @@ text = "Fragment Forge"
 
 [node name="MenuTween" type="Tween" parent="."]
 
-[connection signal="deck_loaded" from="MainMenu/PC/VBC/NewGame" to="." method="_on_NewGame_deck_loaded"]
+[connection signal="pressed" from="MainMenu/PC/VBC/NewGame" to="." method="_on_NewGame_pressed"]
 [connection signal="pressed" from="MainMenu/PC/VBC/DeckBuilder" to="." method="_on_DeckBuilder_pressed"]
 [connection signal="pressed" from="MainMenu/PC/VBC/Settings" to="." method="_on_Settings_pressed"]

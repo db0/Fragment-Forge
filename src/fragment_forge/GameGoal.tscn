@@ -20,7 +20,7 @@ __meta__ = {
 margin_left = 7.0
 margin_top = 7.0
 margin_right = 115.0
-margin_bottom = 51.0
+margin_bottom = 75.0
 
 [node name="GameGoal" type="Label" parent="VBC"]
 margin_right = 108.0
@@ -35,6 +35,13 @@ margin_bottom = 44.0
 custom_fonts/font = SubResource( 1 )
 text = "Competitions"
 
+[node name="Difficulty" type="Label" parent="VBC"]
+margin_top = 48.0
+margin_right = 108.0
+margin_bottom = 68.0
+custom_fonts/font = SubResource( 1 )
+text = "Difficulty"
+
 [node name="EndGame" type="AcceptDialog" parent="."]
 margin_left = 7.0
 margin_top = 7.0
@@ -43,4 +50,5 @@ margin_bottom = 77.0
 popup_exclusive = true
 
 [node name="EndGameTween" type="Tween" parent="."]
+
 [connection signal="confirmed" from="EndGame" to="." method="_on_EndGame_confirmed"]

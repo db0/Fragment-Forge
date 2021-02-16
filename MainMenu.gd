@@ -12,6 +12,7 @@ var shader_properties: ShaderProperties
 
 onready var main_menu := $MainMenu
 onready var settings_menu := $SettingsMenu
+onready var new_game_menu := $NewGame
 onready var deck_builder := $DeckBuilder
 onready var title := $Title
 
@@ -19,7 +20,9 @@ func _ready() -> void:
 	cfc.game_rng.randomize()
 	change_shader()
 	settings_menu.rect_position.x = get_viewport().size.x
+	new_game_menu.rect_position.x = get_viewport().size.x
 	deck_builder.rect_position.x = -get_viewport().size.x
+	new_game_menu.back_button.connect("pressed", self, "_on_NewGame_Back_pressed")
 	settings_menu.back_button.connect("pressed", self, "_on_Setings_Back_pressed")
 	deck_builder.back_button.connect("pressed", self, "_on_DeckBuilder_Back_pressed")
 	initiate_sample_decks()
@@ -151,5 +154,26 @@ func _on_DeckBuilder_Back_pressed() -> void:
 			Tween.TRANS_BACK, Tween.EASE_IN_OUT)
 	$MenuTween.interpolate_property(title,'rect_position:x',
 			title.rect_position.x, 0, menu_switch_time,
+			Tween.TRANS_BACK, Tween.EASE_IN_OUT)
+	$MenuTween.start()
+
+
+func _on_NewGame_pressed() -> void:
+	$MenuTween.interpolate_property(main_menu,'rect_position:x',
+			main_menu.rect_position.x, -get_viewport().size.x, menu_switch_time,
+			Tween.TRANS_BACK, Tween.EASE_IN_OUT)
+	$MenuTween.interpolate_property(new_game_menu,'rect_position:x',
+			new_game_menu.rect_position.x, 0, menu_switch_time,
+			Tween.TRANS_BACK, Tween.EASE_IN_OUT)
+	$MenuTween.start()
+
+
+func _on_NewGame_Back_pressed() -> void:
+	$MenuTween.interpolate_property(new_game_menu,'rect_position:x',
+			new_game_menu.rect_position.x, get_viewport().size.x, menu_switch_time,
+			Tween.TRANS_BACK, Tween.EASE_IN_OUT)
+	print('debug')
+	$MenuTween.interpolate_property(main_menu,'rect_position:x',
+			main_menu.rect_position.x, 0, menu_switch_time,
 			Tween.TRANS_BACK, Tween.EASE_IN_OUT)
 	$MenuTween.start()

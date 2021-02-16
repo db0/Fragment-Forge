@@ -3,11 +3,21 @@ extends PanelContainer
 var cred_goal: int = 10
 var max_competitions: int = 3
 onready var game_goal = $"VBC/GameGoal"
+onready var difficulty = $"VBC/Difficulty"
 onready var competitions_visited = $"VBC/Competitions"
 onready var end_game_popup: AcceptDialog = $EndGame
 
 func _ready() -> void:
+	if ffc.difficulty <= -2:
+		cred_goal -= 1
+	if ffc.difficulty >= 1:
+		cred_goal += 1
+	if ffc.difficulty >= 4:
+		cred_goal += 1
+	if ffc.difficulty >= 10:
+		cred_goal += 1
 	game_goal.text = "Game Goal: " + str(cred_goal) + " Cred"
+	difficulty.text = "Difficulty: " + str(ffc.difficulty)
 
 func _process(_delta: float) -> void:
 #	if cfc.NMAP.get("board"):
@@ -17,7 +27,7 @@ func _process(_delta: float) -> void:
 	if cfc.NMAP.board.competitions.current_round > max_competitions\
 			and not end_game_popup.visible:
 		lose_game()
-		
+
 	var competitions_visited_text = "Competitions: "\
 			+ str(cfc.NMAP.board.competitions.current_round)\
 			+ "/" + str(max_competitions)
