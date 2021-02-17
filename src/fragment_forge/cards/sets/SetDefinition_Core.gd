@@ -149,7 +149,7 @@ const CARDS := {
 		"motivation_req": 0,
 		"_abilities_power": 1,
 	},
-	"Consuming Shader": {
+	"Xod": {
 		"Type": CardConfig.CardTypes.SHADER,
 		"Tags": [],
 		"Abilities": "After you install this Shader, discard an installed Shader",
