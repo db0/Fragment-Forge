@@ -20,8 +20,6 @@ static func filter_trigger(
 		trigger_card,
 		owner_card,
 		trigger_details)
-	if card_scripts.get("filter_" + FILTER_CURRENT_PLACE):
-		print_debug(card_scripts.get("filter_" + FILTER_CURRENT_PLACE), trigger_details)
 	if is_valid and card_scripts.get("filter_" + FILTER_CURRENT_PLACE) \
 			and card_scripts.get("filter_" + FILTER_CURRENT_PLACE) != \
 			trigger_details.get(FILTER_CURRENT_PLACE):

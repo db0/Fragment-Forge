@@ -51,6 +51,20 @@ const CARDS := {
 		"cred_req": 0,
 		"motivation_req": 0,
 	},
+	"Attractive Shader": {
+		"Type": CardConfig.CardTypes.SHADER,
+		"Tags": [],
+		"Abilities": "After installing this Shader, "\
+				+ "search your deck for the first Collaborator "\
+				+ "and put them in your hand",
+		"Time": 6,
+		"Value": GEN,
+		"Kudos": 0,
+		"skill_req": 0,
+		"cred_req": 0,
+		"motivation_req": 4,
+		"_abilities_power": 3,
+	},
 #### skill_req 1
 	"Fractal Pyramid": {
 		"Type": CardConfig.CardTypes.SHADER,
@@ -78,7 +92,7 @@ const CARDS := {
 		"Type": CardConfig.CardTypes.SHADER,
 		"Tags": [],
 		"Abilities": "Comes with 1 Activation token\n"\
-				+ "After you install a shader, remove an activation token"\
+				+ "After you install a shader, remove an activation token "\
 				+ "to give that Shader +2 Value",
 		"Time": 4,
 		"Value": GEN,
@@ -147,6 +161,18 @@ const CARDS := {
 		"motivation_req": 0,
 		"_abilities_power": -4
 	},
+	"Proud Shader": {
+		"Type": CardConfig.CardTypes.SHADER,
+		"Tags": [],
+		"Abilities": "This Shader has -1 value for each Shader in your demo",
+		"Time": 5,
+		"Value": GEN,
+		"Kudos": 0,
+		"skill_req": 2,
+		"cred_req": 0,
+		"motivation_req": 0,
+		"_abilities_power": -4
+	},
 #### skill_req 3
 	"Seascape": {
 		"Type": CardConfig.CardTypes.SHADER,
@@ -164,7 +190,7 @@ const CARDS := {
 		"Type": CardConfig.CardTypes.RESOURCE,
 		"Tags": ["Tutor"],
 		"Abilities": "You have +1 skill for Shaders of 1 skill_req or lower.",
-		"Time": 1,
+		"Time": 2,
 		"Value": 0,
 		"Kudos": 0,
 		"skill_req": 0,
@@ -384,6 +410,29 @@ const CARDS := {
 		"skill_req": 0,
 		"cred_req": 0,
 		"motivation_req": 6,
+	},
+	"Meditation": {
+		"Type": CardConfig.CardTypes.ACTION,
+		"Tags": [],
+		"Abilities": "Increase your motivation by 1",
+		"Time": 7,
+		"Value": 0,
+		"Kudos": 0,
+		"skill_req": 0,
+		"cred_req": 0,
+		"motivation_req": 0,
+	},
+	"Pivot": {
+		"Type": CardConfig.CardTypes.ACTION,
+		"Tags": [],
+		"Abilities": "Pay 1 Kudos per installed Shader: "\
+				+ "Draw 1 card per installed Shader",
+		"Time": 1,
+		"Value": 0,
+		"Kudos": 0,
+		"skill_req": 0,
+		"cred_req": 0,
+		"motivation_req": 0,
 	},
 }
 

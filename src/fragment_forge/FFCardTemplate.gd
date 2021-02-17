@@ -8,6 +8,7 @@ var attempted_action_drop_to_board := false
 var shader_time := 0.0
 var shader_params := {}
 var shader_properties: ShaderProperties
+var printed_properties := {}
 
 
 onready var modified_costs_popup = $ModifiedCostsPopup
@@ -45,15 +46,29 @@ func _process(delta: float) -> void:
 			CardState.PREVIEW:
 				if cfc.game_settings.animate_in_deckbuilder:
 					shader_time += delta
-#
-#func modify_property(property: String, value, is_init = false, check := false) -> int:
-#	if property == "Value" and value == 'gen':
-#		value = properties.Time + 1\
-#				+ properties.skill_req * 2\
-#				- properties.get("_abilities_power",0)
-#	return(.modify_property(property, value, is_init, check))
-#
-
+	highlight_modified_properties()
+	
+func highlight_modified_properties() -> void:
+	# We don't check cards in deck to reduce operations
+	if state != CardState.IN_PILE:
+		for property in properties:
+			if property.begins_with("_"):
+				continue
+			var label_node = card_front.card_labels[property]
+			var current_property = get_property(property)
+			if property in CardConfig.PROPERTIES_NUMBERS:
+				if current_property != printed_properties.get(property)\
+						and property + ": " + str(current_property) != label_node.text:
+					card_front.set_label_text(label_node,property
+								+ ": " + str(current_property))
+				if current_property > printed_properties.get(property):
+					label_node.modulate = Color(0,1,0)
+				elif current_property < printed_properties.get(property):
+					label_node.modulate = Color(1,0,0)
+				else:
+					label_node.modulate = Color(1,1,1)
+				if state == CardState.VIEWPORT_FOCUS and property == 'Value':
+					print_debug(card_name, current_property,printed_properties.get(property))
 func setup() -> void:
 	.setup()
 	if properties.Type == CardConfig.CardTypes.SHADER:
@@ -61,8 +76,8 @@ func setup() -> void:
 		if properties.Value == GEN :
 			modify_property("Value",
 					generate_shader_value(
-					properties.Time, 
-					properties.skill_req, 
+					properties.Time,
+					properties.skill_req,
 					properties.get("_abilities_power",0)))
 #		print_debug(card_front.art.material)
 		var shader_name: String = "res://shaders/" + card_name + ".shader"
@@ -79,12 +94,14 @@ func setup() -> void:
 					shader_properties._set_shader_param(param, source_card.shader_properties.shader_params[param])
 			else:
 				shader_properties.init_shader(card_name)
+	if printed_properties.empty():
+		printed_properties = properties.duplicate()
 
 
 static func generate_shader_value(time: int, skill_req: int, power: int) -> int:
 	return(time + 1 + skill_req * 2 - power)
-	
-	
+
+
 
 func check_play_costs() -> Color:
 	var ret : Color = CFConst.CostsState.OK
@@ -203,7 +220,7 @@ static func get_skill_modified_shader_time_cost(
 		# When the skill req is higher by 2 or more
 		final_cost = 1000
 	elif current_skill < skill_req:
-		# Making more skill-advanced shaders 
+		# Making more skill-advanced shaders
 		# increases their time by their skill_req
 		# Then increases the time cost by 50%
 		var time_multiplier = 1.5

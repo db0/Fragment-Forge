@@ -85,6 +85,17 @@ func get_scripts(card_name: String) -> Dictionary:
 				],
 			},
 		},
+		"Meditation": {
+			"manual": {
+				"hand": [
+					{
+						"name": "mod_counter",
+						"counter_name": "motivation",
+						"modification": 1,
+					},
+				],
+			},
+		},
 		"Help out Some Newbs": {
 			"manual": {
 				"hand": [
@@ -397,6 +408,7 @@ func get_scripts(card_name: String) -> Dictionary:
 						"token_name": "activation",
 						"subject": "self",
 						"trigger": "another",
+						"is_cost": true,
 						"filter_state_trigger": [
 							{
 								"filter_properties": \
@@ -508,6 +520,50 @@ func get_scripts(card_name: String) -> Dictionary:
 				],
 			},
 		},
+		"Pivot": {
+			"manual": {
+				"hand": [
+					{
+						"name": "mod_counter",
+						"modification": "per_boardseek",
+						"counter_name":  "kudos",
+						"is_cost": true,
+						"per_boardseek": {
+							"is_inverted": true,
+							"subject": "boardseek",
+							"subject_count": "all",
+							"filter_state_seek": [
+								{"filter_properties": {
+									"Type": CardConfig.CardTypes.SHADER}
+								}
+							]
+						}
+					},
+					{
+						"name": "move_card_to_container",
+						"dest_container": cfc.NMAP.discard,
+						"subject": "self",
+					},
+					{
+						"name": "move_card_to_container",
+						"src_container": cfc.NMAP.deck,
+						"dest_container": cfc.NMAP.hand,
+						"subject_count": "per_boardseek",
+						"subject": "index",
+						"subject_index": "top",
+						"per_boardseek": {
+							"subject": "boardseek",
+							"subject_count": "all",
+							"filter_state_seek": [
+								{"filter_properties": {
+									"Type": CardConfig.CardTypes.SHADER}
+								}
+							]
+						}
+					},
+				],
+			},
+		},
 		"Fresh Start": {
 			"manual": {
 				"hand": [
@@ -543,6 +599,50 @@ func get_scripts(card_name: String) -> Dictionary:
 					},
 				],
 			},
+		},
+		"Attractive Shader": {
+			"card_moved_to_board": {
+				"board": [
+					{
+						"name": "move_card_to_container",
+						"subject": "tutor",
+						"src_container":  cfc.NMAP.deck,
+						"dest_container":  cfc.NMAP.hand,
+						"filter_state_tutor": [
+							{
+								"filter_properties": {
+									"Tags": "Collaborator"
+								}
+							}
+						],
+						"trigger": "self",
+					},
+				],
+			},
+		},
+		"Proud Shader": {
+			"alterants": {
+				"board": [
+					{
+						"filter_task": "get_property",
+						"trigger": "self",
+						"filter_property_name": "Value",
+						"alteration": "per_boardseek",
+						"per_boardseek": {
+							"is_inverted": true,
+							"subject": "boardseek",
+							"subject_count": "all",
+							"filter_state_seek": [
+								{
+									"filter_properties": {
+										"Type": CardConfig.CardTypes.SHADER
+									}
+								}
+							]
+						}
+					},
+				]
+			}
 		},
 	}
 	# We return only the scripts that match the card name and trigger

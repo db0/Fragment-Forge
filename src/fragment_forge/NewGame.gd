@@ -64,7 +64,6 @@ func _adjust_difficulty_legend() -> void:
 		diff_text = "0: Normal Difficulty"
 		diff_title.text = "Normal"
 	elif ffc.difficulty > 0:
-		print_debug(diff_title.text)
 		if ffc.difficulty > 10:
 			diff_title.text = "Shader Guru"
 		elif ffc.difficulty > 5:

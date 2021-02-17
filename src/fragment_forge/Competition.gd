@@ -74,7 +74,6 @@ func _ready() -> void:
 		value_per_rank_diff_ajustment += 1
 	if ffc.difficulty >= 11:
 		value_per_rank_diff_ajustment += 1
-	print_debug(value_per_rank_diff_ajustment)
 	value_per_rank = STD_VALUE_PER_RANK + value_per_rank_diff_ajustment
 	placement_requirements = [
 		value_per_rank,
