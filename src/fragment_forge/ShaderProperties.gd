@@ -71,9 +71,24 @@ func init_shader(shader_name: String, is_card := true) -> void:
 			if not CFUtils.randi() % 4:
 				_set_shader_param('orient', -1.0)
 		"Raycast":
-			# One in four sierpinski shaders will be upside down
 			_set_shader_param('iChannel0', FFUtils.grab_random_texture())
 			_set_shader_param('iChannel1', FFUtils.grab_random_texture())
+		"Ether":
+			_set_shader_param('sharpness', CFUtils.randi_range(5,10))
+		"Spine":
+			# Only texture that doesn't make the camera run into the wall often
+			_set_shader_param('iChannel0', FFUtils.grab_texture("res://shaders/textures/cc0textures/Ground040_1K_Color.jpg"))
+			_set_shader_param('iChannel1', FFUtils.grab_texture("res://shaders/textures/pixabay/background-4097561_640.jpg"))
+		"Plasma Globe":
+			_set_shader_param('iChannel0', FFUtils.grab_random_texture())
+			_set_shader_param('NUM_RAYS', CFUtils.randf_range(10.0,30.0))
+		"Noise Pulse":
+			_set_shader_param('iChannel0', FFUtils.grab_random_texture())
+			_set_shader_param('tint', FFUtils.rnd_color())
+			if is_card:
+				_set_shader_param('multiplier', CFUtils.randf_range(4.0,10.0))
+			else:
+				_set_shader_param('multiplier', CFUtils.randf_range(15.0,20.0))
 		_:
 			pass
 

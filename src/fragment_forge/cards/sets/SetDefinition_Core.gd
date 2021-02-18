@@ -51,7 +51,7 @@ const CARDS := {
 		"cred_req": 0,
 		"motivation_req": 0,
 	},
-	"Attractive Shader": {
+	"Ether": {
 		"Type": CardConfig.CardTypes.SHADER,
 		"Tags": [],
 		"Abilities": "After installing this Shader, "\
@@ -102,7 +102,7 @@ const CARDS := {
 		"motivation_req": 0,
 		"_abilities_power": 2
 	},
-	"Frustrating Shader": {
+	"Plasma Globe": {
 		"Type": CardConfig.CardTypes.SHADER,
 		"Tags": [],
 		"Abilities": "After you install this shader, lose 1 motivation",
@@ -161,7 +161,7 @@ const CARDS := {
 		"motivation_req": 0,
 		"_abilities_power": -4
 	},
-	"Proud Shader": {
+	"Spine": {
 		"Type": CardConfig.CardTypes.SHADER,
 		"Tags": [],
 		"Abilities": "This Shader has -1 value for each Shader in your demo",

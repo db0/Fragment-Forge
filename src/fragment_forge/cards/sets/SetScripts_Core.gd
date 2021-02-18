@@ -588,7 +588,7 @@ func get_scripts(card_name: String) -> Dictionary:
 				],
 			},
 		},
-		"Frustrating Shader": {
+		"Plasma Globe": {
 			"card_moved_to_board": {
 				"board": [
 					{
@@ -600,7 +600,7 @@ func get_scripts(card_name: String) -> Dictionary:
 				],
 			},
 		},
-		"Attractive Shader": {
+		"Ether": {
 			"card_moved_to_board": {
 				"board": [
 					{
@@ -620,7 +620,7 @@ func get_scripts(card_name: String) -> Dictionary:
 				],
 			},
 		},
-		"Proud Shader": {
+		"Spine": {
 			"alterants": {
 				"board": [
 					{
