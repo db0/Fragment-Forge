@@ -2,15 +2,17 @@
 
 [ext_resource path="res://shaders/ShaderToy.gd" type="Script" id=1]
 [ext_resource path="res://shaders/textures/cc0textures/Ground040_1K_Color.jpg" type="Texture" id=2]
-[ext_resource path="res://shaders/Noise Pulse.shader" type="Shader" id=3]
+[ext_resource path="res://shaders/Plasma Globe.shader" type="Shader" id=3]
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 3 )
 shader_param/is_card = true
-shader_param/iTime = 2686.33
-shader_param/multiplier = 4.0
-shader_param/tint = Vector3( 0.2, 0.1, 0.4 )
-shader_param/tau = 6.28319
+shader_param/iTime = 2823.48
+shader_param/iMouse = null
+shader_param/NUM_RAYS = 13.0
+shader_param/VOLUMETRIC_STEPS = 19
+shader_param/MAX_ITER = 35
+shader_param/FAR = 6.0
 shader_param/iChannel0 = ExtResource( 2 )
 
 [sub_resource type="Environment" id=2]

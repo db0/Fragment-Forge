@@ -110,7 +110,10 @@ void fragment()//2 lines above are a = ambient occlusion and s = sub surface sca
 //  vec2 uv=(FRAGCOORD.xy/iResolution.xy-0.5)/vec2(iResolution.y/iResolution.x,1); //get UVs, nothing fancy, 
   vec2 uv = -UV;
   uv *= 1.2;
-  uv += 0.5 * 1.2;  
+  uv += 0.5 * 1.2; 
+  if(!is_card){
+    uv.x *= iResolution.x/iResolution.y;
+  }
   float tt=mod(iTime,62.82);  //Time variable, modulo'ed to avoid ugly artifact. Imagine moduloing your timeline, you would become a cry baby straight after dying a bitter old man. Christ, that's some fucking life you've lived, Steve.
   vec2 v=mix(vec2(3.,8.8),vec2(12.,16.),ceil(cos(tt*.4)));//Reuse the v variable as holder of camera variables
   vec3 ro=vec3(cos(tt*.4)*7.,sin(tt*.4)*7.,-10.);//Ro=ray origin=camera position We build camera right here broski. Gotta be able to see, to peep through the keyhole.

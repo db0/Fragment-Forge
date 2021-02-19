@@ -67,8 +67,8 @@ func highlight_modified_properties() -> void:
 					label_node.modulate = Color(1,0,0)
 				else:
 					label_node.modulate = Color(1,1,1)
-				if state == CardState.VIEWPORT_FOCUS and property == 'Value':
-					print_debug(card_name, current_property,printed_properties.get(property))
+#				if state == CardState.VIEWPORT_FOCUS and property == 'Value':
+#					print_debug(card_name, current_property,printed_properties.get(property))
 func setup() -> void:
 	.setup()
 	if properties.Type == CardConfig.CardTypes.SHADER:

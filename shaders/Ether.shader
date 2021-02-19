@@ -28,7 +28,9 @@ void fragment(){
 	vec2 iResolution =  1.0 / SCREEN_PIXEL_SIZE;
 	vec2 p = UV;// - vec2(.9,.5);
 	p -= 0.5;
-	
+	if(!is_card){
+		p.x *= iResolution.x/iResolution.y;
+	}
     vec3 cl = vec3(0.);
     float d = 2.5;
     for(int i=0; i<=sharpness; i++)	{

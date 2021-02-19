@@ -8,6 +8,7 @@ shader_type canvas_item;
 // Licence: Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License
 // https://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_US
 
+uniform bool is_card = true;
 uniform float iTime;
 
 vec3 palette(float d){
@@ -52,8 +53,12 @@ vec4 rm (vec3 ro, vec3 rd){
 }
 void fragment()
 {
+	vec2 iResolution =  1.0 / SCREEN_PIXEL_SIZE;
 	vec2 uv = UV;
 	uv -= 0.5;
+	if(!is_card){
+		uv.x *= iResolution.x/iResolution.y;
+	}	
 	vec3 ro = vec3(0.,0.,-50.);
     ro.xz = rotate(ro.xz,iTime);
     vec3 cf = normalize(-ro);

@@ -166,7 +166,7 @@ void fragment()
 	p += 0.5;
 	if(!is_card){
 		p.x *= iResolution.x/iResolution.y;
-	}	
+	}
 //	p.x*=iResolution.x/iResolution.y;
 	vec2 um = iMouse.xy / iResolution.xy-.5;
     

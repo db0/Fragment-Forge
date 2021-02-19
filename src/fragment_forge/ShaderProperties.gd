@@ -27,7 +27,7 @@ func init_shader(shader_name: String, is_card := true) -> void:
 			if is_card:
 				_set_shader_param('multiplier', CFUtils.randf_range(5.0,10.0))
 			else:
-				_set_shader_param('multiplier', CFUtils.randf_range(15.0,20.0))
+				_set_shader_param('multiplier', CFUtils.randf_range(10.0,15.0))
 			var texture = FFUtils.grab_random_texture()
 			_set_shader_param('iChannel1', texture)
 			if not CFUtils.randi() % 8:

@@ -48,7 +48,9 @@ void fragment()
 	
     uv *= multiplier;
 	uv -= 0.5 * multiplier;
-
+	if(!is_card){
+		uv.x *= iResolution.x/iResolution.y;
+	}	
     vec2 st = vec2( length(uv), atan(uv.y, uv.x) );
 	if (columns){
 	    st = uv;

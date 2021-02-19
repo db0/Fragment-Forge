@@ -19,7 +19,6 @@ static func grab_random_texture() -> Dictionary:
 	var textures := CFUtils.list_files_in_directory(directory)
 	CFUtils.shuffle_array(textures)
 	var new_texture = ImageTexture.new();
-	print_debug(directory + textures[0])
 	var tex = load(directory + textures[0])
 	var image = tex.get_data()
 	new_texture.create_from_image(image)
@@ -33,7 +32,11 @@ static func grab_texture(path: String) -> Dictionary:
 	return(new_texture)
 
 static func rnd_color() -> Vector3:
-	var r = CFUtils.randf_range(0.0,1.0)
-	var g = CFUtils.randf_range(0.0,1.0)
-	var b = CFUtils.randf_range(0.0,1.0)
+	var r := 1.0
+	var g := 1.0
+	var b := 1.0
+	while r > 0.7 and g > 0.7 and b > 0.7:
+		r = CFUtils.randf_range(0.0,0.9)
+		g = CFUtils.randf_range(0.0,0.9)
+		b = CFUtils.randf_range(0.0,0.9)
 	return(Vector3(r,g,b))

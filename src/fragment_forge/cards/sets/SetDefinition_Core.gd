@@ -114,6 +114,19 @@ const CARDS := {
 		"motivation_req": 0,
 		"_abilities_power": -3,
 	},
+	"Noise Pulse": {
+		"Type": CardConfig.CardTypes.SHADER,
+		"Tags": [],
+		"Abilities": "After you play a Collaborator or Tutor, "\
+				+ "increase this Shader's value by 1",
+		"Time": 4,
+		"Value": GEN,
+		"Kudos": 0,
+		"skill_req": 1,
+		"cred_req": 0,
+		"motivation_req": 0,
+		"_abilities_power": 1,
+	},
 #### skill_req 2
 	"Cloud": {
 		"Type": CardConfig.CardTypes.SHADER,

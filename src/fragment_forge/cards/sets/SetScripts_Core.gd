@@ -600,6 +600,22 @@ func get_scripts(card_name: String) -> Dictionary:
 				],
 			},
 		},
+		"Noise Pulse": {
+			"card_moved_to_board": {
+				"board": [
+					{
+						"name": "modify_properties",
+						"set_properties": {"Value": "+1"},
+						"subject": "self",
+						"trigger": "another",
+						"filter_state_trigger": [
+							{"filter_properties": {"Tags": "Tutor"}},
+							{"filter_properties": {"Tags": "Collaborator"}},
+						],
+					},
+				],
+			},
+		},
 		"Ether": {
 			"card_moved_to_board": {
 				"board": [
