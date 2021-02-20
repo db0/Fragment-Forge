@@ -94,6 +94,17 @@ func setup() -> void:
 					shader_properties._set_shader_param(param, source_card.shader_properties.shader_params[param])
 			else:
 				shader_properties.init_shader(card_name)
+	else:
+		var card_art_file: String = "res://assets/images/" + card_name + ".jpeg"
+		var check_art = File.new()
+		if check_art.file_exists(card_art_file):
+			var new_texture = ImageTexture.new();
+			var tex = load(card_art_file)
+			var image = tex.get_data()
+			new_texture.create_from_image(image)
+			card_front.art.texture = new_texture
+			card_front.art.visible = true
+			
 	if printed_properties.empty():
 		printed_properties = properties.duplicate()
 

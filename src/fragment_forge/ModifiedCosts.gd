@@ -112,6 +112,7 @@ func update_kudos_labels(
 	for card in kudos_alterants_cards_displayed:
 		if not card in alterants:
 			kudos_alterants_cards_displayed[card].queue_free()
+			# warning-ignore:return_value_discarded
 			kudos_alterants_cards_displayed.erase(card)
 	if printed > 0 or modified > 0:
 		$HBC/Separator.visible = true

@@ -2242,7 +2242,7 @@ func _process_card_state() -> void:
 			set_card_rotation(0)
 			$Control.rect_rotation = 0
 			# We scale the card to allow the player a better viewing experience
-			scale = Vector2(1.5,1.5)
+			scale = Vector2(2,2)
 
 
 

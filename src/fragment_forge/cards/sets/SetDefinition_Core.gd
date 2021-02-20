@@ -273,7 +273,7 @@ const CARDS := {
 	"Discord Mod": {
 		"Type": CardConfig.CardTypes.RESOURCE,
 		"Tags": ["Volunteering"],
-		"Abilities": "Comes into the game with 12 Kudos tokens\n\n"\
+		"Abilities": "Comes into the game with 12 Kudos tokens\n"\
 				+ "1 Time: Take 2 Kudos tokens from this card. "\
 				+ "When it has no more kudos tokens, discard it.",
 		"Time": 1,
@@ -310,7 +310,7 @@ const CARDS := {
 		"Type": CardConfig.CardTypes.RESOURCE,
 		"Tags": ["Knowledge"],
 		"Abilities": "Once per Competition, you may look "\
-				+ "at the top card of the deck\n\n"\
+				+ "at the top card of the deck\n"\
 				+ "Discard this card: Draw one card",
 		"Time": 1,
 		"Value": 0,
@@ -379,7 +379,7 @@ const CARDS := {
 		"Type": CardConfig.CardTypes.ACTION,
 		"Tags": [],
 		"Abilities": "Discard a Tutor, Collaborator, or Volunteering Resource"\
-				+ " from hand or board to gain 1 Cred and 2 Kudos.\n\n"\
+				+ " from hand or board to gain 1 Cred and 2 Kudos.\n"\
 				+ "If the Resource was installed, gain 3 more Kudos.",
 		"Time": 1,
 		"Value": 0,

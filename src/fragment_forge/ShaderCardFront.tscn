@@ -1,9 +1,8 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=12 format=2]
 
-[ext_resource path="res://src/fragment_forge/CardFront.gd" type="Script" id=1]
+[ext_resource path="res://src/fragment_forge/ShaderCardFront.gd" type="Script" id=1]
 [ext_resource path="res://fonts/Xolonium-Regular.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://assets/images/Newbie Tutor.jpeg" type="Texture" id=3]
-[ext_resource path="res://fonts/OpenSans-Semibold.ttf" type="DynamicFontData" id=5]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.145098, 0.145098, 0.145098, 1 )
@@ -47,22 +46,14 @@ outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
 font_data = ExtResource( 2 )
 
-[sub_resource type="OpenSimplexNoise" id=12]
-
-[sub_resource type="NoiseTexture" id=13]
-noise = SubResource( 12 )
-
-[sub_resource type="StyleBoxTexture" id=14]
-texture = SubResource( 13 )
-region_rect = Rect2( 0, 0, 512, 512 )
-
-[sub_resource type="DynamicFont" id=8]
-outline_size = 1
+[sub_resource type="DynamicFont" id=7]
+size = 20
+outline_size = 2
 outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
-font_data = ExtResource( 5 )
+font_data = ExtResource( 2 )
 
-[sub_resource type="DynamicFont" id=9]
+[sub_resource type="DynamicFont" id=8]
 size = 10
 outline_size = 2
 outline_color = Color( 0, 0, 0, 1 )
@@ -81,22 +72,27 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ArtMargin" type="MarginContainer" parent="."]
-margin_right = 150.0
-margin_bottom = 150.0
+[node name="ArtLayout" type="VBoxContainer" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
 mouse_filter = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="CC" type="CenterContainer" parent="ArtMargin"]
+[node name="ArtMargin" type="MarginContainer" parent="ArtLayout"]
+margin_right = 150.0
+margin_bottom = 150.0
+mouse_filter = 2
+
+[node name="CC" type="CenterContainer" parent="ArtLayout/ArtMargin"]
 margin_right = 150.0
 margin_bottom = 150.0
 rect_min_size = Vector2( 150, 150 )
 mouse_filter = 2
 
-[node name="Art" type="TextureRect" parent="ArtMargin/CC"]
-visible = false
+[node name="Art" type="TextureRect" parent="ArtLayout/ArtMargin/CC"]
 margin_right = 150.0
 margin_bottom = 150.0
 rect_min_size = Vector2( 150, 150 )
@@ -108,31 +104,23 @@ expand = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
+custom_constants/margin_right = 2
+custom_constants/margin_left = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="CardText" type="VBoxContainer" parent="Margin"]
-margin_right = 150.0
+margin_left = 2.0
+margin_right = 148.0
 margin_bottom = 240.0
 mouse_filter = 2
-size_flags_vertical = 3
-custom_constants/separation = -1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ArtLayover" type="MarginContainer" parent="Margin/CardText"]
-margin_right = 150.0
-margin_bottom = 150.0
-
-[node name="VBC" type="VBoxContainer" parent="Margin/CardText/ArtLayover"]
-margin_right = 150.0
-margin_bottom = 150.0
-rect_min_size = Vector2( 150, 150 )
-
-[node name="Name" type="Label" parent="Margin/CardText/ArtLayover/VBC"]
-margin_right = 150.0
+[node name="Name" type="Label" parent="Margin/CardText"]
+margin_right = 146.0
 margin_bottom = 19.0
 rect_min_size = Vector2( 146, 19 )
 size_flags_vertical = 1
@@ -144,9 +132,9 @@ align = 1
 valign = 1
 autowrap = true
 
-[node name="Type" type="Label" parent="Margin/CardText/ArtLayover/VBC"]
+[node name="Type" type="Label" parent="Margin/CardText"]
 margin_top = 23.0
-margin_right = 150.0
+margin_right = 146.0
 margin_bottom = 36.0
 rect_min_size = Vector2( 146, 13 )
 size_flags_vertical = 1
@@ -157,9 +145,9 @@ valign = 1
 autowrap = true
 uppercase = true
 
-[node name="Tags" type="Label" parent="Margin/CardText/ArtLayover/VBC"]
+[node name="Tags" type="Label" parent="Margin/CardText"]
 margin_top = 40.0
-margin_right = 150.0
+margin_right = 146.0
 margin_bottom = 57.0
 rect_min_size = Vector2( 146, 17 )
 size_flags_vertical = 1
@@ -170,9 +158,9 @@ valign = 1
 autowrap = true
 uppercase = true
 
-[node name="skill_req" type="Label" parent="Margin/CardText/ArtLayover/VBC"]
+[node name="skill_req" type="Label" parent="Margin/CardText"]
 margin_top = 61.0
-margin_right = 150.0
+margin_right = 146.0
 margin_bottom = 75.0
 rect_min_size = Vector2( 146, 14 )
 custom_fonts/font = SubResource( 6 )
@@ -182,9 +170,9 @@ align = 1
 valign = 1
 autowrap = true
 
-[node name="cred_req" type="Label" parent="Margin/CardText/ArtLayover/VBC"]
+[node name="cred_req" type="Label" parent="Margin/CardText"]
 margin_top = 79.0
-margin_right = 150.0
+margin_right = 146.0
 margin_bottom = 93.0
 rect_min_size = Vector2( 146, 14 )
 custom_fonts/font = SubResource( 6 )
@@ -194,9 +182,9 @@ align = 1
 valign = 1
 autowrap = true
 
-[node name="motivation_req" type="Label" parent="Margin/CardText/ArtLayover/VBC"]
+[node name="motivation_req" type="Label" parent="Margin/CardText"]
 margin_top = 97.0
-margin_right = 150.0
+margin_right = 146.0
 margin_bottom = 111.0
 rect_min_size = Vector2( 146, 14 )
 custom_fonts/font = SubResource( 6 )
@@ -206,75 +194,50 @@ align = 1
 valign = 1
 autowrap = true
 
-[node name="OutsideArt" type="PanelContainer" parent="Margin/CardText"]
-self_modulate = Color( 1, 1, 1, 0.780392 )
-margin_top = 149.0
-margin_right = 150.0
-margin_bottom = 240.0
-mouse_filter = 2
+[node name="Abilities" type="Label" parent="Margin/CardText"]
+margin_top = 115.0
+margin_right = 146.0
+margin_bottom = 223.0
+rect_min_size = Vector2( 146, 100 )
 size_flags_vertical = 3
-custom_styles/panel = SubResource( 14 )
-
-[node name="VBC" type="VBoxContainer" parent="Margin/CardText/OutsideArt"]
-margin_right = 150.0
-margin_bottom = 91.0
-mouse_filter = 2
-custom_constants/separation = 0
-
-[node name="MC" type="MarginContainer" parent="Margin/CardText/OutsideArt/VBC"]
-margin_right = 150.0
-margin_bottom = 72.0
-mouse_filter = 2
-custom_constants/margin_right = 2
-custom_constants/margin_top = 2
-custom_constants/margin_left = 2
-
-[node name="Abilities" type="Label" parent="Margin/CardText/OutsideArt/VBC/MC"]
-margin_left = 2.0
-margin_top = 2.0
-margin_right = 148.0
-margin_bottom = 72.0
-rect_min_size = Vector2( 120, 70 )
-custom_fonts/font = SubResource( 8 )
+custom_fonts/font = SubResource( 7 )
 text = "Text"
+align = 1
+valign = 1
 autowrap = true
 
-[node name="HBC" type="HBoxContainer" parent="Margin/CardText/OutsideArt/VBC"]
-margin_top = 72.0
-margin_right = 150.0
-margin_bottom = 91.0
+[node name="HBC" type="HBoxContainer" parent="Margin/CardText"]
+margin_top = 227.0
+margin_right = 146.0
+margin_bottom = 240.0
 mouse_filter = 2
-size_flags_vertical = 3
 
-[node name="Time" type="Label" parent="Margin/CardText/OutsideArt/VBC/HBC"]
-margin_top = 3.0
+[node name="Time" type="Label" parent="Margin/CardText/HBC"]
 margin_right = 40.0
-margin_bottom = 16.0
+margin_bottom = 13.0
 rect_min_size = Vector2( 39, 13 )
-custom_fonts/font = SubResource( 9 )
+custom_fonts/font = SubResource( 8 )
 custom_colors/font_color = Color( 0.658824, 0.541176, 0, 1 )
 text = "Time: 0"
 valign = 1
 
-[node name="Kudos" type="Label" parent="Margin/CardText/OutsideArt/VBC/HBC"]
+[node name="Kudos" type="Label" parent="Margin/CardText/HBC"]
 margin_left = 44.0
-margin_top = 3.0
 margin_right = 93.0
-margin_bottom = 16.0
+margin_bottom = 13.0
 rect_min_size = Vector2( 39, 13 )
-custom_fonts/font = SubResource( 9 )
+custom_fonts/font = SubResource( 8 )
 custom_colors/font_color = Color( 0.658824, 0.541176, 0, 1 )
 text = "Kudos: 0"
 valign = 1
 
-[node name="Value" type="Label" parent="Margin/CardText/OutsideArt/VBC/HBC"]
+[node name="Value" type="Label" parent="Margin/CardText/HBC"]
 margin_left = 97.0
-margin_top = 3.0
-margin_right = 150.0
-margin_bottom = 16.0
+margin_right = 146.0
+margin_bottom = 13.0
 rect_min_size = Vector2( 0, 13 )
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 9 )
+custom_fonts/font = SubResource( 8 )
 custom_colors/font_color = Color( 0.658824, 0.541176, 0, 1 )
 text = "Value: 0"
 align = 2
