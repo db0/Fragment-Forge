@@ -100,15 +100,16 @@ func setup() -> void:
 			else:
 				shader_properties.init_shader(card_name)
 	else:
-		var card_art_file: String = "res://assets/images/" + card_name + ".jpeg"
+		var card_art_file: String = "res://assets/images/" + card_name
 		var check_art = File.new()
-		if check_art.file_exists(card_art_file):
-			var new_texture = ImageTexture.new();
-			var tex = load(card_art_file)
-			var image = tex.get_data()
-			new_texture.create_from_image(image)
-			card_front.art.texture = new_texture
-			card_front.art.visible = true
+		for extension in ['.jpg','.jpeg','.png']:
+			if check_art.file_exists(card_art_file + extension):
+				var new_texture = ImageTexture.new();
+				var tex = load(card_art_file + extension)
+				var image = tex.get_data()
+				new_texture.create_from_image(image)
+				card_front.art.texture = new_texture
+				card_front.art.visible = true
 			
 	if printed_properties.empty():
 		printed_properties = properties.duplicate()
