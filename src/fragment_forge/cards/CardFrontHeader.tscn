@@ -4,7 +4,7 @@
 [ext_resource path="res://assets/icons/kudos.png" type="Texture" id=2]
 [ext_resource path="res://fonts/Xolonium-Regular.ttf" type="DynamicFontData" id=3]
 
-[sub_resource type="StyleBoxFlat" id=1]
+[sub_resource type="StyleBoxFlat" id=4]
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
@@ -17,7 +17,7 @@ outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
 font_data = ExtResource( 3 )
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=5]
 size = 10
 outline_size = 2
 outline_color = Color( 0, 0, 0, 1 )
@@ -28,7 +28,7 @@ font_data = ExtResource( 3 )
 margin_right = 150.0
 margin_bottom = 19.0
 mouse_filter = 2
-custom_styles/panel = SubResource( 1 )
+custom_styles/panel = SubResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -82,7 +82,7 @@ stretch_mode = 1
 margin_right = 18.0
 margin_bottom = 19.0
 rect_min_size = Vector2( 18, 19 )
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 5 )
 text = "0"
 align = 1
 valign = 1
@@ -113,7 +113,7 @@ margin_top = 2.0
 margin_right = 17.0
 margin_bottom = 17.0
 rect_min_size = Vector2( 15, 15 )
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 5 )
 text = "0"
 align = 1
 valign = 1

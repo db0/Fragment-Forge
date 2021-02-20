@@ -9,9 +9,9 @@ func _ready() -> void:
 	text_expansion_multiplier = {
 #		"Name": 1,
 		"Tags": 1.2,
-		"Time": 3,
-		"Value": 3,
-		"Kudos": 3,
+#		"Time": 3,
+#		"Value": 3,
+#		"Kudos": 3,
 	}
 	compensation_label = ""
 	_card_text = $Margin/CardText

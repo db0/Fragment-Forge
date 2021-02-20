@@ -7,9 +7,9 @@ onready var art_layout = $ArtLayout
 func _ready() -> void:
 	text_expansion_multiplier = {
 #		"Name": 1,
-		"Tags": 1.2,
-		"Cost": 3,
-		"Power": 3,
+#		"Tags": 1.2,
+#		"Cost": 3,
+#		"Power": 3,
 	}
 	compensation_label = "Abilities"
 	_card_text = $Margin/CardText
@@ -27,7 +27,7 @@ func _ready() -> void:
 	value_controls["skill_req"] = $Margin/CardText/Requirements/VBC/skill_reqCC
 	value_controls["cred_req"] = $Margin/CardText/Requirements/VBC/cred_reqCC
 	value_controls["motivation_req"] = $Margin/CardText/Requirements/VBC/motivation_reqCC
-	value_controls["Value"] = $Margin/CardText/ValueContainer/VBC/ValueCC
+	value_controls["Value"] = $Margin/ValueContainer
 
 func set_label_text(node: Label, value):
 	.set_label_text(node, value)

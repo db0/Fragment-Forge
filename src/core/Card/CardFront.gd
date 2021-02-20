@@ -49,7 +49,7 @@ onready var card_owner = get_parent().get_parent()
 
 # Set a label node's text.
 # As the string becomes longer, the font size becomes smaller
-func set_label_text(node: Label, value):
+func set_label_text(node: Label, value) -> void:
 	_capture_original_font_size(node)
 	# We do not want some fields, like the name, to be too small.
 	# see CardConfig.TEXT_EXPANSION_MULTIPLIER documentation
@@ -70,6 +70,8 @@ func set_label_text(node: Label, value):
 		line_spacing = 3
 	# This calculates the amount of vertical pixels the text would take
 	# once it was word-wrapped.
+#	if node.name == "Name":
+#		return
 	var label_rect_y = label_font.get_wordwrap_string_size(
 			value, label_size.x).y \
 			/ line_height \

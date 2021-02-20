@@ -22,17 +22,17 @@ outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
 font_data = ExtResource( 5 )
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=11]
 size = 13
 outline_size = 2
 outline_color = Color( 0.243137, 0.243137, 0.243137, 1 )
 use_filter = true
 font_data = ExtResource( 5 )
 
-[sub_resource type="OpenSimplexNoise" id=4]
+[sub_resource type="OpenSimplexNoise" id=12]
 
 [sub_resource type="NoiseTexture" id=9]
-noise = SubResource( 4 )
+noise = SubResource( 12 )
 
 [sub_resource type="StyleBoxTexture" id=8]
 texture = SubResource( 9 )
@@ -140,7 +140,7 @@ margin_right = 150.0
 margin_bottom = 150.0
 rect_min_size = Vector2( 146, 17 )
 size_flags_vertical = 1
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 11 )
 text = "Tag1 - Tag2"
 align = 1
 valign = 1
