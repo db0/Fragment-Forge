@@ -57,10 +57,14 @@ func highlight_modified_properties() -> void:
 			var label_node = card_front.card_labels[property]
 			var current_property = get_property(property)
 			if property in CardConfig.PROPERTIES_NUMBERS:
+				var value_text : String
+				if property in CardConfig.NUMBER_WITH_LABEL:
+					value_text = property + ": " + str(current_property)
+				else:
+					value_text = str(current_property)
 				if current_property != printed_properties.get(property)\
-						and property + ": " + str(current_property) != label_node.text:
-					card_front.set_label_text(label_node,property
-								+ ": " + str(current_property))
+						and value_text != label_node.text:
+					card_front.set_label_text(label_node,value_text)
 				if current_property > printed_properties.get(property):
 					label_node.modulate = Color(0,1,0)
 				elif current_property < printed_properties.get(property):
@@ -74,6 +78,7 @@ func setup() -> void:
 	if properties.Type == CardConfig.CardTypes.SHADER:
 		# If the value is 'gen', we calculate it with a formula
 		if properties.Value == GEN :
+# warning-ignore:return_value_discarded
 			modify_property("Value",
 					generate_shader_value(
 					properties.Time,
@@ -237,6 +242,7 @@ static func get_skill_modified_shader_time_cost(
 		var time_multiplier = 1.5
 		if ffc.difficulty >= 9:
 			time_multiplier = 2.0
+# warning-ignore:narrowing_conversion
 		final_cost = skill_req + round(float(time_cost) * time_multiplier)
 	elif current_skill > skill_req:
 		# Making less advanced shaders simply reduces their time needs by 1
@@ -251,6 +257,7 @@ static func get_skill_modified_shader_time_cost(
 
 # Sets a flag when an actio card is dragged to the board manually
 # which will trigger the game to execute its scripts
+# warning-ignore:unused_argument
 func common_pre_move_scripts(new_container: Node, old_container: Node, scripted_move: bool) -> Node:
 	var target_container := new_container
 	if new_container == cfc.NMAP.board \

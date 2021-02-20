@@ -5,5 +5,7 @@ extends ViewportCardFocus
 # before adding it to the scene
 func _extra_dupe_preparation(dupe_focus: Card, card: Card) -> void:
 	dupe_focus.printed_properties = card.printed_properties.duplicate()
+
+func _extra_dupe_ready(dupe_focus: Card, card: Card) -> void:
 	for property in card.properties:
-		dupe_focus.properties[property] = card.get_property(property)
+		dupe_focus.modify_property(property, card.get_property(property), true)

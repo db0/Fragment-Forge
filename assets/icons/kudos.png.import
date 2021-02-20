@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/TSD-free--zone-starts.svg-5cd9ad18be2c66fba7f48bfce85d573b.stex"
+path="res://.import/kudos.png-25722bb0a27089d08e50d01475094d2a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/icons/TSD-free--zone-starts.svg"
-dest_files=[ "res://.import/TSD-free--zone-starts.svg-5cd9ad18be2c66fba7f48bfce85d573b.stex" ]
+source_file="res://assets/icons/kudos.png"
+dest_files=[ "res://.import/kudos.png-25722bb0a27089d08e50d01475094d2a.stex" ]
 
 [params]
 

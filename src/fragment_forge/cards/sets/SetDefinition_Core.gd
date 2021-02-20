@@ -213,7 +213,7 @@ const CARDS := {
 	"Cheerleader": {
 		"Type": CardConfig.CardTypes.RESOURCE,
 		"Tags": [],
-		"Abilities": "After recruiting this tutor, lose 1 cred. " \
+		"Abilities": "After recruiting this Resource, lose 1 cred. " \
 				+ "You win extra 1 cred for winning a tournament",
 		"Time": 1,
 		"Value": 0,

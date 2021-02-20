@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/animatedclockhue.svg-74a2adcf2bd8d7a9004f6810fb967749.stex"
+path="res://.import/cred.png-56616a86e99a43ba629f61f94648647b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/icons/animatedclockhue.svg"
-dest_files=[ "res://.import/animatedclockhue.svg-74a2adcf2bd8d7a9004f6810fb967749.stex" ]
+source_file="res://assets/icons/cred.png"
+dest_files=[ "res://.import/cred.png-56616a86e99a43ba629f61f94648647b.stex" ]
 
 [params]
 

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/huewheel.svg-16a4e18e23c8bde2b166b56ea280656e.stex"
+path="res://.import/skill.png-854c0cbe2a571a03d53e70a4691e96a4.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/icons/huewheel.svg"
-dest_files=[ "res://.import/huewheel.svg-16a4e18e23c8bde2b166b56ea280656e.stex" ]
+source_file="res://assets/icons/skill.png"
+dest_files=[ "res://.import/skill.png-854c0cbe2a571a03d53e70a4691e96a4.stex" ]
 
 [params]
 

@@ -5,10 +5,8 @@
 [ext_resource path="res://src/fragment_forge/CardBack.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/core/CardTemplate.tscn" type="PackedScene" id=4]
 [ext_resource path="res://src/fragment_forge/ManipulationButtons.gd" type="Script" id=5]
-[ext_resource path="res://src/fragment_forge/CardFront.tscn" type="PackedScene" id=6]
+[ext_resource path="res://src/fragment_forge/cards/CardFront.tscn" type="PackedScene" id=6]
 [ext_resource path="res://src/fragment_forge/ModifiedCosts.tscn" type="PackedScene" id=7]
-
-
 
 [node name="Card" instance=ExtResource( 4 )]
 script = ExtResource( 1 )

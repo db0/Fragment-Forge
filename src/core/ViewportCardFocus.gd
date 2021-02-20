@@ -75,6 +75,7 @@ func focus_card(card: Card) -> void:
 		# up when they're not focused anymore
 		_previously_focused_cards.append(dupe_focus)
 		$Focus/Viewport.add_child(dupe_focus)
+		_extra_dupe_ready(dupe_focus, card)
 		# We have to copy these internal vars because they are reset
 		# see https://github.com/godotengine/godot/issues/3393
 		dupe_focus.is_faceup = card.is_faceup
@@ -105,3 +106,8 @@ func unfocus(card: Card) -> void:
 # before adding it to the scene
 func _extra_dupe_preparation(dupe_focus: Card, card: Card) -> void:
 	dupe_focus.properties = card.properties.duplicate()
+
+# Overridable function for games to extend processing of dupe card
+# after adding it to the scene
+func _extra_dupe_ready(dupe_focus: Card, card: Card) -> void:
+	pass

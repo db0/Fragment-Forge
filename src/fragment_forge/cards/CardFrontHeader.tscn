@@ -1,0 +1,119 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://assets/icons/time.png" type="Texture" id=1]
+[ext_resource path="res://assets/icons/kudos.png" type="Texture" id=2]
+[ext_resource path="res://fonts/Xolonium-Regular.ttf" type="DynamicFontData" id=3]
+
+[sub_resource type="StyleBoxFlat" id=1]
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="DynamicFont" id=3]
+size = 12
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+use_filter = true
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 10
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+use_filter = true
+font_data = ExtResource( 3 )
+
+[node name="Header" type="PanelContainer"]
+margin_right = 150.0
+margin_bottom = 19.0
+mouse_filter = 2
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBC" type="HBoxContainer" parent="."]
+margin_right = 150.0
+margin_bottom = 19.0
+mouse_filter = 2
+
+[node name="MC" type="MarginContainer" parent="HBC"]
+margin_right = 104.0
+margin_bottom = 19.0
+mouse_filter = 2
+size_flags_horizontal = 3
+custom_constants/margin_left = 3
+
+[node name="Name" type="Label" parent="HBC/MC"]
+margin_left = 3.0
+margin_right = 104.0
+margin_bottom = 19.0
+rect_min_size = Vector2( 0, 19 )
+size_flags_horizontal = 3
+size_flags_vertical = 1
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 1, 0.4, 0, 1 )
+text = "Card Name"
+valign = 1
+autowrap = true
+
+[node name="KudosC" type="VBoxContainer" parent="HBC"]
+margin_left = 108.0
+margin_right = 127.0
+margin_bottom = 19.0
+mouse_filter = 2
+
+[node name="KudosCC" type="CenterContainer" parent="HBC/KudosC"]
+margin_right = 19.0
+margin_bottom = 19.0
+mouse_filter = 2
+
+[node name="Icon" type="TextureRect" parent="HBC/KudosC/KudosCC"]
+margin_right = 19.0
+margin_bottom = 19.0
+rect_min_size = Vector2( 19, 19 )
+mouse_filter = 2
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 1
+
+[node name="Kudos" type="Label" parent="HBC/KudosC/KudosCC"]
+margin_right = 18.0
+margin_bottom = 19.0
+rect_min_size = Vector2( 18, 19 )
+custom_fonts/font = SubResource( 2 )
+text = "0"
+align = 1
+valign = 1
+
+[node name="TimeC" type="VBoxContainer" parent="HBC"]
+margin_left = 131.0
+margin_right = 150.0
+margin_bottom = 19.0
+mouse_filter = 2
+
+[node name="TimeCC" type="CenterContainer" parent="HBC/TimeC"]
+margin_right = 19.0
+margin_bottom = 19.0
+mouse_filter = 2
+
+[node name="Icon" type="TextureRect" parent="HBC/TimeC/TimeCC"]
+margin_right = 19.0
+margin_bottom = 19.0
+rect_min_size = Vector2( 19, 19 )
+mouse_filter = 2
+texture = ExtResource( 1 )
+expand = true
+stretch_mode = 1
+
+[node name="Time" type="Label" parent="HBC/TimeC/TimeCC"]
+margin_left = 2.0
+margin_top = 2.0
+margin_right = 17.0
+margin_bottom = 17.0
+rect_min_size = Vector2( 15, 15 )
+custom_fonts/font = SubResource( 2 )
+text = "0"
+align = 1
+valign = 1

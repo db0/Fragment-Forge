@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Star4219.svg-10fbd468cf9359b7b9a3ce637efaae20.stex"
+path="res://.import/motivation.png-7853196f130237ccae9ba314782d6237.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/icons/Star4219.svg"
-dest_files=[ "res://.import/Star4219.svg-10fbd468cf9359b7b9a3ce637efaae20.stex" ]
+source_file="res://assets/icons/motivation.png"
+dest_files=[ "res://.import/motivation.png-7853196f130237ccae9ba314782d6237.stex" ]
 
 [params]
 

@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://src/fragment_forge/ShaderCardFront.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/fragment_forge/cards/ShaderCardFront.tscn" type="PackedScene" id=2]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.254902, 0.517647, 0.305882, 1 )
@@ -11,3 +11,5 @@ corner_radius_bottom_left = 10
 
 [node name="ShaderFront" instance=ExtResource( 2 )]
 custom_styles/panel = SubResource( 1 )
+
+[editable path="Margin/CardText/Requirements"]

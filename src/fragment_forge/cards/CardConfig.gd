@@ -28,6 +28,7 @@ const PROPERTIES_NUMBERS := [
 		"skill_req",
 		"cred_req",
 		"motivation_req"]
+const NUMBER_WITH_LABEL := []
 # Properties provided in a list which are converted into a string for the
 # label text, using the array_join() method
 const PROPERTIES_ARRAYS := ["Tags"]
