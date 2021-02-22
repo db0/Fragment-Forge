@@ -258,6 +258,15 @@ const KEY_TOKEN_NAME := "token_name"
 # It specifies the amount we're setting/modifying
 # or setting it to the exact one
 const KEY_MODIFICATION := "modification"
+# Value Type: bool (Default = false).
+#
+# Used when a script is using one of the following tasks:
+# * [mod_tokens](ScriptingEngine#mod_tokens)
+# * [mod_counters](ScriptingEngine#mod_tokens)
+#
+# Stores the modification difference into an integer to
+# be used in later tasks.
+const KEY_STORE_INTEGER := "store_integer"
 # Value Type: Dynamic (Default = 1).
 # * int.
 # * [VALUE_RETRIEVE_INTEGER](#VALUE_RETRIEVE_INTEGER)
@@ -439,7 +448,7 @@ const KEY_TEMP_MOD_PROPERTIES := "temp_mod_properties"
 # Used in the per dictionary to specify that the amount of things counted
 # should be returned negative.
 # This allows to have costs based on the boardstate
-const KEY_INVERT_PER := "is_inverted"
+const KEY_IS_INVERTED := "is_inverted"
 # Value Type: Dictionary
 #
 # A [VALUE_PER](#VALUE_PER) key for perfoming an effect equal to a number of tokens on the subject(s)
@@ -496,13 +505,17 @@ const KEY_PER_COUNTER := "per_counter"
 const KEY_COMPARISON := "comparison"
 # This is a versatile value that can be inserted into any various keys
 # when a task needs to use a previously inputed integer provided
-# with a [ask_integer](ScriptingEngine#ask_integer) task.
+# with a [ask_integer](ScriptingEngine#ask_integer) task
+# or a [KEY_STORE_INTEGER](#KEY_STORE_INTEGER).
+#
 # When detected ,the task will retrieve the stored number and use it as specified
 #
 # The following keys support this value
 # * [KEY_MODIFICATION](#KEY_MODIFICATION)
 # * [KEY_SUBJECT_COUNT](#KEY_SUBJECT_COUNT) (only for specific tasks, see documentation)
 # * [KEY_OBJECT_COUNT](#KEY_OBJECT_COUNT) (only for specific tasks, see documentation)
+# * [KEY_TEMP_MOD_PROPERTIES](#KEY_TEMP_MOD_PROPERTIES) (In the value fields)
+# * [KEY_TEMP_MOD_COUNTERS](#KEY_TEMP_MOD_COUNTERS) (In the value fields)
 const VALUE_RETRIEVE_INTEGER := "retrieve_integer"
 # Value Type: bool (Default = false)
 #
@@ -904,9 +917,10 @@ static func get_default(property: String):
 	match property:
 		KEY_IS_COST,\
 				KEY_IS_ELSE,\
-				KEY_INVERT_PER,\
+				KEY_IS_INVERTED,\
 				KEY_SET_TO_MOD,\
-				KEY_IS_OPTIONAL:
+				KEY_IS_OPTIONAL,\
+				KEY_STORE_INTEGER:
 			default = false
 		KEY_TRIGGER:
 			default = "any"

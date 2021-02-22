@@ -11,7 +11,7 @@ var shader_properties: ShaderProperties
 var printed_properties := {}
 
 
-onready var modified_costs_popup = $ModifiedCostsPopup
+onready var modified_costs_popup := $ModifiedCostsPopup
 
 func _process(delta: float) -> void:
 	_extra_state_processing()
@@ -174,21 +174,26 @@ func check_play_costs() -> Color:
 # * alterant_cards: A dictionary with two keys, "time" and "skill".
 #	Each key holds a dictionary with the alterants_details, as returned
 #	from CFScriptUtils.get_altered_value()
-func get_modified_time_cost() -> Dictionary:
+func get_modified_time_cost(include_global_temp_mods := false) -> Dictionary:
 	var time_cost_details : Dictionary =\
-			get_property_and_alterants("Time")
+			get_property_and_alterants("Time",include_global_temp_mods)
 	var modified_cost : int = time_cost_details.value
+	if include_global_temp_mods:
+		print(time_cost_details,modified_cost)
 	var skill_counter_details : Dictionary =\
 			cfc.NMAP.board.counters.get_counter_and_alterants("skill", self)
 	if properties.Type == CardConfig.CardTypes.SHADER:
-		modified_cost = get_skill_modified_shader_time_cost(
+		modified_cost += get_skill_modified_shader_time_cost(
 				properties.get("skill_req", 0),
 				skill_counter_details.count,
-				modified_cost)
+				printed_properties.Time)
+	# We return the detauls which can be used by the card on-hover
+	# to explain what it modifying the cost of the card
 	var return_dict = {
 		"modified_cost": modified_cost,
 		"skill_modifier": modified_cost - time_cost_details.value,
-		"cards_modifier": time_cost_details.alteration.value_alteration,
+		"cards_modifier": time_cost_details.alteration.value_alteration\
+				+ time_cost_details.temp_modifiers.value_modification,
 		"alterant_cards": {
 			"card": merge_modifier_dicts(time_cost_details),
 			"skill": merge_modifier_dicts(skill_counter_details)
@@ -226,16 +231,16 @@ func merge_modifier_dicts(container_dict) -> Dictionary:
 			modifier_details[c] = container_dict.temp_modifiers.modifier_details[c]
 	return(modifier_details)
 
-# Calculates the time cost of a shader adjusted by the player's skill
+# Returns the time cost modification of a shader due to the player's skill
 static func get_skill_modified_shader_time_cost(
 		skill_req: int,
 		current_skill: int,
 		time_cost: int) -> int:
-	var final_cost : int
+	var cost_modifier : int
 	if current_skill + 1 < skill_req:
 		# We put a sufficiently large number to make the cost impossible
 		# When the skill req is higher by 2 or more
-		final_cost = 1000
+		cost_modifier = 1000
 	elif current_skill < skill_req:
 		# Making more skill-advanced shaders
 		# increases their time by their skill_req
@@ -243,18 +248,18 @@ static func get_skill_modified_shader_time_cost(
 		var time_multiplier = 1.5
 		if ffc.difficulty >= 9:
 			time_multiplier = 2.0
-# warning-ignore:narrowing_conversion
-		final_cost = skill_req + round(float(time_cost) * time_multiplier)
+		# warning-ignore:narrowing_conversion
+		cost_modifier = skill_req + round(float(time_cost) * time_multiplier) - time_cost
 	elif current_skill > skill_req:
 		# Making less advanced shaders simply reduces their time needs by 1
 		# to a maximum of half (rounded up)
 		var max_reduction = round(float(time_cost) / 2)
-		final_cost = time_cost + skill_req - current_skill
-		if final_cost < max_reduction:
-			final_cost = max_reduction
+		cost_modifier = skill_req - current_skill
+		if abs(cost_modifier) > max_reduction:
+			cost_modifier = -max_reduction
 	else:
-		final_cost = time_cost
-	return(final_cost)
+		cost_modifier = 0
+	return(cost_modifier)
 
 # Sets a flag when an actio card is dragged to the board manually
 # which will trigger the game to execute its scripts
@@ -401,7 +406,7 @@ func _extra_state_processing() -> void:
 						global_position.y
 						- modified_costs_popup.rect_size.y - 10)
 			if not modified_costs_popup.visible:
-				var modified_time_costs := get_modified_time_cost()
+				var modified_time_costs := get_modified_time_cost(true)
 				modified_costs_popup.update_time_labels(
 						modified_time_costs.modified_cost,
 						properties.get("Time", 0),

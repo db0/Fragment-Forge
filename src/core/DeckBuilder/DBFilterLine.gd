@@ -54,9 +54,9 @@ func _ready() -> void:
 			+ "> - greater than\n"
 	# warning-ignore:return_value_discarded
 	connect("text_changed", self, "on_text_changed")
-# warning-ignore:return_value_discarded
+	# warning-ignore:return_value_discarded
 	connect("mouse_entered", self, "_on_FilterLine_mouse_entered")
-# warning-ignore:return_value_discarded
+	# warning-ignore:return_value_discarded
 	connect("mouse_exited", self, "_on_FilterLine_mouse_exited")
 
 func _process(_delta: float) -> void:

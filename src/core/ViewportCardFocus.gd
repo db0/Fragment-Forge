@@ -102,12 +102,16 @@ func unfocus(card: Card) -> void:
 				Tween.TRANS_SINE, Tween.EASE_IN)
 		$Focus/Tween.start()
 
+
 # Overridable function for games to extend preprocessing of dupe card
 # before adding it to the scene
 func _extra_dupe_preparation(dupe_focus: Card, card: Card) -> void:
 	dupe_focus.properties = card.properties.duplicate()
 
+
 # Overridable function for games to extend processing of dupe card
 # after adding it to the scene
+# warning-ignore:unused_argument
+# warning-ignore:unused_argument
 func _extra_dupe_ready(dupe_focus: Card, card: Card) -> void:
 	pass

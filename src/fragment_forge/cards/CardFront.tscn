@@ -5,15 +5,15 @@
 [ext_resource path="res://src/fragment_forge/cards/CardFrontValue.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/fragment_forge/cards/CardFrontHeader.tscn" type="PackedScene" id=4]
 [ext_resource path="res://fonts/Xolonium-Regular.ttf" type="DynamicFontData" id=5]
-[ext_resource path="res://src/fragment_forge/cards/CardFront.gd" type="Script" id=6]
+[ext_resource path="res://src/fragment_forge/cards/GeneralCardFront.gd" type="Script" id=6]
 [ext_resource path="res://fonts/OpenSans-Semibold.ttf" type="DynamicFontData" id=7]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.145098, 0.145098, 0.145098, 1 )
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
 
 [sub_resource type="DynamicFont" id=2]
 size = 10
@@ -22,19 +22,19 @@ outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
 font_data = ExtResource( 5 )
 
-[sub_resource type="DynamicFont" id=11]
+[sub_resource type="DynamicFont" id=3]
 size = 13
 outline_size = 2
 outline_color = Color( 0.243137, 0.243137, 0.243137, 1 )
 use_filter = true
 font_data = ExtResource( 5 )
 
-[sub_resource type="OpenSimplexNoise" id=12]
+[sub_resource type="OpenSimplexNoise" id=8]
 
 [sub_resource type="NoiseTexture" id=9]
-noise = SubResource( 12 )
+noise = SubResource( 8 )
 
-[sub_resource type="StyleBoxTexture" id=8]
+[sub_resource type="StyleBoxTexture" id=10]
 texture = SubResource( 9 )
 region_rect = Rect2( 0, 0, 512, 512 )
 
@@ -57,21 +57,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ArtMargin" type="MarginContainer" parent="."]
-margin_right = 150.0
-margin_bottom = 150.0
-mouse_filter = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="CC" type="CenterContainer" parent="ArtMargin"]
-margin_right = 150.0
-margin_bottom = 150.0
-rect_min_size = Vector2( 150, 150 )
-mouse_filter = 2
-
-[node name="Art" type="TextureRect" parent="ArtMargin/CC"]
+[node name="Art" type="TextureRect" parent="."]
 visible = false
 margin_right = 150.0
 margin_bottom = 150.0
@@ -80,15 +66,7 @@ mouse_filter = 2
 texture = ExtResource( 1 )
 expand = true
 
-[node name="Margin" type="MarginContainer" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
-mouse_filter = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="CardText" type="VBoxContainer" parent="Margin"]
+[node name="CardText" type="VBoxContainer" parent="."]
 margin_right = 150.0
 margin_bottom = 240.0
 mouse_filter = 2
@@ -98,20 +76,15 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ArtLayover" type="MarginContainer" parent="Margin/CardText"]
-margin_right = 150.0
-margin_bottom = 150.0
-mouse_filter = 2
-
-[node name="VBC" type="VBoxContainer" parent="Margin/CardText/ArtLayover"]
+[node name="ArtLayover" type="VBoxContainer" parent="CardText"]
 margin_right = 150.0
 margin_bottom = 150.0
 rect_min_size = Vector2( 150, 150 )
 mouse_filter = 2
 
-[node name="Header" parent="Margin/CardText/ArtLayover/VBC" instance=ExtResource( 4 )]
+[node name="Header" parent="CardText/ArtLayover" instance=ExtResource( 4 )]
 
-[node name="Type" type="Label" parent="Margin/CardText/ArtLayover/VBC"]
+[node name="Type" type="Label" parent="CardText/ArtLayover"]
 margin_top = 23.0
 margin_right = 150.0
 margin_bottom = 36.0
@@ -125,52 +98,43 @@ valign = 1
 autowrap = true
 uppercase = true
 
-[node name="Requirements" parent="Margin/CardText/ArtLayover/VBC" instance=ExtResource( 2 )]
+[node name="Requirements" parent="CardText/ArtLayover" instance=ExtResource( 2 )]
 
-[node name="Control" type="Control" parent="Margin/CardText/ArtLayover/VBC"]
+[node name="Control" type="Control" parent="CardText/ArtLayover"]
 margin_top = 109.0
 margin_right = 150.0
 margin_bottom = 129.0
 mouse_filter = 2
 size_flags_vertical = 3
 
-[node name="Tags" type="Label" parent="Margin/CardText/ArtLayover/VBC"]
+[node name="Tags" type="Label" parent="CardText/ArtLayover"]
 margin_top = 133.0
 margin_right = 150.0
 margin_bottom = 150.0
 rect_min_size = Vector2( 146, 17 )
 size_flags_vertical = 1
-custom_fonts/font = SubResource( 11 )
+custom_fonts/font = SubResource( 3 )
 text = "Tag1 - Tag2"
 align = 1
 valign = 1
 autowrap = true
 uppercase = true
 
-[node name="OutsideArt" type="PanelContainer" parent="Margin/CardText"]
+[node name="OutsideArt" type="PanelContainer" parent="CardText"]
 self_modulate = Color( 1, 1, 1, 0.780392 )
 margin_top = 149.0
 margin_right = 150.0
 margin_bottom = 240.0
 mouse_filter = 2
 size_flags_vertical = 3
-custom_styles/panel = SubResource( 8 )
+custom_styles/panel = SubResource( 10 )
 
-[node name="ValueContainer" parent="Margin/CardText/OutsideArt" instance=ExtResource( 3 )]
+[node name="ValueContainer" parent="CardText/OutsideArt" instance=ExtResource( 3 )]
 
-[node name="MC" type="MarginContainer" parent="Margin/CardText/OutsideArt"]
+[node name="Abilities" type="Label" parent="CardText/OutsideArt"]
+margin_top = 1.0
 margin_right = 150.0
-margin_bottom = 91.0
-mouse_filter = 2
-custom_constants/margin_right = 2
-custom_constants/margin_top = 2
-custom_constants/margin_left = 2
-
-[node name="Abilities" type="Label" parent="Margin/CardText/OutsideArt/MC"]
-margin_left = 2.0
-margin_top = 2.0
-margin_right = 148.0
-margin_bottom = 90.0
+margin_bottom = 89.0
 rect_min_size = Vector2( 120, 88 )
 custom_fonts/font = SubResource( 7 )
 text = "Text"

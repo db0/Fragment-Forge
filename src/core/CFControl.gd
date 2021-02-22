@@ -74,6 +74,10 @@ var alterant_engine = load(CFConst.PATH_ALTERANT_ENGINE)
 # dictionary, and use them for the next time. This scripts which read properties
 # or counters to be placed even in _process() while there's alterants in play.
 var alterant_cache: Dictionary
+# This is a copy of card.temp_property_modifiers
+# We store it globally for games which want to have access to it,
+# before subject cards are selected
+var card_temp_property_modifiers = {}
 
 func _ready() -> void:
 	init_settings_from_file()

@@ -247,6 +247,32 @@ func get_scripts(card_name: String) -> Dictionary:
 				],
 			},
 		},
+		"Crowdsourcing": {
+			"manual": {
+				"hand": [
+					{
+						"name": "mod_counter",
+						"counter_name": "kudos",
+						"modification": 0,
+						"store_integer": true,
+						"set_to_mod": true,
+						"is_cost": true,
+					},
+					{
+						"name": "execute_scripts",
+						"subject": "target",
+						"is_cost": true,
+						"exec_trigger":  "manual",
+						"temp_mod_properties": {
+							"Time": "retrieve_integer"},
+						"require_exec_state": "hand",
+						"filter_state_subject": [{
+							"filter_properties": {"Type": "Shader"},
+						}],
+					},
+				],
+			},
+		},
 		"Social Networking": {
 			"manual": {
 				"hand":[

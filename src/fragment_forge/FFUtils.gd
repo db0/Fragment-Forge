@@ -12,7 +12,7 @@ static func grab_random_texture() -> Dictionary:
 	}
 	var random_dir := []
 	for dir in directories:
-		for iter in range(directories[dir]):
+		for _iter in range(directories[dir]):
 			random_dir.append(dir)
 	var rng = CFUtils.randi_range(0,random_dir.size() - 1)
 	var directory = random_dir[rng]

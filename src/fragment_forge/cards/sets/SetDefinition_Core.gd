@@ -447,6 +447,19 @@ const CARDS := {
 		"cred_req": 0,
 		"motivation_req": 0,
 	},
+	"Crowdsourcing": {
+		"Type": CardConfig.CardTypes.ACTION,
+		"Tags": [],
+		"Abilities": "Lose all Kudos: "\
+				+ "Install a Shader from hand, "\
+				+ "reducing its final time cost by the amount of Kudos lost",
+		"Time": 0,
+		"Value": 0,
+		"Kudos": 0,
+		"skill_req": 0,
+		"cred_req": 0,
+		"motivation_req": 0,
+	},
 }
 
 # Ideas

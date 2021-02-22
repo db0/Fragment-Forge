@@ -380,7 +380,9 @@ func _on_Card_gui_input(event) -> void:
 			# If it's a double-click, then it's not a card drag
 			# But rather it's script execution
 			if event.doubleclick\
-					and check_play_costs() != CFConst.CostsState.IMPOSSIBLE:
+					and ((check_play_costs() != CFConst.CostsState.IMPOSSIBLE
+					and get_state_exec() == "hand")
+					or get_state_exec() == "board"):
 				cfc.card_drag_ongoing = null
 				execute_scripts()
 			# If it's a long click it might be because
@@ -436,11 +438,6 @@ func _on_Card_gui_input(event) -> void:
 						potential_container.highlight.set_highlight(false)
 					move_to(destination)
 					_focus_completed = false
-					#emit_signal("card_dropped",self)
-		elif event.is_pressed() and event.get_button_index() == 2:
-			targeting_arrow.initiate_targeting()
-		elif not event.is_pressed() and event.get_button_index() == 2:
-			targeting_arrow.complete_targeting()
 
 
 # Triggers the focus-out effect on the card
@@ -497,7 +494,8 @@ func modify_property(property: String, value, is_init = false, check := false) -
 	if not property in properties.keys() and not is_init:
 		retcode = CFConst.ReturnCode.FAILED
 	elif typeof(properties.get(property)) == typeof(value)\
-			and properties.get(property) == value and not is_init:
+			and properties.get(property) == value\
+			and not is_init:
 		retcode = CFConst.ReturnCode.OK
 	elif typeof(properties.get(property)) != typeof(value)\
 			and str(properties.get(property)) == str(value):
@@ -549,14 +547,13 @@ func modify_property(property: String, value, is_init = false, check := false) -
 					# The designer is attempting to modify the property
 					# from its current value
 					if typeof(value) == TYPE_STRING:
-						pass
 						if '+' in value or '-' in value:
 							properties[property] += int(value)
 							if property in CardConfig.NUMBER_WITH_LABEL:
 								card_front.set_label_text(label_node,property
 										+ ": " + str(previous_value + int(value)))
 							else:
-								card_front.set_label_text(label_node,str(previous_value + int(value)))
+								card_front.set_label_text(label_node,str(value))
 						else:
 							print_debug("WARNING: Tried to assign " + value
 									+ " to numerical property:" + property)
@@ -600,7 +597,8 @@ func get_property(property: String):
 # * alteration: The  full dictionary returned by
 #	CFScriptUtils.get_altered_value() but including details about
 #	temp_properties_modifiers
-func get_property_and_alterants(property: String) -> Dictionary:
+func get_property_and_alterants(property: String, 
+		use_global_temp_mods := false) -> Dictionary:
 	var property_value = properties.get(property)
 	var alteration = {
 		"value_alteration": 0,
@@ -611,7 +609,14 @@ func get_property_and_alterants(property: String) -> Dictionary:
 		"modifier_details": {}
 	}
 	if property in CardConfig.PROPERTIES_NUMBERS:
-		for modifiers_dict in temp_properties_modifiers.values():
+		var tmp_mods : Dictionary
+		if use_global_temp_mods\
+				and temp_properties_modifiers.empty()\
+				and not cfc.card_temp_property_modifiers.empty():
+			tmp_mods = cfc.card_temp_property_modifiers
+		else:
+			tmp_mods = temp_properties_modifiers
+		for modifiers_dict in tmp_mods.values():
 			temp_modifiers.value_modification += \
 					modifiers_dict.modifier.get(property,0)
 			# Each value in the modifier_details dictionary is another dictionary
@@ -1253,8 +1258,6 @@ func execute_scripts(
 		elif not sceng.can_all_costs_be_paid and not only_cost_check:
 			#print("DEBUG:" + str(state_scripts))
 			sceng.execute(CFInt.RunType.ELSE)
-		else:
-			targeting_arrow.target_dry_run_card = null
 	return(sceng)
 
 
