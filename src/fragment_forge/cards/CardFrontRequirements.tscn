@@ -15,76 +15,85 @@ __meta__ = {
 }
 
 [node name="VBC" type="VBoxContainer" parent="."]
-margin_right = 19.0
+margin_right = 29.0
 margin_bottom = 65.0
 mouse_filter = 2
 
-[node name="skill_reqCC" type="CenterContainer" parent="VBC"]
-margin_right = 19.0
-margin_bottom = 19.0
+[node name="skill_reqCC" type="HBoxContainer" parent="VBC"]
+margin_right = 29.0
+margin_bottom = 15.0
 mouse_filter = 2
+custom_constants/separation = -5
 
 [node name="icon" type="TextureRect" parent="VBC/skill_reqCC"]
-margin_right = 19.0
-margin_bottom = 19.0
-rect_min_size = Vector2( 19, 19 )
+margin_right = 15.0
+margin_bottom = 15.0
+rect_min_size = Vector2( 15, 15 )
 mouse_filter = 2
 texture = ExtResource( 3 )
 expand = true
 stretch_mode = 1
 
 [node name="skill_req" type="Label" parent="VBC/skill_reqCC"]
-margin_right = 18.0
-margin_bottom = 19.0
-rect_min_size = Vector2( 18, 19 )
+margin_left = 10.0
+margin_top = -1.0
+margin_right = 29.0
+margin_bottom = 14.0
+rect_min_size = Vector2( 19, 15 )
 custom_fonts/font = ExtResource( 2 )
 text = "0"
 align = 1
 valign = 1
 
-[node name="cred_reqCC" type="CenterContainer" parent="VBC"]
-margin_top = 23.0
-margin_right = 19.0
-margin_bottom = 42.0
+[node name="cred_reqCC" type="HBoxContainer" parent="VBC"]
+margin_top = 19.0
+margin_right = 29.0
+margin_bottom = 34.0
 mouse_filter = 2
+custom_constants/separation = -5
 
 [node name="Icon" type="TextureRect" parent="VBC/cred_reqCC"]
-margin_right = 19.0
-margin_bottom = 19.0
-rect_min_size = Vector2( 19, 19 )
+margin_right = 15.0
+margin_bottom = 15.0
+rect_min_size = Vector2( 15, 15 )
 mouse_filter = 2
 texture = ExtResource( 1 )
 expand = true
 stretch_mode = 1
 
 [node name="cred_req" type="Label" parent="VBC/cred_reqCC"]
-margin_right = 18.0
-margin_bottom = 19.0
-rect_min_size = Vector2( 18, 19 )
+margin_left = 10.0
+margin_top = -1.0
+margin_right = 28.0
+margin_bottom = 14.0
+rect_min_size = Vector2( 18, 15 )
 custom_fonts/font = ExtResource( 2 )
 text = "0"
 align = 1
 valign = 1
 
-[node name="motivation_reqCC" type="CenterContainer" parent="VBC"]
-margin_top = 46.0
-margin_right = 19.0
-margin_bottom = 65.0
+[node name="motivation_reqCC" type="HBoxContainer" parent="VBC"]
+margin_top = 38.0
+margin_right = 29.0
+margin_bottom = 53.0
 mouse_filter = 2
+custom_constants/separation = -5
 
 [node name="Icon" type="TextureRect" parent="VBC/motivation_reqCC"]
-margin_right = 19.0
-margin_bottom = 19.0
-rect_min_size = Vector2( 19, 19 )
+margin_right = 15.0
+margin_bottom = 15.0
+rect_min_size = Vector2( 15, 15 )
 mouse_filter = 2
 texture = ExtResource( 4 )
 expand = true
 stretch_mode = 1
 
 [node name="motivation_req" type="Label" parent="VBC/motivation_reqCC"]
-margin_right = 18.0
-margin_bottom = 19.0
-rect_min_size = Vector2( 18, 19 )
+margin_left = 10.0
+margin_top = -1.0
+margin_right = 28.0
+margin_bottom = 14.0
+rect_min_size = Vector2( 18, 15 )
 custom_fonts/font = ExtResource( 2 )
 text = "0"
 align = 1
