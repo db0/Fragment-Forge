@@ -1,19 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://shaders/ShaderToy.gd" type="Script" id=1]
-[ext_resource path="res://shaders/textures/cc0textures/Ground040_1K_Color.jpg" type="Texture" id=2]
-[ext_resource path="res://shaders/Plasma Globe.shader" type="Shader" id=3]
+[ext_resource path="res://shaders/Warping.shader" type="Shader" id=2]
 
 [sub_resource type="ShaderMaterial" id=1]
-shader = ExtResource( 3 )
+shader = ExtResource( 2 )
 shader_param/is_card = true
-shader_param/iTime = 2861.21
-shader_param/iMouse = null
-shader_param/NUM_RAYS = 13.0
-shader_param/VOLUMETRIC_STEPS = 19
-shader_param/MAX_ITER = 35
-shader_param/FAR = 6.0
-shader_param/iChannel0 = ExtResource( 2 )
 
 [sub_resource type="Environment" id=2]
 background_mode = 4
@@ -33,10 +25,10 @@ glow_bicubic_upscale = true
 material = SubResource( 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -3.31677
-margin_top = -4.33936
-margin_right = -1403.32
-margin_bottom = -424.339
+margin_left = -1.0
+margin_top = -3.0
+margin_right = -1418.0
+margin_bottom = -518.0
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false

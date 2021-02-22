@@ -59,6 +59,7 @@ func change_shader(shader_name = null) -> void:
 			"Light",
 			"Cloud",
 			"Fractal Tiling",
+			"Warping",
 			]
 		# Using split() instead of rstrip() as the later seems to be eating
 		# characters for some reason

@@ -23,14 +23,3 @@ func _ready() -> void:
 	value_controls["skill_req"] = $CardText/ArtLayover/Requirements/VBC/skill_reqCC
 	value_controls["cred_req"] = $CardText/ArtLayover/Requirements/VBC/cred_reqCC
 	value_controls["motivation_req"] = $CardText/ArtLayover/Requirements/VBC/motivation_reqCC
-	if get_parent().get_parent().get_parent().state != Card.CardState.VIEWPORT_FOCUS:
-		var spanel = StyleBoxTexture.new()
-		var ntexture = NoiseTexture.new()
-		var noise = OpenSimplexNoise.new()
-		noise.seed = CFUtils.randi()
-		ntexture.noise = noise
-		spanel.texture = ntexture
-		spanel.content_margin_left = 3
-		spanel.content_margin_right = 3
-		spanel.content_margin_bottom = 2
-		noise_texture.set("custom_styles/panel", spanel)

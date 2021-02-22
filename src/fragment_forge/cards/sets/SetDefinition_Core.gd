@@ -391,9 +391,9 @@ const CARDS := {
 	"Creative Block": {
 		"Type": CardConfig.CardTypes.ACTION,
 		"Tags": [],
-		"Abilities": "This card cannot be played\n\n"\
-				+ "After this card is discarded from hand, draw three cards\n\n"\
-				+ "After this card is drawn, draw a card",
+		"Abilities": "This card cannot be played.\n"\
+				+ "After this card is discarded from hand, draw three cards.\n"\
+				+ "After this card is drawn, draw a card.",
 		"Time": 0,
 		"Value": 0,
 		"Kudos": 0,
@@ -417,7 +417,7 @@ const CARDS := {
 		"Type": CardConfig.CardTypes.ACTION,
 		"Tags": [],
 		"Abilities": "Discard your hand and draw cards equal to your motivation",
-		"Time": 2,
+		"Time": 3,
 		"Value": 0,
 		"Kudos": 0,
 		"skill_req": 0,
@@ -460,6 +460,19 @@ const CARDS := {
 		"cred_req": 0,
 		"motivation_req": 0,
 	},
+# Need to figure out how to script this first
+#	"Task Warrior": {
+#		"Type": CardConfig.CardTypes.ACTION,
+#		"Tags": [],
+#		"Abilities": "Reveal the next tournament.\n"\
+#				+ "At the start of the next tournament, gain 3 time",
+#		"Time": 4,
+#		"Value": 0,
+#		"Kudos": 0,
+#		"skill_req": 0,
+#		"cred_req": 0,
+#		"motivation_req": 3,
+#	},
 }
 
 # Ideas
