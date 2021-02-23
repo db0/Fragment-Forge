@@ -6,7 +6,7 @@ This is a card Game, where you're trying to build up the skill set to create the
 
 ## Terminology:
 
-* ![](./assets/icons/cred.png =15x "Fragment Forge Cred") Cred: A slang for "Credibility". How accepted you are as a coder in the demoscene. Effectively Victory Points
+* ![](assets/icons/cred.png =15x "Fragment Forge Cred") Cred: A slang for "Credibility". How accepted you are as a coder in the demoscene. Effectively Victory Points
 * Kudos: Your social credit with other members of the demoscene. How much you have helped others determines how much they're willing to help you back.
 * Time: How much time you have to complete you demo in each Competition
 * Skill: How good you are at writing Fragment Shaders.
