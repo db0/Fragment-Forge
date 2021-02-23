@@ -27,7 +27,7 @@ All cards have a few values which determine how you can play them and what they 
 * Tags: Any special keywords related to this card. Some other cards might look for cards with these tags
 * Abilities: The main text of the card. It explains special rules caused by this card. Abilities on cards always override rules specified in this document!
 * <img src="assets/icons/time.png" alt="Time icon" width="15"/> Time: How much time it takes to play or install this card
-* <img src="assets/icons/Kudos.png" alt="Kudos icon" width="15"/> Kudos: How many kudos it takes to play or install this card
+* <img src="assets/icons/kudos.png" alt="Kudos icon" width="15"/> Kudos: How many kudos it takes to play or install this card
 * <img src="assets/icons/cred.png" alt="cred icon" width="15"/> cred_req: How much cred you need to have before you can play this card
 * <img src="assets/icons/motivation.png" alt="Motivation icon" width="15"/> motivation_req: How much motivation you need to have before you can play this card
 
