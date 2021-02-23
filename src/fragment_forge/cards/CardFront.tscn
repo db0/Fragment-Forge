@@ -17,7 +17,7 @@ corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
 [sub_resource type="DynamicFont" id=2]
-size = 10
+size = 12
 outline_size = 2
 outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
@@ -90,8 +90,8 @@ mouse_filter = 2
 [node name="Type" type="Label" parent="CardText/ArtLayover"]
 margin_top = 23.0
 margin_right = 150.0
-margin_bottom = 36.0
-rect_min_size = Vector2( 50, 13 )
+margin_bottom = 39.0
+rect_min_size = Vector2( 50, 16 )
 size_flags_horizontal = 3
 size_flags_vertical = 1
 custom_fonts/font = SubResource( 2 )
@@ -102,9 +102,11 @@ autowrap = true
 uppercase = true
 
 [node name="Requirements" parent="CardText/ArtLayover" instance=ExtResource( 2 )]
+margin_top = 43.0
+margin_bottom = 96.0
 
 [node name="Control" type="Control" parent="CardText/ArtLayover"]
-margin_top = 109.0
+margin_top = 100.0
 margin_right = 150.0
 margin_bottom = 129.0
 mouse_filter = 2

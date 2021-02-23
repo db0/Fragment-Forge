@@ -460,6 +460,19 @@ const CARDS := {
 		"cred_req": 0,
 		"motivation_req": 0,
 	},
+	"Silver Tongue": {
+		"Type": CardConfig.CardTypes.RESOURCE,
+		"Tags": ["Reputation", "Unique"],
+		"Abilities": "After you play a Collaborator or a Tutor "\
+				+ "Draw a card",
+		"Time": 2,
+		"Value": 0,
+		"Kudos": 0,
+		"skill_req": 0,
+		"cred_req": 0,
+		"motivation_req": 0,
+		"_max_allowed": 1,
+	},
 # Need to figure out how to script this first
 #	"Task Warrior": {
 #		"Type": CardConfig.CardTypes.ACTION,

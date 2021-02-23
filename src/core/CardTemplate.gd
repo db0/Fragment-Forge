@@ -489,7 +489,11 @@ func setup() -> void:
 # If the property is a number, and the value is a string integer with the
 # operator in front (e.g. "+4", "-1" etc), then instead of setting the property
 # it will be instead modified by that amount.
-func modify_property(property: String, value, is_init = false, check := false) -> int:
+func modify_property(
+			property: String,
+			value,
+			is_init = false,
+			check := false) -> int:
 	var retcode: int
 	if not property in properties.keys() and not is_init:
 		retcode = CFConst.ReturnCode.FAILED
@@ -597,7 +601,7 @@ func get_property(property: String):
 # * alteration: The  full dictionary returned by
 #	CFScriptUtils.get_altered_value() but including details about
 #	temp_properties_modifiers
-func get_property_and_alterants(property: String, 
+func get_property_and_alterants(property: String,
 		use_global_temp_mods := false) -> Dictionary:
 	var property_value = properties.get(property)
 	var alteration = {
@@ -610,6 +614,11 @@ func get_property_and_alterants(property: String,
 	}
 	if property in CardConfig.PROPERTIES_NUMBERS:
 		var tmp_mods : Dictionary
+		# The global card modifications record in cfc is not typically used
+		# A game will have to be setup to explicitly request its use in this
+		# method. This would be needed for example when calculating the
+		# effect a temp_modifier would have on a card subject, before
+		# a subject was selected.
 		if use_global_temp_mods\
 				and temp_properties_modifiers.empty()\
 				and not cfc.card_temp_property_modifiers.empty():

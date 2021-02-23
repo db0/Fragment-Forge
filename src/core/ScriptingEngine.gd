@@ -71,18 +71,22 @@ func execute(_run_type := CFInt.RunType.NORMAL) -> void:
 			continue
 		if script.owner_card._debugger_hook: # Debug
 			pass
-		# In case the task involves targetting, we need to wait on further
-		# execution until targetting has completed
+		# We store the temp modifiers to counters, so that things like
+		# info during targetting can take them into account
 		cfc.NMAP.board.counters.temp_count_modifiers[self] = {
 				"requesting_card": script.owner_card,
 				"modifier": _retrieve_temp_modifiers(script,"counters")
 			}
+		# This is provisionally stored for games which need to use this
+		# information before card subjects have been selected.
 		cfc.card_temp_property_modifiers[self] = {
 			"requesting_card": script.owner_card,
 			"modifier": _retrieve_temp_modifiers(script, "properties")
 		}
 		if not script.is_primed:
 			script.prime(prev_subjects,run_type,stored_integer)
+			# In case the task involves targetting, we need to wait on further
+			# execution until targetting has completed
 			if not script.is_primed:
 				yield(script,"primed")
 		if script.owner_card._debugger_hook: # Debug
