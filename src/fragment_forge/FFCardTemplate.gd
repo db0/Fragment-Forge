@@ -178,8 +178,6 @@ func get_modified_time_cost(include_global_temp_mods := false) -> Dictionary:
 	var time_cost_details : Dictionary =\
 			get_property_and_alterants("Time",include_global_temp_mods)
 	var modified_cost : int = time_cost_details.value
-	if include_global_temp_mods:
-		print(time_cost_details,modified_cost)
 	var skill_counter_details : Dictionary =\
 			cfc.NMAP.board.counters.get_counter_and_alterants("skill", self)
 	if properties.Type == CardConfig.CardTypes.SHADER:

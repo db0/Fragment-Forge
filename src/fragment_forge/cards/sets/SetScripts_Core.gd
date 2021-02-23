@@ -642,6 +642,25 @@ func get_scripts(card_name: String) -> Dictionary:
 				],
 			},
 		},
+		"Silver Tongue": {
+			"card_moved_to_board": {
+				"board": [
+					{
+						"name": "move_card_to_container",
+						"src_container": cfc.NMAP.deck,
+						"dest_container": cfc.NMAP.hand,
+						"subject_count": 1,
+						"subject": "index",
+						"subject_index": "top",
+						"trigger": "another",
+						"filter_state_trigger": [
+							{"filter_properties": {"Tags": "Tutor"}},
+							{"filter_properties": {"Tags": "Collaborator"}},
+						],
+					},
+				],
+			},
+		},
 		"Ether": {
 			"card_moved_to_board": {
 				"board": [

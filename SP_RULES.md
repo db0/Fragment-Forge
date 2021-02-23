@@ -17,7 +17,7 @@ This is a card Game, where you're trying to build up the skill set to create the
 * Install: To play a card on the board
 * Value: How impressive a Shader is or how Impressive your demo is.
 * Demo: Each Installed Shader adds it value to your total for this competition. The total value amount of installed Shaders is your demo value.
-* Competition: Effectively, a "round". See (#Competitions)
+* Competition: Effectively, a "round". See (#competitions)
 
 ## Card Types:
 
