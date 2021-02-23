@@ -6,7 +6,7 @@ This is a card Game, where you're trying to build up the skill set to create the
 
 ## Terminology:
 
-* <img src="assets/icons/cred.png" alt="cred icon" width="15"/> Cred: A slang for "Credibility". How accepted you are as a coder in the demoscene. Effectively Victory Points
+* Cred: A slang for "Credibility". How accepted you are as a coder in the demoscene. Effectively Victory Points
 * Kudos: Your social credit with other members of the demoscene. How much you have helped others determines how much they're willing to help you back.
 * Time: How much time you have to complete you demo in each Competition
 * Skill: How good you are at writing Fragment Shaders.
@@ -21,21 +21,22 @@ This is a card Game, where you're trying to build up the skill set to create the
 
 ## Card Types:
 
-All cards have a few values which determine how you can play them and what they do.
+All cards have a few values which determine how you can play them and what they do. Where you see an icon, it is used to represent that value on the card.
 
 * Name: The name of the card is on the very top.
 * Tags: Any special keywords related to this card. Some other cards might look for cards with these tags
 * Abilities: The main text of the card. It explains special rules caused by this card. Abilities on cards always override rules specified in this document!
-* Time: How much time it takes to play or install this card
-* cred_req: How much cred you need to have before you can play this card
-* motivation_req: How much motivation you need to have before you can play this card
+* <img src="assets/icons/time.png" alt="Time icon" width="15"/> Time: How much time it takes to play or install this card
+* <img src="assets/icons/Kudos.png" alt="Kudos icon" width="15"/> Kudos: How many kudos it takes to play or install this card
+* <img src="assets/icons/cred.png" alt="cred icon" width="15"/> cred_req: How much cred you need to have before you can play this card
+* <img src="assets/icons/motivation.png" alt="Motivation icon" width="15"/> motivation_req: How much motivation you need to have before you can play this card
 
 
 ### Shader
 
-Shaders (AKA Fragment Shader ) are the core component of any good demo effect.  They use the following extra fields
+Shaders (AKA Fragment Shaders) are the core component of any good demo effect.  They use the following extra fields
 
-* skill_req: How much skill is required to develop this shader. Having 1 less skill means significantly more time. Having 2+ less skill means the shader is impossible for you.
+* <img src="assets/icons/skill.png" alt="skill_req icon" width="15"/> skill_req: How much skill is required to develop this shader. Having 1 less skill means significantly more time. Having 2+ less skill means the shader is impossible for you.
 
 ### Resources
 
