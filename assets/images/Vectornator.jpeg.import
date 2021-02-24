@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Newbie Tutor.jpeg-c5fae7e853b2efb321a986237f4366b9.stex"
+path="res://.import/Vectornator.jpeg-3e77a5a76779403d2838e66297f072dc.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/Newbie Tutor.jpeg"
-dest_files=[ "res://.import/Newbie Tutor.jpeg-c5fae7e853b2efb321a986237f4366b9.stex" ]
+source_file="res://assets/images/Vectornator.jpeg"
+dest_files=[ "res://.import/Vectornator.jpeg-3e77a5a76779403d2838e66297f072dc.stex" ]
 
 [params]
 

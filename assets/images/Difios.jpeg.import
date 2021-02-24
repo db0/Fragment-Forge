@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Chiptunes Musician.jpeg-1f4699548c72e03998af7e835f81dafc.stex"
+path="res://.import/Difios.jpeg-c52c3107f8f858313fb9b2621f3d4b68.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/Chiptunes Musician.jpeg"
-dest_files=[ "res://.import/Chiptunes Musician.jpeg-1f4699548c72e03998af7e835f81dafc.stex" ]
+source_file="res://assets/images/Difios.jpeg"
+dest_files=[ "res://.import/Difios.jpeg-c52c3107f8f858313fb9b2621f3d4b68.stex" ]
 
 [params]
 

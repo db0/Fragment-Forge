@@ -167,6 +167,17 @@ func check_play_costs() -> Color:
 
 	if properties.get("_is_unplayable", false):
 		ret = CFConst.CostsState.IMPOSSIBLE
+	
+	match card_name:
+		"Shy Shader":
+			var found_shader := false
+			var board_cards = cfc.NMAP.board.get_all_cards()
+			for c in board_cards:
+				if c.get_property("Type") == CardConfig.CardTypes.SHADER:
+					found_shader = true
+			if found_shader:
+				ret = CFConst.CostsState.IMPOSSIBLE
+				
 	return(ret)
 
 # Calculates how much time a card will cost, after taking into account

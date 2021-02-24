@@ -107,7 +107,7 @@ func get_scripts(card_name: String) -> Dictionary:
 				],
 			},
 		},
-		"Graphics Artist": {
+		"Vectornator": {
 			"competition_ended": {
 				"board": [
 					{
@@ -137,7 +137,7 @@ func get_scripts(card_name: String) -> Dictionary:
 				],
 			},
 		},
-		"Chiptunes Musician": {
+		"Zhee": {
 			"competition_ended": {
 				"board": [
 					{
@@ -193,7 +193,7 @@ func get_scripts(card_name: String) -> Dictionary:
 				],
 			},
 		},
-		"Newbie Tutor": {
+		"Difios": {
 			"alterants": {
 				"board": [
 					{
@@ -709,29 +709,63 @@ func get_scripts(card_name: String) -> Dictionary:
 				]
 			}
 		},
-		"OverComplex Shader": {
-			"alterants": {
-				"hand": [
+		"Boost Shader": {
+			"manual": {
+				"board": [
 					{
-						"filter_task": "get_property",
-						"trigger": "self",
-						"filter_property_name": "skill_req",
-						"alteration": "per_boardseek",
-						"per_boardseek": {
-							"is_inverted": true,
-							"subject": "boardseek",
-							"subject_count": "all",
-							"filter_state_seek": [
-								{
-									"filter_properties": {
-										"Tags": "Tutor"
-									}
-								}
-							]
-						}
+						"name": "rotate_card",
+						"degrees": 90,
+						"is_cost": true,
+						"subject": "self",
+					},
+					{
+						"name": "modify_properties",
+						"set_properties": {"Value": "+2"},
+						"subject": "self",
 					},
 				]
 			}
+		},
+		"Echo": {
+			"manual": {
+				"board": [
+					{
+						"name": "rotate_card",
+						"degrees": 90,
+						"is_cost": true,
+						"subject": "self",
+					},
+					{
+						"name": "modify_properties",
+						"set_properties": {"Value": "+1"},
+						"subject": "target",
+						"filter_state_subject": [{
+							"filter_properties": {"Type": "Shader"},
+						}],
+					},
+				]
+			}
+		},
+		"Hardcode": {
+			"card_moved_to_board": {
+				"board": [
+					{
+						"name": "mod_counter",
+						"counter_name": "time",
+						"modification": 1,
+						"trigger": "another",
+						"filter_state_trigger": [
+							{
+								"filter_properties": {"Type": "Shader"},
+								"filter_properties2": {
+									"skill_req": "skill",
+									"comparison": 'gt',
+								},
+							}
+						],
+					},
+				],
+			},
 		},
 	}
 	# We return only the scripts that match the card name and trigger

@@ -65,6 +65,19 @@ const CARDS := {
 		"motivation_req": 4,
 		"_abilities_power": 3,
 	},
+	"Shy Shader": {
+		"Type": CardConfig.CardTypes.SHADER,
+		"Tags": [],
+		"Abilities": "You cannot play this shader, "\
+				+ " if you have another Shader installed",
+		"Time": 2,
+		"Value": GEN,
+		"Kudos": 0,
+		"skill_req": 0,
+		"cred_req": 0,
+		"motivation_req": 0,
+		"_abilities_power": -2,
+	},
 #### skill_req 1
 	"Fractal Pyramid": {
 		"Type": CardConfig.CardTypes.SHADER,
@@ -120,6 +133,18 @@ const CARDS := {
 		"Abilities": "After you play a Collaborator or Tutor, "\
 				+ "increase this Shader's value by 1",
 		"Time": 4,
+		"Value": GEN,
+		"Kudos": 0,
+		"skill_req": 1,
+		"cred_req": 0,
+		"motivation_req": 0,
+		"_abilities_power": 1,
+	},
+	"Boost Shader": {
+		"Type": CardConfig.CardTypes.SHADER,
+		"Tags": [],
+		"Abilities": "2 Time, Exhaust: Increase this Shader's value by 3",
+		"Time": 3,
 		"Value": GEN,
 		"Kudos": 0,
 		"skill_req": 1,
@@ -211,7 +236,7 @@ const CARDS := {
 		"motivation_req": 0,
 	},
 ### BEGIN Resources ###
-	"Newbie Tutor": {
+	"Difios": {
 		"Type": CardConfig.CardTypes.RESOURCE,
 		"Tags": ["Tutor"],
 		"Abilities": "You have +1 skill for Shaders of 1 skill_req or lower.",
@@ -245,7 +270,19 @@ const CARDS := {
 		"cred_req": 4,
 		"motivation_req": 0,
 	},
-	"Chiptunes Musician": {
+	"Echo": {
+		"Type": CardConfig.CardTypes.RESOURCE,
+		"Tags": ["Tutor"],
+		"Abilities": "1 Time, Exhaust: Increase the value of "\
+				+ "one of your Shaders by 2",
+		"Time": 1,
+		"Value": 0,
+		"Kudos": 2,
+		"skill_req": 0,
+		"cred_req": 0,
+		"motivation_req": 0,
+	},
+	"Zhee": {
 		"Type": CardConfig.CardTypes.RESOURCE,
 		"Tags": ["Collaborator"],
 		"Abilities": "Increase the value of your Demo this round by 5.\n"\
@@ -257,7 +294,19 @@ const CARDS := {
 		"cred_req": 1,
 		"motivation_req": 0,
 	},
-	"Graphics Artist": {
+	"Hardcode": {
+		"Type": CardConfig.CardTypes.RESOURCE,
+		"Tags": ["Tutor"],
+		"Abilities": "Whenever you play a Shader with higher skill_req "\
+				+ "than your Skill, gain 1 Time",
+		"Time": 1,
+		"Value": 0,
+		"Kudos": 4,
+		"skill_req": 0,
+		"cred_req": 1,
+		"motivation_req": 0,
+	},
+	"Vectornator": {
 		"Type": CardConfig.CardTypes.RESOURCE,
 		"Tags": ["Collaborator"],
 		"Abilities": "If you use at least 2 shaders of skill_req 1, "\

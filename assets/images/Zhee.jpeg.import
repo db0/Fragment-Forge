@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Graphics Artist.jpeg-0cc365d97f0cfc2fafa72f01d1e7697e.stex"
+path="res://.import/Zhee.jpeg-141f48165bd3fb49d50478c75ff32349.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/Graphics Artist.jpeg"
-dest_files=[ "res://.import/Graphics Artist.jpeg-0cc365d97f0cfc2fafa72f01d1e7697e.stex" ]
+source_file="res://assets/images/Zhee.jpeg"
+dest_files=[ "res://.import/Zhee.jpeg-141f48165bd3fb49d50478c75ff32349.stex" ]
 
 [params]
 

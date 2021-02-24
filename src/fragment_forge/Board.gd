@@ -40,6 +40,9 @@ func _ready() -> void:
 	if not get_tree().get_root().has_node('Gut'):
 		load_deck()
 
+func _input(event):
+	if event.is_action_pressed("debug"):
+		_on_Debug_pressed()
 
 func _on_Start_pressed() -> void:
 # warning-ignore:return_value_discarded

@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://src/fragment_forge/cards/ShaderCardFront.gd" type="Script" id=1]
-[ext_resource path="res://assets/images/Newbie Tutor.jpeg" type="Texture" id=2]
+[ext_resource path="res://assets/images/Difios.jpeg" type="Texture" id=2]
 [ext_resource path="res://fonts/Xolonium-Regular.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://src/fragment_forge/cards/CardFrontRequirements.tscn" type="PackedScene" id=4]
 [ext_resource path="res://src/fragment_forge/cards/CardFrontValue.tscn" type="PackedScene" id=5]
