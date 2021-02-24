@@ -201,11 +201,15 @@ func get_scripts(card_name: String) -> Dictionary:
 						"filter_counter_name": "skill",
 						"alteration": 1,
 						"filter_state_trigger": [
-							{"filter_properties": {"Type": "Shader"}},
-							{"filter_properties2": {
-								"skill_req": 1,
-								"comparison": "le",
-							}}
+							{
+								"filter_properties": {
+									"Type": "Shader"
+								},
+								"filter_properties2": {
+									"skill_req": 1,
+									"comparison": "le",
+								}
+							}
 						]
 					},
 				],
@@ -697,6 +701,30 @@ func get_scripts(card_name: String) -> Dictionary:
 								{
 									"filter_properties": {
 										"Type": CardConfig.CardTypes.SHADER
+									}
+								}
+							]
+						}
+					},
+				]
+			}
+		},
+		"OverComplex Shader": {
+			"alterants": {
+				"hand": [
+					{
+						"filter_task": "get_property",
+						"trigger": "self",
+						"filter_property_name": "skill_req",
+						"alteration": "per_boardseek",
+						"per_boardseek": {
+							"is_inverted": true,
+							"subject": "boardseek",
+							"subject_count": "all",
+							"filter_state_seek": [
+								{
+									"filter_properties": {
+										"Tags": "Tutor"
 									}
 								}
 							]

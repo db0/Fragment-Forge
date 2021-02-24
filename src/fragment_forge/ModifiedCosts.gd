@@ -33,17 +33,17 @@ func update_time_labels(
 			skill_mod := 0,
 			card_mod := 0,
 			alterants := {"skill": {}, "card": {}}) -> void:
-	if modified == 1000:
+	if modified >= 1000:
 		modified_time_cost.text = "Impossible due to low skill"
 	else:
 		modified_time_cost.text = "Modified Time Cost: " + str(modified)
 	printed_time_cost.text = "Printed Cost: " + str(printed)
-	if modified == 1000:
+	if modified >= 1000:
 		time_modifier["skill"].text = "Skill Modifier: " + (char(8734))
 	else:
 		time_modifier["skill"].text = "Skill Modifier: " + strint(skill_mod)
 	time_modifier["card"].text = "Card Modifier: " + strint(card_mod)
-	if modified == 1000:
+	if modified >= 1000:
 		modified_time_cost.set("custom_colors/font_color",
 				# We multiply with 0.8 to remove the glow
 				CFConst.CostsState.IMPOSSIBLE * 0.8)
@@ -57,7 +57,7 @@ func update_time_labels(
 	else:
 		modified_time_cost.set("custom_colors/font_color",
 				CFConst.CostsState.OK)
-	if modified == 1000:
+	if modified >= 1000:
 		time_modifier["skill"].set("custom_colors/font_color",
 				CFConst.CostsState.IMPOSSIBLE * 0.8)
 	else:

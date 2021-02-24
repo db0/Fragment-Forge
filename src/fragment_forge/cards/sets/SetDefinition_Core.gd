@@ -186,7 +186,7 @@ const CARDS := {
 		"motivation_req": 0,
 		"_abilities_power": -4
 	},
-#### skill_req 3
+#### skill_req 3+
 	"Seascape": {
 		"Type": CardConfig.CardTypes.SHADER,
 		"Tags": [],
@@ -195,6 +195,18 @@ const CARDS := {
 		"Value": GEN,
 		"Kudos": 0,
 		"skill_req": 3,
+		"cred_req": 0,
+		"motivation_req": 0,
+	},
+	"OverComplex Shader": {
+		"Type": CardConfig.CardTypes.SHADER,
+		"Tags": [],
+		"Abilities": "Reduce this shader's skill_req by the amount of "\
+				+ "installed Tutors",
+		"Time": 4,
+		"Value": GEN,
+		"Kudos": 0,
+		"skill_req": 5,
 		"cred_req": 0,
 		"motivation_req": 0,
 	},
@@ -471,7 +483,6 @@ const CARDS := {
 		"skill_req": 0,
 		"cred_req": 0,
 		"motivation_req": 0,
-		"_max_allowed": 1,
 	},
 # Need to figure out how to script this first
 #	"Task Warrior": {

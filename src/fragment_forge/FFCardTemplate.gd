@@ -66,7 +66,10 @@ func highlight_modified_properties() -> void:
 						and value_text != label_node.text:
 					card_front.set_label_text(label_node,value_text)
 				if current_property > printed_properties.get(property):
-					label_node.modulate = Color(0,1,0)
+					if property in ["skill_req", "cred_req", "motivation_req"]:
+						label_node.modulate = Color(0,1,0)
+					else:
+						label_node.modulate = Color(0,1,0)
 				elif current_property < printed_properties.get(property):
 					label_node.modulate = Color(1,0,0)
 				else:
@@ -101,9 +104,8 @@ func setup() -> void:
 				shader_properties.init_shader(card_name)
 	else:
 		var card_art_file: String = "res://assets/images/" + card_name
-		var check_art = File.new()
 		for extension in ['.jpg','.jpeg','.png']:
-			if check_art.file_exists(card_art_file + extension):
+			if ResourceLoader.exists(card_art_file + extension):
 				var new_texture = ImageTexture.new();
 				var tex = load(card_art_file + extension)
 				var image = tex.get_data()
@@ -115,6 +117,7 @@ func setup() -> void:
 		printed_properties = properties.duplicate()
 
 
+# Formula for generating the shader value based on skill_req, time and ability power
 static func generate_shader_value(time: int, skill_req: int, power: int) -> int:
 	return(time + 1 + skill_req * 2 - power)
 
@@ -182,7 +185,7 @@ func get_modified_time_cost(include_global_temp_mods := false) -> Dictionary:
 			cfc.NMAP.board.counters.get_counter_and_alterants("skill", self)
 	if properties.Type == CardConfig.CardTypes.SHADER:
 		modified_cost += get_skill_modified_shader_time_cost(
-				properties.get("skill_req", 0),
+				get_property("skill_req"),
 				skill_counter_details.count,
 				printed_properties.Time)
 	# We return the detauls which can be used by the card on-hover
