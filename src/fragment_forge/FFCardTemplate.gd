@@ -71,7 +71,10 @@ func highlight_modified_properties() -> void:
 					else:
 						label_node.modulate = Color(0,1,0)
 				elif current_property < printed_properties.get(property):
-					label_node.modulate = Color(1,0,0)
+					if property in ["skill_req", "cred_req", "motivation_req"]:
+						label_node.modulate = Color(0,1,0)
+					else:
+						label_node.modulate = Color(1,0,0)
 				else:
 					label_node.modulate = Color(1,1,1)
 #				if state == CardState.VIEWPORT_FOCUS and property == 'Value':
