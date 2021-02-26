@@ -80,7 +80,7 @@ const CARDS := {
 	},
 	"Undead Shader": {
 		"Type": CardConfig.CardTypes.SHADER,
-		"Tags": [],
+		"Tags": ["Restricted"],
 		"Abilities": "After you play another Shader "\
 				+ "install this Shader from your discard pile "\
 				+ "without paying any costs.",
@@ -90,7 +90,7 @@ const CARDS := {
 		"skill_req": 0,
 		"cred_req": 0,
 		"motivation_req": 0,
-		"_abilities_power": 1,
+		"_abilities_power": 2,
 		"_max_allowed": 1,
 	},
 #### skill_req 1

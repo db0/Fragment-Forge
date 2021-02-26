@@ -14,56 +14,6 @@ font_data = ExtResource( 1 )
 script = ExtResource( 3 )
 generation_keys = [ -1 ]
 
-[node name="VBC" parent="." index="0"]
-margin_right = 1700.0
-margin_bottom = 900.0
-
-[node name="Title" parent="VBC" index="0"]
-margin_right = 1700.0
-
-[node name="HBC" parent="VBC" index="1"]
-margin_right = 1700.0
-margin_bottom = 900.0
-
-[node name="MC" parent="VBC/HBC" index="0"]
-margin_right = 848.0
-margin_bottom = 859.0
-
-[node name="CurrentDeck" parent="VBC/HBC/MC" index="0"]
-margin_right = 848.0
-margin_bottom = 854.0
-
-[node name="DeckDetails" parent="VBC/HBC/MC/CurrentDeck" index="0"]
-margin_right = 843.0
-
-[node name="CardCount" parent="VBC/HBC/MC/CurrentDeck/DeckDetails" index="0"]
-margin_right = 843.0
-
-[node name="LineSeparator2" parent="VBC/HBC/MC/CurrentDeck" index="1"]
-margin_right = 843.0
-
-[node name="CardsInDeck" parent="VBC/HBC/MC/CurrentDeck" index="2"]
-margin_right = 843.0
-margin_bottom = 763.0
-
-[node name="HBoxContainer" parent="VBC/HBC/MC/CurrentDeck" index="3"]
-margin_top = 767.0
-margin_right = 843.0
-margin_bottom = 793.0
-
-[node name="NoticeLabel" parent="VBC/HBC/MC/CurrentDeck/HBoxContainer" index="2"]
-margin_right = 843.0
-
-[node name="DeckNameEdit" parent="VBC/HBC/MC/CurrentDeck" index="4"]
-margin_top = 797.0
-margin_right = 843.0
-margin_bottom = 824.0
-
-[node name="Buttons" parent="VBC/HBC/MC/CurrentDeck" index="5"]
-margin_top = 828.0
-margin_right = 843.0
-margin_bottom = 854.0
-
 [node name="MC" type="MarginContainer" parent="VBC/HBC/MC/CurrentDeck/Buttons" index="4"]
 margin_left = 248.0
 margin_right = 785.0
@@ -77,20 +27,7 @@ margin_bottom = 26.0
 custom_fonts/font = SubResource( 1 )
 text = "Back"
 
-[node name="MC2" parent="VBC/HBC" index="1"]
-margin_left = 852.0
-margin_right = 1700.0
-margin_bottom = 859.0
-
-[node name="AvailableCards" parent="VBC/HBC/MC2" index="0"]
-margin_right = 838.0
-margin_bottom = 854.0
-
-[node name="HBC" parent="VBC/HBC/MC2/AvailableCards" index="0"]
-margin_right = 838.0
-
 [node name="FilterLine" parent="VBC/HBC/MC2/AvailableCards/HBC" index="1"]
-margin_right = 838.0
 criteria_map = {
 "a": "Abilities",
 "c": "cred_req",
@@ -102,30 +39,3 @@ criteria_map = {
 "t": "Type",
 "v": "Value"
 }
-
-[node name="CC" parent="VBC/HBC/MC2/AvailableCards" index="1"]
-margin_right = 838.0
-
-[node name="ButtonFilters" parent="VBC/HBC/MC2/AvailableCards/CC" index="0"]
-margin_left = 419.0
-margin_right = 419.0
-
-[node name="CardListHeaders" parent="VBC/HBC/MC2/AvailableCards" index="2"]
-margin_right = 838.0
-
-[node name="Name" parent="VBC/HBC/MC2/AvailableCards/CardListHeaders" index="1"]
-margin_right = 737.0
-
-[node name="Type" parent="VBC/HBC/MC2/AvailableCards/CardListHeaders" index="2"]
-margin_left = 797.0
-margin_right = 838.0
-
-[node name="LineSeparator" parent="VBC/HBC/MC2/AvailableCards" index="3"]
-margin_right = 838.0
-
-[node name="ScrollContainer" parent="VBC/HBC/MC2/AvailableCards" index="4"]
-margin_right = 838.0
-margin_bottom = 854.0
-
-[node name="CardList" parent="VBC/HBC/MC2/AvailableCards/ScrollContainer" index="0"]
-margin_right = 838.0
