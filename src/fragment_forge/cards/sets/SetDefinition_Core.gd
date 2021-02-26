@@ -121,14 +121,14 @@ const CARDS := {
 		"Tags": [],
 		"Abilities": "Comes with 1 Activation token\n"\
 				+ "After you install a shader, remove an activation token "\
-				+ "to give that Shader +2 Value",
+				+ "to give that Shader +3 Value",
 		"Time": 4,
 		"Value": GEN,
 		"Kudos": 0,
 		"skill_req": 1,
 		"cred_req": 0,
 		"motivation_req": 0,
-		"_abilities_power": 2
+		"_abilities_power": 3
 	},
 	"Plasma Globe": {
 		"Type": CardConfig.CardTypes.SHADER,
@@ -311,7 +311,7 @@ const CARDS := {
 	},
 	"Hardcode": {
 		"Type": CardConfig.CardTypes.RESOURCE,
-		"Tags": ["Tutor"],
+		"Tags": ["Contact"],
 		"Abilities": "Whenever you play a Shader with higher skill_req "\
 				+ "than your Skill, gain 1 Time",
 		"Time": 1,
@@ -334,11 +334,23 @@ const CARDS := {
 		"cred_req": 2,
 		"motivation_req": 0,
 	},
+	"Aesop": {
+		"Type": CardConfig.CardTypes.RESOURCE,
+		"Tags": ["Contact"],
+		"Abilities": "Exhaust, return an installed Shader to your hand: "\
+				+ "Gain an amount of Time equal its Time cost",
+		"Time": 1,
+		"Value": 0,
+		"Kudos": 3,
+		"skill_req": 0,
+		"cred_req": 0,
+		"motivation_req": 5,
+	},
 	"Git": {
 		"Type": CardConfig.CardTypes.RESOURCE,
 		"Tags": ["Knowledge"],
 		"Abilities": "Events that make you lose time, make you lose 1 less time. "\
-				+ "After you add the fourth shader to your demo, gain 1 time.",
+				+ "After you add the fourth shader to your demo, draw a card.",
 		"Time": 1,
 		"Value": 0,
 		"Kudos": 0,
@@ -348,7 +360,7 @@ const CARDS := {
 	},
 	"Discord Mod": {
 		"Type": CardConfig.CardTypes.RESOURCE,
-		"Tags": ["Volunteering"],
+		"Tags": ["Community"],
 		"Abilities": "Comes into the game with 12 Kudos tokens\n"\
 				+ "1 Time: Take 2 Kudos tokens from this card. "\
 				+ "When it has no more kudos tokens, discard it.",
@@ -361,7 +373,7 @@ const CARDS := {
 	},
 	"Private Forum Mod": {
 		"Type": CardConfig.CardTypes.RESOURCE,
-		"Tags": ["Volunteering"],
+		"Tags": ["Community"],
 		"Abilities": "Pay 1 Time: Draw 1 card and gain 1 Kudos",
 		"Time": 1,
 		"Value": 0,
@@ -372,7 +384,7 @@ const CARDS := {
 	},
 	"Hacking Buddy": {
 		"Type": CardConfig.CardTypes.RESOURCE,
-		"Tags": ["Collaborator", "Unique"],
+		"Tags": ["Contact", "Unique"],
 		"Abilities": "Reduce the time cost of all Shaders by 1.\n"\
 				+ "Discard after this competition ends",
 		"Time": 0,
@@ -397,8 +409,8 @@ const CARDS := {
 	},
 	"Silver Tongue": {
 		"Type": CardConfig.CardTypes.RESOURCE,
-		"Tags": ["Reputation", "Unique"],
-		"Abilities": "After you play a Collaborator or a Tutor "\
+		"Tags": ["Knowledge", "Unique"],
+		"Abilities": "After you play a Collaborator or a Tutor, "\
 				+ "Draw a card",
 		"Time": 2,
 		"Value": 0,
@@ -410,7 +422,7 @@ const CARDS := {
 ### BEGIN Prep ###
 	"Collaboration": {
 		"Type": CardConfig.CardTypes.ACTION,
-		"Tags": [],
+		"Tags": ["Community"],
 		"Abilities": "Discard an installed Shader to gain Kudos equal to its value",
 		"Time": 1,
 		"Value": 0,
@@ -454,7 +466,7 @@ const CARDS := {
 	},
 	"Help out Some Newbs": {
 		"Type": CardConfig.CardTypes.ACTION,
-		"Tags": [],
+		"Tags": ["Community"],
 		"Abilities": "Gain 5 Kudos",
 		"Time": 1,
 		"Value": 0,
@@ -465,10 +477,10 @@ const CARDS := {
 	},
 	"Social Networking": {
 		"Type": CardConfig.CardTypes.ACTION,
-		"Tags": [],
-		"Abilities": "Discard a Tutor, Collaborator, or Volunteering Resource"\
+		"Tags": ["Community"],
+		"Abilities": "Discard a Tutor or Collaborator"\
 				+ " from hand or board to gain 1 Cred and 2 Kudos.\n"\
-				+ "If the Resource was installed, gain 3 more Kudos.",
+				+ "If the card was installed, gain 3 more Kudos.",
 		"Time": 1,
 		"Value": 0,
 		"Kudos": 0,
@@ -492,7 +504,7 @@ const CARDS := {
 	},
 	"Presentation": {
 		"Type": CardConfig.CardTypes.ACTION,
-		"Tags": [],
+		"Tags": ["Community"],
 		"Abilities": "Gain 1 Kudos for each installed Shader",
 		"Time": 0,
 		"Value": 0,

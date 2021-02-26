@@ -448,7 +448,7 @@ func get_scripts(card_name: String) -> Dictionary:
 					},
 					{
 						"name": "modify_properties",
-						"set_properties": {"Value": "+2"},
+						"set_properties": {"Value": "+3"},
 						"subject": "trigger",
 						"trigger": "another",
 						"filter_state_trigger": [
@@ -831,6 +831,39 @@ func get_scripts(card_name: String) -> Dictionary:
 						"name": "mod_counter",
 						"modification": 6,
 						"counter_name": "time",
+					},
+				],
+			},
+		},
+		"Aesop": {
+			"manual": {
+				"board": [
+					{
+						"name": "rotate_card",
+						"subject": "self",
+						"degrees": 90,
+						"is_cost": true
+					},
+					{
+						"name": "move_card_to_container",
+						"dest_container": cfc.NMAP.hand,
+						"subject": "target",
+						"is_cost": true,
+						"filter_state_subject": [
+							{
+								"filter_properties": {"Type": "Shader"},
+								"filter_parent": cfc.NMAP.board
+							},
+						],
+					},
+					{
+						"name": "mod_counter",
+						"modification": "per_property",
+						"counter_name": "time",
+						"subject": "previous",
+						"per_property": {
+							"subject": "previous",
+							"property_name": "Time"}
 					},
 				],
 			},
