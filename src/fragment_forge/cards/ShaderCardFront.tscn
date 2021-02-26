@@ -78,7 +78,9 @@ expand = true
 [node name="Margin" type="MarginContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+rect_min_size = Vector2( 150, 240 )
 mouse_filter = 2
+custom_constants/margin_left = 0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -108,29 +110,50 @@ autowrap = true
 uppercase = true
 
 [node name="Requirements" parent="Margin/CardText" instance=ExtResource( 4 )]
+margin_bottom = 93.0
+
+[node name="VBC" parent="Margin/CardText/Requirements" index="0"]
+margin_bottom = 53.0
+
+[node name="skill_req" parent="Margin/CardText/Requirements/VBC/skill_reqCC" index="1"]
+margin_top = 0.0
+margin_bottom = 15.0
+
+[node name="cred_req" parent="Margin/CardText/Requirements/VBC/cred_reqCC" index="1"]
+margin_top = 0.0
+margin_bottom = 15.0
+
+[node name="motivation_req" parent="Margin/CardText/Requirements/VBC/motivation_reqCC" index="1"]
+margin_top = 0.0
+margin_bottom = 15.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Margin/CardText/Requirements"]
-margin_left = 23.0
-margin_right = 150.0
-margin_bottom = 65.0
+margin_left = 33.0
+margin_right = 143.0
+margin_bottom = 53.0
 mouse_filter = 2
 size_flags_horizontal = 3
 
 [node name="Tags" type="Label" parent="Margin/CardText/Requirements/VBoxContainer"]
-margin_right = 127.0
-margin_bottom = 17.0
-rect_min_size = Vector2( 50, 17 )
+margin_right = 110.0
+margin_bottom = 53.0
+rect_min_size = Vector2( 50, 53 )
 size_flags_horizontal = 3
-size_flags_vertical = 1
+size_flags_vertical = 3
 custom_fonts/font = SubResource( 3 )
 text = "Tag1 - Tag2"
-align = 1
-valign = 1
+align = 2
 autowrap = true
 uppercase = true
 
+[node name="Margin" type="Control" parent="Margin/CardText/Requirements"]
+margin_left = 147.0
+margin_right = 150.0
+margin_bottom = 53.0
+rect_min_size = Vector2( 3, 0 )
+
 [node name="Abilities" type="Label" parent="Margin/CardText"]
-margin_top = 109.0
+margin_top = 97.0
 margin_right = 150.0
 margin_bottom = 240.0
 rect_min_size = Vector2( 146, 100 )

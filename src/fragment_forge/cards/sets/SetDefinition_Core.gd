@@ -78,6 +78,21 @@ const CARDS := {
 		"motivation_req": 0,
 		"_abilities_power": -2,
 	},
+	"Undead Shader": {
+		"Type": CardConfig.CardTypes.SHADER,
+		"Tags": [],
+		"Abilities": "After you play another Shader "\
+				+ "install this Shader from your discard pile "\
+				+ "without paying any costs.",
+		"Time": 2,
+		"Value": GEN,
+		"Kudos": 0,
+		"skill_req": 0,
+		"cred_req": 0,
+		"motivation_req": 0,
+		"_abilities_power": 1,
+		"_max_allowed": 1,
+	},
 #### skill_req 1
 	"Fractal Pyramid": {
 		"Type": CardConfig.CardTypes.SHADER,
@@ -117,7 +132,7 @@ const CARDS := {
 	},
 	"Plasma Globe": {
 		"Type": CardConfig.CardTypes.SHADER,
-		"Tags": [],
+		"Tags": ["Burnout"],
 		"Abilities": "After you install this shader, lose 1 motivation",
 		"Time": 1,
 		"Value": GEN,
@@ -380,6 +395,18 @@ const CARDS := {
 		"cred_req": 0,
 		"motivation_req": 0,
 	},
+	"Silver Tongue": {
+		"Type": CardConfig.CardTypes.RESOURCE,
+		"Tags": ["Reputation", "Unique"],
+		"Abilities": "After you play a Collaborator or a Tutor "\
+				+ "Draw a card",
+		"Time": 2,
+		"Value": 0,
+		"Kudos": 0,
+		"skill_req": 0,
+		"cred_req": 0,
+		"motivation_req": 0,
+	},
 ### BEGIN Prep ###
 	"Collaboration": {
 		"Type": CardConfig.CardTypes.ACTION,
@@ -521,12 +548,23 @@ const CARDS := {
 		"cred_req": 0,
 		"motivation_req": 0,
 	},
-	"Silver Tongue": {
-		"Type": CardConfig.CardTypes.RESOURCE,
-		"Tags": ["Reputation", "Unique"],
-		"Abilities": "After you play a Collaborator or a Tutor "\
-				+ "Draw a card",
-		"Time": 2,
+	"Insight": {
+		"Type": CardConfig.CardTypes.ACTION,
+		"Tags": [],
+		"Abilities": "Discard a shader from your hand: "\
+				+ "Gain 6 time",
+		"Time": 0,
+		"Value": 0,
+		"Kudos": 2,
+		"skill_req": 0,
+		"cred_req": 0,
+		"motivation_req": 5,
+	},
+	"All-Nighter": {
+		"Type": CardConfig.CardTypes.ACTION,
+		"Tags": ["Burnout"],
+		"Abilities": "Fill your hand up to your motivation. Lose 1 motivation",
+		"Time": 0,
 		"Value": 0,
 		"Kudos": 0,
 		"skill_req": 0,

@@ -6,8 +6,8 @@ extends Reference
 
 var costs_dry_run := false
 
-func _init(dry_run_req) -> void:
-	costs_dry_run = dry_run_req
+func _init(_dry_run) -> void:
+	costs_dry_run = _dry_run
 # This fuction executes custom scripts
 #
 # It relies on the definition of each script being based the object's name
@@ -17,21 +17,15 @@ func _init(dry_run_req) -> void:
 # You can pass a predefined subject, but it's optional.
 func custom_script(script: ScriptTask) -> void:
 	var card: Card = script.owner_card
+	# warning-ignore:unused_variable
 	var subjects: Array = script.subjects
-	# I don't like the extra indent caused by this if, 
-	# But not all object will be Card
-	# So I can't be certain the "card_name" var will exist
 	match script.owner_card.card_name:
-		"Test Card 2":
-			# No demo cost-based custom scripts
+		"All-Nighter":
 			if not costs_dry_run:
-				print("This is a custom script execution.")
-				print("Look! I am going to destroy myself now!")
-				card.queue_free()
-				print("You can do whatever you want here.")
-		"Test Card 3":
-			if not costs_dry_run:
-				print("This custom script uses the _find_subject()"
-						+ " to find a convenient target")
-				print("Destroying: " + subjects[0].card_name)
-				subjects[0].queue_free()
+				var cards_in_hand: int = cfc.NMAP.hand.get_card_count()
+				var amount_to_draw: int =\
+						cfc.NMAP.board.counters.get_counter(
+						"motivation", card) - cards_in_hand
+				for _iter in range(amount_to_draw):
+					cfc.NMAP.hand.draw_card()
+					yield(card.get_tree().create_timer(0.05), "timeout")

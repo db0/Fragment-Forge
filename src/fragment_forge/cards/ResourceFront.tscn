@@ -14,7 +14,3 @@ custom_styles/panel = SubResource( 1 )
 
 [node name="Art" parent="." index="0"]
 texture = null
-
-[node name="Abilities" parent="CardText/OutsideArt" index="1"]
-margin_top = 1.0
-margin_bottom = 89.0

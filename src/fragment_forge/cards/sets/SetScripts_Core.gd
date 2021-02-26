@@ -294,7 +294,7 @@ func get_scripts(card_name: String) -> Dictionary:
 					},
 					{
 						"name": "move_card_to_container",
-						SP.KEY_DEST_CONTAINER: cfc.NMAP.discard,
+						"dest_container": cfc.NMAP.discard,
 						"subject": "target",
 						"is_cost": true,
 						"filter_state_subject": [
@@ -618,6 +618,25 @@ func get_scripts(card_name: String) -> Dictionary:
 				],
 			},
 		},
+		"All-Nighter": {
+			"manual": {
+				"hand": [
+					{
+						"name": "move_card_to_container",
+						"dest_container": cfc.NMAP.discard,
+						"subject": "self",
+					},
+					{
+						"name": "custom_script",
+					},
+					{
+						"name": "mod_counter",
+						"modification": -1,
+						"counter_name": "motivation",
+					},
+				],
+			},
+		},
 		"Plasma Globe": {
 			"card_moved_to_board": {
 				"board": [
@@ -761,6 +780,47 @@ func get_scripts(card_name: String) -> Dictionary:
 									"skill_req": "skill",
 									"comparison": 'gt',
 								},
+							}
+						],
+					},
+				],
+			},
+		},
+		"Insight": {
+			"manual": {
+				"hand": [
+					{
+						"name": "move_card_to_container",
+						"dest_container": cfc.NMAP.discard,
+						"subject": "target",
+						"is_cost": true,
+						"filter_state_subject": [
+							{
+								"filter_properties": {"Type": "Shader"},
+								"filter_parent": cfc.NMAP.hand
+							},
+						],
+					},
+					{
+						"name": "mod_counter",
+						"modification": 6,
+						"counter_name": "time",
+					},
+				],
+			},
+		},
+		"Undead Shader": {
+			"card_moved_to_board": {
+				"discard": [
+					{
+						"name": "move_card_to_board",
+						"subject": "self",
+						"grid_name": "Shaders",
+						"trigger": "another",
+						"filter_state_trigger": [
+							{
+								"filter_properties": \
+										{"Type": CardConfig.CardTypes.SHADER},
 							}
 						],
 					},

@@ -47,7 +47,7 @@ func _process(delta: float) -> void:
 				if cfc.game_settings.animate_in_deckbuilder:
 					shader_time += delta
 	highlight_modified_properties()
-	
+
 func highlight_modified_properties() -> void:
 	# We don't check cards in deck to reduce operations
 	if state != CardState.IN_PILE:
@@ -115,7 +115,7 @@ func setup() -> void:
 				new_texture.create_from_image(image)
 				card_front.art.texture = new_texture
 				card_front.art.visible = true
-			
+
 	if printed_properties.empty():
 		printed_properties = properties.duplicate()
 
@@ -167,7 +167,7 @@ func check_play_costs() -> Color:
 
 	if properties.get("_is_unplayable", false):
 		ret = CFConst.CostsState.IMPOSSIBLE
-	
+
 	match card_name:
 		"Shy Shader":
 			var found_shader := false
@@ -177,7 +177,7 @@ func check_play_costs() -> Color:
 					found_shader = true
 			if found_shader:
 				ret = CFConst.CostsState.IMPOSSIBLE
-				
+
 	return(ret)
 
 # Calculates how much time a card will cost, after taking into account
@@ -458,3 +458,13 @@ func check_unique_conflict() -> bool:
 func _set_shader_param(parameter: String, value) -> void:
 	card_front.material.set_shader_param(parameter, value)
 	shader_params[parameter] = value
+
+func get_state_exec() -> String:
+	var state_exec := .get_state_exec()
+	if state_exec == "pile":
+		if get_parent() == cfc.NMAP.discard:
+			state_exec = "discard"
+		else:
+			state_exec = "deck"
+	return(state_exec)
+
