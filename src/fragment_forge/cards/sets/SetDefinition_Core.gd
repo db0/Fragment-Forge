@@ -382,7 +382,7 @@ const CARDS := {
 		"cred_req": 3,
 		"motivation_req": 0,
 	},
-	"Hacking Buddy": {
+	"Junker": {
 		"Type": CardConfig.CardTypes.RESOURCE,
 		"Tags": ["Contact", "Unique"],
 		"Abilities": "Reduce the time cost of all Shaders by 1.\n"\

@@ -340,7 +340,7 @@ func get_scripts(card_name: String) -> Dictionary:
 				],
 			},
 		},
-		"Hacking Buddy": {
+		"Junker": {
 			"competition_ended": {
 				"board": [
 					{

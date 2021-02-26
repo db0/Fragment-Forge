@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Hacking Buddy.jpeg-f87e71b57c9c0f264b1a4a4b97da9e3c.stex"
+path="res://.import/Junker.jpeg-573af0184c0b158c160d1bddb121494d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/Hacking Buddy.jpeg"
-dest_files=[ "res://.import/Hacking Buddy.jpeg-f87e71b57c9c0f264b1a4a4b97da9e3c.stex" ]
+source_file="res://assets/images/Junker.jpeg"
+dest_files=[ "res://.import/Junker.jpeg-573af0184c0b158c160d1bddb121494d.stex" ]
 
 [params]
 
