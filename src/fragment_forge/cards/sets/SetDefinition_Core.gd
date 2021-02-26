@@ -571,6 +571,20 @@ const CARDS := {
 		"cred_req": 0,
 		"motivation_req": 0,
 	},
+	"Refactoring": {
+		"Type": CardConfig.CardTypes.ACTION,
+		"Tags": ["Burnout"],
+		"Abilities": "Discard an installed Shader. Lose 1 motivation:"\
+				+ "Install the highest Time-cost Shader from your hand "\
+				+ "that is up to 1 skill_req higher "\
+				+ "than the discarded Shader without paying any costs.",
+		"Time": 0,
+		"Value": 0,
+		"Kudos": 0,
+		"skill_req": 0,
+		"cred_req": 0,
+		"motivation_req": 0,
+	},
 # Need to figure out how to script this first
 #	"Task Warrior": {
 #		"Type": CardConfig.CardTypes.ACTION,

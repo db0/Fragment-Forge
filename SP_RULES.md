@@ -95,6 +95,10 @@ You can see on which competition you are on the left of the Competition Details.
 
 Be aware: If you do not make any placement in the competition, you will lose 2 motivation. However if you earn the first place, you will instead gain 1 motivation!
 
+### Losing the Game
+
+There is only one loss condition in the game, and that is running out of motivation. If your motivation ever drops to 0, you immediately lose the game, as you drop out of all further competitions!
+
 ### Game Goal
 
 The game goal is to amass a specified amount of Cred, based on the difficulty. The amount you need is written to the left of the Competition details

@@ -12,7 +12,7 @@ onready var diff_legend = $PC/VBC/Difficulty/Level/Difficulties/MC/VBC/Difficult
 func _ready() -> void:
 	_adjust_difficulty()
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	diff_popup.rect_global_position.y = $PC.rect_global_position.y + $PC.rect_size.y / 2 - diff_popup.rect_size.y / 2
 	diff_popup.rect_global_position.x = $PC.rect_global_position.x + $PC.rect_size.x
 	diff_popup.set_as_minsize()

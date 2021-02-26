@@ -637,6 +637,32 @@ func get_scripts(card_name: String) -> Dictionary:
 				],
 			},
 		},
+		"Refactoring": {
+			"manual": {
+				"hand": [
+					{
+						"name": "mod_counter",
+						"modification": -1,
+						"is_cost": true,
+						"counter_name": "motivation",
+					},
+					{
+						"name": "move_card_to_container",
+						"dest_container": cfc.NMAP.discard,
+						"subject": "target",
+						"is_cost": true,
+						"filter_state_subject": [{
+							"filter_properties": {"Type": CardConfig.CardTypes.SHADER},
+							"filter_parent": cfc.NMAP.board
+						}],
+					},
+					{
+						"name": "custom_script",
+						"subject": "previous",
+					},
+				],
+			},
+		},
 		"Plasma Globe": {
 			"card_moved_to_board": {
 				"board": [

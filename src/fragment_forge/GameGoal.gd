@@ -26,6 +26,9 @@ func _process(_delta: float) -> void:
 	if cfc.NMAP.board.counters.get_counter("cred") >= cred_goal\
 			and not end_game_popup.visible:
 		win_game()
+	if cfc.NMAP.board.counters.get_counter("motivation") <= 0\
+			and not end_game_popup.visible:
+		lose_game_motivation()
 	if cfc.NMAP.board.competitions.current_round > max_competitions\
 			and not end_game_popup.visible:
 		lose_game()
@@ -48,6 +51,13 @@ func lose_game() -> void:
 	end_game_popup.window_title = "Game Over!"
 	end_game_popup.dialog_text = "Unfortunately, you have not managed to achieve "\
 			+ " the required cred to win this game.\n\nPress OK to play again."
+	finish_game()
+
+func lose_game_motivation() -> void:
+	end_game_popup.window_title = "Game Over!"
+	end_game_popup.dialog_text = "Unfortunately, the stress of these competitions "\
+			+ " was too much and you have ended with bad case of Burnout. "\
+			+ "You have dropped out!\n\nPress OK to play again."
 	finish_game()
 
 

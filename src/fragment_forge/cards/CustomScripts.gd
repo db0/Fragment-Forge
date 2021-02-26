@@ -29,3 +29,18 @@ func custom_script(script: ScriptTask) -> void:
 				for _iter in range(amount_to_draw):
 					cfc.NMAP.hand.draw_card()
 					yield(card.get_tree().create_timer(0.05), "timeout")
+		"Refactoring":
+			if not costs_dry_run:
+				var discarded_shader: Card = script.subjects[0]
+				var max_skill_req = discarded_shader.get_property("skill_req") + 1
+				var hand_cards : Array = cfc.NMAP.hand.get_all_cards()
+				var highest_time_shader: Card = null
+				for shader in hand_cards:
+					if shader.get_property("Type") == CardConfig.CardTypes.SHADER\
+							and (not highest_time_shader
+							or highest_time_shader.get_property("Time")
+									< shader.get_property("Time"))\
+							and shader.get_property("skill_req") <= max_skill_req:
+						highest_time_shader = shader
+				if highest_time_shader:
+					highest_time_shader.move_to(cfc.NMAP.board)
