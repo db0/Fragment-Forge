@@ -886,6 +886,36 @@ func get_scripts(card_name: String) -> Dictionary:
 				],
 			},
 		},
+		"Igorrr": {
+			"manual": {
+				"board": [
+					{
+						"name": "rotate_card",
+						"subject": "self",
+						"degrees": 90,
+						"is_cost": true
+					},
+					{
+						"name": "mod_counter",
+						"counter_name": "kudos",
+						"is_cost": true,
+						"modification": -1,
+					},
+					{
+						"name": "move_card_to_container",
+						"subject": "tutor",
+						"src_container":  cfc.NMAP.discard,
+						"dest_container":  cfc.NMAP.hand,
+						"filter_state_tutor": [
+							{
+								"filter_properties": \
+										{"Type": CardConfig.CardTypes.SHADER},
+							}
+						],
+					},
+				],
+			},
+		},
 	}
 	# We return only the scripts that match the card name and trigger
 	return(scripts.get(card_name,{}))

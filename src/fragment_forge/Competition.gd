@@ -145,6 +145,8 @@ func next_competition() -> void:
 				+ " Cred"
 	description.text = current_tournament.description
 	cfc.NMAP.board.counters.mod_counter("time",current_tournament.time, true)
+	for c in cfc.NMAP.board.get_all_cards():
+		c.card_rotation = 0
 
 func get_cred_rewards() -> int:
 	if current_place >= 0:

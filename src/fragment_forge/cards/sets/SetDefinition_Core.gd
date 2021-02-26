@@ -419,6 +419,18 @@ const CARDS := {
 		"cred_req": 0,
 		"motivation_req": 0,
 	},
+	"Igorrr": {
+		"Type": CardConfig.CardTypes.RESOURCE,
+		"Tags": ["Unique"],
+		"Abilities": "1 Kudos, Exhaust: Put the top Shader of your "\
+				+ "Discard Pile into your hand.",
+		"Time": 1,
+		"Value": 0,
+		"Kudos": 2,
+		"skill_req": 1,
+		"cred_req": 1,
+		"motivation_req": 1,
+	},
 ### BEGIN Prep ###
 	"Collaboration": {
 		"Type": CardConfig.CardTypes.ACTION,
