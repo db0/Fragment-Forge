@@ -22,23 +22,39 @@ enum Difficulties {
 	END
 }
 const DIFFICULTIES = {
-	Difficulties.EXTRA_COMPETITION: "1 Extra Competition available",
-	Difficulties.REDUCED_VALUE_REQ: "-1 Tournament value requirements",
-	Difficulties.REDUCED_CRED_REQ: "-1 cred needed to win",
-	Difficulties.NO_MOTIVATION_LOSS: "No Motivation loss for not placing in a competition",
+	Difficulties.EXTRA_COMPETITION: 
+			"1 Extra Competition available",
+	Difficulties.REDUCED_VALUE_REQ: 
+			"-1 Tournament value requirements",
+	Difficulties.REDUCED_CRED_REQ: 
+			"-1 cred needed to win",
+	Difficulties.NO_MOTIVATION_LOSS: 
+			"No Motivation loss for not placing in a competition",
 	Difficulties.NORMAL: "Normal Game",
-	Difficulties.FIRST_CRED_REQ_INCREASE: "+1 cred needed to win",
-	Difficulties.SKILL_DISCOUNT_ROUND_DOWN: "Maximum discount of Shaders due to skill is rounded down",
-	Difficulties.FIRST_VALUE_REQ_INCREASE: "+1 Tournament value requirements",
-	Difficulties.RANDOM_EVENTS: "Random events (not implemented yet)",
-	Difficulties.SECOND_CRED_REQ_INCREASE: "+1 cred needed to win",
-	Difficulties.STARTING_MOTIVATION_DECREASE: "-1 Starting Motivation",
-	Difficulties.SECOND_VALUE_REQ_INCREASE: "+1 Tournament value requirements",
-	Difficulties.MORE_MOTIVATION_LOSS: "-1 extra motivation when not placing in a tournament",
-	Difficulties.NO_MOTIVATION_GAIN: "No motivation gain when winning a tournament",
-	Difficulties.INCREASED_SKILL_PENALTY: "Penalty for having lower skill than the shader increased",
-	Difficulties.THIRD_CRED_REQ_INCREASE: "+1 cred needed to win",
-	Difficulties.THIRD_VALUE_REQ_INCREASE: "+1 Tournament value requirements",
+	Difficulties.FIRST_CRED_REQ_INCREASE: 
+			"+1 cred needed to win",
+	Difficulties.SKILL_DISCOUNT_ROUND_DOWN: 
+			"Maximum discount of Shaders due to skill is rounded down",
+	Difficulties.FIRST_VALUE_REQ_INCREASE: 
+			"+1 Tournament value requirements",
+	Difficulties.RANDOM_EVENTS: 
+			"Random events (not implemented yet)",
+	Difficulties.SECOND_CRED_REQ_INCREASE: 
+			"+1 cred needed to win",
+	Difficulties.STARTING_MOTIVATION_DECREASE: 
+			"-1 Starting Motivation",
+	Difficulties.SECOND_VALUE_REQ_INCREASE: 
+			"+1 Tournament value requirements",
+	Difficulties.MORE_MOTIVATION_LOSS: 
+			"-1 extra motivation when not placing in a tournament",
+	Difficulties.NO_MOTIVATION_GAIN: 
+			"No motivation gain when winning a tournament",
+	Difficulties.INCREASED_SKILL_PENALTY: 
+			"Penalty for having lower skill than the shader increased",
+	Difficulties.THIRD_CRED_REQ_INCREASE: 
+			"+1 cred needed to win",
+	Difficulties.THIRD_VALUE_REQ_INCREASE: 
+			"+1 Tournament value requirements",
 }
 
 var current_deck: Dictionary
