@@ -24,4 +24,17 @@ static func filter_trigger(
 			and card_scripts.get("filter_" + FILTER_CURRENT_PLACE) != \
 			trigger_details.get(FILTER_CURRENT_PLACE):
 		is_valid = false
+	if is_valid and card_scripts.get("filter_not_" + FILTER_CURRENT_PLACE) \
+			and card_scripts.get("filter_not_" + FILTER_CURRENT_PLACE) == \
+			trigger_details.get(FILTER_CURRENT_PLACE):
+		is_valid = false
+	# For the card effect of Prismatic
+	if is_valid and card_scripts.get("filter_prismatic"):
+		var card_names = []
+		for c in cfc.NMAP.board.get_all_cards():
+			if c.card_name in card_names:
+				is_valid = false
+				break
+			else:
+				card_names.append(c.card_name)
 	return(is_valid)

@@ -156,6 +156,26 @@ func get_scripts(card_name: String) -> Dictionary:
 				],
 			},
 		},
+		"Prismatic": {
+			"competition_ended": {
+				"board": [
+					{
+						"name": "move_card_to_container",
+						"dest_container": cfc.NMAP.discard,
+						"subject": "self"
+					},
+				],
+			},
+			"alterants": {
+				"board": [
+					{
+						"filter_task": "get_demo_value",
+						"alteration": 8,
+						"filter_prismatic": true
+					},
+				],
+			},
+		},
 		"Cheerleader": {
 			"competition_ended": {
 				"board": [
@@ -176,6 +196,30 @@ func get_scripts(card_name: String) -> Dictionary:
 						"trigger": "self",
 					},
 				],
+			},
+		},
+		"Proud Shader": {
+			"competition_ended": {
+				"board": [
+					{
+						"name": "mod_counter",
+						"counter_name": "motivation",
+						"modification": -1,
+					},
+				],
+				"filter_not_current_place": Competitions.Place.FIRST,
+			},
+		},
+		"Showoff Shader": {
+			"competition_ended": {
+				"board": [
+					{
+						"name": "mod_counter",
+						"counter_name": "motivation",
+						"modification": 1,
+					},
+				],
+				"filter_current_place": Competitions.Place.FIRST,
 			},
 		},
 		"Voronoi Column Tracing": {
@@ -247,6 +291,29 @@ func get_scripts(card_name: String) -> Dictionary:
 						"filter_state_subject": [{
 							"filter_properties": {"Type": "Shader"},
 						}],
+					},
+				],
+			},
+		},
+		"Enhance": {
+			"manual": {
+				"hand": [
+					{
+						"name": "execute_scripts",
+						"subject": "target",
+						"is_cost": true,
+						"exec_trigger":  "manual",
+						"temp_mod_properties": {
+							"Time": 2},
+						"require_exec_state": "hand",
+						"filter_state_subject": [{
+							"filter_properties": {"Type": "Shader"},
+						}],
+					},
+					{
+						"name": "modify_properties",
+						"set_properties": {"Value": "+5"},
+						"subject": "previous",
 					},
 				],
 			},
@@ -495,6 +562,30 @@ func get_scripts(card_name: String) -> Dictionary:
 						"subject": "self",
 						"trigger": "self",
 						"is_else": true,
+					},
+				],
+			},
+		},
+		"Refreshing Shader": {
+			"card_moved_to_board": {
+				"board": [
+					{
+						"name": "rotate_card",
+						"degrees": 0,
+						"subject": "target",
+						"trigger": "self",
+						"filter_state_subject": [
+							{
+								"filter_properties1": {"Type": CardConfig.CardTypes.RESOURCE},
+								"filter_properties2": {"Tags": "Tutor"},
+								"filter_parent": cfc.NMAP.board,
+							},
+							{
+								"filter_properties1": {"Type": CardConfig.CardTypes.RESOURCE},
+								"filter_properties2": {"Tags": "Collaborator"},
+								"filter_parent": cfc.NMAP.board,
+							}
+						],
 					},
 				],
 			},
@@ -786,6 +877,7 @@ func get_scripts(card_name: String) -> Dictionary:
 						"subject": "target",
 						"filter_state_subject": [{
 							"filter_properties": {"Type": "Shader"},
+							"filter_parent": cfc.NMAP.board
 						}],
 					},
 				]
@@ -810,6 +902,31 @@ func get_scripts(card_name: String) -> Dictionary:
 						],
 					},
 				],
+			},
+		},
+		"Git": {
+			"card_moved_to_board": {
+				"board": [
+					{
+						"name": "move_card_to_container",
+						"src_container": cfc.NMAP.deck,
+						"dest_container": cfc.NMAP.hand,
+						"subject_count": 1,
+						"subject": "index",
+						"subject_index": "top",
+						"trigger": "another",
+						"filter_state_trigger": [
+							{"filter_properties": {"Type": "Shader"}},
+						],
+					},
+				],
+				"filter_per_boardseek_count": {
+					"subject": "boardseek",
+					"subject_count": "all",
+					"filter_state_seek": [
+						{"filter_properties": {"Type": "Shader"}}
+					],
+					"filter_card_count": 4}
 			},
 		},
 		"Insight": {
@@ -912,6 +1029,34 @@ func get_scripts(card_name: String) -> Dictionary:
 										{"Type": CardConfig.CardTypes.SHADER},
 							}
 						],
+					},
+				],
+			},
+		},
+		"Blog": {
+			"manual": {
+				"board": [
+					{
+						"name": "rotate_card",
+						"subject": "self",
+						"degrees": 90,
+						"is_cost": true
+					},
+					{
+						"name": "move_card_to_container",
+						"dest_container": cfc.NMAP.discard,
+						"subject": "target",
+						"is_cost": true,
+						"filter_state_subject": [
+							{
+								"filter_parent": cfc.NMAP.board
+							},
+						],
+					},
+					{
+						"name": "mod_counter",
+						"modification": 4,
+						"counter_name": "kudos",
 					},
 				],
 			},

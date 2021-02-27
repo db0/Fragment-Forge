@@ -81,7 +81,7 @@ const CARDS := {
 	"Undead Shader": {
 		"Type": CardConfig.CardTypes.SHADER,
 		"Tags": ["Restricted"],
-		"Abilities": "After you play another Shader "\
+		"Abilities": "After you install another Shader "\
 				+ "install this Shader from your discard pile "\
 				+ "without paying any costs.",
 		"Time": 2,
@@ -145,7 +145,7 @@ const CARDS := {
 	"Noise Pulse": {
 		"Type": CardConfig.CardTypes.SHADER,
 		"Tags": [],
-		"Abilities": "After you play a Collaborator or Tutor, "\
+		"Abilities": "After you install a Collaborator or Tutor, "\
 				+ "increase this Shader's value by 1",
 		"Time": 4,
 		"Value": GEN,
@@ -166,6 +166,32 @@ const CARDS := {
 		"cred_req": 0,
 		"motivation_req": 0,
 		"_abilities_power": 1,
+	},
+	"Proud Shader": {
+		"Type": CardConfig.CardTypes.SHADER,
+		"Tags": [],
+		"Abilities": "If you do not take first place while this shader is installed "\
+				+ "lose 1 motivation.",
+		"Time": 6,
+		"Value": GEN,
+		"Kudos": 0,
+		"skill_req": 1,
+		"cred_req": 0,
+		"motivation_req": 0,
+		"_abilities_power": -4,
+	},
+	"Showoff Shader": {
+		"Type": CardConfig.CardTypes.SHADER,
+		"Tags": [],
+		"Abilities": "If you take first place while this shader is installed "\
+				+ "gain 1 motivation.",
+		"Time": 6,
+		"Value": GEN,
+		"Kudos": 0,
+		"skill_req": 1,
+		"cred_req": 0,
+		"motivation_req": 0,
+		"_abilities_power": 2,
 	},
 #### skill_req 2
 	"Cloud": {
@@ -225,6 +251,19 @@ const CARDS := {
 		"cred_req": 0,
 		"motivation_req": 0,
 		"_abilities_power": -4
+	},
+	"Refreshing Shader": {
+		"Type": CardConfig.CardTypes.SHADER,
+		"Tags": [],
+		"Abilities": "After installing this Shader, unexhaust "\
+				+ "a Collaborator or Tutor",
+		"Time": 3,
+		"Value": GEN,
+		"Kudos": 0,
+		"skill_req": 2,
+		"cred_req": 0,
+		"motivation_req": 0,
+		"_abilities_power": 1
 	},
 #### skill_req 3+
 	"Seascape": {
@@ -289,7 +328,7 @@ const CARDS := {
 		"Type": CardConfig.CardTypes.RESOURCE,
 		"Tags": ["Tutor"],
 		"Abilities": "1 Time, Exhaust: Increase the value of "\
-				+ "one of your Shaders by 2",
+				+ "one of your installed Shaders by 2",
 		"Time": 1,
 		"Value": 0,
 		"Kudos": 2,
@@ -384,7 +423,7 @@ const CARDS := {
 	},
 	"Junker": {
 		"Type": CardConfig.CardTypes.RESOURCE,
-		"Tags": ["Contact", "Unique"],
+		"Tags": ["Tutor", "Collaborator", "Unique"],
 		"Abilities": "Reduce the time cost of all Shaders by 1.\n"\
 				+ "Discard after this competition ends",
 		"Time": 0,
@@ -410,9 +449,21 @@ const CARDS := {
 	"Silver Tongue": {
 		"Type": CardConfig.CardTypes.RESOURCE,
 		"Tags": ["Knowledge", "Unique"],
-		"Abilities": "After you play a Collaborator or a Tutor, "\
+		"Abilities": "After you install a Collaborator or a Tutor, "\
 				+ "Draw a card",
 		"Time": 2,
+		"Value": 0,
+		"Kudos": 0,
+		"skill_req": 0,
+		"cred_req": 0,
+		"motivation_req": 0,
+	},
+	"Blog": {
+		"Type": CardConfig.CardTypes.RESOURCE,
+		"Tags": ["Community"],
+		"Abilities": "1 Time, Exhaust, Discard an installed card: "\
+				+ "Gain 4 Kudos",
+		"Time": 1,
 		"Value": 0,
 		"Kudos": 0,
 		"skill_req": 0,
@@ -430,6 +481,19 @@ const CARDS := {
 		"skill_req": 1,
 		"cred_req": 1,
 		"motivation_req": 1,
+	},
+	"Prismatic": {
+		"Type": CardConfig.CardTypes.RESOURCE,
+		"Tags": ["Collaborator"],
+		"Abilities": "If all your Shaders are different "\
+				+ "increase you demo value by 8\n"\
+				+ "Discard after this competition ends",
+		"Time": 1,
+		"Value": 0,
+		"Kudos": 4,
+		"skill_req": 0,
+		"cred_req": 0,
+		"motivation_req": 0,
 	},
 ### BEGIN Prep ###
 	"Collaboration": {
@@ -603,6 +667,18 @@ const CARDS := {
 				+ "that is up to 1 skill_req higher "\
 				+ "than the discarded Shader without paying any costs.",
 		"Time": 0,
+		"Value": 0,
+		"Kudos": 0,
+		"skill_req": 0,
+		"cred_req": 0,
+		"motivation_req": 0,
+	},
+	"Enhance": {
+		"Type": CardConfig.CardTypes.ACTION,
+		"Tags": [],
+		"Abilities": "Install a Shader from your hand with +2 final time cost."\
+				+ " Increase its value by 5",
+		"Time": 1,
 		"Value": 0,
 		"Kudos": 0,
 		"skill_req": 0,
