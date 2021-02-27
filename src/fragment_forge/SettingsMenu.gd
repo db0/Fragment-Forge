@@ -5,6 +5,7 @@ onready var animate_in_hand = $PC/VBC/AnimateHand
 onready var animate_on_board = $PC/VBC/AnimateBoard
 onready var animate_in_deckbuilder = $PC/VBC/AnimateDeckBuilder
 onready var fancy_movement = $PC/VBC/FancyMovement
+onready var recover_prebuilts = $PC/VBC/PreBuilts
 
 func _ready() -> void:
 	cfc.game_settings['animate_in_hand'] = cfc.game_settings.get('animate_in_hand', false)
@@ -30,5 +31,3 @@ func _on_AnimateDeckBuilder_toggled(button_pressed: bool) -> void:
 
 func _on_FancyMovement_toggled(button_pressed: bool) -> void:
 	cfc.set_setting('fancy_movement',button_pressed)
-
-

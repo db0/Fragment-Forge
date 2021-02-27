@@ -23,6 +23,7 @@ func _ready() -> void:
 	deck_builder.rect_position.x = -get_viewport().size.x
 	new_game_menu.back_button.connect("pressed", self, "_on_NewGame_Back_pressed")
 	settings_menu.back_button.connect("pressed", self, "_on_Setings_Back_pressed")
+	settings_menu.recover_prebuilts.connect("pressed", self, "_on_PreBuilts_pressed")
 	deck_builder.back_button.connect("pressed", self, "_on_DeckBuilder_Back_pressed")
 	initiate_sample_decks()
 
@@ -71,9 +72,9 @@ func change_shader(shader_name = null) -> void:
 	material.set_shader_param('is_card', false)
 
 
-func initiate_sample_decks() -> void:
+func initiate_sample_decks(force := false) -> void:
 	cfc.game_settings['sample_decks_loaded'] = cfc.game_settings.get('sample_decks_loaded', false)
-	if not cfc.game_settings.sample_decks_loaded:
+	if not cfc.game_settings.sample_decks_loaded or force:
 		var dir = Directory.new()
 		if not dir.dir_exists(CFConst.DECKS_PATH):
 			dir.make_dir(CFConst.DECKS_PATH)
@@ -177,3 +178,6 @@ func _on_NewGame_Back_pressed() -> void:
 			main_menu.rect_position.x, 0, menu_switch_time,
 			Tween.TRANS_BACK, Tween.EASE_IN_OUT)
 	$MenuTween.start()
+
+func _on_PreBuilts_pressed() -> void:
+	initiate_sample_decks(true)

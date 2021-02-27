@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://fonts/Xolonium-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://src/fragment_forge/SettingsMenu.gd" type="Script" id=2]
@@ -11,6 +11,13 @@ use_filter = true
 font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=2]
+size = 25
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+use_filter = true
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=3]
 size = 35
 outline_size = 2
 outline_color = Color( 0, 0, 0, 1 )
@@ -28,15 +35,15 @@ __meta__ = {
 [node name="PC" type="PanelContainer" parent="."]
 self_modulate = Color( 1, 1, 1, 0.690196 )
 margin_left = 634.0
-margin_top = 298.0
+margin_top = 263.0
 margin_right = 1066.0
-margin_bottom = 602.0
+margin_bottom = 637.0
 
 [node name="VBC" type="VBoxContainer" parent="PC"]
 margin_left = 7.0
 margin_top = 7.0
 margin_right = 425.0
-margin_bottom = 297.0
+margin_bottom = 367.0
 size_flags_horizontal = 3
 custom_constants/separation = 20
 
@@ -67,17 +74,26 @@ margin_bottom = 220.0
 custom_fonts/font = SubResource( 1 )
 text = "Fancy Card Animations"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="PC/VBC"]
+[node name="PreBuilts" type="Button" parent="PC/VBC"]
 margin_top = 240.0
 margin_right = 418.0
 margin_bottom = 290.0
+rect_min_size = Vector2( 0, 50 )
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 2 )
+text = "Restore Pre-Built Decks"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PC/VBC"]
+margin_top = 310.0
+margin_right = 418.0
+margin_bottom = 360.0
 
 [node name="Back" type="Button" parent="PC/VBC/HBoxContainer"]
 margin_right = 418.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 0, 50 )
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 3 )
 text = "BACK"
 
 [connection signal="toggled" from="PC/VBC/AnimateHand" to="." method="_on_AnimateHand_toggled"]
