@@ -6,6 +6,7 @@ const GEN = -1
 # by dragging it to the board area
 var attempted_action_drop_to_board := false
 var shader_time := 0.0
+var shader_frame := 0
 var shader_params := {}
 var shader_properties: ShaderProperties
 var printed_properties := {}
@@ -28,6 +29,8 @@ func _process(delta: float) -> void:
 			and is_faceup:
 		card_front.material.set_shader_param(
 					'iTime', shader_time + shader_properties.shader_time_offset)
+		card_front.material.set_shader_param(
+					'iFrame', shader_frame)
 		# Pauses animations while the card is not focused
 		match state:
 			CardState.FOCUSED_IN_HAND,\
@@ -37,15 +40,19 @@ func _process(delta: float) -> void:
 			CardState.DRAGGED,\
 			CardState.VIEWED_IN_PILE:
 				shader_time += delta
+				shader_frame += 1
 			CardState.IN_HAND, CardState.PUSHED_ASIDE:
 				if cfc.game_settings.animate_in_hand:
 					shader_time += delta
+					shader_frame += 1
 			CardState.ON_PLAY_BOARD:
 				if cfc.game_settings.animate_on_board:
 					shader_time += delta
+					shader_frame += 1
 			CardState.PREVIEW:
 				if cfc.game_settings.animate_in_deckbuilder:
 					shader_time += delta
+					shader_frame += 1
 	highlight_modified_properties()
 
 func highlight_modified_properties() -> void:

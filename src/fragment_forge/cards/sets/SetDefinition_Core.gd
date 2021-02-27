@@ -193,7 +193,7 @@ const CARDS := {
 		"motivation_req": 0,
 		"_abilities_power": 2,
 	},
-	"Obscure Shader": {
+	"Sculpture": {
 		"Type": CardConfig.CardTypes.SHADER,
 		"Tags": ["Obscure"],
 		"Abilities": "If you draw this card using a card effect, "\

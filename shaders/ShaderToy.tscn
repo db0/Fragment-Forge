@@ -1,11 +1,23 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://shaders/ShaderToy.gd" type="Script" id=1]
-[ext_resource path="res://shaders/Warping.shader" type="Shader" id=2]
+[ext_resource path="res://shaders/Sculpture.shader" type="Shader" id=2]
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 2 )
 shader_param/is_card = true
+shader_param/iTime = 2239.66
+shader_param/AA = 1
+shader_param/iFrame = 126323
+shader_param/GROWX = 2.0
+shader_param/COS_GROWX = false
+shader_param/GROWY = 4.0
+shader_param/COS_GROWY = false
+shader_param/GROWZ = 8.0
+shader_param/COS_GROWZ = false
+shader_param/GROWW = 20.0
+shader_param/COS_GROWW = false
+shader_param/tint = Vector3( 2.1, 2, 1.2 )
 
 [sub_resource type="Environment" id=2]
 background_mode = 4
@@ -25,10 +37,10 @@ glow_bicubic_upscale = true
 material = SubResource( 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -1.0
-margin_top = -3.0
-margin_right = -1418.0
-margin_bottom = -518.0
+margin_left = -4.0
+margin_top = -2.0
+margin_right = -1554.0
+margin_bottom = -662.0
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false

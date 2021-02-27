@@ -668,7 +668,7 @@ func get_scripts(card_name: String) -> Dictionary:
 			"filter_destination": cfc.NMAP.discard
 			},
 		},
-		"Obscure Shader": {
+		"Sculpture": {
 			"card_moved_to_hand": {
 				"hand": [
 					{

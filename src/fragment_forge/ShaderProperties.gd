@@ -1,6 +1,7 @@
 class_name ShaderProperties
 extends Reference
 
+const shaders_without_time_offset := ["Sculpture"]
 var shader_params := {}
 var material: Material
 var shader_time_offset := 0.0
@@ -9,7 +10,7 @@ func _init(_material: Material) -> void:
 	material = _material
 
 func init_shader(shader_name: String, is_card := true) -> void:
-	if is_card:
+	if is_card and not shader_name in shaders_without_time_offset:
 		shader_time_offset = CFUtils.randf_range(0.1,100.0)
 	match shader_name:
 		"Simple Colours":
@@ -89,6 +90,18 @@ func init_shader(shader_name: String, is_card := true) -> void:
 				_set_shader_param('multiplier', CFUtils.randf_range(4.0,10.0))
 			else:
 				_set_shader_param('multiplier', CFUtils.randf_range(15.0,20.0))
+		"Sculpture":
+			_set_shader_param('iChannel0', FFUtils.grab_random_texture())
+			var tint = FFUtils.rnd_color() * Vector3(2.1,2.0,1.2)
+			_set_shader_param('tint', tint)
+			_set_shader_param('GROWX', CFUtils.randf_range(0.0,3.0))
+			_set_shader_param('GROWY', CFUtils.randf_range(0.0,6.0))
+			_set_shader_param('GROWZ', CFUtils.randf_range(6.0,10.0))
+			_set_shader_param('GROWW', CFUtils.randf_range(12.0,18.0))
+			_set_shader_param('COS_GROWZ', CFUtils.rand_bool())
+			_set_shader_param('COS_GROWY', CFUtils.rand_bool())
+			_set_shader_param('COS_GROWZ', CFUtils.rand_bool())
+			_set_shader_param('COS_GROWW', CFUtils.rand_bool())
 		_:
 			pass
 
