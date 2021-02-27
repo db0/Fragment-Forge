@@ -8,6 +8,7 @@ enum Difficulties {
 	NO_MOTIVATION_LOSS
 	NORMAL
 	FIRST_CRED_REQ_INCREASE
+	SKILL_DISCOUNT_ROUND_DOWN
 	FIRST_VALUE_REQ_INCREASE
 	RANDOM_EVENTS
 	SECOND_CRED_REQ_INCREASE
@@ -27,6 +28,7 @@ const DIFFICULTIES = {
 	Difficulties.NO_MOTIVATION_LOSS: "No Motivation loss for not placing in a competition",
 	Difficulties.NORMAL: "Normal Game",
 	Difficulties.FIRST_CRED_REQ_INCREASE: "+1 cred needed to win",
+	Difficulties.SKILL_DISCOUNT_ROUND_DOWN: "Maximum discount of Shaders due to skill is rounded down",
 	Difficulties.FIRST_VALUE_REQ_INCREASE: "+1 Tournament value requirements",
 	Difficulties.RANDOM_EVENTS: "Random events (not implemented yet)",
 	Difficulties.SECOND_CRED_REQ_INCREASE: "+1 cred needed to win",
