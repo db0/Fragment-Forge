@@ -89,8 +89,8 @@ func set_label_text(node: Label, value):
 	# it's small enough to stay within the boundaries
 	while label_rect_y > label_size.y * allowed_expansion - adjust_size:
 		label_font.size = label_font.size - 1
-		if label_font.size < 9:
-			label_font.size = 8
+		if label_font.size < 3:
+			label_font.size = 2
 			break
 		label_rect_y = label_font.get_wordwrap_string_size(
 				working_value,label_size.x).y \

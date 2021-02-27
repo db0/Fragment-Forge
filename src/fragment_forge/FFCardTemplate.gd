@@ -268,7 +268,7 @@ static func get_skill_modified_shader_time_cost(
 	elif current_skill > skill_req:
 		# Making less advanced shaders simply reduces their time needs by 1
 		# to a maximum of half (rounded up)
-		var max_reduction := round(float(time_cost) / 2)
+		var max_reduction := int(round(float(time_cost) / 2))
 		if ffc.difficulty >= ffc.Difficulties.SKILL_DISCOUNT_ROUND_DOWN:
 			max_reduction = int(float(time_cost) / 2)
 		cost_modifier = skill_req - current_skill
@@ -278,10 +278,10 @@ static func get_skill_modified_shader_time_cost(
 		cost_modifier = 0
 	return(cost_modifier)
 
-# Sets a flag when an actio card is dragged to the board manually
+# Sets a flag when an action card is dragged to the board manually
 # which will trigger the game to execute its scripts
 # warning-ignore:unused_argument
-func common_pre_move_scripts(new_container: Node, old_container: Node, scripted_move: bool) -> Node:
+func common_pre_move_scripts(new_container: Node, old_container: Node, tags: Array) -> Node:
 	var target_container := new_container
 	if new_container == cfc.NMAP.board \
 			and old_container == cfc.NMAP.hand \
@@ -292,11 +292,11 @@ func common_pre_move_scripts(new_container: Node, old_container: Node, scripted_
 	return(target_container)
 
 # Executes some extra logic depending on the type of card moved
-func common_post_move_scripts(new_container: Node, old_container: Node, scripted_move: bool) -> void:
+func common_post_move_scripts(new_container: Node, old_container: Node, tags: Array) -> void:
 	# If a non-shader was moved to the board from hand, we want to pay its costs
 	if new_container == cfc.NMAP.board\
 			and old_container == cfc.NMAP.hand\
-			and not scripted_move:
+			and not "Scripted" in tags:
 		pay_play_costs()
 	# if an action was dragged to the board, it will have returned to hand now
 	# and have a special flag set. Therefore we execute its scripts

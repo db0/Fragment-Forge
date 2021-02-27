@@ -318,6 +318,30 @@ func get_scripts(card_name: String) -> Dictionary:
 				],
 			},
 		},
+		"Monetary Incentives": {
+			"manual": {
+				"hand": [
+					{
+						"name": "mod_counter",
+						"counter_name": "cred",
+						"modification": -1,
+						"is_cost": true
+					},
+					{
+						"name": "execute_scripts",
+						"subject": "target",
+						"is_cost": true,
+						"exec_trigger":  "manual",
+						"temp_mod_counters": {
+							"skill": 2},
+						"require_exec_state": "hand",
+						"filter_state_subject": [{
+							"filter_properties": {"Type": "Shader"},
+						}],
+					},
+				],
+			},
+		},
 		"Enhance": {
 			"manual": {
 				"hand": [
@@ -642,6 +666,21 @@ func get_scripts(card_name: String) -> Dictionary:
 				],
 			"filter_source": cfc.NMAP.hand,
 			"filter_destination": cfc.NMAP.discard
+			},
+		},
+		"Obscure Shader": {
+			"card_moved_to_hand": {
+				"hand": [
+					{
+						"name": "move_card_to_container",
+						"src_container": cfc.NMAP.deck,
+						"dest_container": cfc.NMAP.discard,
+						"subject": "self",
+						"trigger": "self",
+					},
+				],
+			"filter_source": cfc.NMAP.deck,
+			"filter_tags": "Scripted",
 			},
 		},
 		"Presentation": {

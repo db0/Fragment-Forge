@@ -193,6 +193,19 @@ const CARDS := {
 		"motivation_req": 0,
 		"_abilities_power": 2,
 	},
+	"Obscure Shader": {
+		"Type": CardConfig.CardTypes.SHADER,
+		"Tags": ["Obscure"],
+		"Abilities": "If you draw this card using a card effect, "\
+				+ "it is immediately discarded.",
+		"Time": 3,
+		"Value": GEN,
+		"Kudos": 0,
+		"skill_req": 1,
+		"cred_req": 0,
+		"motivation_req": 0,
+		"_abilities_power": -2,
+	},
 #### skill_req 2
 	"Cloud": {
 		"Type": CardConfig.CardTypes.SHADER,
@@ -694,6 +707,17 @@ const CARDS := {
 		"Kudos": 0,
 		"skill_req": 0,
 		"cred_req": 0,
+		"motivation_req": 0,
+	},
+	"Monetary Incentives": {
+		"Type": CardConfig.CardTypes.ACTION,
+		"Tags": [],
+		"Abilities": "Lose 1 Cred: Play a Shader as if you had +2 skill",
+		"Time": 1,
+		"Value": 0,
+		"Kudos": 0,
+		"skill_req": 0,
+		"cred_req": 1,
 		"motivation_req": 0,
 	},
 # Need to figure out how to script this first
