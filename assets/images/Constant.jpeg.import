@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Aesop.jpeg-e9998300a046452e5cae2bbd94d548b8.stex"
+path="res://.import/Constant.jpeg-dbbfd1bde0de108d8f99428382ff3df8.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/Aesop.jpeg"
-dest_files=[ "res://.import/Aesop.jpeg-e9998300a046452e5cae2bbd94d548b8.stex" ]
+source_file="res://assets/images/Constant.jpeg"
+dest_files=[ "res://.import/Constant.jpeg-dbbfd1bde0de108d8f99428382ff3df8.stex" ]
 
 [params]
 

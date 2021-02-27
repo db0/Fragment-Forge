@@ -21,7 +21,7 @@ enum Difficulties {
 	THIRD_VALUE_REQ_INCREASE
 	END
 }
-const DIFFICULTIES = {
+const DIFFICULTIES_DESCRIPTIONS = {
 	Difficulties.EXTRA_COMPETITION: 
 			"1 Extra Competition available",
 	Difficulties.REDUCED_VALUE_REQ: 

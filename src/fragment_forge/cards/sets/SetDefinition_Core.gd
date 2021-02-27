@@ -373,7 +373,7 @@ const CARDS := {
 		"cred_req": 2,
 		"motivation_req": 0,
 	},
-	"Aesop": {
+	"A3sop": {
 		"Type": CardConfig.CardTypes.RESOURCE,
 		"Tags": ["Contact"],
 		"Abilities": "Exhaust, return an installed Shader to your hand: "\
@@ -495,7 +495,7 @@ const CARDS := {
 		"cred_req": 0,
 		"motivation_req": 0,
 	},
-	"Constantius": {
+	"Constant": {
 		"Type": CardConfig.CardTypes.RESOURCE,
 		"Tags": ["Tutor"],
 		"Abilities": "All your skill_req 1 Shaders have +1 value ",

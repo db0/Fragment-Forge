@@ -71,14 +71,16 @@ func _adjust_difficulty_legend() -> void:
 		elif ffc.difficulty > 0:
 			diff_title.text = "Hard"
 		for difficulty in range(1,ffc.difficulty+1):
-			diff_text += str(difficulty) + ': ' + ffc.DIFFICULTIES[difficulty] + '\n'
+			diff_text += str(difficulty) + ': '\
+					+ ffc.DIFFICULTIES_DESCRIPTIONS[difficulty] + '\n'
 	else:
 		if ffc.difficulty <= -4:
 			diff_title.text = "Trivial"
 		elif ffc.difficulty < 0:
 			diff_title.text = "Easy"
 		for difficulty in range(ffc.difficulty, 0):
-			diff_text += str(difficulty) + ': ' + ffc.DIFFICULTIES[difficulty] + '\n'
+			diff_text += str(difficulty) + ': '\
+					+ ffc.DIFFICULTIES_DESCRIPTIONS[difficulty] + '\n'
 	diff_legend.text = diff_text
 #	diff_legend.rect_size = Vector2(0,0)
 #	$PC/VBC/Difficulty/Level/Difficulties/VBC.rect_size = Vector2(0,0)

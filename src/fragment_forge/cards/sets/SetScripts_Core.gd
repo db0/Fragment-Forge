@@ -259,7 +259,7 @@ func get_scripts(card_name: String) -> Dictionary:
 				],
 			},
 		},
-		"Constantius": {
+		"Constant": {
 			"alterants": {
 				"board": [
 					{
@@ -975,7 +975,7 @@ func get_scripts(card_name: String) -> Dictionary:
 				],
 			},
 		},
-		"Aesop": {
+		"A3sop": {
 			"manual": {
 				"board": [
 					{
