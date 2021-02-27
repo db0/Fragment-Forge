@@ -259,6 +259,29 @@ func get_scripts(card_name: String) -> Dictionary:
 				],
 			},
 		},
+		"Constantius": {
+			"alterants": {
+				"board": [
+					{
+						"filter_task": "get_property",
+						"trigger": "another",
+						"filter_property_name": "Value",
+						"alteration": 1,
+						"filter_state_trigger": [
+							{
+								"filter_properties": {
+									"Type": "Shader"
+								},
+								"filter_properties2": {
+									"skill_req": 1,
+									"comparison": "eq",
+								}
+							}
+						]
+					},
+				],
+			},
+		},
 		"Guru": {
 			"alterants": {
 				"board": [

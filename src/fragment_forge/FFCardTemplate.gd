@@ -261,7 +261,7 @@ static func get_skill_modified_shader_time_cost(
 		# increases their time by their skill_req
 		# Then increases the time cost by 50%
 		var time_multiplier = 1.5
-		if ffc.difficulty >= 9:
+		if ffc.difficulty >= ffc.Difficulties.INCREASED_SKILL_PENALTY:
 			time_multiplier = 2.0
 		# warning-ignore:narrowing_conversion
 		cost_modifier = skill_req + round(float(time_cost) * time_multiplier) - time_cost

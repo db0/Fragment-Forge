@@ -66,13 +66,13 @@ func _ready() -> void:
 	# warning-ignore:return_value_discarded
 	self.connect("competition_ended", cfc.signal_propagator, "_on_signal_received")
 	var value_per_rank_diff_ajustment := 0
-	if ffc.difficulty <= -3:
+	if ffc.difficulty <= ffc.Difficulties.REDUCED_VALUE_REQ:
 		value_per_rank_diff_ajustment -= 1
-	if ffc.difficulty >= 2:
+	if ffc.difficulty >= ffc.Difficulties.FIRST_VALUE_REQ_INCREASE:
 		value_per_rank_diff_ajustment += 1
-	if ffc.difficulty >= 6:
+	if ffc.difficulty >= ffc.Difficulties.SECOND_VALUE_REQ_INCREASE:
 		value_per_rank_diff_ajustment += 1
-	if ffc.difficulty >= 11:
+	if ffc.difficulty >= ffc.Difficulties.THIRD_VALUE_REQ_INCREASE:
 		value_per_rank_diff_ajustment += 1
 	value_per_rank = STD_VALUE_PER_RANK + value_per_rank_diff_ajustment
 	placement_requirements = [
@@ -115,12 +115,12 @@ func next_competition() -> void:
 				"demo_value": current_demo_value,
 				"current_place": current_place})
 		if current_place == -1:
-			if ffc.difficulty >= 0:
+			if ffc.difficulty > ffc.Difficulties.NO_MOTIVATION_LOSS:
 				cfc.NMAP.board.counters.mod_counter("motivation",-2)
-			if ffc.difficulty >= 7:
+			if ffc.difficulty >= ffc.Difficulties.MORE_MOTIVATION_LOSS:
 				cfc.NMAP.board.counters.mod_counter("motivation",-1)
 		elif current_place == Place.FIRST:
-			if ffc.difficulty < 8:
+			if ffc.difficulty < ffc.Difficulties.NO_MOTIVATION_GAIN:
 				cfc.NMAP.board.counters.mod_counter("motivation",+1)
 	current_place = -1
 	round_multiplier = 1 + current_round * round_multiplier_increase

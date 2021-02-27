@@ -495,6 +495,17 @@ const CARDS := {
 		"cred_req": 0,
 		"motivation_req": 0,
 	},
+	"Constantius": {
+		"Type": CardConfig.CardTypes.RESOURCE,
+		"Tags": ["Tutor"],
+		"Abilities": "All your skill_req 1 Shaders have +1 value ",
+		"Time": 1,
+		"Value": 0,
+		"Kudos": 3,
+		"skill_req": 0,
+		"cred_req": 1,
+		"motivation_req": 0,
+	},
 ### BEGIN Prep ###
 	"Collaboration": {
 		"Type": CardConfig.CardTypes.ACTION,

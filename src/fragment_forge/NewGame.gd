@@ -32,12 +32,12 @@ func _on_DeckLoader_deck_loaded(deck) -> void:
 	start_button.disabled = false
 
 func _on_Decrease_pressed() -> void:
-	if ffc.difficulty > -4:
+	if ffc.difficulty > ffc.Difficulties.START + 1:
 		ffc.difficulty -= 1
 	_adjust_difficulty()
 
 func _on_Increase_pressed() -> void:
-	if ffc.difficulty < 11:
+	if ffc.difficulty < ffc.Difficulties.END - 1:
 		ffc.difficulty += 1
 	_adjust_difficulty()
 
@@ -60,10 +60,10 @@ func _on_Level_mouse_exited() -> void:
 
 func _adjust_difficulty_legend() -> void:
 	var diff_text = ''
-	if ffc.difficulty == 0:
+	if ffc.difficulty == ffc.Difficulties.NORMAL:
 		diff_text = "0: Normal Difficulty"
 		diff_title.text = "Normal"
-	elif ffc.difficulty > 0:
+	elif ffc.difficulty > ffc.Difficulties.NORMAL:
 		if ffc.difficulty > 10:
 			diff_title.text = "Shader Guru"
 		elif ffc.difficulty > 5:

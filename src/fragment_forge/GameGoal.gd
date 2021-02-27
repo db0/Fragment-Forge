@@ -8,15 +8,15 @@ onready var competitions_visited = $"VBC/Competitions"
 onready var end_game_popup: AcceptDialog = $EndGame
 
 func _ready() -> void:
-	if ffc.difficulty <= -2:
+	if ffc.difficulty <= ffc.Difficulties.REDUCED_CRED_REQ:
 		cred_goal -= 1
-	if ffc.difficulty >= 1:
+	if ffc.difficulty >= ffc.Difficulties.FIRST_CRED_REQ_INCREASE:
 		cred_goal += 1
-	if ffc.difficulty >= 4:
+	if ffc.difficulty >= ffc.Difficulties.SECOND_CRED_REQ_INCREASE:
 		cred_goal += 1
-	if ffc.difficulty >= 10:
+	if ffc.difficulty >= ffc.Difficulties.THIRD_CRED_REQ_INCREASE:
 		cred_goal += 1
-	if ffc.difficulty <= -4:
+	if ffc.difficulty <= ffc.Difficulties.EXTRA_COMPETITION:
 		max_competitions += 1
 	game_goal.text = "Game Goal: " + str(cred_goal) + " Cred"
 	difficulty.text = "Difficulty: " + str(ffc.difficulty)
