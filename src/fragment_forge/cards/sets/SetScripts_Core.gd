@@ -613,7 +613,7 @@ func get_scripts(card_name: String) -> Dictionary:
 				],
 			},
 		},
-		"Refreshing Shader": {
+		"Lanterns": {
 			"card_moved_to_board": {
 				"board": [
 					{

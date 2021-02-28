@@ -71,9 +71,10 @@ func init_shader(shader_name: String, is_card := true) -> void:
 			# One in four sierpinski shaders will be upside down
 			if not CFUtils.randi() % 4:
 				_set_shader_param('orient', -1.0)
-		"Raycast":
+		"Lanterns":
 			_set_shader_param('iChannel0', FFUtils.grab_random_texture())
 			_set_shader_param('iChannel1', FFUtils.grab_random_texture())
+			_set_shader_param('camera_speed', CFUtils.randf_range(0.2,3.0))
 		"Ether":
 			_set_shader_param('sharpness', CFUtils.randi_range(5,10))
 		"Spine":

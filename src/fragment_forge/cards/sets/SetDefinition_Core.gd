@@ -265,7 +265,7 @@ const CARDS := {
 		"motivation_req": 0,
 		"_abilities_power": -4
 	},
-	"Refreshing Shader": {
+	"Lanterns": {
 		"Type": CardConfig.CardTypes.SHADER,
 		"Tags": [],
 		"Abilities": "After installing this Shader, unexhaust "\

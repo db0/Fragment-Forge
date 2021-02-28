@@ -4,17 +4,17 @@ shader_type canvas_item;
 // iq for the raycast shader
 // https://www.shadertoy.com/view/4sB3D1
 // Ported to Godot and customized for FragmentForge by Db0
-// Still WiP. Can't figure out how to translate FRAGCOORD to UV
-// And the Noise ddoesn't work right
 
 // Licence: Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License
 // https://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_US
 
-uniform int zoom_choice = 9;
+uniform bool is_card;
 uniform float iTime;
-uniform int VIS_SAMPLES=8;
+uniform int VIS_SAMPLES=2;
 uniform sampler2D iChannel0;
 uniform sampler2D iChannel1;
+uniform vec2 iChannelResolution1;
+uniform float camera_speed = 0.3;
 
 float hash1( float n ) { return fract(43758.5453123*sin(n)); }
 float hash5( vec2  n ) { return fract(43758.5453123*sin(dot(n,vec2(1.0,113.0)))); }
@@ -157,26 +157,27 @@ void fragment()
     // inputs	
 	vec2 iResolution =  1.0 / SCREEN_PIXEL_SIZE;	
 	
-    vec2 mo=vec2(0.0);
 	float time;
 	vec2 p;
 	vec4 rr;
 	
 	// montecarlo	
 	vec3 tot = vec3(0.0);
+	vec2 uv = -UV;
+	uv += 1.;
 //    if (VIS_SAMPLES<2) {
-//		int a = 0;
-//        p = -1.0 + 2.0*(FRAGCOORD.xy) / iResolution.xy;
-//        p.x *= iResolution.x/ iResolution.y;
-//        time = 0.3*TIME + 50.0*mo.x;
-//    } else {
-	for( int a=0; a<VIS_SAMPLES; a++ )
 	{
-		vec2 iChannelResolution = 1.0 / TEXTURE_PIXEL_SIZE;
-		rr = texture( iChannel1, (FRAGCOORD.xy+floor(256.0*hash2(float(a))))/iChannelResolution.xy );
-        p = -1.0 + 2.0*(FRAGCOORD.xy+rr.xz) / iResolution.xy;
-        p.x *= iResolution.x/ iResolution.y;
-        time = 0.3*(TIME + 1.0*(0.5/24.0)*rr.w) + 50.0*mo.x;
+		int a = 0;
+        p = -1.0 + 2.0*(uv);
+    	p.x *= iResolution.x/ iResolution.y;
+        time = camera_speed*iTime;
+//    } else {
+//	for( int a=0; a<VIS_SAMPLES; a++ )
+//	{
+//		rr = texture( iChannel1, (uv+floor(256.0*hash2(float(a))))/iChannelResolution1.xy );
+//        p = -1.0 + 2.0*(uv.xy+rr.xz) ;
+//        p.x *= iResolution.x/ iResolution.y;
+//        time = 0.3*(TIME + 1.0*(0.5/24.0)*rr.w) + 50.0*mo.x;
 //    }
 
 		// camera
@@ -196,13 +197,13 @@ void fragment()
         vec3 rd = normalize( p.x*uu + p.y*vv + 3.0*ww );
 
         // dof
-        if (VIS_SAMPLES>2) {
-			float fft = (ro.y*2.0+0.0)/dot(rd,ww);
-	        vec3 fp = ro + rd * fft;
-			vec2 bo = sqrt(rr.y)*vec2(cos(6.2831*rr.w),sin(6.2831*rr.w));
-	        ro += (uu*bo.x + vv*bo.y)*0.005*fft;
-	        rd = normalize( fp - ro );
-        }
+//        #if VIS_SAMPLES>2
+		float fft = (ro.y*2.0+0.0)/dot(rd,ww);
+        vec3 fp = ro + rd * fft;
+		vec2 bo = sqrt(rr.y)*vec2(cos(6.2831*rr.w),sin(6.2831*rr.w));
+        ro += (uu*bo.x + vv*bo.y)*0.005*fft;
+        rd = normalize( fp - ro );
+//        #endif
 
 
         // background color	
@@ -301,7 +302,7 @@ void fragment()
 	}
 	tot /= float(VIS_SAMPLES);
 
-	tot = pow( clamp(tot,0.0,1.0), vec3(0.44) );
+	tot = pow( clamp(tot,0.0,1.0), vec3(0.40) );
 		
 	COLOR = vec4( tot, 1.0 );
 }

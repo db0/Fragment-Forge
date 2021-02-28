@@ -1,8 +1,8 @@
 shader_type canvas_item;
 // Using code from
 
-// FabriceNeyret2 for the runes shader
-// https://www.shadertoy.com/view/4ltyDM
+// otaviogood for the runes shader
+// https://www.shadertoy.com/view/MsXSRn
 // Ported to Godot and customized for FragmentForge by Db0
 
 // Licence: Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License
