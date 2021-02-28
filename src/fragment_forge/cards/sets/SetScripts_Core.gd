@@ -1047,7 +1047,7 @@ func get_scripts(card_name: String) -> Dictionary:
 				],
 			},
 		},
-		"Undead Shader": {
+		"Runes": {
 			"card_moved_to_board": {
 				"discard": [
 					{

@@ -78,7 +78,7 @@ const CARDS := {
 		"motivation_req": 0,
 		"_abilities_power": -2,
 	},
-	"Undead Shader": {
+	"Runes": {
 		"Type": CardConfig.CardTypes.SHADER,
 		"Tags": ["Restricted"],
 		"Abilities": "After you install another Shader "\

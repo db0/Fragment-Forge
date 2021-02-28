@@ -102,6 +102,11 @@ func init_shader(shader_name: String, is_card := true) -> void:
 			_set_shader_param('COS_GROWY', CFUtils.rand_bool())
 			_set_shader_param('COS_GROWZ', CFUtils.rand_bool())
 			_set_shader_param('COS_GROWW', CFUtils.rand_bool())
+		"Runes":
+			var tex := FFUtils.grab_random_texture("cc0textures")
+			_set_shader_param('iChannel1', tex)
+			_set_shader_param('iChannelResolution1',tex.get_size())
+			_set_shader_param('iChannel0', FFUtils.grab_texture("res://shaders/textures/pixabay/background-4097561_640.jpg"))
 		_:
 			pass
 

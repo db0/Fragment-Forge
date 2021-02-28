@@ -1,25 +1,20 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://shaders/ShaderToy.gd" type="Script" id=1]
-[ext_resource path="res://shaders/Sculpture.shader" type="Shader" id=2]
+[ext_resource path="res://shaders/Runes.shader" type="Shader" id=2]
+[ext_resource path="res://shaders/textures/cc0textures/Wood025_1K_Color.jpg" type="Texture" id=3]
 
-[sub_resource type="ShaderMaterial" id=1]
+[sub_resource type="NoiseTexture" id=1]
+
+[sub_resource type="ShaderMaterial" id=2]
 shader = ExtResource( 2 )
 shader_param/is_card = true
-shader_param/iTime = 2239.66
-shader_param/AA = 1
-shader_param/iFrame = 126323
-shader_param/GROWX = 2.0
-shader_param/COS_GROWX = false
-shader_param/GROWY = 4.0
-shader_param/COS_GROWY = false
-shader_param/GROWZ = 8.0
-shader_param/COS_GROWZ = false
-shader_param/GROWW = 20.0
-shader_param/COS_GROWW = false
-shader_param/tint = Vector3( 2.1, 2, 1.2 )
+shader_param/iTime = 14.606
+shader_param/iChannelResolution1 = Vector2( 512, 512 )
+shader_param/iChannel0 = SubResource( 1 )
+shader_param/iChannel1 = ExtResource( 3 )
 
-[sub_resource type="Environment" id=2]
+[sub_resource type="Environment" id=3]
 background_mode = 4
 ssao_radius = 95.17
 ssao_bias = 0.961
@@ -34,17 +29,17 @@ glow_hdr_luminance_cap = 2.0
 glow_bicubic_upscale = true
 
 [node name="ShaderToy" type="Panel"]
-material = SubResource( 1 )
+material = SubResource( 2 )
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -4.0
-margin_top = -2.0
-margin_right = -1554.0
-margin_bottom = -662.0
+margin_left = 0.5
+margin_top = 1.0
+margin_right = -1549.5
+margin_bottom = -659.0
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource( 2 )
+environment = SubResource( 3 )
