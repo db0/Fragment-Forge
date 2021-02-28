@@ -86,7 +86,7 @@ func init_shader(shader_name: String, is_card := true) -> void:
 			_set_shader_param('NUM_RAYS', CFUtils.randf_range(10.0,30.0))
 		"Noise Pulse":
 			_set_shader_param('iChannel0', FFUtils.grab_random_texture())
-			_set_shader_param('tint', FFUtils.rnd_color(true))
+			_set_shader_param('tint', FFUtils.rnd_color())
 			if is_card:
 				_set_shader_param('multiplier', CFUtils.randf_range(4.0,10.0))
 			else:
@@ -110,6 +110,8 @@ func init_shader(shader_name: String, is_card := true) -> void:
 			_set_shader_param('iChannel0', FFUtils.grab_texture("res://shaders/textures/pixabay/background-4097561_640.jpg"))
 		"Topologica":
 			_set_shader_param('tint', FFUtils.rnd_color(true))
+		"Apollonian":
+			_set_shader_param('N', CFUtils.randf_range(3.0,9.0))
 		_:
 			pass
 

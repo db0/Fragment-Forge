@@ -1,18 +1,18 @@
 [gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://shaders/ShaderToy.gd" type="Script" id=1]
-[ext_resource path="res://shaders/textures/pixabay/background-1518137_640.jpg" type="Texture" id=2]
-[ext_resource path="res://shaders/textures/cc0textures/Wood025_1K_Color.jpg" type="Texture" id=3]
-[ext_resource path="res://shaders/Flux Core.shader" type="Shader" id=4]
+[ext_resource path="res://shaders/textures/cc0textures/Gravel017_1K_Color.jpg" type="Texture" id=2]
+[ext_resource path="res://shaders/textures/pixabay/background-4168664_640.jpg" type="Texture" id=3]
+[ext_resource path="res://shaders/Apollonian.shader" type="Shader" id=4]
 
 [sub_resource type="ShaderMaterial" id=2]
 shader = ExtResource( 4 )
 shader_param/is_card = true
-shader_param/iTime = 630.808
-shader_param/iFrame = 35809
-shader_param/iChannelResolution1 = Vector2( 512, 512 )
-shader_param/iChannel0 = ExtResource( 2 )
-shader_param/iChannel1 = ExtResource( 3 )
+shader_param/iTime = 1037.97
+shader_param/iChannelResolution0 = Vector2( 512, 512 )
+shader_param/N = 3.0
+shader_param/iChannel0 = ExtResource( 3 )
+shader_param/iChannel1 = ExtResource( 2 )
 
 [sub_resource type="Environment" id=3]
 background_mode = 4
@@ -32,10 +32,10 @@ glow_bicubic_upscale = true
 material = SubResource( 2 )
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 1.41422
-margin_top = 1.54349
-margin_right = -1548.59
-margin_bottom = -658.457
+margin_left = -0.367579
+margin_top = 0.207131
+margin_right = -1550.37
+margin_bottom = -659.793
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false

@@ -907,7 +907,7 @@ func get_scripts(card_name: String) -> Dictionary:
 				]
 			}
 		},
-		"Boost Shader": {
+		"Apollonian": {
 			"manual": {
 				"board": [
 					{

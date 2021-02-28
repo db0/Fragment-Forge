@@ -17,7 +17,7 @@ onready var title := $Title
 
 func _ready() -> void:
 	cfc.game_rng.randomize()
-	change_shader("Flux Core")
+	change_shader()
 	settings_menu.rect_position.x = get_viewport().size.x
 	new_game_menu.rect_position.x = get_viewport().size.x
 	deck_builder.rect_position.x = -get_viewport().size.x

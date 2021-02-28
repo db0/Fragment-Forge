@@ -155,7 +155,7 @@ const CARDS := {
 		"motivation_req": 0,
 		"_abilities_power": 1,
 	},
-	"Boost Shader": {
+	"Apollonian": {
 		"Type": CardConfig.CardTypes.SHADER,
 		"Tags": [],
 		"Abilities": "2 Time, Exhaust: Increase this Shader's value by 3",
