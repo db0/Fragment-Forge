@@ -1123,6 +1123,31 @@ func get_scripts(card_name: String) -> Dictionary:
 				],
 			},
 		},
+		"Flux Core": {
+			   "alterants": {
+					   "hand": [
+							{
+								"filter_task": "get_property",
+								"trigger": "self",
+								"filter_property_name": "skill_req",
+								"alteration": "per_boardseek",
+								"per_boardseek": {
+									"is_inverted": true,
+									"subject": "boardseek",
+									"subject_count": "all",
+									"filter_state_seek": [
+									{
+										"filter_properties": {
+										"Tags": "Tutor"
+									}
+								}
+							]
+						}
+					},
+				]
+			}
+		},
+		
 	}
 	# We return only the scripts that match the card name and trigger
 	return(scripts.get(card_name,{}))

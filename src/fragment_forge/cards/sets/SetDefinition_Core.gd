@@ -290,7 +290,7 @@ const CARDS := {
 		"cred_req": 0,
 		"motivation_req": 0,
 	},
-	"OverComplex Shader": {
+	"Flux Core": {
 		"Type": CardConfig.CardTypes.SHADER,
 		"Tags": [],
 		"Abilities": "Reduce this shader's skill_req by the amount of "\
