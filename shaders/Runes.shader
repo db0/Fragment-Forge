@@ -5,17 +5,15 @@ shader_type canvas_item;
 // https://www.shadertoy.com/view/MsXSRn
 // Ported to Godot and customized for FragmentForge by Db0
 
-// Licence: Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License
-// https://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_US
+// Licence: CC0
 
 uniform bool is_card = true;
 uniform float iTime;
 uniform sampler2D iChannel0;
 uniform sampler2D iChannel1;
 uniform vec2 iChannelResolution1;
-//#define S(d,r) smoothstep( r, 0., d)   // antialiased draw. r >= 1.5
 
-//#define saturate(a) clamp(a, 0., 1.)
+//vec2 iResolution =  1.0 / SCREEN_PIXEL_SIZE; // for copy-paste
 
 // makes a thick line and passes back gray in x and derivates for lighting in yz
 vec3 ThickLine(vec2 uv, vec2 posA, vec2 posB, float radiusInv)

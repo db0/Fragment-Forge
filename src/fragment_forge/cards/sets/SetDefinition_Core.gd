@@ -180,7 +180,7 @@ const CARDS := {
 		"motivation_req": 0,
 		"_abilities_power": -4,
 	},
-	"Showoff Shader": {
+	"Topologica": {
 		"Type": CardConfig.CardTypes.SHADER,
 		"Tags": [],
 		"Abilities": "If you take first place while this shader is installed "\

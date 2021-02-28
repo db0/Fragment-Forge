@@ -34,7 +34,7 @@ static func grab_texture(path: String) -> ImageTexture:
 	new_texture.create_from_image(image)
 	return(new_texture)
 
-static func rnd_color() -> Vector3:
+static func rnd_color(single_color := false) -> Vector3:
 	var r := 1.0
 	var g := 1.0
 	var b := 1.0
@@ -42,4 +42,12 @@ static func rnd_color() -> Vector3:
 		r = CFUtils.randf_range(0.0,0.9)
 		g = CFUtils.randf_range(0.0,0.9)
 		b = CFUtils.randf_range(0.0,0.9)
-	return(Vector3(r,g,b))
+	var final_color := Vector3(r,g,b)
+	if single_color:
+		var solid_color = CFUtils.randf_range(0,2)
+		for rgb in [0,1,2]:
+			if rgb != solid_color:
+				final_color[rgb] *= 0.2
+			else:
+				final_color[rgb] = CFUtils.randf_range(0.7,1.0)
+	return(final_color)

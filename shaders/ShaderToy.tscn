@@ -1,19 +1,17 @@
 [gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://shaders/ShaderToy.gd" type="Script" id=1]
-[ext_resource path="res://shaders/Lanterns.shader" type="Shader" id=2]
+[ext_resource path="res://shaders/textures/pixabay/background-1518137_640.jpg" type="Texture" id=2]
 [ext_resource path="res://shaders/textures/cc0textures/Wood025_1K_Color.jpg" type="Texture" id=3]
-
-[sub_resource type="NoiseTexture" id=1]
+[ext_resource path="res://shaders/Topologica.shader" type="Shader" id=4]
 
 [sub_resource type="ShaderMaterial" id=2]
-shader = ExtResource( 2 )
+shader = ExtResource( 4 )
 shader_param/is_card = true
-shader_param/iTime = 402.867
-shader_param/VIS_SAMPLES = 2
-shader_param/iChannelResolution1 = Vector2( 512, 512 )
-shader_param/camera_speed = 0.3
-shader_param/iChannel0 = SubResource( 1 )
+shader_param/iTime = 292.186
+shader_param/iChannelResolution0 = Vector2( 512, 512 )
+shader_param/tint = Vector3( 0.01, 0.1, 1 )
+shader_param/iChannel0 = ExtResource( 2 )
 shader_param/iChannel1 = ExtResource( 3 )
 
 [sub_resource type="Environment" id=3]
@@ -34,10 +32,10 @@ glow_bicubic_upscale = true
 material = SubResource( 2 )
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 1.41422
-margin_top = 0.207123
-margin_right = -1548.59
-margin_bottom = -659.793
+margin_left = 1.85967
+margin_top = 1.98894
+margin_right = -1548.14
+margin_bottom = -658.011
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false

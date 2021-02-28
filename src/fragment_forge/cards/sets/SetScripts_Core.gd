@@ -210,7 +210,7 @@ func get_scripts(card_name: String) -> Dictionary:
 				"filter_not_current_place": Competitions.Place.FIRST,
 			},
 		},
-		"Showoff Shader": {
+		"Topologica": {
 			"competition_ended": {
 				"board": [
 					{

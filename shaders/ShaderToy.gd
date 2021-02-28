@@ -12,4 +12,6 @@ func _process(delta: float) -> void:
 	material.set_shader_param('iFrame', frame)
 	shader_time += delta
 	frame += 1
+	material.set_shader_param("iChannelResolution0", Vector2(512, 512))
 	material.set_shader_param("iChannelResolution1", Vector2(512, 512))
+
