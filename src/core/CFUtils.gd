@@ -55,7 +55,7 @@ static func array_join(arr: Array, separator = "") -> String:
 		output += str(s) + separator
 	# Remove the leftover separator
 	output = output.rstrip(separator)
-	return output
+	return(output)
 
 
 # Returns a an array of all files in a specific directory.
@@ -79,7 +79,27 @@ static func list_files_in_directory(path: String, prepend_needed := "") -> Array
 				and not file.ends_with(".md"):
 			files.append(file)
 	dir.list_dir_end()
-	return files
+	return(files)
+
+
+# Returns a an array of all files in a specific directory.
+# If a prepend_needed String is passed, only returns files
+# which start with that string.
+static func list_imported_in_directory(path: String) -> Array:
+	var files := []
+	var dir := Directory.new()
+	# warning-ignore:return_value_discarded
+	dir.open(path)
+	# warning-ignore:return_value_discarded
+	dir.list_dir_begin()
+	while true:
+		var file := dir.get_next()
+		if file == "":
+			break
+		elif file.ends_with(".import"):
+			files.append(file.rstrip(".import"))
+	dir.list_dir_end()
+	return(files)
 
 
 # Creates a ConfirmationDialog for the player to approve the

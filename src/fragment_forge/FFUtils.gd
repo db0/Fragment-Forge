@@ -19,7 +19,7 @@ static func grab_random_texture(specific_dir: String = '') -> ImageTexture:
 			random_dir.append(dir)
 	var rng = CFUtils.randi_range(0,random_dir.size() - 1)
 	var directory = random_dir[rng]
-	var textures := CFUtils.list_files_in_directory(directory)
+	var textures := CFUtils.list_imported_in_directory(directory)
 	CFUtils.shuffle_array(textures)
 	var new_texture := ImageTexture.new();
 	var tex = load(directory + textures[0])
