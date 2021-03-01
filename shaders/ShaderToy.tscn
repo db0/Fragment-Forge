@@ -3,14 +3,15 @@
 [ext_resource path="res://shaders/ShaderToy.gd" type="Script" id=1]
 [ext_resource path="res://shaders/textures/cc0textures/Gravel017_1K_Color.jpg" type="Texture" id=2]
 [ext_resource path="res://shaders/textures/pixabay/background-4168664_640.jpg" type="Texture" id=3]
-[ext_resource path="res://shaders/Apollonian.shader" type="Shader" id=4]
+[ext_resource path="res://shaders/Pentagonal Tesselations.shader" type="Shader" id=4]
 
 [sub_resource type="ShaderMaterial" id=2]
 shader = ExtResource( 4 )
-shader_param/is_card = true
-shader_param/iTime = 1037.97
-shader_param/iChannelResolution0 = Vector2( 512, 512 )
-shader_param/N = 3.0
+shader_param/is_card = false
+shader_param/iTime = 2447.81
+shader_param/iChannelResolution1 = Vector2( 512, 512 )
+shader_param/colour_change = false
+shader_param/zoom = 2.0
 shader_param/iChannel0 = ExtResource( 3 )
 shader_param/iChannel1 = ExtResource( 2 )
 
@@ -32,10 +33,10 @@ glow_bicubic_upscale = true
 material = SubResource( 2 )
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -0.367579
-margin_top = 0.207131
-margin_right = -1550.37
-margin_bottom = -659.793
+margin_left = -0.839518
+margin_top = 0.679093
+margin_right = -1550.84
+margin_bottom = -659.321
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false

@@ -1,7 +1,7 @@
 shader_type canvas_item;
 // Using code from
 
-//  mla for the  Colourful Apollonia shader
+// mla for the  Colourful Apollonia shader
 // https://www.shadertoy.com/view/tsScDt
 // Ported to Godot and customized for Fragment Forge by Db0
 

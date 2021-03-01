@@ -176,7 +176,7 @@ func check_play_costs() -> Color:
 		ret = CFConst.CostsState.IMPOSSIBLE
 
 	match card_name:
-		"Shy Shader":
+		"Matrix":
 			var found_shader := false
 			var board_cards = cfc.NMAP.board.get_all_cards()
 			for c in board_cards:

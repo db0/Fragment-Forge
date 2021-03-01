@@ -112,6 +112,9 @@ func init_shader(shader_name: String, is_card := true) -> void:
 			_set_shader_param('tint', FFUtils.rnd_color(true))
 		"Apollonian":
 			_set_shader_param('N', CFUtils.randf_range(3.0,9.0))
+		"Pentagonal Tesselations":
+			_set_shader_param('colour_change', CFUtils.rand_bool())
+			_set_shader_param('zoom', CFUtils.randf_range(2.0,6.0))
 		_:
 			pass
 

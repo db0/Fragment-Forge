@@ -65,7 +65,7 @@ const CARDS := {
 		"motivation_req": 4,
 		"_abilities_power": 3,
 	},
-	"Shy Shader": {
+	"Matrix": {
 		"Type": CardConfig.CardTypes.SHADER,
 		"Tags": [],
 		"Abilities": "You cannot play this shader, "\
@@ -105,7 +105,7 @@ const CARDS := {
 		"cred_req": 0,
 		"motivation_req": 0,
 	},
-	"Mandelbrot": {
+	"Pentagonal Tesselations": {
 		"Type": CardConfig.CardTypes.SHADER,
 		"Tags": [],
 		"Abilities": " ",
@@ -167,9 +167,9 @@ const CARDS := {
 		"motivation_req": 0,
 		"_abilities_power": 1,
 	},
-	"Proud Shader": {
+	"Mandelbrot": {
 		"Type": CardConfig.CardTypes.SHADER,
-		"Tags": [],
+		"Tags": ["Burnout"],
 		"Abilities": "If you do not take first place while this shader is installed "\
 				+ "lose 1 motivation.",
 		"Time": 6,

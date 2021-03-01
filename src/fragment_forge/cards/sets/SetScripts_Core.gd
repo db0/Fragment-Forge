@@ -198,7 +198,7 @@ func get_scripts(card_name: String) -> Dictionary:
 				],
 			},
 		},
-		"Proud Shader": {
+		"Mandelbrot": {
 			"competition_ended": {
 				"board": [
 					{
