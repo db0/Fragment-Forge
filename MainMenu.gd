@@ -181,3 +181,12 @@ func _on_NewGame_Back_pressed() -> void:
 
 func _on_PreBuilts_pressed() -> void:
 	initiate_sample_decks(true)
+
+func _on_Menu_resized() -> void:
+	for tab in [main_menu, deck_builder, new_game_menu, settings_menu]:
+		if is_instance_valid(tab):
+			tab.rect_size = self.rect_size					
+			if tab.rect_position.x < 0.0:
+					tab.rect_position.x = -get_viewport().size.x
+			elif tab.rect_position.x > 0.0:
+					tab.rect_position.x = get_viewport().size.x
