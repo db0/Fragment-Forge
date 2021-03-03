@@ -51,6 +51,8 @@ var current_demo_value: int
 # Second round 1.5. Third round 2 etc.
 var round_multiplier_increase := 0.5
 var value_per_rank
+# Tracks the first of each card to have been played each competition
+var firsts := {}
 
 onready var first_place := $"VBC/HBC/FirstPlace"
 onready var second_place := $"VBC/HBC2/SecondPlace"
@@ -147,6 +149,7 @@ func next_competition() -> void:
 	cfc.NMAP.board.counters.mod_counter("time",current_tournament.time, true)
 	for c in cfc.NMAP.board.get_all_cards():
 		c.card_rotation = 0
+	firsts.clear()
 
 func get_cred_rewards() -> int:
 	if current_place >= 0:

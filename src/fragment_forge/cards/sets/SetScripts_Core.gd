@@ -1147,7 +1147,19 @@ func get_scripts(card_name: String) -> Dictionary:
 				]
 			}
 		},
-		
+		"Early Shader": {
+			"card_moved_to_board": {
+				"board": [
+					{
+						"name": "modify_properties",
+						"set_properties": {"Value": "+2"},
+						"subject": "trigger",
+						"trigger": "self",
+						"filter_first": true,
+					},
+				],
+			},
+		},		
 	}
 	# We return only the scripts that match the card name and trigger
 	return(scripts.get(card_name,{}))

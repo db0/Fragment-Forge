@@ -10,7 +10,7 @@ outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=4]
 size = 25
 outline_size = 2
 outline_color = Color( 0, 0, 0, 1 )
@@ -80,7 +80,7 @@ margin_right = 418.0
 margin_bottom = 290.0
 rect_min_size = Vector2( 0, 50 )
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 4 )
 text = "Restore Pre-Built Decks"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PC/VBC"]

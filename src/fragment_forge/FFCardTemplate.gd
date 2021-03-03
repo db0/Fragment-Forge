@@ -310,6 +310,15 @@ func common_post_move_scripts(new_container: Node, old_container: Node, tags: Ar
 	if attempted_action_drop_to_board:
 		execute_scripts()
 		attempted_action_drop_to_board = false
+	# We record the first played card of each type, for effect triggers
+	if (new_container == cfc.NMAP.board 
+			and properties.Type != CardConfig.CardTypes.ACTION)\
+			or (new_container == cfc.NMAP.discard 
+			and properties.Type == CardConfig.CardTypes.ACTION
+			and old_container == cfc.NMAP.hand):
+		var firsts = cfc.NMAP.board.competitions.firsts
+		if firsts.empty() or not firsts.get(properties.Type):
+			firsts[properties.Type] = self
 
 # Retrieves the card scripts either from those defined on the card
 # itself, or from those defined in the script definition files

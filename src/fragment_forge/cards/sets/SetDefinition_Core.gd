@@ -93,6 +93,19 @@ const CARDS := {
 		"_abilities_power": 2,
 		"_max_allowed": 1,
 	},
+	"Early Shader": {
+		"Type": CardConfig.CardTypes.SHADER,
+		"Tags": [],
+		"Abilities": "If this is the first card you play this turn"\
+				+ "increase its value by 2 ",
+		"Time": 4,
+		"Value": GEN,
+		"Kudos": 0,
+		"skill_req": 0,
+		"cred_req": 0,
+		"motivation_req": 0,
+		"_abilities_power": 1,
+	},
 #### skill_req 1
 	"Fractal Pyramid": {
 		"Type": CardConfig.CardTypes.SHADER,
