@@ -123,7 +123,6 @@ text = "Fragment Forge"
 [node name="Tween" type="Tween" parent="."]
 
 [node name="MenuTween" type="Tween" parent="."]
-
 [connection signal="pressed" from="MainMenu/PC/VBC/NewGame" to="." method="_on_NewGame_pressed"]
 [connection signal="pressed" from="MainMenu/PC/VBC/DeckBuilder" to="." method="_on_DeckBuilder_pressed"]
 [connection signal="pressed" from="MainMenu/PC/VBC/Settings" to="." method="_on_Settings_pressed"]
