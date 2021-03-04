@@ -96,15 +96,28 @@ const CARDS := {
 	"Early Shader": {
 		"Type": CardConfig.CardTypes.SHADER,
 		"Tags": [],
-		"Abilities": "If this is the first card you play this turn"\
+		"Abilities": "If this is the first card you play this turn, "\
 				+ "increase its value by 2 ",
 		"Time": 4,
 		"Value": GEN,
 		"Kudos": 0,
 		"skill_req": 0,
 		"cred_req": 0,
-		"motivation_req": 0,
+		"motivation_req": 4,
 		"_abilities_power": 1,
+	},
+	"Late Shader": {
+		"Type": CardConfig.CardTypes.SHADER,
+		"Tags": [],
+		"Abilities": "After you play another Shader "\
+				+ "reduce this card's value by 2 ",
+		"Time": 5,
+		"Value": GEN,
+		"Kudos": 0,
+		"skill_req": 0,
+		"cred_req": 0,
+		"motivation_req": 4,
+		"_abilities_power": -2,
 	},
 #### skill_req 1
 	"Fractal Pyramid": {
@@ -530,6 +543,17 @@ const CARDS := {
 		"Kudos": 3,
 		"skill_req": 0,
 		"cred_req": 1,
+		"motivation_req": 0,
+	},
+	"Fidazzia": {
+		"Type": CardConfig.CardTypes.RESOURCE,
+		"Tags": ["Tutor"],
+		"Abilities": "After a Shader's value increases, increase it by 1 more.",
+		"Time": 1,
+		"Value": 0,
+		"Kudos": 1,
+		"skill_req": 0,
+		"cred_req": 0,
 		"motivation_req": 0,
 	},
 ### BEGIN Prep ###

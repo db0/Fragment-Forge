@@ -935,7 +935,7 @@ func get_scripts(card_name: String) -> Dictionary:
 					},
 					{
 						"name": "modify_properties",
-						"set_properties": {"Value": "+1"},
+						"set_properties": {"Value": "+2"},
 						"subject": "target",
 						"filter_state_subject": [{
 							"filter_properties": {"Type": "Shader"},
@@ -1153,13 +1153,45 @@ func get_scripts(card_name: String) -> Dictionary:
 					{
 						"name": "modify_properties",
 						"set_properties": {"Value": "+2"},
-						"subject": "trigger",
+						"subject": "self",
 						"trigger": "self",
 						"filter_first": true,
 					},
 				],
 			},
 		},		
+		"Late Shader": {
+			"card_moved_to_board": {
+				"board": [
+					{
+						"name": "modify_properties",
+						"set_properties": {"Value": "-2"},
+						"subject": "self",
+						"trigger": "another",
+						"filter_state_trigger": [
+							{
+								"filter_properties": \
+										{"Type": CardConfig.CardTypes.SHADER},
+							}
+						],
+					},
+				],
+			},
+		},		
+		"Fidazzia": {
+			"alterants": {
+				"board": [
+					{
+						"filter_task": "modify_properties",
+						"alteration": 1,
+						"trigger": "another",
+						"filter_property_name": "Value",
+						"filter_count_difference": "increased",
+					},
+				],
+			},
+		},
+
 	}
 	# We return only the scripts that match the card name and trigger
 	return(scripts.get(card_name,{}))

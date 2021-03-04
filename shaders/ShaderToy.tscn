@@ -8,7 +8,7 @@
 [sub_resource type="ShaderMaterial" id=2]
 shader = ExtResource( 4 )
 shader_param/is_card = false
-shader_param/iTime = 3669.69
+shader_param/iTime = 4027.7
 shader_param/iChannelResolution1 = Vector2( 512, 512 )
 shader_param/colour_change = false
 shader_param/zoom = 2.0
