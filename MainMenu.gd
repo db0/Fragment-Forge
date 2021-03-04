@@ -17,7 +17,7 @@ onready var title := $Title
 
 func _ready() -> void:
 	cfc.game_rng.randomize()
-	change_shader()
+	change_shader("Liquid Bubbles")
 	settings_menu.rect_position.x = get_viewport().size.x
 	new_game_menu.rect_position.x = get_viewport().size.x
 	deck_builder.rect_position.x = -get_viewport().size.x
@@ -58,7 +58,6 @@ func change_shader(shader_name = null) -> void:
 		var unimpressive_shaders = [
 			"Simple Colours",
 			"Light",
-			"Cloud",
 			"Fractal Tiling",
 			"Warping",
 			]

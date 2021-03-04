@@ -1147,7 +1147,7 @@ func get_scripts(card_name: String) -> Dictionary:
 				]
 			}
 		},
-		"Early Shader": {
+		"Liquid Bubbles": {
 			"card_moved_to_board": {
 				"board": [
 					{
@@ -1160,7 +1160,7 @@ func get_scripts(card_name: String) -> Dictionary:
 				],
 			},
 		},		
-		"Late Shader": {
+		"Barberella": {
 			"card_moved_to_board": {
 				"board": [
 					{

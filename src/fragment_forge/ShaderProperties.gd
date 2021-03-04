@@ -108,7 +108,7 @@ func init_shader(shader_name: String, is_card := true) -> void:
 			_set_shader_param('iChannel1', tex)
 			_set_shader_param('iChannelResolution1',tex.get_size())
 			_set_shader_param('iChannel0', FFUtils.grab_texture("res://shaders/textures/pixabay/background-4097561_640.jpg"))
-		"Topologica":
+		"Topologica", "Barberella":
 			_set_shader_param('tint', FFUtils.rnd_color(true))
 		"Apollonian":
 			_set_shader_param('N', CFUtils.randf_range(3.0,9.0))

@@ -1,141 +1,148 @@
 shader_type canvas_item;
 // Using code from
 
-//Morgan McGuire for the noise function
-// https://www.shadertoy.com/view/4dS3Wd
-//jojobavg for the cloud shader
-// https://www.shadertoy.com/view/tdGBRG
-// Ported to Godot by Db0
+// nimitz for the protean cloud shader
+// https://www.shadertoy.com/view/3l23Rh
+// Ported to Godot and customized for FragmentForge by Db0
 
 // Licence: Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License
 // https://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_US
 
-uniform float depth = 70.0;
-uniform float fogSize = 25.0;
+uniform bool is_card = true;
 uniform float iTime;
+uniform sampler2D iChannel0;
+uniform sampler2D iChannel1;
+uniform vec2 iChannelResolution1;
 
-float random (in float x) {
-	return fract(sin(x)*1e4);
-}
+//vec2 iResolution =  1.0 / SCREEN_PIXEL_SIZE; // for copy-paste
 
-float noise(in vec3 p) {
-	const vec3 step = vec3(110.0, 241.0, 171.0);
 
-	vec3 i = floor(p);
-	vec3 f = fract(p);
+mat2 rot(in float a){float c = cos(a), s = sin(a);return mat2(vec2(c,s),vec2(-s,c));}
+const mat3 m3 = mat3(vec3(0.33338, 0.56034, -0.71817), vec3(-0.87887, 0.32651, -0.15323), vec3(0.15162, 0.69596, 0.61339))*1.93;
+float mag2(vec2 p){return dot(p,p);}
+float linstep(in float mn, in float mx, in float x){ return clamp((x - mn)/(mx - mn), 0., 1.); }
+//float prm1 = 0.;
+//vec2 bsMo = vec2(0);
 
-	// For performance, compute the base input to a
-	// 1D random from the integer part of the
-	// argument and the incremental change to the
-	// 1D based on the 3D -> 1D wrapping
-	float n = dot(i, step);
+vec2 disp(float t){ return vec2(sin(t*0.22)*1., cos(t*0.175)*1.)*2.; }
 
-	vec3 u = f * f * (3.0 - 2.0 * f);
-	return mix( mix(mix(random(n + dot(step, vec3(0,0,0))),
-	random(n + dot(step, vec3(1,0,0))),
-	u.x),
-	mix(random(n + dot(step, vec3(0,1,0))),
-	random(n + dot(step, vec3(1,1,0))),
-	u.x),
-	u.y),
-	mix(mix(random(n + dot(step, vec3(0,0,1))),
-	random(n + dot(step, vec3(1,0,1))),
-	u.x),
-	mix(random(n + dot(step, vec3(0,1,1))),
-	random(n + dot(step, vec3(1,1,1))),
-	u.x),
-	u.y),
-	u.z);
-}
-
-mat2 rot(float a) {
-	float ca=cos(a);
-	float sa=sin(a);
-	return mat2(vec2(ca,sa),vec2(-sa,ca));
-}
-
-float cloud(in vec3 p, float scale) {
-	float l = length(p*0.1);
-	vec3 d = vec3(p.x+sin(l+iTime)*2.0,p.y+sin(l)*2.0,0.0);
-	float coef = max(length(d)-1.5,0.0);
-	float c=1.0;
-	float n1=1.0;
-	for(int i=0; i<8; ++i) {
-		n1+=1.0/c*abs(noise((p*c+iTime*1.0)*scale));
-		c*=2.0;
-	}
-	return n1+(coef);
-}
-
-float mapHyper(vec3 p){
-	return cloud(p,0.5);
-}  
-
-//void mainImage(out vec4 fragColor, in vec2 fragCoord)
-void fragment()
+vec2 map(vec3 p, inout float prm1)
 {
-	vec2 iResolution =  1.0 / SCREEN_PIXEL_SIZE;
-//	vec2 uv = vec2(FRAGCOORD.x / iResolution.x, FRAGCOORD.y / iResolution.y);
-	vec2 uv = UV;
-	uv -= 0.5;
-	uv /= vec2(iResolution.y / iResolution.x, 1);
-	vec3 s=vec3(0.5,0.5,100);
-	float t2=(iTime*1.5);
-	s.xz *= rot(sin(t2)*0.005);
-	vec3 t=vec3(0,0,0);
-	s.x += cos(t2*0.2)*0.10*sin(iTime*0.01);
-	s.y += sin(t2*0.2)*0.10*sin(iTime*0.01+10.0);
-	vec3 cz=normalize(t-s);
-	vec3 cx=normalize(cross(cz,vec3(0,1,0)));
-	vec3 cy=normalize(cross(cz,cx));
-	vec3 r=normalize(uv.x*cx+uv.y*cy+cz*0.7);
-	s.z+=iTime*-8.0;
-	
-	vec3 p=s;
-	float d;
-	float seuil=5.1;
-	float c= 0.0;
-	float distMax =50.0;
-	float steps = 300.0;
-	float color = 0.0;
-	float cl;
-	float dist = clamp((1.0-dot(vec3(0,0,-1.0),r))*4.0,0.0,1.0);
-	int cc =int(mix(300.0,1000.0,dist));
-	float uu =mix(1.0,0.25,dist);
-	vec3 p3 = vec3(0);
-	for(int i=0; i<cc; ++i) {
-		float d2 ;
-//		float d;
-		if(color<0.001)d = mapHyper(p);
-		c =d;  
-		if( c>seuil )
-		{vec3 p2 =p;
-			if(p3.x==0.0)p3=p;
-			for(int j;j<20;j++)
-			{
-				if(color<0.2)d2= mapHyper(p2);
-				else
-				d2 = 5.2;
-				if(d2>seuil)
-				{
-					color = color*0.8 + d2*0.02*0.2;
-				}
-				p2 +=normalize(vec3(-0.0,-0.0,-5.0))*0.42;
-			} 
-		}
-		cl = 1.0-color;
-        p+=r*distMax/steps*uu;
-		//p+=r*distMax/float(cc)*uu;
+    vec3 p2 = p;
+    p2.xy -= disp(p.z).xy;
+    p.xy *= rot(sin(p.z+iTime)*(0.1 + prm1*0.05) + iTime*0.09);
+    float cl = mag2(p2.xy);
+    float d = 0.;
+    p *= .61;
+    float z = 1.;
+    float trk = 1.;
+    float dspAmp = 0.1 + prm1*0.2;
+    for(int i = 0; i < 5; i++)
+    {
+		p += sin(p.zxy*0.75*trk + iTime*trk*.8)*dspAmp;
+        d -= abs(dot(cos(p), sin(p.yzx))*z);
+        z *= 0.57;
+        trk *= 1.4;
+        p = p*m3;
+    }
+    d = abs(d + prm1*3.)+ prm1*.3 - 2.5 + 0.0;
+    return vec2(d + cl*.2 + 0.25, cl);
+}
+
+vec4 render( in vec3 ro, in vec3 rd, float time, inout float prm1 )
+{
+	vec4 rez = vec4(0);
+    const float ldst = 8.;
+	vec3 lpos = vec3(disp(time + ldst)*0.5, time + ldst);
+	float t = 1.5;
+	float fogT = 0.;
+	for(int i=0; i<130; i++)
+	{
+		if(rez.a > 0.99)break;
+
+		vec3 pos = ro + t*rd;
+        vec2 mpv = map(pos,prm1);
+		float den = clamp(mpv.x-0.3,0.,1.)*1.12;
+		float dn = clamp((mpv.x + 2.),0.,3.);
+        
+		vec4 col = vec4(0);
+        if (mpv.x > 0.6)
+        {
+        
+            col = vec4(sin(vec3(5.,0.4,0.2) + mpv.y*0.1 +sin(pos.z*0.4)*0.5 + 1.8)*0.5 + 0.5,0.08);
+            col *= den*den*den;
+			col.rgb *= linstep(4.,-2.5, mpv.x)*2.3;
+            float dif =  clamp((den - map(pos+.8,prm1).x)/9., 0.001, 1. );
+            dif += clamp((den - map(pos+.35,prm1).x)/2.5, 0.001, 1. );
+            col.xyz *= den*(vec3(0.005,.045,.075) + 1.5*vec3(0.033,0.07,0.03)*dif);
+        }
+		
+		float fogC = exp(t*0.2 - 2.2);
+		col.rgba += vec4(0.06,0.11,0.11, 0.1)*clamp(fogC-fogT, 0., 1.);
+		fogT = fogC;
+		rez = rez + col*(1. - rez.a);
+		t += clamp(0.5 - dn*dn*.05, 0.09, 0.3);
 	}
+	return clamp(rez, 0.0, 1.0);
+}
 
-	vec2 off=vec2(1.1,0.0);
-	vec3 n=normalize(mapHyper(p3)-vec3(mapHyper(p3-off.xyy), mapHyper(p3-off.yxy), mapHyper(p3-off.yyx)));
+float getsat(vec3 c)
+{
+    float mi = min(min(c.x, c.y), c.z);
+    float ma = max(max(c.x, c.y), c.z);
+    return (ma - mi)/(ma+ 1e-7);
+}
 
-//	//compositing
-	vec3 col=vec3(0);
-	col = mix(vec3(0.0,0.0,0.2),vec3(0.88,0.88,0.9),max(cl-0.5,0.0)*2.0);
-	float fogCoef=1.0/(depth-fogSize);
-	float fog =  clamp((length(p3-s)-fogSize)*fogCoef,0.0,1.0);
-	col = mix(col,vec3(0.88,0.88,0.9),fog);
-	COLOR = vec4(col,1.0);
+//from my "Will it blend" shader (https://www.shadertoy.com/view/lsdGzN)
+vec3 iLerp(in vec3 a, in vec3 b, in float x)
+{
+    vec3 ic = mix(a, b, x) + vec3(1e-6,0.,0.);
+    float sd = abs(getsat(ic) - mix(getsat(a), getsat(b), x));
+    vec3 dir = normalize(vec3(2.*ic.x - ic.y - ic.z, 2.*ic.y - ic.x - ic.z, 2.*ic.z - ic.y - ic.x));
+    float lgt = dot(vec3(1.0), ic);
+    float ff = dot(dir, normalize(ic));
+    ic += 1.5*dir*sd*ff*lgt;
+    return clamp(ic,0.,1.);
+}
+
+void fragment()
+{	
+	vec2 iResolution =  1.0 / SCREEN_PIXEL_SIZE; // for copy-paste
+//	vec2 q = FRAGCOORD.xy/iResolution.xy;
+	vec2 q = UV;
+//    vec2 p = (FRAGCOORD.xy - 0.5*iResolution.xy)/iResolution.y;
+    vec2 p = UV - 0.5;
+	if(!is_card){
+		p.x *= iResolution.x/iResolution.y;
+	}
+    vec2 bsMo = vec2(0);
+	float prm1 = 0.;	
+    
+    float time = iTime*3.;
+    vec3 ro = vec3(0,0,time);
+    
+    ro += vec3(sin(iTime)*0.5,sin(iTime*1.)*0.,0);
+        
+    float dspAmp = .85;
+    ro.xy += disp(ro.z)*dspAmp;
+    float tgtDst = 3.5;
+    
+    vec3 target = normalize(ro - vec3(disp(time + tgtDst)*dspAmp, time + tgtDst));
+    ro.x -= bsMo.x*2.;
+    vec3 rightdir = normalize(cross(target, vec3(0,1,0)));
+    vec3 updir = normalize(cross(rightdir, target));
+    rightdir = normalize(cross(updir, target));
+	vec3 rd=normalize((p.x*rightdir + p.y*updir)*1. - target);
+    rd.xy *= rot(-disp(time + 3.5).x*0.2 + bsMo.x);
+    prm1 = smoothstep(-0.4, 0.4,sin(iTime*0.3));
+	vec4 scn = render(ro, rd, time,prm1);
+		
+    vec3 col = scn.rgb;
+    col = iLerp(col.bgr, col.rgb, clamp(1.-prm1,0.05,1.));
+    
+    col = pow(col, vec3(.55,0.65,0.6))*vec3(1.,.97,.9);
+
+    col *= pow( 16.0*q.x*q.y*(1.0-q.x)*(1.0-q.y), 0.12)*0.7+0.3; //Vign
+    
+	COLOR = vec4( col, 1.0 );
 }

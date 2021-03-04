@@ -93,7 +93,7 @@ const CARDS := {
 		"_abilities_power": 2,
 		"_max_allowed": 1,
 	},
-	"Early Shader": {
+	"Liquid Bubbles": {
 		"Type": CardConfig.CardTypes.SHADER,
 		"Tags": [],
 		"Abilities": "If this is the first card you play this turn, "\
@@ -106,7 +106,7 @@ const CARDS := {
 		"motivation_req": 4,
 		"_abilities_power": 1,
 	},
-	"Late Shader": {
+	"Barberella": {
 		"Type": CardConfig.CardTypes.SHADER,
 		"Tags": [],
 		"Abilities": "After you play another Shader "\
