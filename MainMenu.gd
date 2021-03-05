@@ -14,10 +14,11 @@ onready var settings_menu := $SettingsMenu
 onready var new_game_menu := $NewGame
 onready var deck_builder := $DeckBuilder
 onready var title := $Title
+onready var version := $Version
 
 func _ready() -> void:
 	cfc.game_rng.randomize()
-	change_shader("Liquid Bubbles")
+	change_shader()
 	settings_menu.rect_position.x = get_viewport().size.x
 	new_game_menu.rect_position.x = get_viewport().size.x
 	deck_builder.rect_position.x = -get_viewport().size.x
@@ -114,75 +115,78 @@ func _on_NewGame_deck_loaded(deck) -> void:
 	# warning-ignore:return_value_discarded
 	get_tree().change_scene("res://src/fragment_forge/Main.tscn")
 
+func switch_to_tab(tab: Control, move_details := false) -> void:
+	var main_position_x : float
+	match tab:
+		settings_menu, new_game_menu:
+			main_position_x = -get_viewport().size.x
+		deck_builder:
+			main_position_x = get_viewport().size.x
+	$MenuTween.interpolate_property(main_menu,'rect_position:x',
+			main_menu.rect_position.x, main_position_x, menu_switch_time,
+			Tween.TRANS_BACK, Tween.EASE_IN_OUT)
+	$MenuTween.interpolate_property(tab,'rect_position:x',
+			tab.rect_position.x, 0, menu_switch_time,
+			Tween.TRANS_BACK, Tween.EASE_IN_OUT)
+	if move_details:
+		$MenuTween.interpolate_property(title,'rect_position:x',
+				title.rect_position.x, main_position_x, menu_switch_time,
+				Tween.TRANS_BACK, Tween.EASE_IN_OUT)
+		$MenuTween.interpolate_property(version,'rect_position:x',
+				version.rect_position.x, main_position_x, menu_switch_time,
+				Tween.TRANS_BACK, Tween.EASE_IN_OUT)
+	$MenuTween.start()
+
+func switch_to_main_menu(tab: Control) -> void:
+	var tab_position_x : float
+	match tab:
+		settings_menu, new_game_menu:
+			tab_position_x = get_viewport().size.x
+		deck_builder:
+			tab_position_x = -get_viewport().size.x
+	$MenuTween.interpolate_property(tab,'rect_position:x',
+			tab.rect_position.x, tab_position_x, menu_switch_time,
+			Tween.TRANS_BACK, Tween.EASE_IN_OUT)
+	$MenuTween.interpolate_property(main_menu,'rect_position:x',
+			main_menu.rect_position.x, 0, menu_switch_time,
+			Tween.TRANS_BACK, Tween.EASE_IN_OUT)
+	if title.rect_position.x != 0:
+		$MenuTween.interpolate_property(title,'rect_position:x',
+				title.rect_position.x, 0, menu_switch_time,
+				Tween.TRANS_BACK, Tween.EASE_IN_OUT)
+		$MenuTween.interpolate_property(version,'rect_position:x',
+				version.rect_position.x, 0, menu_switch_time,
+				Tween.TRANS_BACK, Tween.EASE_IN_OUT)
+	$MenuTween.start()
+
+
+
 
 func _on_Settings_pressed() -> void:
-	$MenuTween.interpolate_property(main_menu,'rect_position:x',
-			main_menu.rect_position.x, -get_viewport().size.x, menu_switch_time,
-			Tween.TRANS_BACK, Tween.EASE_IN_OUT)
-	$MenuTween.interpolate_property(settings_menu,'rect_position:x',
-			settings_menu.rect_position.x, 0, menu_switch_time,
-			Tween.TRANS_BACK, Tween.EASE_IN_OUT)
-	$MenuTween.start()
+	switch_to_tab(settings_menu)
 
 func _on_Setings_Back_pressed() -> void:
-	$MenuTween.interpolate_property(settings_menu,'rect_position:x',
-			settings_menu.rect_position.x, get_viewport().size.x, menu_switch_time,
-			Tween.TRANS_BACK, Tween.EASE_IN_OUT)
-	$MenuTween.interpolate_property(main_menu,'rect_position:x',
-			main_menu.rect_position.x, 0, menu_switch_time,
-			Tween.TRANS_BACK, Tween.EASE_IN_OUT)
-	$MenuTween.start()
+	switch_to_main_menu(settings_menu)
 
 func _on_DeckBuilder_pressed() -> void:
-	$MenuTween.interpolate_property(main_menu,'rect_position:x',
-			main_menu.rect_position.x, get_viewport().size.x, menu_switch_time,
-			Tween.TRANS_BACK, Tween.EASE_IN_OUT)
-	$MenuTween.interpolate_property(title,'rect_position:x',
-			title.rect_position.x, get_viewport().size.x, menu_switch_time,
-			Tween.TRANS_BACK, Tween.EASE_IN_OUT)
-	$MenuTween.interpolate_property(deck_builder,'rect_position:x',
-			deck_builder.rect_position.x, 0, menu_switch_time,
-			Tween.TRANS_BACK, Tween.EASE_IN_OUT)
-	$MenuTween.start()
+	switch_to_tab(deck_builder, true)
 
 func _on_DeckBuilder_Back_pressed() -> void:
-	$MenuTween.interpolate_property(deck_builder,'rect_position:x',
-			deck_builder.rect_position.x, -get_viewport().size.x, menu_switch_time,
-			Tween.TRANS_BACK, Tween.EASE_IN_OUT)
-	$MenuTween.interpolate_property(main_menu,'rect_position:x',
-			main_menu.rect_position.x, 0, menu_switch_time,
-			Tween.TRANS_BACK, Tween.EASE_IN_OUT)
-	$MenuTween.interpolate_property(title,'rect_position:x',
-			title.rect_position.x, 0, menu_switch_time,
-			Tween.TRANS_BACK, Tween.EASE_IN_OUT)
-	$MenuTween.start()
+	switch_to_main_menu(deck_builder)
 
 
 func _on_NewGame_pressed() -> void:
-	$MenuTween.interpolate_property(main_menu,'rect_position:x',
-			main_menu.rect_position.x, -get_viewport().size.x, menu_switch_time,
-			Tween.TRANS_BACK, Tween.EASE_IN_OUT)
-	$MenuTween.interpolate_property(new_game_menu,'rect_position:x',
-			new_game_menu.rect_position.x, 0, menu_switch_time,
-			Tween.TRANS_BACK, Tween.EASE_IN_OUT)
-	$MenuTween.start()
+	switch_to_tab(new_game_menu)
 
 
 func _on_NewGame_Back_pressed() -> void:
-	$MenuTween.interpolate_property(new_game_menu,'rect_position:x',
-			new_game_menu.rect_position.x, get_viewport().size.x, menu_switch_time,
-			Tween.TRANS_BACK, Tween.EASE_IN_OUT)
-	print('debug')
-	$MenuTween.interpolate_property(main_menu,'rect_position:x',
-			main_menu.rect_position.x, 0, menu_switch_time,
-			Tween.TRANS_BACK, Tween.EASE_IN_OUT)
-	$MenuTween.start()
+	switch_to_main_menu(new_game_menu)
 
 func _on_PreBuilts_pressed() -> void:
 	initiate_sample_decks(true)
 
 func _on_Menu_resized() -> void:
-	for tab in [main_menu, deck_builder, new_game_menu, settings_menu]:
+	for tab in [main_menu, deck_builder, new_game_menu, settings_menu, title, version]:
 		if is_instance_valid(tab):
 			tab.rect_size = self.rect_size					
 			if tab.rect_position.x < 0.0:
