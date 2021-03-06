@@ -45,13 +45,19 @@ func compile_game_detals() -> Dictionary:
 	game_details["difficulty"] = ffc.difficulty
 	return(game_details)
 
+func send_end_game_stats(state: String, state_type: String = '') -> void:
+	if cfc.NMAP.board.stats:
+		var game_details := compile_game_detals()
+		if state_type != '':
+			game_details[state + "_type"] = state_type
+		var game_data = {"state": state, "details": game_details}
+		cfc.NMAP.board.stats.complete_game(game_data)
+
 func win_game() -> void:
 	end_game_popup.window_title = "Congratulations!"
 	end_game_popup.dialog_text = "You have amassed the required cred "\
 			+ "to become the envy of your peers. Well done!\n\nPress OK to play again."
-	var game_details := compile_game_detals()
-	var game_data = {"state": "victory", "details": game_details}
-	cfc.NMAP.board.stats.complete_game(game_data)
+	send_end_game_stats("victory")
 	finish_game()
 
 
@@ -59,10 +65,7 @@ func lose_game() -> void:
 	end_game_popup.window_title = "Game Over!"
 	end_game_popup.dialog_text = "Unfortunately, you have not managed to achieve "\
 			+ " the required cred to win this game.\n\nPress OK to play again."
-	var game_details := compile_game_detals()
-	game_details["defeat_type"] = "time"
-	var game_data = {"state": "defeat", "details": game_details}
-	cfc.NMAP.board.stats.complete_game(game_data)
+	send_end_game_stats("defeat", "time")
 	finish_game()
 
 func lose_game_motivation() -> void:
@@ -70,10 +73,7 @@ func lose_game_motivation() -> void:
 	end_game_popup.dialog_text = "Unfortunately, the stress of these competitions "\
 			+ " was too much and you have ended with bad case of Burnout. "\
 			+ "You have dropped out!\n\nPress OK to play again."
-	var game_details := compile_game_detals()
-	game_details["defeat_type"] = "motivation"
-	var game_data = {"state": "defeat", "details": game_details}
-	cfc.NMAP.board.stats.complete_game(game_data)
+	send_end_game_stats("defeat", "motivation")
 	finish_game()
 
 
@@ -86,6 +86,7 @@ func finish_game() -> void:
 
 
 func _on_EndGame_confirmed() -> void:
-	cfc.NMAP.board.stats.thread.wait_to_finish()
+	if cfc.NMAP.board.stats:
+		cfc.NMAP.board.stats.thread.wait_to_finish()
 	cfc.reset_game()
 	ffc.reset_game()

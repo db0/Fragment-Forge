@@ -17,7 +17,6 @@ onready var title := $Title
 onready var version := $Version
 
 func _ready() -> void:
-	print_debug("IP:", IP.get_local_addresses())
 	cfc.game_rng.randomize()
 	change_shader()
 	settings_menu.rect_position.x = get_viewport().size.x

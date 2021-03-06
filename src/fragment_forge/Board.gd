@@ -51,7 +51,12 @@ func _on_Start_pressed() -> void:
 		cfc.NMAP.hand.fill_starting_hand()
 		start_button.text = "Next Competition"
 		competitions.next_competition()
-		stats = GameStats.new(ffc.current_deck)
+		var cards_amount := 0
+		for card in ffc.current_deck:
+			cards_amount += ffc.current_deck[card]
+		# If the deck didn't have the minimum, we don't consider it a valid game
+		if cards_amount >= 30:
+			stats = GameStats.new(ffc.current_deck)
 	else:
 	# warning-ignore:return_value_discarded
 		counters.mod_counter("skill",1)
