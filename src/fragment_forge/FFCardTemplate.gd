@@ -111,9 +111,9 @@ func setup() -> void:
 				for param in source_card.shader_properties.shader_params:
 					shader_properties._set_shader_param(param, source_card.shader_properties.shader_params[param])
 			else:
-				shader_init_thread = Thread.new()
-				shader_init_thread.start(shader_properties, "init_shader", card_name)
-#				shader_properties.init_shader(card_name)
+#				shader_init_thread = Thread.new()
+#				shader_init_thread.start(shader_properties, "init_shader", card_name)
+				shader_properties.init_shader(card_name)
 	else:
 		var card_art_file: String = "res://assets/images/" + card_name
 		for extension in ['.jpg','.jpeg','.png']:
@@ -487,8 +487,3 @@ func get_state_exec() -> String:
 		else:
 			state_exec = "deck"
 	return(state_exec)
-
-# Thread must be disposed (or "joined"), for portability.
-func _exit_tree():
-	if shader_init_thread:
-		shader_init_thread.wait_to_finish()
