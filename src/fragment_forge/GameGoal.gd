@@ -86,5 +86,6 @@ func finish_game() -> void:
 
 
 func _on_EndGame_confirmed() -> void:
+	cfc.NMAP.board.stats.thread.wait_to_finish()
 	cfc.reset_game()
 	ffc.reset_game()
