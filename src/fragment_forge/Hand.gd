@@ -19,6 +19,7 @@ func draw_card(pile : Pile = cfc.NMAP.deck) -> Card:
 	var time_cost := get_manual_draw_cost()
 	if card and cfc.NMAP.board.counters.get_counter("time") >= time_cost:
 		cfc.NMAP.board.counters.mod_counter("time",-time_cost)
+		ffc.game_stats["manual_draw_time"] += abs(time_cost)
 		card.move_to(self)
 	return card
 

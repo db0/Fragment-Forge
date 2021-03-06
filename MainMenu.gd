@@ -115,6 +115,7 @@ func _on_NewGame_deck_loaded(deck) -> void:
 	# warning-ignore:return_value_discarded
 	get_tree().change_scene("res://src/fragment_forge/Main.tscn")
 
+
 func switch_to_tab(tab: Control, move_details := false) -> void:
 	var main_position_x : float
 	match tab:
@@ -136,6 +137,7 @@ func switch_to_tab(tab: Control, move_details := false) -> void:
 				version.rect_position.x, main_position_x, menu_switch_time,
 				Tween.TRANS_BACK, Tween.EASE_IN_OUT)
 	$MenuTween.start()
+
 
 func switch_to_main_menu(tab: Control) -> void:
 	var tab_position_x : float
@@ -160,16 +162,17 @@ func switch_to_main_menu(tab: Control) -> void:
 	$MenuTween.start()
 
 
-
-
 func _on_Settings_pressed() -> void:
 	switch_to_tab(settings_menu)
+
 
 func _on_Setings_Back_pressed() -> void:
 	switch_to_main_menu(settings_menu)
 
+
 func _on_DeckBuilder_pressed() -> void:
 	switch_to_tab(deck_builder, true)
+
 
 func _on_DeckBuilder_Back_pressed() -> void:
 	switch_to_main_menu(deck_builder)
@@ -182,13 +185,15 @@ func _on_NewGame_pressed() -> void:
 func _on_NewGame_Back_pressed() -> void:
 	switch_to_main_menu(new_game_menu)
 
+
 func _on_PreBuilts_pressed() -> void:
 	initiate_sample_decks(true)
+
 
 func _on_Menu_resized() -> void:
 	for tab in [main_menu, deck_builder, new_game_menu, settings_menu, title, version]:
 		if is_instance_valid(tab):
-			tab.rect_size = self.rect_size					
+			tab.rect_size = self.rect_size
 			if tab.rect_position.x < 0.0:
 					tab.rect_position.x = -get_viewport().size.x
 			elif tab.rect_position.x > 0.0:

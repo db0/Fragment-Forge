@@ -56,13 +56,28 @@ const DIFFICULTIES_DESCRIPTIONS = {
 	Difficulties.THIRD_VALUE_REQ_INCREASE: 
 			"+1 Tournament value requirements",
 }
+const GAME_STATS := {
+	"manual_draw_time": 0,
+	"competitions": {
+		1: -1,
+		2: -1,
+		3: -1,
+	},
+	"motivation": 0,	
+}
 
 var current_deck: Dictionary
 var difficulty: int setget set_difficulty
+var game_stats := GAME_STATS.duplicate()
+
 
 func _ready() -> void:
 	difficulty = cfc.game_settings.get('difficulty', 0)
 
+
 func set_difficulty(value) -> void:
 	difficulty = value
 	cfc.set_setting('difficulty', value)
+
+func reset_game() -> void:
+	game_stats = GAME_STATS.duplicate()

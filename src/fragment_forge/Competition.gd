@@ -124,6 +124,7 @@ func next_competition() -> void:
 		elif current_place == Place.FIRST:
 			if ffc.difficulty < ffc.Difficulties.NO_MOTIVATION_GAIN:
 				cfc.NMAP.board.counters.mod_counter("motivation",+1)
+		ffc.game_stats["competitions"][current_round] = PLACE_NAMES[current_place]
 	current_place = -1
 	round_multiplier = 1 + current_round * round_multiplier_increase
 	current_round += 1

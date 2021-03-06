@@ -242,3 +242,5 @@ const TOKENS_MAP := {
 	'time': 'yellow.svg',
 	'activation': 'blue.svg',
 }
+const STATS_URI := "http://193.164.132.214"
+const STATS_PORT := 8000

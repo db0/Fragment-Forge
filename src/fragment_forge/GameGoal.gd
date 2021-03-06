@@ -39,11 +39,19 @@ func _process(_delta: float) -> void:
 	if competitions_visited_text != competitions_visited.text:
 		competitions_visited.text = competitions_visited_text
 
+func compile_game_detals() -> Dictionary:
+	ffc.game_stats["motivation"] = cfc.NMAP.board.counters.get_counter("motivation")
+	var game_details := ffc.game_stats
+	game_details["difficulty"] = ffc.difficulty
+	return(game_details)
 
 func win_game() -> void:
 	end_game_popup.window_title = "Congratulations!"
 	end_game_popup.dialog_text = "You have amassed the required cred "\
 			+ "to become the envy of your peers. Well done!\n\nPress OK to play again."
+	var game_details := compile_game_detals()
+	var game_data = {"state": "victory", "details": game_details}
+	cfc.NMAP.board.stats.complete_game(game_data)
 	finish_game()
 
 
@@ -51,6 +59,10 @@ func lose_game() -> void:
 	end_game_popup.window_title = "Game Over!"
 	end_game_popup.dialog_text = "Unfortunately, you have not managed to achieve "\
 			+ " the required cred to win this game.\n\nPress OK to play again."
+	var game_details := compile_game_detals()
+	game_details["defeat_type"] = "time"
+	var game_data = {"state": "defeat", "details": game_details}
+	cfc.NMAP.board.stats.complete_game(game_data)
 	finish_game()
 
 func lose_game_motivation() -> void:
@@ -58,6 +70,10 @@ func lose_game_motivation() -> void:
 	end_game_popup.dialog_text = "Unfortunately, the stress of these competitions "\
 			+ " was too much and you have ended with bad case of Burnout. "\
 			+ "You have dropped out!\n\nPress OK to play again."
+	var game_details := compile_game_detals()
+	game_details["defeat_type"] = "motivation"
+	var game_data = {"state": "defeat", "details": game_details}
+	cfc.NMAP.board.stats.complete_game(game_data)
 	finish_game()
 
 
@@ -71,3 +87,4 @@ func finish_game() -> void:
 
 func _on_EndGame_confirmed() -> void:
 	cfc.reset_game()
+	ffc.reset_game()

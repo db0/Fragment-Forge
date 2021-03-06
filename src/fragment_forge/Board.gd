@@ -14,6 +14,7 @@ onready var game_goal := $VBC/Details/VBC2/GameGoal
 
 var tournament := 1
 var popup_settings : PopupPanel
+var stats : GameStats
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -50,7 +51,7 @@ func _on_Start_pressed() -> void:
 		cfc.NMAP.hand.fill_starting_hand()
 		start_button.text = "Next Competition"
 		competitions.next_competition()
-
+		stats = GameStats.new(ffc.current_deck)
 	else:
 	# warning-ignore:return_value_discarded
 		counters.mod_counter("skill",1)

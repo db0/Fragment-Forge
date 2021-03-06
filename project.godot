@@ -164,6 +164,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/fragment_forge/FFScriptingEngine.gd"
 }, {
+"base": "Reference",
+"class": "GameStats",
+"language": "GDScript",
+"path": "res://src/core/GameStats.gd"
+}, {
 "base": "CardContainer",
 "class": "Hand",
 "language": "GDScript",
@@ -301,6 +306,7 @@ _global_script_class_icons={
 "FFCard": "",
 "FFUtils": "",
 "FragmentForgeScriptingEngine": "",
+"GameStats": "",
 "Hand": "",
 "Highlight": "",
 "IntegerLineEdit": "",
