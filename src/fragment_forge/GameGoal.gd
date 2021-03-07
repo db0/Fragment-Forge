@@ -41,6 +41,7 @@ func _process(_delta: float) -> void:
 
 func compile_game_detals() -> Dictionary:
 	ffc.game_stats["motivation"] = cfc.NMAP.board.counters.get_counter("motivation")
+	ffc.game_stats["cred"] = cfc.NMAP.board.counters.get_counter("cred")
 	var game_details := ffc.game_stats
 	game_details["difficulty"] = ffc.difficulty
 	return(game_details)

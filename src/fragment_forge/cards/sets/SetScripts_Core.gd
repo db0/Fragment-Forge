@@ -911,6 +911,12 @@ func get_scripts(card_name: String) -> Dictionary:
 			"manual": {
 				"board": [
 					{
+						"name": "mod_counter",
+						"counter_name": "time",
+						"is_cost": true,
+						"modification": -2,
+					},
+					{
 						"name": "rotate_card",
 						"degrees": 90,
 						"is_cost": true,
