@@ -593,6 +593,7 @@ const CARDS := {
 		"skill_req": 0,
 		"cred_req": 0,
 		"motivation_req": 0,
+		"_illustration": "Artbreeder",
 	},
 ### BEGIN Prep ###
 	"Collaboration": {

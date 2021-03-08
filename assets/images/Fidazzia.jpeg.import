@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/fe701cb75b5d3022ed724c1e2e20.jpeg-abf4e7cfc59d590bd9311a7c607b699e.stex"
+path="res://.import/Fidazzia.jpeg-3600dc5d304dad13c3425173f0e7110d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/fe701cb75b5d3022ed724c1e2e20.jpeg"
-dest_files=[ "res://.import/fe701cb75b5d3022ed724c1e2e20.jpeg-abf4e7cfc59d590bd9311a7c607b699e.stex" ]
+source_file="res://assets/images/Fidazzia.jpeg"
+dest_files=[ "res://.import/Fidazzia.jpeg-3600dc5d304dad13c3425173f0e7110d.stex" ]
 
 [params]
 
