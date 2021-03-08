@@ -16,6 +16,7 @@ const CARDS := {
 		"skill_req": 0,
 		"cred_req": 0,
 		"motivation_req": 0,
+		"_illustration": "Db0",
 	},
 	"Fractal Tiling": {
 		"Type": CardConfig.CardTypes.SHADER,
@@ -27,7 +28,8 @@ const CARDS := {
 		"skill_req": 0,
 		"cred_req": 0,
 		"motivation_req": 0,
-		"_abilities_power": -2
+		"_abilities_power": -2,
+		"_illustration": "Inigo Quilez",
 	},
 	"Light": {
 		"Type": CardConfig.CardTypes.SHADER,
@@ -39,6 +41,7 @@ const CARDS := {
 		"skill_req": 0,
 		"cred_req": 0,
 		"motivation_req": 0,
+		"_illustration": "Danilo Guanabara",
 	},
 	"Twister": {
 		"Type": CardConfig.CardTypes.SHADER,
@@ -50,6 +53,7 @@ const CARDS := {
 		"skill_req": 0,
 		"cred_req": 0,
 		"motivation_req": 0,
+		"_illustration": "Inigo Quilez",
 	},
 	"Ether": {
 		"Type": CardConfig.CardTypes.SHADER,
@@ -64,6 +68,7 @@ const CARDS := {
 		"cred_req": 0,
 		"motivation_req": 4,
 		"_abilities_power": 3,
+		"_illustration": "nimitz",
 	},
 	"Matrix": {
 		"Type": CardConfig.CardTypes.SHADER,
@@ -77,6 +82,7 @@ const CARDS := {
 		"cred_req": 0,
 		"motivation_req": 0,
 		"_abilities_power": -2,
+		"_illustration": "Otavio Good",
 	},
 	"Runes": {
 		"Type": CardConfig.CardTypes.SHADER,
@@ -92,6 +98,7 @@ const CARDS := {
 		"motivation_req": 0,
 		"_abilities_power": 2,
 		"_max_allowed": 1,
+		"_illustration": "Otavio Good",
 	},
 	"Liquid Bubbles": {
 		"Type": CardConfig.CardTypes.SHADER,
@@ -105,6 +112,7 @@ const CARDS := {
 		"cred_req": 0,
 		"motivation_req": 4,
 		"_abilities_power": 1,
+		"_illustration": "Inigo Quilez & Weyland",
 	},
 	"Barberella": {
 		"Type": CardConfig.CardTypes.SHADER,
@@ -118,6 +126,7 @@ const CARDS := {
 		"cred_req": 0,
 		"motivation_req": 4,
 		"_abilities_power": -2,
+		"_illustration": "Weyland",
 	},
 #### skill_req 1
 	"Fractal Pyramid": {
@@ -130,6 +139,7 @@ const CARDS := {
 		"skill_req": 1,
 		"cred_req": 0,
 		"motivation_req": 0,
+		"_illustration": "bradjamesgrant",
 	},
 	"Pentagonal Tesselations": {
 		"Type": CardConfig.CardTypes.SHADER,
@@ -141,6 +151,7 @@ const CARDS := {
 		"skill_req": 1,
 		"cred_req": 0,
 		"motivation_req": 0,
+		"_illustration": "Matthew Arcus",
 	},
 	"Sierpinski": {
 		"Type": CardConfig.CardTypes.SHADER,
@@ -154,7 +165,8 @@ const CARDS := {
 		"skill_req": 1,
 		"cred_req": 0,
 		"motivation_req": 0,
-		"_abilities_power": 3
+		"_abilities_power": 3,
+		"_illustration": "Inigo Quilez",
 	},
 	"Plasma Globe": {
 		"Type": CardConfig.CardTypes.SHADER,
@@ -167,6 +179,7 @@ const CARDS := {
 		"cred_req": 0,
 		"motivation_req": 0,
 		"_abilities_power": -3,
+		"_illustration": "nmz",
 	},
 	"Noise Pulse": {
 		"Type": CardConfig.CardTypes.SHADER,
@@ -180,6 +193,7 @@ const CARDS := {
 		"cred_req": 0,
 		"motivation_req": 0,
 		"_abilities_power": 1,
+		"_illustration": "nmz",
 	},
 	"Apollonian": {
 		"Type": CardConfig.CardTypes.SHADER,
@@ -192,6 +206,7 @@ const CARDS := {
 		"cred_req": 0,
 		"motivation_req": 0,
 		"_abilities_power": 1,
+		"_illustration": "Matthew Arcus",
 	},
 	"Mandelbrot": {
 		"Type": CardConfig.CardTypes.SHADER,
@@ -205,6 +220,7 @@ const CARDS := {
 		"cred_req": 0,
 		"motivation_req": 0,
 		"_abilities_power": -4,
+		"_illustration": "Inigo Quilez",
 	},
 	"Topologica": {
 		"Type": CardConfig.CardTypes.SHADER,
@@ -218,6 +234,7 @@ const CARDS := {
 		"cred_req": 0,
 		"motivation_req": 0,
 		"_abilities_power": 2,
+		"_illustration": "Otavio Good",
 	},
 	"Sculpture": {
 		"Type": CardConfig.CardTypes.SHADER,
@@ -231,6 +248,7 @@ const CARDS := {
 		"cred_req": 0,
 		"motivation_req": 0,
 		"_abilities_power": -2,
+		"_illustration": "Inigo Quilez",
 	},
 #### skill_req 2
 	"Cloud": {
@@ -243,6 +261,7 @@ const CARDS := {
 		"skill_req": 2,
 		"cred_req": 0,
 		"motivation_req": 0,
+		"_illustration": "nmz",
 	},
 	"Strings": {
 		"Type": CardConfig.CardTypes.SHADER,
@@ -254,6 +273,7 @@ const CARDS := {
 		"skill_req": 2,
 		"cred_req": 0,
 		"motivation_req": 0,
+		"_illustration": "Inigo Quilez",
 	},
 	"Voronoi Column Tracing": {
 		"Type": CardConfig.CardTypes.SHADER,
@@ -266,6 +286,7 @@ const CARDS := {
 		"cred_req": 0,
 		"motivation_req": 0,
 		"_abilities_power": 1,
+		"_illustration": "Tomasz Dobrowolski",
 	},
 	"Xod": {
 		"Type": CardConfig.CardTypes.SHADER,
@@ -277,7 +298,8 @@ const CARDS := {
 		"skill_req": 2,
 		"cred_req": 0,
 		"motivation_req": 0,
-		"_abilities_power": -4
+		"_abilities_power": -4,
+		"_illustration": "evvvvil",
 	},
 	"Spine": {
 		"Type": CardConfig.CardTypes.SHADER,
@@ -289,7 +311,8 @@ const CARDS := {
 		"skill_req": 2,
 		"cred_req": 0,
 		"motivation_req": 0,
-		"_abilities_power": -4
+		"_abilities_power": -4,
+		"_illustration": "evvvvil",
 	},
 	"Lanterns": {
 		"Type": CardConfig.CardTypes.SHADER,
@@ -302,7 +325,8 @@ const CARDS := {
 		"skill_req": 2,
 		"cred_req": 0,
 		"motivation_req": 0,
-		"_abilities_power": 1
+		"_abilities_power": 1,
+		"_illustration": "Inigo Quilez",
 	},
 #### skill_req 3+
 	"Seascape": {
@@ -315,6 +339,7 @@ const CARDS := {
 		"skill_req": 3,
 		"cred_req": 0,
 		"motivation_req": 0,
+		"_illustration": "Alexander Alekseev",
 	},
 	"Flux Core": {
 		"Type": CardConfig.CardTypes.SHADER,
@@ -327,6 +352,7 @@ const CARDS := {
 		"skill_req": 5,
 		"cred_req": 0,
 		"motivation_req": 0,
+		"_illustration": "Otavio Good",
 	},
 ### BEGIN Resources ###
 	"Difios": {
@@ -339,6 +365,7 @@ const CARDS := {
 		"skill_req": 0,
 		"cred_req": 0,
 		"motivation_req": 0,
+		"_illustration": "Artbreeder",
 	},
 	"Cheerleader": {
 		"Type": CardConfig.CardTypes.RESOURCE,
@@ -351,6 +378,7 @@ const CARDS := {
 		"skill_req": 0,
 		"cred_req": 1,
 		"motivation_req": 5,
+		"_illustration": "Artbreeder",
 	},
 	"Guru": {
 		"Type": CardConfig.CardTypes.RESOURCE,
@@ -362,6 +390,7 @@ const CARDS := {
 		"skill_req": 3,
 		"cred_req": 4,
 		"motivation_req": 0,
+		"_illustration": "Artbreeder",
 	},
 	"Echo": {
 		"Type": CardConfig.CardTypes.RESOURCE,
@@ -374,6 +403,7 @@ const CARDS := {
 		"skill_req": 0,
 		"cred_req": 0,
 		"motivation_req": 0,
+		"_illustration": "Artbreeder",
 	},
 	"Zhee": {
 		"Type": CardConfig.CardTypes.RESOURCE,
@@ -386,6 +416,7 @@ const CARDS := {
 		"skill_req": 0,
 		"cred_req": 1,
 		"motivation_req": 0,
+		"_illustration": "Artbreeder",
 	},
 	"Hardcode": {
 		"Type": CardConfig.CardTypes.RESOURCE,
@@ -398,6 +429,7 @@ const CARDS := {
 		"skill_req": 0,
 		"cred_req": 1,
 		"motivation_req": 0,
+		"_illustration": "Artbreeder",
 	},
 	"Vectornator": {
 		"Type": CardConfig.CardTypes.RESOURCE,
@@ -411,6 +443,7 @@ const CARDS := {
 		"skill_req": 0,
 		"cred_req": 2,
 		"motivation_req": 0,
+		"_illustration": "Artbreeder",
 	},
 	"A3sop": {
 		"Type": CardConfig.CardTypes.RESOURCE,
@@ -423,6 +456,7 @@ const CARDS := {
 		"skill_req": 0,
 		"cred_req": 0,
 		"motivation_req": 5,
+		"_illustration": "Artbreeder",
 	},
 	"Git": {
 		"Type": CardConfig.CardTypes.RESOURCE,
@@ -471,6 +505,7 @@ const CARDS := {
 		"skill_req": 0,
 		"cred_req": 0,
 		"motivation_req": 0,
+		"_illustration": "Artbreeder",
 	},
 	"Search Engine Expertise": {
 		"Type": CardConfig.CardTypes.RESOURCE,
@@ -520,6 +555,7 @@ const CARDS := {
 		"skill_req": 1,
 		"cred_req": 1,
 		"motivation_req": 1,
+		"_illustration": "Artbreeder",
 	},
 	"Prismatic": {
 		"Type": CardConfig.CardTypes.RESOURCE,
@@ -533,6 +569,7 @@ const CARDS := {
 		"skill_req": 0,
 		"cred_req": 0,
 		"motivation_req": 0,
+		"_illustration": "Artbreeder",
 	},
 	"Constant": {
 		"Type": CardConfig.CardTypes.RESOURCE,
@@ -544,6 +581,7 @@ const CARDS := {
 		"skill_req": 0,
 		"cred_req": 1,
 		"motivation_req": 0,
+		"_illustration": "Artbreeder",
 	},
 	"Fidazzia": {
 		"Type": CardConfig.CardTypes.RESOURCE,

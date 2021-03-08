@@ -1,7 +1,7 @@
 shader_type canvas_item;
 // Using code from
 
-//  Danilo Guanabara for the shader
+// Danilo Guanabara for the shader
 // https://www.reddit.com/r/godot/comments/kdg402/fragment_shader_converted_to_godot_shader_script/gfwaq09/
 // Ported to Godot by Lord_Tomorrow
 

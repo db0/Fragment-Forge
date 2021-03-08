@@ -41,3 +41,4 @@ const NUMBERS_HIDDEN_ON_0 := [
 		"skill_req",
 		"cred_req",
 		"motivation_req"]
+const TYPES_TO_HIDE_IN_DECKBUILDER := []

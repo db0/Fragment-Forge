@@ -1,7 +1,7 @@
 shader_type canvas_item;
 // Using code from
 
-// mla for the  Pentagonal Tessellations shader
+// Matthew Arcus for the  Pentagonal Tessellations shader
 // https://www.shadertoy.com/view/XlBBWG
 // Ported to Godot and customized for FragmentForge by Db0
 

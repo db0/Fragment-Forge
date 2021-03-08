@@ -1,7 +1,7 @@
 shader_type canvas_item;
 // Using code from
 
-// otaviogood for the runes shader
+// Otavio Good for the runes shader
 // https://www.shadertoy.com/view/MsXSRn
 // Ported to Godot and customized for FragmentForge by Db0
 
