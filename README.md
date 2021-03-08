@@ -1,4 +1,4 @@
-# Fragment Forge v0.10
+# Fragment Forge v0.10.5
 
 Fragment Forge is a card game simulating the rise to fame of a new demo effects coder.
 
