@@ -25,7 +25,7 @@ margin_bottom = 15.0
 mouse_filter = 2
 custom_constants/separation = -5
 
-[node name="icon" type="TextureRect" parent="VBC/skill_reqCC"]
+[node name="Icon" type="TextureRect" parent="VBC/skill_reqCC"]
 margin_right = 15.0
 margin_bottom = 15.0
 rect_min_size = Vector2( 15, 15 )
@@ -36,9 +36,8 @@ stretch_mode = 1
 
 [node name="skill_req" type="Label" parent="VBC/skill_reqCC"]
 margin_left = 10.0
-margin_top = -1.0
 margin_right = 29.0
-margin_bottom = 14.0
+margin_bottom = 15.0
 rect_min_size = Vector2( 19, 15 )
 custom_fonts/font = ExtResource( 2 )
 text = "0"
@@ -63,9 +62,8 @@ stretch_mode = 1
 
 [node name="cred_req" type="Label" parent="VBC/cred_reqCC"]
 margin_left = 10.0
-margin_top = -1.0
 margin_right = 28.0
-margin_bottom = 14.0
+margin_bottom = 15.0
 rect_min_size = Vector2( 18, 15 )
 custom_fonts/font = ExtResource( 2 )
 text = "0"
@@ -90,9 +88,8 @@ stretch_mode = 1
 
 [node name="motivation_req" type="Label" parent="VBC/motivation_reqCC"]
 margin_left = 10.0
-margin_top = -1.0
 margin_right = 28.0
-margin_bottom = 14.0
+margin_bottom = 15.0
 rect_min_size = Vector2( 18, 15 )
 custom_fonts/font = ExtResource( 2 )
 text = "0"

@@ -80,6 +80,7 @@ const CARD_SIZE := Vector2(150,240)
 const FANCY_MOVEMENT := true
 # The focus style selected for this game. See enum `FocusStyle`
 const FOCUS_STYLE = FocusStyle.BOTH
+const VIEWPORT_FOCUS_ZOOM_TYPE = "resize"
 # If set to true, the hand will be presented in the form of an oval shape
 # If set to false, the hand will be presented with all cards
 # horizontally aligned
