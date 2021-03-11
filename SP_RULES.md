@@ -48,6 +48,12 @@ Prep cards are events and actions you take while working on your demo.
 
 ## Rules
 
+### Game Goal
+
+The game goal is to amass a specified amount of Cred, based on the difficulty. The amount you need is written to the left of the Competition details
+
+The game will end immediately after you achieve your goal, or after you end your last competition. Then it will inform you if you've won or lost.
+
 ### Hand
 
 When you start the game, you'll draw 5 cards to start with. You can play any card by paying it's time and kudos costs. If a card is playable, it will be highlighted white.
@@ -95,12 +101,41 @@ You can see on which competition you are on the left of the Competition Details.
 
 Be aware: If you do not make any placement in the competition, you will lose 2 motivation. However if you earn the first place, you will instead gain 1 motivation!
 
+### Tags
+
+Most of the cards have tags assigned to them, which tend to specify what kind of effects it has. However some tags also have their own special effects. These effects will be displayed when you mouse over the card. 
+
+The following tags have built-in effects on their cards.
+
+* Unique: Only one card with this name can be Installed
+* Restricted: You can only have 1 of each restricted card in your deck
+* Collaborator: Discarded at the end of the current competition
+* Reputation: Can only have 1 Reputation installed
+
 ### Losing the Game
 
 There is only one loss condition in the game, and that is running out of motivation. If your motivation ever drops to 0, you immediately lose the game, as you drop out of all further competitions!
 
-### Game Goal
+### Deckbuilding
 
-The game goal is to amass a specified amount of Cred, based on the difficulty. The amount you need is written to the left of the Competition details
+Before you can play a game, you need to craft a deck to play with. There are a few restrictions on making your deck
 
-The game will end immediately after you achieve your goal, or after you end your last competition. Then it will inform you if you've won or lost.
+#### Affinities
+
+There's three loose affinities of people, grouped by approach to the demoscene. 
+
+*(all names provisional)*
+
+* Fractal Minds: They are into the demoscene for the joy of making mathematic art and are interested in fancy algorithms and awesome displays. Whenever you mind is blown, a Fractal Mind was probably behind the explosion.
+* Zippers: The minimalists of the bunch. They are keen on reducing the size of their code to the absolute minimum, just because they can. They can cram an absurd amount of power in a short amount of time and space. Their shortcuts are legendary.
+* Champions: The people who are in for the rush of competition. Winning is the name of the game and they will take advantage of every loophole in order to do so. Maybe even make some new ones in the process.
+
+Most cards in the game are affiliated to one of these affinities. When making a new deck, you'll first of all select your own affiliation. You will have free access to all cards from your affinity. You can also pick card from the others, but you will have to spend some of your insight to do so.
+
+#### Insight
+
+Each player starts with a number of insight. You use this insight to add Shaders to your deck, or to learn tricks from other affinities. 
+
+Each shader that you add in your deck takes up a number of Insight equal to its <img src="assets/icons/skill.png" alt="skill_req icon" width="15"/>. Generally having a lot of shaders simplifies the mechanics of a deck, but doing so will mean you have less flexibility in your combos from other factions.
+
+Every affiliated card has also an insight cost. Cards from the affinity you belong to, are free to pick. however picking form other factions reduces your insight by that amount. Obviously picking a shader from another affinity is a double-whammy, as you pay Insight both for being a Shader and for it being out-of-affinity.

@@ -328,6 +328,19 @@ const CARDS := {
 		"_abilities_power": 1,
 		"_illustration": "Inigo Quilez",
 	},
+	"Ininite Shader": {
+		"Type": CardConfig.CardTypes.SHADER,
+		"Tags": [],
+		"Abilities": "After installing this Shader, lose all remaining time",
+		"Time": 3,
+		"Value": GEN,
+		"Kudos": 0,
+		"skill_req": 2,
+		"cred_req": 0,
+		"motivation_req": 4,
+		"_abilities_power": -3,
+#		"_illustration": "Inigo Quilez",
+	},
 #### skill_req 3+
 	"Seascape": {
 		"Type": CardConfig.CardTypes.SHADER,
@@ -408,8 +421,7 @@ const CARDS := {
 	"Zhee": {
 		"Type": CardConfig.CardTypes.RESOURCE,
 		"Tags": ["Collaborator"],
-		"Abilities": "Increase the value of your Demo this round by 5.\n"\
-				+ "Discard after this round ends",
+		"Abilities": "Increase the value of your Demo this round by 5.\n",
 		"Time": 1,
 		"Value": 0,
 		"Kudos": 4,
@@ -435,8 +447,7 @@ const CARDS := {
 		"Type": CardConfig.CardTypes.RESOURCE,
 		"Tags": ["Collaborator"],
 		"Abilities": "If you use at least 2 shaders of skill_req 1, "\
-				+ "increase your Demo value by 4.\n"\
-				+ "Discard after this competition ends",
+				+ "increase your Demo value by 4.",
 		"Time": 1,
 		"Value": 0,
 		"Kudos": 1,
@@ -497,8 +508,7 @@ const CARDS := {
 	"Junker": {
 		"Type": CardConfig.CardTypes.RESOURCE,
 		"Tags": ["Tutor", "Collaborator", "Unique"],
-		"Abilities": "Reduce the time cost of all Shaders by 1.\n"\
-				+ "Discard after this competition ends",
+		"Abilities": "Reduce the time cost of all Shaders by 1.",
 		"Time": 0,
 		"Value": 0,
 		"Kudos": 5,
@@ -532,6 +542,18 @@ const CARDS := {
 		"cred_req": 0,
 		"motivation_req": 0,
 	},
+	"ShaderToy": {
+		"Type": CardConfig.CardTypes.RESOURCE,
+		"Tags": ["Knowledge"],
+		"Abilities": "1 Time, Shuffle 2 random cards from your hand "\
+				+ "into the deck: Draw 2 cards",
+		"Time": 1,
+		"Value": 0,
+		"Kudos": 0,
+		"skill_req": 0,
+		"cred_req": 0,
+		"motivation_req": 2,
+	},
 	"Blog": {
 		"Type": CardConfig.CardTypes.RESOURCE,
 		"Tags": ["Community"],
@@ -561,8 +583,7 @@ const CARDS := {
 		"Type": CardConfig.CardTypes.RESOURCE,
 		"Tags": ["Collaborator"],
 		"Abilities": "If all your Shaders are different "\
-				+ "increase you demo value by 8\n"\
-				+ "Discard after this competition ends",
+				+ "increase you demo value by 8.",
 		"Time": 1,
 		"Value": 0,
 		"Kudos": 4,
@@ -594,6 +615,19 @@ const CARDS := {
 		"cred_req": 0,
 		"motivation_req": 0,
 		"_illustration": "Artbreeder",
+	},
+	"Antisocial": {
+		"Type": CardConfig.CardTypes.RESOURCE,
+		"Tags": ["Reputation"],
+		"Abilities": "After you install this card, lose all your Kudos.\n"\
+				+ "You cannot install Collaborators or Tutors.\n"\
+				+ "+2 Motivation",
+		"Time": 0,
+		"Value": 0,
+		"Kudos": 0,
+		"skill_req": 0,
+		"cred_req": 0,
+		"motivation_req": 0,
 	},
 ### BEGIN Prep ###
 	"Collaboration": {

@@ -5,6 +5,7 @@ class_name ViewportCardFocus
 extends Node2D
 
 export(PackedScene) var board_scene : PackedScene
+export(PackedScene) var info_panel_scene : PackedScene
 # This array holds all the previously focused cards.
 var _previously_focused_cards := []
 # This var hold the currently focused card duplicate.
@@ -14,8 +15,8 @@ var _current_focus_source : Card = null
 var _dupes_dict := {}
 
 onready var card_focus := $VBC/Focus
-onready var focus_info := $VBC/FocusInfoPanel
-onready var illustration := $VBC/FocusInfoPanel/VBC/Illustration
+onready var focus_info := $VBC/FocusInfo
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -30,6 +31,8 @@ func _ready():
 	$ViewportContainer.rect_size = get_viewport().size
 	for container in get_tree().get_nodes_in_group("card_containers"):
 		container.re_place()
+	focus_info.info_panel_scene = info_panel_scene
+	focus_info.setup()
 
 
 func _process(_delta) -> void:
@@ -101,11 +104,7 @@ func focus_card(card: Card) -> void:
 		$VBC/Focus/Tween.interpolate_property($VBC/Focus,'modulate',
 				$VBC/Focus.modulate, Color(1,1,1,1), 0.25,
 				Tween.TRANS_SINE, Tween.EASE_IN)
-		var visible_info_labels := 0
-		for node in focus_info.get_node("VBC").get_children():
-			if node.visible:
-				visible_info_labels += 1
-		if visible_info_labels:
+		if focus_info.visible_details > 0:
 			$VBC/Focus/Tween.interpolate_property(focus_info,'modulate',
 					focus_info.modulate, Color(1,1,1,1), 0.25,
 					Tween.TRANS_SINE, Tween.EASE_IN)
@@ -135,12 +134,9 @@ func unfocus(card: Card) -> void:
 # before adding it to the scene
 func _extra_dupe_preparation(dupe_focus: Card, card: Card) -> void:
 	dupe_focus.properties = card.properties.duplicate()
-	var card_illustration = card.get_property("_illustration")
-	if card_illustration:
-		illustration.text = "Illustration by: " + card_illustration
-		illustration.visible = true
-	else:
-		illustration.visible = false
+	focus_info.hide_all_info()
+	cfc.ov_utils.populate_info_panels(card,focus_info)
+
 
 # Overridable function for games to extend processing of dupe card
 # after adding it to the scene

@@ -42,3 +42,21 @@ const NUMBERS_HIDDEN_ON_0 := [
 		"cred_req",
 		"motivation_req"]
 const TYPES_TO_HIDE_IN_DECKBUILDER := []
+const EXPLANATIONS = {
+	"Unique": "Unique: Only one card with this name can be Installed",
+	"Restricted": "Restricted: You can only have 1 of these cards in your deck",
+	"Collaborator": "Collaborator: Discarded at the end of the current competition",
+	"Reputation": "Reputation: Can only have 1 Reputation installed",
+	"Burnout": "(Burnout cards require Motivation to use)",
+	"Obscure": "(Obscure cards do not like card-draw effects)",
+	"Tutor": "(Tutors help install or improve Shaders)",
+	"Contact": "(Contacts have abilities which give Time back)",
+	"Knowledge": "(Knowledge cards have abilities which draw cards)",
+	"Community": "(Community cards provide Kudos)",
+}
+const ACTIVE_TAGS = [
+	"Unique",
+	"Restricted",
+	"Collaborator",
+	"Reputation",
+]

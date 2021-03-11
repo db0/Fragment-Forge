@@ -4,7 +4,7 @@
 [ext_resource path="res://shaders/Seascape.shader" type="Shader" id=2]
 [ext_resource path="res://fonts/Xolonium-Regular.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://src/fragment_forge/SettingsMenu.tscn" type="PackedScene" id=4]
-[ext_resource path="res://src/fragment_forge/DeckBuilder.tscn" type="PackedScene" id=5]
+[ext_resource path="res://src/fragment_forge/deckbuilder/DeckBuilder.tscn" type="PackedScene" id=5]
 [ext_resource path="res://src/fragment_forge/NewGame.tscn" type="PackedScene" id=7]
 
 [sub_resource type="ShaderMaterial" id=1]
@@ -158,6 +158,7 @@ text = "v0.11.1"
 [node name="Tween" type="Tween" parent="."]
 
 [node name="MenuTween" type="Tween" parent="."]
+
 [connection signal="pressed" from="MainMenu/PC/VBC/NewGame" to="." method="_on_NewGame_pressed"]
 [connection signal="pressed" from="MainMenu/PC/VBC/DeckBuilder" to="." method="_on_DeckBuilder_pressed"]
 [connection signal="pressed" from="MainMenu/PC/VBC/Settings" to="." method="_on_Settings_pressed"]
