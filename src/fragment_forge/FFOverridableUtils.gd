@@ -3,7 +3,8 @@ extends OVUtils
 
 # Populates the info panels under the card, when it is shown in the
 # viewport focus or deckbuilder
-func populate_info_panels(card: Card, focus_info: Node) -> void:
+func populate_info_panels(card: Card, focus_info: DetailPanels) -> void:
+	focus_info.hide_all_info()
 	var card_illustration = card.get_property("_illustration")
 	var illustration_text = "Illustration by: "
 	if card.get_property("Type") == CardConfig.CardTypes.SHADER:
