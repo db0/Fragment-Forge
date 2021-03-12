@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/trophy.png-68d4dea9971d4e094979ce07273dbe42.stex"
+path="res://.import/WIN.png-7599127f66da53b099ef4cb35c51c397.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/icons/trophy.png"
-dest_files=[ "res://.import/trophy.png-68d4dea9971d4e094979ce07273dbe42.stex" ]
+source_file="res://assets/icons/WIN.png"
+dest_files=[ "res://.import/WIN.png-7599127f66da53b099ef4cb35c51c397.stex" ]
 
 [params]
 

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/mobius.png-012191c0d3045647b923e39d85430fd7.stex"
+path="res://.import/ZIP.png-10bfd61a522681953190555bf9653f15.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/icons/mobius.png"
-dest_files=[ "res://.import/mobius.png-012191c0d3045647b923e39d85430fd7.stex" ]
+source_file="res://assets/icons/ZIP.png"
+dest_files=[ "res://.import/ZIP.png-10bfd61a522681953190555bf9653f15.stex" ]
 
 [params]
 

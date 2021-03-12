@@ -2,6 +2,7 @@ class_name FFCard
 extends Card
 
 const GEN = -1
+
 # Switch to know when the player attempted to activate an action card
 # by dragging it to the board area
 var attempted_action_drop_to_board := false
@@ -88,6 +89,14 @@ func highlight_modified_properties() -> void:
 #					print_debug(card_name, current_property,printed_properties.get(property))
 func setup() -> void:
 	.setup()
+	var affinity = properties.get("_affinity")
+	if not affinity:
+		card_front.affinity_icon.visible = false
+	else:
+		var icon_texture = ImageTexture.new();
+		var image =  CardConfig.Affinities[affinity].icon.get_data()
+		icon_texture.create_from_image(image)
+		card_front.affinity_icon.texture = icon_texture
 	if properties.Type == CardConfig.CardTypes.SHADER:
 		# If the value is 'gen', we calculate it with a formula
 		if properties.Value == GEN :

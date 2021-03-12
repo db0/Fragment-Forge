@@ -16,7 +16,7 @@ const decks = [
 			"Google-Fu!": 3,
 			"Get Some Advice": 3,
 			"Discord Mod": 2,
-			"Post Some Progress": 3,
+			"Massive Compression": 3,
 			"Social Networking": 3,
 			"Private Forum Mod": 1,
 			"Junker": 2,

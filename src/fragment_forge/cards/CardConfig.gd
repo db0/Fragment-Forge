@@ -18,6 +18,21 @@ const CardTypes := {
 	"SHADER": "Shader",
 	"RESOURCE": "Resource"
 }
+const Affinities := {
+	"ART": {
+		"name":"Fractal Minds",
+		"icon": preload("res://assets/icons/ART.png")
+	},
+	"ZIP": {
+		"name":"Zippers",
+		"icon": preload("res://assets/icons/ZIP.png")
+	},
+	"WIN": {
+		"name":"Champions",
+		"icon": preload("res://assets/icons/WIN.png")
+	},
+}
+
 # Properties which are placed as they are in appropriate labels
 const PROPERTIES_STRINGS := ["Type", "Requirements", "Abilities"]
 # Properties which are converted into string using a format defined in setup()

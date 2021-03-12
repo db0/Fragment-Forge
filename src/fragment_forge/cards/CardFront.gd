@@ -1,6 +1,7 @@
 extends CardFront
 
 var value_controls := {}
+var affinity_icon : TextureRect
 
 func set_label_text(node: Label, value):
 	.set_label_text(node, value)

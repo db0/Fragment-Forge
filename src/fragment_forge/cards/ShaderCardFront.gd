@@ -18,7 +18,7 @@ func _ready() -> void:
 	card_labels["cred_req"] = $Margin/CardText/Requirements/VBC/cred_reqCC/cred_req
 	card_labels["motivation_req"] = $Margin/CardText/Requirements/VBC/motivation_reqCC/motivation_req
 	card_labels["Abilities"] = $Margin/CardText/Abilities
-	card_labels["Value"] = $Margin/ValueContainer/VBC/ValueCC/Value
+	card_labels["Value"] = $Margin/ValueContainer/VBC/HBC/ValueCC/Value
 	value_controls["Kudos"] = $Margin/CardText/Header/HBC/KudosC
 	value_controls["skill_req"] = $Margin/CardText/Requirements/VBC/skill_reqCC
 	value_controls["cred_req"] = $Margin/CardText/Requirements/VBC/cred_reqCC
@@ -36,6 +36,8 @@ func _ready() -> void:
 	card_label_min_sizes["Abilities"] = Vector2(CFConst.CARD_SIZE.x * 0.953, 100)
 	card_label_min_sizes["Value"] = Vector2(CFConst.CARD_SIZE.x * 0.12, 19)
 
+	affinity_icon = $Margin/ValueContainer/VBC/HBC/AffinityCC/Affinity
+	
 	for label in card_labels:
 		match label:
 			"Name":
@@ -75,8 +77,10 @@ func scale_to(scale_multiplier: float) -> void:
 					Vector2(19,19) * scale_multiplier
 			$Margin/CardText/Header/HBC/TimeC/TimeCC/Icon.rect_min_size = \
 					Vector2(19,19) * scale_multiplier
-			$Margin/ValueContainer/VBC/ValueCC/Icon.rect_min_size = \
+			$Margin/ValueContainer/VBC/HBC/ValueCC/Icon.rect_min_size = \
 					Vector2(18,19) * scale_multiplier
+			$Margin/ValueContainer/VBC/HBC/AffinityCC/Affinity.rect_min_size = \
+					Vector2(15,15) * scale_multiplier
 	for l in card_labels:
 		if scaled_fonts.get(l) != scale_multiplier:
 			var label : Label = card_labels[l]

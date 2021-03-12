@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://src/fragment_forge/cards/NumberPropertyFont.tres" type="DynamicFont" id=1]
 [ext_resource path="res://assets/icons/value.png" type="Texture" id=2]
+[ext_resource path="res://assets/icons/mobius.png" type="Texture" id=3]
 
 [node name="ValueContainer" type="HBoxContainer"]
 margin_right = 150.0
@@ -11,42 +12,57 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="VBC2" type="VBoxContainer" parent="."]
+margin_bottom = 91.0
+mouse_filter = 2
+
+[node name="Push" type="Control" parent="VBC2"]
+margin_bottom = 91.0
+mouse_filter = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
 [node name="Push" type="Control" parent="."]
-margin_right = 127.0
+margin_left = 4.0
+margin_right = 107.0
 margin_bottom = 91.0
 mouse_filter = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="VBC" type="VBoxContainer" parent="."]
-margin_left = 131.0
+margin_left = 111.0
 margin_right = 150.0
 margin_bottom = 91.0
 mouse_filter = 2
 
 [node name="Push" type="Control" parent="VBC"]
-margin_right = 19.0
+margin_right = 39.0
 margin_bottom = 68.0
 mouse_filter = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="ValueCC" type="CenterContainer" parent="VBC"]
+[node name="HBC" type="HBoxContainer" parent="VBC"]
 margin_top = 72.0
-margin_right = 19.0
+margin_right = 39.0
 margin_bottom = 91.0
+
+[node name="ValueCC" type="CenterContainer" parent="VBC/HBC"]
+margin_right = 18.0
+margin_bottom = 19.0
 mouse_filter = 2
 
-[node name="Icon" type="TextureRect" parent="VBC/ValueCC"]
-margin_right = 19.0
+[node name="Icon" type="TextureRect" parent="VBC/HBC/ValueCC"]
+margin_right = 18.0
 margin_bottom = 19.0
-rect_min_size = Vector2( 19, 19 )
+rect_min_size = Vector2( 18, 19 )
 mouse_filter = 2
 texture = ExtResource( 2 )
 expand = true
-stretch_mode = 1
+stretch_mode = 5
 
-[node name="Value" type="Label" parent="VBC/ValueCC"]
+[node name="Value" type="Label" parent="VBC/HBC/ValueCC"]
 margin_right = 18.0
 margin_bottom = 19.0
 rect_min_size = Vector2( 18, 19 )
@@ -54,3 +70,18 @@ custom_fonts/font = ExtResource( 1 )
 text = "0"
 align = 1
 valign = 1
+
+[node name="AffinityCC" type="CenterContainer" parent="VBC/HBC"]
+margin_left = 22.0
+margin_right = 39.0
+margin_bottom = 19.0
+
+[node name="Affinity" type="TextureRect" parent="VBC/HBC/AffinityCC"]
+margin_top = 1.0
+margin_right = 17.0
+margin_bottom = 18.0
+rect_min_size = Vector2( 17, 17 )
+mouse_filter = 2
+texture = ExtResource( 3 )
+expand = true
+stretch_mode = 5

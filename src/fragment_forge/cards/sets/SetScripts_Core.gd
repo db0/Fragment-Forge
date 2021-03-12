@@ -74,7 +74,7 @@ func get_scripts(card_name: String) -> Dictionary:
 				"filter_count": 0,
 			},
 		},
-		"Post Some Progress": {
+		"Massive Compression": {
 			"manual": {
 				"hand": [
 					{
