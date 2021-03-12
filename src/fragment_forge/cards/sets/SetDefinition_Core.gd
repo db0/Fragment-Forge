@@ -17,6 +17,7 @@ const CARDS := {
 		"cred_req": 0,
 		"motivation_req": 0,
 		"_illustration": "Db0",
+		"_affinity": "NEUTRAL",
 	},
 	"Fractal Tiling": {
 		"Type": CardConfig.CardTypes.SHADER,
@@ -30,6 +31,7 @@ const CARDS := {
 		"motivation_req": 0,
 		"_abilities_power": -2,
 		"_illustration": "Inigo Quilez",
+		"_affinity": "NEUTRAL",
 	},
 	"Light": {
 		"Type": CardConfig.CardTypes.SHADER,
@@ -42,6 +44,7 @@ const CARDS := {
 		"cred_req": 0,
 		"motivation_req": 0,
 		"_illustration": "Danilo Guanabara",
+		"_affinity": "NEUTRAL",
 	},
 	"Twister": {
 		"Type": CardConfig.CardTypes.SHADER,
@@ -54,6 +57,7 @@ const CARDS := {
 		"cred_req": 0,
 		"motivation_req": 0,
 		"_illustration": "Inigo Quilez",
+		"_affinity": "NEUTRAL",
 	},
 	"Ether": {
 		"Type": CardConfig.CardTypes.SHADER,
@@ -145,6 +149,7 @@ const CARDS := {
 		"cred_req": 0,
 		"motivation_req": 0,
 		"_illustration": "bradjamesgrant",
+		"_affinity": "NEUTRAL",
 	},
 	"Pentagonal Tesselations": {
 		"Type": CardConfig.CardTypes.SHADER,
@@ -157,6 +162,7 @@ const CARDS := {
 		"cred_req": 0,
 		"motivation_req": 0,
 		"_illustration": "Matthew Arcus",
+		"_affinity": "NEUTRAL",
 	},
 	"Sierpinski": {
 		"Type": CardConfig.CardTypes.SHADER,
@@ -274,6 +280,7 @@ const CARDS := {
 		"cred_req": 0,
 		"motivation_req": 0,
 		"_illustration": "nmz",
+		"_affinity": "NEUTRAL",
 	},
 	"Strings": {
 		"Type": CardConfig.CardTypes.SHADER,
@@ -286,6 +293,7 @@ const CARDS := {
 		"cred_req": 0,
 		"motivation_req": 0,
 		"_illustration": "Inigo Quilez",
+		"_affinity": "NEUTRAL",
 	},
 	"Voronoi Column Tracing": {
 		"Type": CardConfig.CardTypes.SHADER,
@@ -370,6 +378,7 @@ const CARDS := {
 		"cred_req": 0,
 		"motivation_req": 0,
 		"_illustration": "Alexander Alekseev",
+		"_affinity": "NEUTRAL",
 	},
 	"Flux Core": {
 		"Type": CardConfig.CardTypes.SHADER,
@@ -438,6 +447,7 @@ const CARDS := {
 		"cred_req": 0,
 		"motivation_req": 0,
 		"_illustration": "Artbreeder",
+		"_affinity": "NEUTRAL",
 	},
 	"Zhee": {
 		"Type": CardConfig.CardTypes.RESOURCE,
@@ -450,6 +460,7 @@ const CARDS := {
 		"cred_req": 1,
 		"motivation_req": 0,
 		"_illustration": "Artbreeder",
+		"_affinity": "NEUTRAL",
 	},
 	"Hardcode": {
 		"Type": CardConfig.CardTypes.RESOURCE,
@@ -491,6 +502,7 @@ const CARDS := {
 		"cred_req": 0,
 		"motivation_req": 5,
 		"_illustration": "Artbreeder",
+		"_affinity": "NEUTRAL",
 	},
 	"Git": {
 		"Type": CardConfig.CardTypes.RESOURCE,
@@ -503,6 +515,7 @@ const CARDS := {
 		"skill_req": 0,
 		"cred_req": 0,
 		"motivation_req": 0,
+		"_affinity": "NEUTRAL",
 	},
 	"Discord Mod": {
 		"Type": CardConfig.CardTypes.RESOURCE,
@@ -516,6 +529,7 @@ const CARDS := {
 		"skill_req": 0,
 		"cred_req": 0,
 		"motivation_req": 4,
+		"_affinity": "NEUTRAL",
 	},
 	"Private Forum Mod": {
 		"Type": CardConfig.CardTypes.RESOURCE,
@@ -540,6 +554,7 @@ const CARDS := {
 		"cred_req": 0,
 		"motivation_req": 0,
 		"_illustration": "Artbreeder",
+		"_affinity": "NEUTRAL",
 	},
 	"Search Engine Expertise": {
 		"Type": CardConfig.CardTypes.RESOURCE,
@@ -579,6 +594,7 @@ const CARDS := {
 		"skill_req": 0,
 		"cred_req": 0,
 		"motivation_req": 2,
+		"_affinity": "NEUTRAL",
 	},
 	"Blog": {
 		"Type": CardConfig.CardTypes.RESOURCE,
@@ -684,6 +700,7 @@ const CARDS := {
 		"skill_req": 0,
 		"cred_req": 0,
 		"motivation_req": 0,
+		"_affinity": "NEUTRAL",
 	},
 	"Google-Fu!": {
 		"Type": CardConfig.CardTypes.ACTION,
@@ -719,6 +736,7 @@ const CARDS := {
 		"skill_req": 1,
 		"cred_req": 0,
 		"motivation_req": 0,
+		"_affinity": "NEUTRAL",
 	},
 	"Social Networking": {
 		"Type": CardConfig.CardTypes.ACTION,
@@ -771,6 +789,7 @@ const CARDS := {
 		"skill_req": 0,
 		"cred_req": 0,
 		"motivation_req": 6,
+		"_affinity": "NEUTRAL",
 	},
 	"Meditation": {
 		"Type": CardConfig.CardTypes.ACTION,
@@ -782,6 +801,7 @@ const CARDS := {
 		"skill_req": 0,
 		"cred_req": 0,
 		"motivation_req": 0,
+		"_affinity": "NEUTRAL",
 	},
 	"Pivot": {
 		"Type": CardConfig.CardTypes.ACTION,
@@ -794,6 +814,7 @@ const CARDS := {
 		"skill_req": 0,
 		"cred_req": 0,
 		"motivation_req": 0,
+		"_affinity": "NEUTRAL",
 	},
 	"Crowdsourcing": {
 		"Type": CardConfig.CardTypes.ACTION,
@@ -820,6 +841,7 @@ const CARDS := {
 		"skill_req": 0,
 		"cred_req": 0,
 		"motivation_req": 5,
+		"_affinity": "NEUTRAL",
 	},
 	"All-Nighter": {
 		"Type": CardConfig.CardTypes.ACTION,

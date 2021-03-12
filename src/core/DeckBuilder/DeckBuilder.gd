@@ -86,6 +86,9 @@ func _ready() -> void:
 	_deck_name.text = generate_random_deck_name()
 	# warning-ignore:return_value_discarded
 	_filter_line.connect("filters_changed", self, "_apply_filters")
+	prepate_filter_buttons()
+
+func prepate_filter_buttons() -> void:
 	var total_unique_values := 0
 	for button_property in filter_button_properties:
 		var unique_values := CFUtils.get_unique_values(button_property)
@@ -100,7 +103,7 @@ func _ready() -> void:
 				filter_button.setup(button_property, value)
 				filter_button.connect("pressed", self, "_on_filter_button_pressed")
 				_filter_buttons.add_child(filter_button)
-
+	
 
 func _process(_delta: float) -> void:
 	# We keep updating the card count label with the amount of cards in the deck

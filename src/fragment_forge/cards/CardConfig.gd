@@ -19,6 +19,10 @@ const CardTypes := {
 	"RESOURCE": "Resource"
 }
 const Affinities := {
+	"NEUTRAL": {
+		"name":"Neutral",
+		"icon": preload("res://assets/icons/NEUTRAL.png")
+	},
 	"ART": {
 		"name":"Fractal Minds",
 		"icon": preload("res://assets/icons/ART.png")

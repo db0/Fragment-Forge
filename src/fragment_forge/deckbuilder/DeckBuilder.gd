@@ -1,5 +1,10 @@
 extends DeckBuilder
 
+# The path to the DBFilterButton scene.
+const _FILTER_ICON_BUTTON_SCENE_FILE = CFConst.PATH_CUSTOM\
+		+ "DeckBuilder/DBFilterIconButton.tscn"
+const _FILTER_ICON_BUTTON_SCENE = preload(_FILTER_ICON_BUTTON_SCENE_FILE)
+
 onready var back_button = $VBC/HBC/MC/CurrentDeck/Buttons/Back
 
 # Extend this class and call this function, when your game has a value field
@@ -8,8 +13,30 @@ onready var back_button = $VBC/HBC/MC/CurrentDeck/Buttons/Back
 func generate_value(property: String, card_properties: Dictionary):
 	if property == 'Value':
 		return(FFCard.generate_shader_value(
-			card_properties.Time, 
-			card_properties.skill_req, 
+			card_properties.Time,
+			card_properties.skill_req,
 			card_properties.get("_abilities_power",0)))
 	else:
 		return('')
+
+func prepate_filter_buttons() -> void:
+	var total_unique_values := 0
+	for button_property in filter_button_properties:
+		var unique_values := CFUtils.get_unique_values(button_property)
+		total_unique_values += unique_values.size()
+		# We want to avoid exceeding 8 buttons
+		if total_unique_values <= 8:
+			for value in CFUtils.get_unique_values(button_property):
+				# Excluded types, don't have a filter button
+				if value in CardConfig.TYPES_TO_HIDE_IN_DECKBUILDER:
+					continue
+				var filter_button
+				if button_property != "_affinity":
+					filter_button = _FILTER_BUTTON_SCENE.instance()
+					filter_button.setup(button_property, value)
+					filter_button.connect("pressed", self, "_on_filter_button_pressed")
+				else:
+					filter_button = _FILTER_ICON_BUTTON_SCENE.instance()
+					filter_button.setup(button_property, value)
+					filter_button.connect("filter_toggled", self, "_on_filter_button_pressed")
+				_filter_buttons.add_child(filter_button)

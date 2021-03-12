@@ -13,6 +13,7 @@ font_data = ExtResource( 4 )
 
 [node name="DeckBuilder" instance=ExtResource( 1 )]
 script = ExtResource( 3 )
+filter_button_properties = [ "Type", "_affinity" ]
 generation_keys = [ -1 ]
 info_panel_scene = ExtResource( 2 )
 

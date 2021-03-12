@@ -90,7 +90,7 @@ func highlight_modified_properties() -> void:
 func setup() -> void:
 	.setup()
 	var affinity = properties.get("_affinity")
-	if not affinity:
+	if affinity == "NEUTRAL":
 		card_front.affinity_icon.visible = false
 	else:
 		var icon_texture = ImageTexture.new();

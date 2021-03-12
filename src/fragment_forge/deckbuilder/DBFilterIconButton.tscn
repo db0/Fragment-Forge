@@ -1,0 +1,54 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://src/fragment_forge/deckbuilder/DBFilterIconButton.gd" type="Script" id=1]
+[ext_resource path="res://fonts/Xolonium-Regular.ttf" type="DynamicFontData" id=2]
+
+[sub_resource type="DynamicFont" id=1]
+size = 14
+use_filter = true
+font_data = ExtResource( 2 )
+
+[node name="DBFilterIconButton" type="CenterContainer"]
+margin_right = 26.0
+margin_bottom = 26.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="."]
+margin_right = 26.0
+margin_bottom = 26.0
+rect_min_size = Vector2( 26, 26 )
+rect_clip_content = true
+toggle_mode = true
+pressed = true
+
+[node name="Icon" type="TextureRect" parent="."]
+margin_left = 3.0
+margin_top = 3.0
+margin_right = 23.0
+margin_bottom = 23.0
+rect_min_size = Vector2( 20, 20 )
+mouse_filter = 2
+expand = true
+stretch_mode = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HoverDescription" type="PopupPanel" parent="."]
+margin_left = 9.0
+margin_right = 17.0
+margin_bottom = 26.0
+
+[node name="Label" type="Label" parent="HoverDescription"]
+margin_left = 4.0
+margin_top = 4.0
+margin_right = 4.0
+margin_bottom = 22.0
+custom_fonts/font = SubResource( 1 )
+
+[connection signal="mouse_entered" from="Button" to="." method="_on_Button_mouse_entered"]
+[connection signal="mouse_exited" from="Button" to="." method="_on_Button_mouse_exited"]
+[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
