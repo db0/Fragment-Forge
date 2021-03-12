@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://src/core/DeckBuilder/DBListCardObject.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/fragment_forge/deckbuilder/DBListCardObject.gd" type="Script" id=2]
+[ext_resource path="res://src/core/DeckBuilder/DBCardObjectFont.tres" type="DynamicFont" id=3]
+
+[node name="DBListCardObject" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+
+[node name="CardLabel" parent="." index="1"]
+margin_right = 456.0
+
+[node name="Influence" type="Label" parent="." index="2"]
+margin_left = 460.0
+margin_top = 1.0
+margin_right = 490.0
+margin_bottom = 19.0
+rect_min_size = Vector2( 30, 0 )
+custom_fonts/font = ExtResource( 3 )
+
+[node name="Type" parent="." index="3"]
+margin_left = 494.0
+margin_right = 594.0
+
+[node name="Affinity" type="TextureRect" parent="." index="4"]
+margin_left = 598.0
+margin_right = 628.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 30, 18 )
+expand = true
+stretch_mode = 5

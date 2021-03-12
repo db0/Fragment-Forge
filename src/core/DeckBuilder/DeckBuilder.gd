@@ -3,6 +3,24 @@
 class_name DeckBuilder
 extends PanelContainer
 
+# The path to the ListCardObject scene. This has to be defined explicitly
+# here, in order to use it in its preload, otherwise the parser gives an error
+const _LIST_CARD_OBJECT_SCENE_FILE = CFConst.PATH_CORE\
+		+ "DeckBuilder/DBListCardObject.tscn"
+const _LIST_CARD_OBJECT_SCENE = preload(_LIST_CARD_OBJECT_SCENE_FILE)
+# The path to the DeckCardObject scene.
+const _DECK_CARD_OBJECT_SCENE_FILE = CFConst.PATH_CORE\
+		+ "DeckBuilder/DBDeckCardObject.tscn"
+const _DECK_CARD_OBJECT_SCENE = preload(_DECK_CARD_OBJECT_SCENE_FILE)
+# The path to the CategoryScene scene.
+const _DECK_CATEGORY_SCENE_FILE = CFConst.PATH_CORE\
+		+ "DeckBuilder/CategoryContainer.tscn"
+const _DECK_CATEGORY_SCENE = preload(_DECK_CATEGORY_SCENE_FILE)
+# The path to the DBFilterButton scene.
+const _FILTER_BUTTON_SCENE_FILE = CFConst.PATH_CORE\
+		+ "DeckBuilder/DBFilterButton.tscn"
+const _FILTER_BUTTON_SCENE = preload(_FILTER_BUTTON_SCENE_FILE)
+
 # Contains a link to the random deck name generator reference
 export(Script) var deck_name_randomizer
 # Controls how often an random adverb will
@@ -46,32 +64,18 @@ export var filter_button_properties := ["Type"]
 # Make sure that the values specified will never match normal values for that
 # property.
 export var generation_keys := []
+# The custom scene which displays the card when its name is hovered.
 export(PackedScene) var info_panel_scene
-
-
-# The path to the ListCardObject scene. This has to be defined explicitly
-# here, in order to use it in its preload, otherwise the parser gives an error
-const _LIST_CARD_OBJECT_SCENE_FILE = CFConst.PATH_CORE\
-		+ "DeckBuilder/DBListCardObject.tscn"
-const _LIST_CARD_OBJECT_SCENE = preload(_LIST_CARD_OBJECT_SCENE_FILE)
-# The path to the DeckCardObject scene.
-const _DECK_CARD_OBJECT_SCENE_FILE = CFConst.PATH_CORE\
-		+ "DeckBuilder/DBDeckCardObject.tscn"
-const _DECK_CARD_OBJECT_SCENE = preload(_DECK_CARD_OBJECT_SCENE_FILE)
-# The path to the CategoryScene scene.
-const _DECK_CATEGORY_SCENE_FILE = CFConst.PATH_CORE\
-		+ "DeckBuilder/CategoryContainer.tscn"
-const _DECK_CATEGORY_SCENE = preload(_DECK_CATEGORY_SCENE_FILE)
-# The path to the DBFilterButton scene.
-const _FILTER_BUTTON_SCENE_FILE = CFConst.PATH_CORE\
-		+ "DeckBuilder/DBFilterButton.tscn"
-const _FILTER_BUTTON_SCENE = preload(_FILTER_BUTTON_SCENE_FILE)
+# We use this variable, so that the scene can be overriden with a custom one
+export var deck_card_object_scene = _DECK_CARD_OBJECT_SCENE
+# We use this variable, so that the scene can be overriden with a custom one
+export var list_card_object_scene = _LIST_CARD_OBJECT_SCENE
 
 
 onready var _available_cards := $VBC/HBC/MC2/AvailableCards/ScrollContainer/CardList
 onready var _deck_cards := $VBC/HBC/MC/CurrentDeck/CardsInDeck
 onready var _deck_name := $VBC/HBC/MC/CurrentDeck/DeckNameEdit
-onready var _deck_min_label := $VBC/HBC/MC/CurrentDeck/DeckDetails/CardCount
+onready var _deck_min_label := $VBC/HBC/MC/CurrentDeck/DeckDetails/Summaries/CardCount
 onready var _load_button := $VBC/HBC/MC/CurrentDeck/Buttons/Load
 onready var _filter_line := $VBC/HBC/MC2/AvailableCards/HBC/FilterLine
 onready var _filter_buttons := $VBC/HBC/MC2/AvailableCards/CC/ButtonFilters
@@ -88,6 +92,8 @@ func _ready() -> void:
 	_filter_line.connect("filters_changed", self, "_apply_filters")
 	prepate_filter_buttons()
 
+
+## Prepares the filter buttons based on the unique values in cards.
 func prepate_filter_buttons() -> void:
 	var total_unique_values := 0
 	for button_property in filter_button_properties:
@@ -103,7 +109,7 @@ func prepate_filter_buttons() -> void:
 				filter_button.setup(button_property, value)
 				filter_button.connect("pressed", self, "_on_filter_button_pressed")
 				_filter_buttons.add_child(filter_button)
-	
+
 
 func _process(_delta: float) -> void:
 	# We keep updating the card count label with the amount of cards in the deck
@@ -119,6 +125,13 @@ func _process(_delta: float) -> void:
 		_deck_min_label.text += ' (min ' + str(deck_minimum) + ')'
 	elif deck_maximum:
 		_deck_min_label.text += ' (max ' + str(deck_maximum) + ')'
+	if (deck_minimum and card_count < deck_minimum)\
+			or (deck_maximum and card_count > deck_maximum):
+		_deck_min_label.modulate = Color(1,0,0)
+	else:
+		_deck_min_label.modulate = Color(1,1,1)
+		
+
 
 # Populates the list of available cards, with all defined cards in the game
 func populate_available_cards() -> void:
@@ -130,7 +143,7 @@ func populate_available_cards() -> void:
 				or cfc.card_definitions[card_def].get(CardConfig.SCENE_PROPERTY)\
 				in CardConfig.TYPES_TO_HIDE_IN_DECKBUILDER:
 			continue
-		var list_card_object = _LIST_CARD_OBJECT_SCENE.instance()
+		var list_card_object = list_card_object_scene.instance()
 		list_card_object.deckbuilder = self
 		_available_cards.add_child(list_card_object)
 		list_card_object.max_allowed = max_quantity
@@ -153,10 +166,11 @@ func add_new_card(card_name, category, value) -> DBDeckCardObject:
 	else:
 		category_container = _deck_cards.get_node(category)
 	var category_cards_node = category_container.get_node("CategoryCards")
-	var deck_card_object = _DECK_CARD_OBJECT_SCENE.instance()
+	var deck_card_object = deck_card_object_scene.instance()
 	category_cards_node.add_child(deck_card_object)
 	deck_card_object.setup(card_name, value)
 	return(deck_card_object)
+
 
 # Triggered when a deck has been chosen from the Load menu
 # Populates the Current Deck Details with the contents of the chosen deck
@@ -214,6 +228,7 @@ func _on_Delete_pressed() -> void:
 			_set_notice("Permission Denied", Color(1,0,0))
 
 
+# Generates a random deck name using on the deck_name_randomizer
 func generate_random_deck_name() -> String:
 	cfc.game_rng.randomize()
 	var name_randomizer = deck_name_randomizer.new()
@@ -251,12 +266,14 @@ func generate_value(property: String, card_properties: Dictionary):
 	return('Autogenerated')
 
 
+# Clears deck list
 func _on_Reset_pressed() -> void:
 	for card_object in _available_cards.get_children():
 		card_object.quantity = 0
 	_set_notice("Deck list reset")
 
 
+# Ranzomizes deck name
 func _on_RandomizeName_pressed() -> void:
 	_deck_name.text = generate_random_deck_name()
 
@@ -290,15 +307,19 @@ func _apply_filters(active_filters: Array) -> void:
 	else:
 		_card_count.text = "Filtered: " + str(counter)
 
+
 # Simply calls _apply_filters()
 func _on_filter_button_pressed() -> void:
 	_apply_filters(_filter_line.get_active_filters())
 
 
+# Clears all card filters
 func _on_ClearFilters_pressed() -> void:
 	_filter_line.text = ''
 	_apply_filters(_filter_line.get_active_filters())
 
+
+# Shows a fading text to the user notifying them of recent action results.
 func _set_notice(text: String, colour := Color(0,1,0)) -> void:
 	var tween: Tween = _notice.get_node("Tween")
 	_notice.text = text

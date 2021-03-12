@@ -252,7 +252,8 @@ static func get_unique_values(property: String) -> Array:
 	if property in CardConfig.PROPERTIES_STRINGS\
 			or property.begins_with('_'):
 		for card_def in cfc.card_definitions:
-			var value = cfc.card_definitions[card_def].get(property)
-			if value and not value in unique_property_values:
-				unique_property_values.append(value)
+			if not cfc.card_definitions[card_def][property]\
+					in unique_property_values:
+				unique_property_values.append(
+						cfc.card_definitions[card_def][property])
 	return(unique_property_values)

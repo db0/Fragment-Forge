@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://src/core/DeckBuilder/DBDeckCardObject.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/core/DeckBuilder/DBCardObjectFont.tres" type="DynamicFont" id=2]
+[ext_resource path="res://src/fragment_forge/deckbuilder/DBDeckCardObject.gd" type="Script" id=3]
+
+[node name="DBDeckCardObject" instance=ExtResource( 1 )]
+script = ExtResource( 3 )
+
+[node name="CardLabel" parent="." index="3"]
+margin_right = 161.0
+size_flags_horizontal = 1
+
+[node name="Influence" type="Label" parent="." index="4"]
+margin_left = 165.0
+margin_top = 3.0
+margin_right = 623.0
+margin_bottom = 21.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 2 )
