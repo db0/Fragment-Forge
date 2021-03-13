@@ -57,7 +57,11 @@ func _on_Start_pressed() -> void:
 			cards_amount += ffc.current_deck[card]
 		# If the deck didn't have the minimum, we don't consider it a valid game
 		if cards_amount >= 30:
-			stats = GameStats.new(ffc.current_deck)
+			var stats_deck = {
+				"persona": ffc.current_persona.persona_name,
+				"cards": ffc.current_deck,
+			}
+			stats = GameStats.new(stats_deck)
 	else:
 	# warning-ignore:return_value_discarded
 		counters.mod_counter("skill",1)
