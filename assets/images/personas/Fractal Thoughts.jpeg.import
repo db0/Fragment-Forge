@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Champion.jpeg-9630ce7280ea966581f8fc369b8219d7.stex"
+path="res://.import/Fractal Thoughts.jpeg-1a0731fcb215e1327f8affd423b6499b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/personas/Champion.jpeg"
-dest_files=[ "res://.import/Champion.jpeg-9630ce7280ea966581f8fc369b8219d7.stex" ]
+source_file="res://assets/images/personas/Fractal Thoughts.jpeg"
+dest_files=[ "res://.import/Fractal Thoughts.jpeg-1a0731fcb215e1327f8affd423b6499b.stex" ]
 
 [params]
 

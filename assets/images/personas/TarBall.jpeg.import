@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Zip.jpeg-fb0c29f119526c01fdfc56ac8db308d1.stex"
+path="res://.import/TarBall.jpeg-258d8df6a711dad73875466f648582d6.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/personas/Zip.jpeg"
-dest_files=[ "res://.import/Zip.jpeg-fb0c29f119526c01fdfc56ac8db308d1.stex" ]
+source_file="res://assets/images/personas/TarBall.jpeg"
+dest_files=[ "res://.import/TarBall.jpeg-258d8df6a711dad73875466f648582d6.stex" ]
 
 [params]
 

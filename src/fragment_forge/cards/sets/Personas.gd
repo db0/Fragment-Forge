@@ -4,7 +4,7 @@ extends Reference
 
 const PERSONAS := {
 ### BEGIN Shaders ###
-	"Fractal Mind": {
+	"Fractal Thoughts": {
 		"Ability": "Reduce the Time cost of the third different shader you install by 3",
 		"Affinity": "ART",
 		"Inspiration": 25,
@@ -19,12 +19,12 @@ const PERSONAS := {
 		"Affinity": "ZIP",
 		"Inspiration": 25,
 	},
-	"Zip": {
+	"TarBall": {
 		"Ability": "You start the game with 1 Cred",
 		"Affinity": "ZIP",
 		"Inspiration": 25,
 	},
-	"Champion": {
+	"Loophole": {
 		"Ability": "The value requirement for 1st place is reduced by 3",
 		"Affinity": "WIN",
 		"Inspiration": 25,

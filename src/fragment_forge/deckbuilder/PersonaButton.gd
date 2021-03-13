@@ -8,7 +8,7 @@ var persona: Persona
 func setup(_name) -> void:
 	persona = Persona.new(_name)
 	$VBC/PersonaArt.texture = persona.persona_art
-	$VBC/HBC/Affinity.texture = persona.affinity_icon
+	$Affinity.texture = persona.affinity_icon
 	$VBC/HBC/PersonaName.text = persona.persona_name
 	$VBC/PersonaAbilities.text = persona.ability
 

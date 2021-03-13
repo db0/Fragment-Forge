@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Fractal Mind.jpeg-9c3e787aa089259f0fc862205260de9b.stex"
+path="res://.import/Loophole.jpeg-de418f70309af867d77b90ea3b928b81.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/personas/Fractal Mind.jpeg"
-dest_files=[ "res://.import/Fractal Mind.jpeg-9c3e787aa089259f0fc862205260de9b.stex" ]
+source_file="res://assets/images/personas/Loophole.jpeg"
+dest_files=[ "res://.import/Loophole.jpeg-de418f70309af867d77b90ea3b928b81.stex" ]
 
 [params]
 

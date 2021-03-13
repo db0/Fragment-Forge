@@ -27,13 +27,25 @@ func setup() -> void:
 
 
 func _on_PersonaSelect_pressed() -> void:
+	var grid := $PersonaSelection/ScrollContainer/GridContainer
 	if not persona_selections_populated:
 		for p in PersonaDefinitions.PERSONAS.keys():
 			var pb = persona_button.instance()
 			pb.setup(p)
-			$PersonaSelection/GridContainer.add_child(pb)
+			grid.add_child(pb)
 			pb.connect("persona_selected", self, "persona_selected")
 		persona_selections_populated = true
+	$PersonaSelection.popup_centered_minsize()
+	if grid.rect_size.x < 1500:
+		$PersonaSelection/ScrollContainer.rect_min_size.x = grid.rect_size.x
+	else:
+		$PersonaSelection/ScrollContainer.rect_min_size.x = 1500
+	if grid.rect_size.y < 700:
+		$PersonaSelection/ScrollContainer.rect_min_size.y = grid.rect_size.y
+	else:
+		$PersonaSelection/ScrollContainer.rect_min_size.y = 750
+	# Have to do this twice because the grid size is not set until
+	# it's displayed once first
 	$PersonaSelection.popup_centered_minsize()
 
 func persona_selected(p: Persona) -> void:

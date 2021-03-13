@@ -1,5 +1,6 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
+[ext_resource path="res://src/fragment_forge/PersonaAbilties.tres" type="DynamicFont" id=1]
 [ext_resource path="res://src/fragment_forge/DetailsFont.tres" type="DynamicFont" id=2]
 [ext_resource path="res://assets/images/personas/undecided.png" type="Texture" id=3]
 [ext_resource path="res://src/core/DeckBuilder/CBCardListHeadersFont.tres" type="DynamicFont" id=4]
@@ -56,21 +57,21 @@ text = "Please select Persona!"
 [node name="PersonaAbility" type="Label" parent="VBC"]
 margin_top = 53.0
 margin_right = 191.0
-margin_bottom = 73.0
-custom_fonts/font = ExtResource( 2 )
+margin_bottom = 66.0
+custom_fonts/font = ExtResource( 1 )
 autowrap = true
 
 [node name="CardCount" type="Label" parent="VBC"]
-margin_top = 77.0
+margin_top = 70.0
 margin_right = 191.0
-margin_bottom = 96.0
+margin_bottom = 89.0
 custom_fonts/font = ExtResource( 4 )
 text = "0 Cards (min 52)"
 
 [node name="Inspiration" type="Label" parent="VBC"]
-margin_top = 100.0
+margin_top = 93.0
 margin_right = 191.0
-margin_bottom = 119.0
+margin_bottom = 112.0
 custom_fonts/font = ExtResource( 4 )
 text = "Inpiration: 0/0"
 
@@ -79,12 +80,12 @@ margin_left = 299.0
 margin_right = 487.0
 margin_bottom = 188.0
 
-[node name="GridContainer" type="GridContainer" parent="PersonaSelection"]
-margin_left = 4.0
-margin_top = 4.0
-margin_right = 184.0
-margin_bottom = 184.0
-columns = 5
+[node name="ScrollContainer" type="ScrollContainer" parent="PersonaSelection"]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="GridContainer" type="GridContainer" parent="PersonaSelection/ScrollContainer"]
+columns = 6
 __meta__ = {
 "_edit_use_anchors_": false
 }

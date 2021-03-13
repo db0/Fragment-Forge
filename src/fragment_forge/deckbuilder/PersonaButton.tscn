@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://src/fragment_forge/PersonaAbilties.tres" type="DynamicFont" id=1]
 [ext_resource path="res://src/fragment_forge/DetailsFont.tres" type="DynamicFont" id=2]
+[ext_resource path="res://assets/icons/WIN.png" type="Texture" id=3]
 [ext_resource path="res://src/fragment_forge/deckbuilder/PersonaButton.gd" type="Script" id=4]
 
 [node name="CenterContainer" type="CenterContainer"]
@@ -22,6 +23,17 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Affinity" type="TextureRect" parent="."]
+modulate = Color( 1, 1, 1, 0.278431 )
+margin_right = 200.0
+margin_bottom = 200.0
+rect_min_size = Vector2( 200, 200 )
+mouse_filter = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 3 )
+expand = true
+
 [node name="VBC" type="VBoxContainer" parent="."]
 margin_right = 200.0
 margin_bottom = 200.0
@@ -33,21 +45,15 @@ margin_right = 200.0
 margin_bottom = 20.0
 mouse_filter = 2
 
-[node name="Affinity" type="TextureRect" parent="VBC/HBC"]
-margin_right = 40.0
-margin_bottom = 20.0
-rect_min_size = Vector2( 40, 20 )
-mouse_filter = 2
-expand = true
-stretch_mode = 6
-
 [node name="PersonaName" type="Label" parent="VBC/HBC"]
-margin_left = 44.0
-margin_right = 164.0
+margin_right = 200.0
 margin_bottom = 20.0
+size_flags_horizontal = 3
+size_flags_vertical = 2
 custom_fonts/font = ExtResource( 2 )
 text = "Persona Name"
 align = 1
+autowrap = true
 
 [node name="PersonaArt" type="TextureRect" parent="VBC"]
 margin_top = 24.0
