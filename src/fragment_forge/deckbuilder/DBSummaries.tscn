@@ -1,0 +1,92 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://src/fragment_forge/DetailsFont.tres" type="DynamicFont" id=2]
+[ext_resource path="res://assets/images/personas/undecided.png" type="Texture" id=3]
+[ext_resource path="res://src/core/DeckBuilder/CBCardListHeadersFont.tres" type="DynamicFont" id=4]
+[ext_resource path="res://src/fragment_forge/deckbuilder/DBSummaries.gd" type="Script" id=5]
+[ext_resource path="res://assets/icons/NEUTRAL.png" type="Texture" id=6]
+
+[node name="Summaries" type="HBoxContainer"]
+margin_right = 237.0
+margin_bottom = 119.0
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PersonaSelect" type="Button" parent="."]
+margin_right = 120.0
+margin_bottom = 120.0
+rect_min_size = Vector2( 120, 120 )
+icon = ExtResource( 3 )
+expand_icon = true
+
+[node name="VBC" type="VBoxContainer" parent="."]
+margin_left = 124.0
+margin_right = 315.0
+margin_bottom = 120.0
+size_flags_horizontal = 3
+
+[node name="HBC" type="HBoxContainer" parent="VBC"]
+margin_right = 191.0
+margin_bottom = 25.0
+
+[node name="AffinityIcon" type="TextureRect" parent="VBC/HBC"]
+margin_right = 25.0
+margin_bottom = 25.0
+rect_min_size = Vector2( 25, 25 )
+texture = ExtResource( 6 )
+expand = true
+stretch_mode = 6
+
+[node name="AffinityName" type="Label" parent="VBC/HBC"]
+margin_left = 29.0
+margin_top = 2.0
+margin_right = 29.0
+margin_bottom = 22.0
+custom_fonts/font = ExtResource( 2 )
+
+[node name="PersonaName" type="Label" parent="VBC"]
+margin_top = 29.0
+margin_right = 191.0
+margin_bottom = 49.0
+custom_fonts/font = ExtResource( 2 )
+text = "Please select Persona!"
+
+[node name="PersonaAbility" type="Label" parent="VBC"]
+margin_top = 53.0
+margin_right = 191.0
+margin_bottom = 73.0
+custom_fonts/font = ExtResource( 2 )
+autowrap = true
+
+[node name="CardCount" type="Label" parent="VBC"]
+margin_top = 77.0
+margin_right = 191.0
+margin_bottom = 96.0
+custom_fonts/font = ExtResource( 4 )
+text = "0 Cards (min 52)"
+
+[node name="Inspiration" type="Label" parent="VBC"]
+margin_top = 100.0
+margin_right = 191.0
+margin_bottom = 119.0
+custom_fonts/font = ExtResource( 4 )
+text = "Inpiration: 0/0"
+
+[node name="PersonaSelection" type="PopupPanel" parent="."]
+margin_left = 299.0
+margin_right = 487.0
+margin_bottom = 188.0
+
+[node name="GridContainer" type="GridContainer" parent="PersonaSelection"]
+margin_left = 4.0
+margin_top = 4.0
+margin_right = 184.0
+margin_bottom = 184.0
+columns = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="PersonaSelect" to="." method="_on_PersonaSelect_pressed"]

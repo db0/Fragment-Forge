@@ -1,0 +1,76 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://src/fragment_forge/DetailsFont.tres" type="DynamicFont" id=2]
+[ext_resource path="res://fonts/Comfortaa-Bold.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://src/fragment_forge/deckbuilder/PersonaButton.gd" type="Script" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 11
+use_filter = true
+font_data = ExtResource( 3 )
+
+[node name="CenterContainer" type="CenterContainer"]
+margin_right = 100.0
+margin_bottom = 100.0
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PersonaButton" type="Button" parent="."]
+margin_right = 200.0
+margin_bottom = 200.0
+rect_min_size = Vector2( 200, 200 )
+custom_fonts/font = ExtResource( 2 )
+expand_icon = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBC" type="VBoxContainer" parent="."]
+margin_right = 200.0
+margin_bottom = 200.0
+rect_min_size = Vector2( 200, 200 )
+mouse_filter = 2
+
+[node name="HBC" type="HBoxContainer" parent="VBC"]
+margin_right = 200.0
+margin_bottom = 20.0
+mouse_filter = 2
+
+[node name="Affinity" type="TextureRect" parent="VBC/HBC"]
+margin_right = 40.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 40, 20 )
+mouse_filter = 2
+expand = true
+stretch_mode = 6
+
+[node name="PersonaName" type="Label" parent="VBC/HBC"]
+margin_left = 44.0
+margin_right = 164.0
+margin_bottom = 20.0
+custom_fonts/font = ExtResource( 2 )
+text = "Persona Name"
+align = 1
+
+[node name="PersonaArt" type="TextureRect" parent="VBC"]
+margin_top = 24.0
+margin_right = 200.0
+margin_bottom = 124.0
+rect_min_size = Vector2( 100, 100 )
+mouse_filter = 2
+expand = true
+stretch_mode = 6
+
+[node name="PersonaAbilities" type="Label" parent="VBC"]
+margin_top = 128.0
+margin_right = 200.0
+margin_bottom = 141.0
+custom_fonts/font = SubResource( 1 )
+text = "Persona Abilities"
+align = 1
+valign = 1
+autowrap = true
+
+[connection signal="pressed" from="PersonaButton" to="." method="_on_PersonaButton_pressed"]

@@ -100,7 +100,7 @@ func setup() -> void:
 	if properties.Type == CardConfig.CardTypes.SHADER:
 		# If the value is 'gen', we calculate it with a formula
 		if properties.Value == GEN :
-# warning-ignore:return_value_discarded
+			# warning-ignore:return_value_discarded
 			modify_property("Value",
 					generate_shader_value(
 					properties.Time,

@@ -54,8 +54,6 @@ __meta__ = {
 }
 
 [node name="DeckBuilder" parent="." instance=ExtResource( 5 )]
-deck_minimum = 30
-deck_maximum = 0
 
 [node name="SettingsMenu" parent="." instance=ExtResource( 4 )]
 
