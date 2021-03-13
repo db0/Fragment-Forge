@@ -174,7 +174,7 @@ func add_new_card(card_name, category, value) -> DBDeckCardObject:
 	else:
 		category_container = _deck_cards.get_node(category)
 	var category_cards_node = category_container.get_node("CategoryCards")
-	var deck_card_object : DBDeckCardObject = deck_card_object_scene.instance()
+	var deck_card_object = deck_card_object_scene.instance()
 	category_cards_node.add_child(deck_card_object)
 	deck_card_object.setup(card_name, value)
 	return(deck_card_object)

@@ -13,16 +13,57 @@ const PERSONAS := {
 		"Ability": "You start the game with +1 Motivation",
 		"Affinity": "ART",
 		"Inspiration": 25,
+		"scripts_frequency": "once_per_game",
+		"scripts": {
+			"game_start": {
+				"persona": [
+					{
+						"name": "mod_counter",
+						"counter_name": "motivation",
+						"modification": 1,
+					},
+				],
+			},
+		},
 	},
 	"Imploder": {
-		"Ability": "Once per competition: If you have less than 3 motivation, gain 1 motivation",
+		"Ability": "Once per competition after your motivation "\
+				+ "goes below 3, gain 1 motivation",
 		"Affinity": "ZIP",
 		"Inspiration": 25,
+		"scripts_frequency": "once_per_competition",
+		"scripts": {
+			"counter_modified": {
+				"persona": [
+					{
+						"name": "mod_counter",
+						"counter_name": "motivation",
+						"modification": 1,
+					},
+				],
+				"filter_count_difference": "decreased",
+				"filter_count": 3,
+				"comparison": 'lt',
+				"filter_counter_name": "motivation",
+			},
+		},
 	},
 	"TarBall": {
 		"Ability": "You start the game with 1 Cred",
 		"Affinity": "ZIP",
 		"Inspiration": 25,
+		"scripts_frequency": "once_per_game",
+		"scripts": {
+			"game_start": {
+				"persona": [
+					{
+						"name": "mod_counter",
+						"counter_name": "cred",
+						"modification": 1,
+					},
+				],
+			},
+		},
 	},
 	"Loophole": {
 		"Ability": "The value requirement for 1st place is reduced by 3",

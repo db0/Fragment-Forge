@@ -7,6 +7,8 @@ var inspiration: int
 var ability: String
 var persona_art: ImageTexture
 var affinity_icon: ImageTexture
+var scripts : Dictionary
+var scripts_frequency : String
 
 func _init(_name) -> void:
 	persona_name = _name
@@ -16,6 +18,9 @@ func _init(_name) -> void:
 	ability = persona_dict.Ability
 	persona_art = get_persona_art()
 	affinity_icon = get_affinity_icon()
+	if persona_dict.get("scripts"):
+		scripts = persona_dict.get("scripts")
+	scripts_frequency = persona_dict.scripts_frequency
 
 func get_persona_art() -> ImageTexture:
 	var persona_texture: ImageTexture = null

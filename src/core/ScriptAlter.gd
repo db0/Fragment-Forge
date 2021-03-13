@@ -23,13 +23,13 @@ func _init(
 	if not SP.filter_trigger(
 			alteration_script,
 			trigger_card,
-			owner_card,
+			owner,
 			trigger_details):
 		is_valid = false
 	if is_valid:
 		var confirm_return = CFUtils.confirm(
 				script_definition,
-				owner_card.card_name,
+				owner.canonical_name,
 				script_name)
 		if confirm_return is GDScriptFunctionState: # Still working.
 			confirm_return = yield(confirm_return, "completed")

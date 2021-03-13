@@ -30,6 +30,7 @@ func _ready() -> void:
 	$Debug.pressed = cfc._debug
 	# warning-ignore:return_value_discarded
 	start_button.connect("pressed", self, "_on_Start_pressed")
+	start_button.connect("pressed", persona, "_on_Start_pressed")
 	# warning-ignore:return_value_discarded
 	settings_button.connect("pressed", self, "_on_Settings_pressed")
 	# warning-ignore:return_value_discarded
@@ -62,6 +63,7 @@ func _on_Start_pressed() -> void:
 				"cards": ffc.current_deck,
 			}
 			stats = GameStats.new(stats_deck)
+		persona.execute_scripts(null, "game_start")
 	else:
 	# warning-ignore:return_value_discarded
 		counters.mod_counter("skill",1)

@@ -86,7 +86,7 @@ func highlight_modified_properties() -> void:
 				else:
 					label_node.modulate = Color(1,1,1)
 #				if state == CardState.VIEWPORT_FOCUS and property == 'Value':
-#					print_debug(card_name, current_property,printed_properties.get(property))
+#					print_debug(canonical_name, current_property,printed_properties.get(property))
 func setup() -> void:
 	.setup()
 	var affinity = properties.get("_affinity")
@@ -107,12 +107,12 @@ func setup() -> void:
 					properties.skill_req,
 					properties.get("_abilities_power",0)))
 #		print_debug(card_front.art.material)
-		var shader_name: String = "res://shaders/" + card_name + ".shader"
+		var shader_name: String = "res://shaders/" + canonical_name + ".shader"
 		var check_shader = File.new()
 		if check_shader.file_exists(shader_name):
 			card_front.material = ShaderMaterial.new()
 			shader_properties = ShaderProperties.new(card_front.material)
-			shader_properties.material.shader = load("res://shaders/" + card_name + ".shader")
+			shader_properties.material.shader = load("res://shaders/" + canonical_name + ".shader")
 			if state == CardState.VIEWPORT_FOCUS:
 				var source_card : Card = cfc.NMAP.main._current_focus_source
 				shader_properties.shader_time_offset = source_card.shader_properties.shader_time_offset
@@ -121,10 +121,10 @@ func setup() -> void:
 					shader_properties._set_shader_param(param, source_card.shader_properties.shader_params[param])
 			else:
 #				shader_init_thread = Thread.new()
-#				shader_init_thread.start(shader_properties, "init_shader", card_name)
-				shader_properties.init_shader(card_name)
+#				shader_init_thread.start(shader_properties, "init_shader", canonical_name)
+				shader_properties.init_shader(canonical_name)
 	else:
-		var card_art_file: String = "res://assets/images/" + card_name
+		var card_art_file: String = "res://assets/images/" + canonical_name
 		for extension in ['.jpg','.jpeg','.png']:
 			if ResourceLoader.exists(card_art_file + extension):
 				var new_texture = ImageTexture.new();
@@ -186,7 +186,7 @@ func check_play_costs() -> Color:
 	if properties.get("_is_unplayable", false):
 		ret = CFConst.CostsState.IMPOSSIBLE
 
-	match card_name:
+	match canonical_name:
 		"Matrix":
 			var found_shader := false
 			var board_cards = cfc.NMAP.board.get_all_cards()
@@ -472,12 +472,11 @@ func _extra_state_processing() -> void:
 				modified_costs_popup.visible = false
 
 
-
 func check_unique_conflict() -> bool:
 	var unique_conflict := false
 	if "Unique" in properties.get("Tags", []):
 		for card in cfc.NMAP.board.get_all_cards():
-			if card.card_name == card_name:
+			if card.canonical_name == canonical_name:
 				unique_conflict = true
 	return(unique_conflict)
 

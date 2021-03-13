@@ -79,7 +79,7 @@ func calculate_alteration(script: ScriptAlter) -> void:
 	elif SP.VALUE_PER in str(alteration_requested):
 		var per_msg = perMessage.new(
 				script.get_property(SP.KEY_ALTERATION),
-				script.owner_card,
+				script.owner,
 				script.get_property(script.get_property(SP.KEY_ALTERATION)),
 				script.trigger_card)
 		alteration = per_msg.found_things
