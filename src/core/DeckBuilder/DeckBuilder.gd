@@ -80,7 +80,7 @@ export var deck_summary_scene = _DECK_SUMMARIES_SCENE
 var deck_summaries
 
 onready var _available_cards := $VBC/HBC/MC2/AvailableCards/ScrollContainer/CardList
-onready var _deck_cards := $VBC/HBC/MC/CurrentDeck/CardsInDeck
+onready var _deck_cards := $VBC/HBC/MC/CurrentDeck/ScrollContainer/CardsInDeck
 onready var _deck_name := $VBC/HBC/MC/CurrentDeck/DeckNameEdit
 onready var _load_button := $VBC/HBC/MC/CurrentDeck/Buttons/Load
 onready var _filter_line := $VBC/HBC/MC2/AvailableCards/HBC/FilterLine

@@ -28,10 +28,7 @@ func get_persona_art() -> ImageTexture:
 			new_texture.create_from_image(image)
 			persona_texture = new_texture
 	if not persona_texture:
-		var tex = load("res://assets/images/personas/undecided.png")
-		var image = tex.get_data()
-		new_texture.create_from_image(image)
-		persona_texture = new_texture
+		persona_texture = get_undecided_texture()
 	return(persona_texture)
 
 func get_affinity_icon() -> ImageTexture:
@@ -39,3 +36,10 @@ func get_affinity_icon() -> ImageTexture:
 	var image =  CardConfig.Affinities[affinity].icon.get_data()
 	icon_texture.create_from_image(image)
 	return(icon_texture)
+
+static func get_undecided_texture() -> ImageTexture:
+	var new_texture = ImageTexture.new();	
+	var tex = load("res://assets/images/personas/undecided.png")
+	var image = tex.get_data()
+	new_texture.create_from_image(image)
+	return(new_texture)

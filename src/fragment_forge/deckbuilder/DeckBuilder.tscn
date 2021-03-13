@@ -26,8 +26,11 @@ deck_card_object_scene = ExtResource( 7 )
 list_card_object_scene = ExtResource( 6 )
 deck_summary_scene = ExtResource( 8 )
 
-[node name="CardsInDeck" parent="VBC/HBC/MC/CurrentDeck" index="2"]
+[node name="ScrollContainer" parent="VBC/HBC/MC/CurrentDeck" index="2"]
 margin_bottom = 766.0
+
+[node name="CardsInDeck" parent="VBC/HBC/MC/CurrentDeck/ScrollContainer" index="0"]
+margin_bottom = 758.0
 
 [node name="HBoxContainer" parent="VBC/HBC/MC/CurrentDeck" index="3"]
 margin_top = 770.0

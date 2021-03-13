@@ -32,11 +32,11 @@ func _on_PersonaSelect_pressed() -> void:
 			var pb = persona_button.instance()
 			pb.setup(p)
 			$PersonaSelection/GridContainer.add_child(pb)
-			pb.connect("persona_selected", self, "_on_persona_selected")
+			pb.connect("persona_selected", self, "persona_selected")
 		persona_selections_populated = true
 	$PersonaSelection.popup_centered_minsize()
 
-func _on_persona_selected(p: Persona) -> void:
+func persona_selected(p: Persona) -> void:
 	persona = p
 	persona_name.text = persona.persona_name
 	persona_ability.text = persona.ability
@@ -46,4 +46,15 @@ func _on_persona_selected(p: Persona) -> void:
 	maximum_inspiration = persona.inspiration
 	affinity = persona.affinity
 	$PersonaSelection.hide()
+	emit_signal("persona_selected")
+
+func reset_persona() -> void:
+	persona = null
+	persona_name.text = 'Please select Persona!'
+	persona_ability.text = ''
+	persona_image.icon = Persona.get_undecided_texture()
+	affinity_icon.texture = null
+	affinity_label.text = ''
+	maximum_inspiration = 0
+	affinity = 'NEUTRAL'
 	emit_signal("persona_selected")

@@ -80,10 +80,14 @@ margin_top = 4.0
 margin_right = 843.0
 margin_bottom = 4.0
 
-[node name="CardsInDeck" type="VBoxContainer" parent="VBC/HBC/MC/CurrentDeck"]
+[node name="ScrollContainer" type="ScrollContainer" parent="VBC/HBC/MC/CurrentDeck"]
 margin_top = 8.0
 margin_right = 843.0
 margin_bottom = 772.0
+size_flags_vertical = 3
+
+[node name="CardsInDeck" type="VBoxContainer" parent="VBC/HBC/MC/CurrentDeck/ScrollContainer"]
+margin_bottom = 764.0
 size_flags_vertical = 3
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBC/HBC/MC/CurrentDeck"]
