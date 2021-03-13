@@ -11,6 +11,7 @@ onready var back_button := $VBC/Details/VBC3/Back
 
 onready var competitions : Competitions = $VBC/Details/VBC/Competition
 onready var game_goal := $VBC/Details/VBC2/GameGoal
+onready var persona := $VBC/Details/VBC4/HBC
 
 var tournament := 1
 var popup_settings : PopupPanel
@@ -184,6 +185,7 @@ func load_deck() -> void:
 		deck = sample_decks.decks[0].cards
 	else:
 		deck = ffc.current_deck
+	persona.setup()
 	var cards_array := []
 	for card_name in deck:
 		for _iter in range(deck[card_name]):

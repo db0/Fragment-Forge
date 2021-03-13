@@ -1,13 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
+[ext_resource path="res://src/fragment_forge/PersonaAbilties.tres" type="DynamicFont" id=1]
 [ext_resource path="res://src/fragment_forge/DetailsFont.tres" type="DynamicFont" id=2]
-[ext_resource path="res://fonts/Comfortaa-Bold.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://src/fragment_forge/deckbuilder/PersonaButton.gd" type="Script" id=4]
-
-[sub_resource type="DynamicFont" id=1]
-size = 11
-use_filter = true
-font_data = ExtResource( 3 )
 
 [node name="CenterContainer" type="CenterContainer"]
 margin_right = 100.0
@@ -67,7 +62,7 @@ stretch_mode = 6
 margin_top = 128.0
 margin_right = 200.0
 margin_bottom = 141.0
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = ExtResource( 1 )
 text = "Persona Abilities"
 align = 1
 valign = 1

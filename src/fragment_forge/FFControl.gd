@@ -67,6 +67,7 @@ const GAME_STATS := {
 }
 
 var current_deck: Dictionary
+var current_persona: Persona
 var difficulty: int setget set_difficulty
 var game_stats := GAME_STATS.duplicate()
 

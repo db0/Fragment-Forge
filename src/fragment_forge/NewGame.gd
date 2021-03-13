@@ -25,6 +25,10 @@ func _on_Start_pressed() -> void:
 
 func _on_DeckLoader_deck_loaded(deck) -> void:
 	ffc.current_deck = deck.cards
+	if deck.has('persona'):
+		ffc.current_persona = Persona.new(deck.persona)
+	else:
+		ffc.current_persona = null
 	deck_title.visible = true
 	deck_title.text = deck.name
 	deck_details.visible = true
