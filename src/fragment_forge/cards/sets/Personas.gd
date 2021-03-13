@@ -5,9 +5,12 @@ extends Reference
 const PERSONAS := {
 ### BEGIN Shaders ###
 	"Fractal Thoughts": {
-		"Ability": "Reduce the Time cost of the third different shader you install by 3",
+		"Ability": "Every Competition ,reduce the Time cost "\
+				+ "of the third different shader you install by 3",
 		"Affinity": "ART",
 		"Inspiration": 25,
+		"scripts_frequency": "once_per_competition",
+
 	},
 	"Enhanced": {
 		"Ability": "You start the game with +1 Motivation",
@@ -66,14 +69,29 @@ const PERSONAS := {
 		},
 	},
 	"Loophole": {
-		"Ability": "The value requirement for 1st place is reduced by 3",
+		"Ability": "Once per game, reduce the current competition requirements "\
+				+ "for first place by 5",
 		"Affinity": "WIN",
 		"Inspiration": 25,
+		"scripts_frequency": "once_per_game",
+		"scripts": {
+			"manual": {
+				"persona": [
+					{
+						"name": "mod_competition",
+						"place": Competitions.Place.FIRST,
+						"modification": -5,
+					},
+				],
+			},
+		},
 	},
 	"Networker": {
-		"Ability": "Reduce the Kudos cost by 2 of the first Tutor, Collaborator or Contact you install per competition",
+		"Ability": "Reduce the Kudos cost by 2 of the first Tutor, "\
+				+ "Collaborator or Contact you install per competition",
 		"Affinity": "WIN",
 		"Inspiration": 25,
+		"scripts_frequency": "once_per_competition",
 	},
 }
 

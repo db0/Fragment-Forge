@@ -7,6 +7,8 @@
 class_name SP
 extends ScriptProperties
 
+const KEY_PLACE = "place"
+
 const FILTER_CURRENT_PLACE = "current_place"
 const FILTER_FIRST = "first"
 const FILTER_FIRST_TYPE = "first_type"

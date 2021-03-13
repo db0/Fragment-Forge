@@ -2,6 +2,7 @@ class_name Competitions
 extends Control
 
 signal competition_ended(card,trigger,details)
+signal placement_modified(card,trigger,details)
 
 enum Place{
 	THIRD
@@ -53,6 +54,7 @@ var round_multiplier_increase := 0.5
 var value_per_rank
 # Tracks the first of each card to have been played each competition
 var firsts := {}
+var temp_placement_modifiers := {}
 
 onready var first_place := $"VBC/HBC/FirstPlace"
 onready var second_place := $"VBC/HBC2/SecondPlace"
@@ -162,3 +164,96 @@ func get_cred_rewards() -> int:
 		return(int(CRED_REWARDS[current_place] * round_multiplier))
 	else:
 		return(0)
+
+
+func get_placement_requirements(place, requesting_object = null) -> int:
+	var count = get_placement_requirements_and_alterants(place, requesting_object).count
+	return(count)
+
+
+func get_placement_requirements_and_alterants(
+		place: int,
+		requesting_object = null) -> Dictionary:
+	var count = placement_requirements[place]
+	# We iterate through the values, where each value is a dictionary
+	# with key being the counter name, and value being the temp modifier
+	var alteration = {
+		"value_alteration": 0,
+		"alterants_details": {}
+	}
+	if requesting_object:
+		alteration = CFScriptUtils.get_altered_value(
+			requesting_object,
+			"get_placement_requirements",
+			{SP.KEY_PLACE: place,},
+			placement_requirements[place])
+		if alteration is GDScriptFunctionState:
+			alteration = yield(alteration, "completed")
+	# The first element is always the total modifier from all alterants
+	count += alteration.value_alteration
+	var temp_modifiers = {
+		"value_modification": 0,
+		"modifier_details": {}
+	}
+	for modifiers_dict in temp_placement_modifiers.values():
+		# The value_modification key hold the total modification done by
+		# all temp modifiers.
+		temp_modifiers.value_modification += modifiers_dict.modifier.get(place,0)
+		# Each value in the modifier_details dictionary is another dictionary
+		# Where the key is the card object which has added this modifier
+		# And the value is the modifier this specific card added to the total
+		temp_modifiers.modifier_details[modifiers_dict.requesting_card] =\
+				modifiers_dict.modifier.get(place,0)
+	count += temp_modifiers.value_modification
+	if count < 0:
+		count = 0
+	var return_dict = {
+		"count": count,
+		"alteration": alteration,
+		"temp_modifiers": temp_modifiers,
+	}
+	return(return_dict)
+
+func mod_place_requirements(
+		place: int,
+		value: int,
+		set_to_mod := false,
+		check := false,
+		requesting_card = null,
+		tags := ["Manual"]) -> int:
+	var retcode = CFConst.ReturnCode.CHANGED
+	if place > 3 or place < 1:
+		retcode = CFConst.ReturnCode.FAILED
+	else:
+		if set_to_mod and placement_requirements[place] == value:
+			retcode = CFConst.ReturnCode.OK
+		elif set_to_mod and placement_requirements[place] < 0:
+			retcode = CFConst.ReturnCode.FAILED
+		else:
+			if placement_requirements[place] + value < 0:
+				retcode = CFConst.ReturnCode.FAILED
+				value = -placement_requirements[place]
+			if not check:
+				cfc.flush_cache()
+				var prev_value = placement_requirements[place]
+				if set_to_mod:
+					placement_requirements[place] = value
+				else:
+					placement_requirements[place] += value
+				placements_labels[place].text = PLACE_NAMES[place] + ': '\
+						+ str(int(placement_requirements[place]))\
+						+ " == "\
+						+ str(int(CRED_REWARDS[place] * round_multiplier))\
+						+ " Cred"
+				emit_signal(
+						"placement_modified", 
+						requesting_card, 
+						"placement_modified",
+						{
+							SP.KEY_PLACE: place,
+							SP.TRIGGER_PREV_COUNT: prev_value,
+							SP.TRIGGER_NEW_COUNT: placement_requirements[place],
+							"tags": tags,
+						}
+				)
+	return(retcode)
