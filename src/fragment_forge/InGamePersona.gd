@@ -1,10 +1,12 @@
+# Holds the info about the persona assigned to this deck
+# Also responsible for triggering manual scripts from this persona
 extends HBoxContainer
 
+# The persona resource
 var persona: Persona
 
-func _ready() -> void:
-	pass
-
+# Called when the deck is first loaded, to populate the various fields
+# and textures
 func setup() -> void:
 	if ffc.current_persona:
 		persona = ffc.current_persona

@@ -1,14 +1,21 @@
 extends DBDeckSummaries
 
+# Emited when a persona selected changes, in order to recalculate 
+# deck card influences
 signal persona_selected
 
 const persona_button = preload("res://src/fragment_forge/deckbuilder/PersonaButton.tscn")
 
+# Stored the inspiration provided by the persona
 var maximum_inspiration := 0
+# The persona's affnity keyword
 var affinity := "NEUTRAL"
+# A flag to avoid creating new persona buttons every time in the grid
 var persona_selections_populated := false
 
+# The persona resource
 var persona: Persona
+# These will store the path for the various labels in setup()
 var persona_image: Button
 var persona_name: Label
 var persona_ability: Label
@@ -26,6 +33,9 @@ func setup() -> void:
 	affinity_label = $VBC/HBC/AffinityName
 
 
+# Triggered after the persona select button is pressed.
+# Opens a grid selection box for the player to select a persona
+# for their deck
 func _on_PersonaSelect_pressed() -> void:
 	var grid := $PersonaSelection/ScrollContainer/GridContainer
 	if not persona_selections_populated:
@@ -48,6 +58,8 @@ func _on_PersonaSelect_pressed() -> void:
 	# it's displayed once first
 	$PersonaSelection.popup_centered_minsize()
 
+# Sets the values for the deck summary
+# And triggers the recalculation of influences.
 func persona_selected(p: Persona) -> void:
 	persona = p
 	persona_name.text = persona.persona_name

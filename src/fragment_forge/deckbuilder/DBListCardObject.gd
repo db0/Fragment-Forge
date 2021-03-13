@@ -19,6 +19,9 @@ func set_quantity(value) -> void:
 	.set_quantity(value)
 	check_influence()
 
+
+# Checks if the linked DBDeckCardObject needs to display taken influence
+# next to its name
 func check_influence() -> void:
 	if deck_card_object:
 		if deckbuilder.deck_summaries.affinity != card_properties["_affinity"]\
