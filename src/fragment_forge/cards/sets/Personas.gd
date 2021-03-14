@@ -5,12 +5,23 @@ extends Reference
 const PERSONAS := {
 ### BEGIN Shaders ###
 	"Fractal Thoughts": {
-		"Ability": "Every Competition ,reduce the Time cost "\
-				+ "of the third different shader you install by 3",
+		"Ability": "The first shader of each name, "\
+				+ "does not cost any influence when added to your deck",
 		"Affinity": "ART",
 		"Inspiration": 25,
 		"scripts_frequency": "once_per_competition",
-
+		"scripts": {
+			# We use this just to disable the Persona
+			"game_start": {
+				"persona": [
+					{
+						"name": "mod_counter",
+						"counter_name": "time",
+						"modification": 0,
+					},
+				],
+			},
+		},
 	},
 	"Enhanced": {
 		"Ability": "You start the game with +1 Motivation",
@@ -107,6 +118,7 @@ const PERSONAS := {
 					},
 				],
 			},
+			# We use this just to disable the Persona
 			"card_moved_to_board": {
 				"persona": [
 					{

@@ -30,6 +30,7 @@ func _ready() -> void:
 	$Debug.pressed = cfc._debug
 	# warning-ignore:return_value_discarded
 	start_button.connect("pressed", self, "_on_Start_pressed")
+	# warning-ignore:return_value_discarded
 	start_button.connect("pressed", persona, "_on_Start_pressed")
 	# warning-ignore:return_value_discarded
 	settings_button.connect("pressed", self, "_on_Settings_pressed")

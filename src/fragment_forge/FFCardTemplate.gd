@@ -74,12 +74,20 @@ func highlight_modified_properties() -> void:
 						and value_text != label_node.text:
 					card_front.set_label_text(label_node,value_text)
 				if current_property > printed_properties.get(property):
-					if property in ["skill_req", "cred_req", "motivation_req"]:
+					if property in ["Value",
+							"Kudos",
+							"skill_req",
+							"cred_req",
+							"motivation_req"]:
 						label_node.modulate = Color(0,1,0)
 					else:
 						label_node.modulate = Color(0,1,0)
 				elif current_property < printed_properties.get(property):
-					if property in ["skill_req", "cred_req", "motivation_req"]:
+					if property in ["Value",
+							"Kudos",
+							"skill_req",
+							"cred_req",
+							"motivation_req"]:
 						label_node.modulate = Color(0,1,0)
 					else:
 						label_node.modulate = Color(1,0,0)

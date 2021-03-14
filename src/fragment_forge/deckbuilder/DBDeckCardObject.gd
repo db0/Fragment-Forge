@@ -7,7 +7,7 @@ func set_quantity(value) -> void:
 	
 # Requested when influence used is > 0
 func show_influence(influence) -> void:
-	$Influence.text = '(I: ' + str(influence * quantity) + ')'
+	$Influence.text = '(I: ' + str(influence) + ')'
 
 # Requested when card is Neutral or of the same affinity as the persona
 func hide_influence() -> void:

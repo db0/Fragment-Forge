@@ -20,7 +20,11 @@ func _process(_delta: float) -> void:
 			if card_properties.Type == CardConfig.CardTypes.SHADER:
 				used_inspiration += (card_properties.skill_req) * card_object.quantity
 			if deck_summaries.affinity != card_properties["_affinity"]:
-				max_inspiration -= card_properties.get("_influence",0) * card_object.quantity
+				var quantity : int = card_object.quantity
+				if deck_summaries.persona.persona_name == "Fractal Thoughts"\
+						and card_properties.Type == CardConfig.CardTypes.SHADER:
+					quantity -= 1
+				max_inspiration -= card_properties.get("_influence",0) * quantity
 	deck_summaries.inpiration_label.text =\
 			"Inpiration: " + str(used_inspiration) + '/' + str(max_inspiration)
 	if max_inspiration < deck_summaries.maximum_inspiration:
