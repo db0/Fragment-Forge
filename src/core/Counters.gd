@@ -116,8 +116,8 @@ func mod_counter(counter_name: String,
 					counters[counter_name] += value
 				_labels[counter_name].text = str(counters[counter_name])
 				emit_signal(
-						"counter_modified", 
-						requesting_object, 
+						"counter_modified",
+						requesting_object,
 						"counter_modified",
 						{
 							SP.TRIGGER_COUNTER_NAME: counter_name,
