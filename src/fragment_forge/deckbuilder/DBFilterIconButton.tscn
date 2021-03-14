@@ -48,7 +48,6 @@ margin_top = 4.0
 margin_right = 4.0
 margin_bottom = 22.0
 custom_fonts/font = SubResource( 1 )
-
 [connection signal="mouse_entered" from="Button" to="." method="_on_Button_mouse_entered"]
 [connection signal="mouse_exited" from="Button" to="." method="_on_Button_mouse_exited"]
 [connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]

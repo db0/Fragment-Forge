@@ -2,7 +2,7 @@ extends DeckBuilder
 
 # The path to the DBFilterButton scene.
 const _FILTER_ICON_BUTTON_SCENE_FILE = CFConst.PATH_CUSTOM\
-		+ "DeckBuilder/DBFilterIconButton.tscn"
+		+ "deckbuilder/DBFilterIconButton.tscn"
 const _FILTER_ICON_BUTTON_SCENE = preload(_FILTER_ICON_BUTTON_SCENE_FILE)
 
 onready var back_button = $VBC/HBC/MC/CurrentDeck/Buttons/Back
