@@ -72,13 +72,13 @@ func execute(_run_type := CFInt.RunType.NORMAL) -> void:
 		# We store the temp modifiers to counters, so that things like
 		# info during targetting can take them into account
 		cfc.NMAP.board.counters.temp_count_modifiers[self] = {
-				"requesting_card": script.owner,
+				"requesting_object": script.owner,
 				"modifier": _retrieve_temp_modifiers(script,"counters")
 			}
 		# This is provisionally stored for games which need to use this
 		# information before card subjects have been selected.
 		cfc.card_temp_property_modifiers[self] = {
-			"requesting_card": script.owner,
+			"requesting_object": script.owner,
 			"modifier": _retrieve_temp_modifiers(script, "properties")
 		}
 		if not script.is_primed:
@@ -116,7 +116,7 @@ func execute(_run_type := CFInt.RunType.NORMAL) -> void:
 				#print(script.is_valid,':',costs_dry_run())
 				for card in script.subjects:
 					card.temp_properties_modifiers[self] = {
-						"requesting_card": script.owner,
+						"requesting_object": script.owner,
 						"modifier": _retrieve_temp_modifiers(script, "properties")
 					}
 				var retcode = call(script.script_name, script)

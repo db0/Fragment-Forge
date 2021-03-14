@@ -190,7 +190,7 @@ var _placement_slot : BoardPlacementSlot = null
 #
 # Each key is a ScriptingEngine reference, and each value is a dictionary
 # With the following keys:
-# * requesting_card: The card object which has requested this temp modifier
+# * requesting_object: The object which has requested this temp modifier
 # * modifer: A dictionary with all the modifications requested by this card
 #	Each key is a (numerical) property name,
 #	and value is the temp modifier requested for this property.
@@ -644,7 +644,7 @@ func get_property_and_alterants(property: String,
 			# Each value in the modifier_details dictionary is another dictionary
 			# Where the key is the card object which has added this modifier
 			# And the value is the modifier this specific card added to the total
-			temp_modifiers.modifier_details[modifiers_dict.requesting_card] =\
+			temp_modifiers.modifier_details[modifiers_dict.requesting_object] =\
 					modifiers_dict.modifier.get(property,0)
 		property_value += temp_modifiers.value_modification
 		# We use this flag to avoid an alteranty which alters get_property
@@ -1235,7 +1235,7 @@ func execute_scripts(
 	if cfc.game_paused:
 		return
 	common_pre_execution_scripts(trigger)
-	var card_scripts = retrieve_card_scripts(trigger)
+	var card_scripts = retrieve_scripts(trigger)
 	# I use this spot to add a breakpoint when testing script behaviour
 	# especially on filters
 	if _debugger_hook:
@@ -1330,7 +1330,7 @@ func execute_scripts(
 #
 # Returns a dictionary of card scripts for this specific card
 # based on the current trigger.
-func retrieve_card_scripts(trigger: String) -> Dictionary:
+func retrieve_scripts(trigger: String) -> Dictionary:
 	var found_scripts: Dictionary
 	# If scripts have been defined directly in this Card object
 	# They take precedence over CardScriptDefinitions.gd
@@ -1683,7 +1683,7 @@ func common_post_execution_scripts(trigger: String) -> void:
 # scripts on the card during an attempt to drag it from hand.
 func _has_targeting_cost_hand_script() -> bool:
 	var ret := false
-	var hand_scripts = retrieve_card_scripts("manual").get("hand",[])
+	var hand_scripts = retrieve_scripts("manual").get("hand",[])
 	# We don't check multiple choice cards
 	if hand_drag_starts_targeting and typeof(hand_scripts) == TYPE_ARRAY:
 		for task in hand_scripts:

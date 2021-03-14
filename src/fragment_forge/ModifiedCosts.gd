@@ -71,7 +71,7 @@ func update_time_labels(
 					and alterants[type][card] != 0:
 				var alterant_label = time_modifier[type].duplicate()
 				time_alterants_cards_displayed[type][card] = alterant_label
-				alterant_label.text = card.card_name
+				alterant_label.text = card.canonical_name
 				alterant_label.set("custom_colors/font_color",
 						get_colour_for_alterant(type, alterants[type][card]))
 				time_alterant_container[type].add_child(alterant_label)
@@ -105,7 +105,7 @@ func update_kudos_labels(
 				and alterants[card] != 0:
 			var alterant_label = kudos_modifier.duplicate()
 			kudos_alterants_cards_displayed[card] = alterant_label
-			alterant_label.text = card.card_name
+			alterant_label.text = card.canonical_name
 			alterant_label.set("custom_colors/font_color",
 					get_colour_for_alterant("card", alterants[card]))
 			kudos_alterant_container.add_child(alterant_label)

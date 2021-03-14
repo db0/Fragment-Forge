@@ -35,7 +35,7 @@ func execute_scripts(
 		only_cost_check := false):
 	if cfc.game_paused or $Persona.disabled:
 		return
-	var scripts : Dictionary = persona.scripts.get(trigger, {}).duplicate()
+	var scripts : Dictionary = retrieve_scripts(trigger)
 	# We check the trigger against the filter defined
 	# If it does not match, then we don't pass any scripts for this trigger.
 	if not SP.filter_trigger(
@@ -119,6 +119,21 @@ func execute_scripts(
 func _on_Persona_pressed() -> void:
 	execute_scripts()
 
+# Connects to the next-competition button
+# re-enables personas which are once-per-competition
 func _on_Start_pressed() -> void:
 	if persona.scripts_frequency == "once_per_competition":
 		$Persona.disabled = false
+
+# This allows us to not trigger alterants when the button is disabled
+# by sending a state which will never have any scripts for alterants
+func get_state_exec() -> String:
+	if not $Persona.disabled:
+		return("persona")
+	else:
+		return("disabled")
+
+func retrieve_scripts(trigger: String) -> Dictionary:
+	var found_scripts: Dictionary
+	found_scripts = persona.scripts.get(trigger, {}).duplicate()
+	return(found_scripts)

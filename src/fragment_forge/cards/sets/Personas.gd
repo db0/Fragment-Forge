@@ -92,6 +92,36 @@ const PERSONAS := {
 		"Affinity": "WIN",
 		"Inspiration": 25,
 		"scripts_frequency": "once_per_competition",
+		"scripts": {
+			"alterants": {
+				"persona": [
+					{
+						"filter_task": "get_property",
+						"filter_property_name": "Kudos",
+						"alteration": -2,
+						"filter_state_trigger": [
+							{"filter_properties": {"Tags": "Tutor"}},
+							{"filter_properties": {"Tags": "Collaborator"}},
+							{"filter_properties": {"Tags": "Contact"}},
+						]
+					},
+				],
+			},
+			"card_moved_to_board": {
+				"persona": [
+					{
+						"name": "mod_counter",
+						"counter_name": "time",
+						"modification": 0,
+					},
+				],
+				"filter_state_trigger": [
+					{"filter_properties": {"Tags": "Tutor"}},
+					{"filter_properties": {"Tags": "Collaborator"}},
+					{"filter_properties": {"Tags": "Contact"}},
+				]
+			},
+		}
 	},
 }
 
