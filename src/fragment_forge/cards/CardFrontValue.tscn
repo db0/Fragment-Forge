@@ -46,6 +46,7 @@ size_flags_vertical = 3
 margin_top = 72.0
 margin_right = 39.0
 margin_bottom = 91.0
+mouse_filter = 2
 
 [node name="ValueCC" type="CenterContainer" parent="VBC/HBC"]
 margin_right = 18.0
@@ -74,6 +75,7 @@ valign = 1
 margin_left = 22.0
 margin_right = 39.0
 margin_bottom = 19.0
+mouse_filter = 2
 
 [node name="Affinity" type="TextureRect" parent="VBC/HBC/AffinityCC"]
 margin_top = 1.0

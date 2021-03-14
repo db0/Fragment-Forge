@@ -139,6 +139,7 @@ margin_left = 147.0
 margin_right = 150.0
 margin_bottom = 53.0
 rect_min_size = Vector2( 3, 0 )
+mouse_filter = 2
 
 [node name="Abilities" type="Label" parent="Margin/CardText"]
 margin_top = 97.0

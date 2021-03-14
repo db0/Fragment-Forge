@@ -336,8 +336,8 @@ func common_post_move_scripts(new_container: Node, old_container: Node, tags: Ar
 #
 # Returns a dictionary of card scripts for this specific card
 # based on the current trigger.
-func retrieve_card_scripts(trigger: String) -> Dictionary:
-	var found_scripts = .retrieve_card_scripts(trigger)
+func retrieve_scripts(trigger: String) -> Dictionary:
+	var found_scripts = .retrieve_scripts(trigger)
 	if trigger == "manual" and get_state_exec() == "hand":
 		found_scripts = insert_payment_costs(found_scripts)
 		if typeof(found_scripts["hand"]) == TYPE_ARRAY:
