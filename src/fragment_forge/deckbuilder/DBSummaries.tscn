@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://src/fragment_forge/PersonaAbilties.tres" type="DynamicFont" id=1]
-[ext_resource path="res://src/fragment_forge/DetailsFont.tres" type="DynamicFont" id=2]
+[ext_resource path="res://src/fragment_forge/CompetitionDetailsFont.tres" type="DynamicFont" id=2]
 [ext_resource path="res://assets/images/personas/undecided.png" type="Texture" id=3]
 [ext_resource path="res://src/core/DeckBuilder/CBCardListHeadersFont.tres" type="DynamicFont" id=4]
 [ext_resource path="res://src/fragment_forge/deckbuilder/DBSummaries.gd" type="Script" id=5]
@@ -81,8 +81,10 @@ margin_right = 487.0
 margin_bottom = 188.0
 
 [node name="ScrollContainer" type="ScrollContainer" parent="PersonaSelection"]
-margin_right = 40.0
-margin_bottom = 40.0
+margin_left = 4.0
+margin_top = 4.0
+margin_right = 184.0
+margin_bottom = 184.0
 
 [node name="GridContainer" type="GridContainer" parent="PersonaSelection/ScrollContainer"]
 columns = 6

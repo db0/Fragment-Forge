@@ -12,9 +12,9 @@ __meta__ = {
 
 [node name="Details" type="Label" parent="."]
 margin_left = 7.0
-margin_top = 7.0
+margin_top = 9.0
 margin_right = 257.0
-margin_bottom = 21.0
+margin_bottom = 23.0
 rect_min_size = Vector2( 250, 13 )
 custom_fonts/font = ExtResource( 1 )
 text = "Illustration by: "
