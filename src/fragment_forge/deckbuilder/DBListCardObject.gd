@@ -26,7 +26,8 @@ func check_influence() -> void:
 	if deck_card_object:
 		if deckbuilder.deck_summaries.affinity != card_properties["_affinity"]:
 			var current_quantity : int = deck_card_object.quantity
-			if deckbuilder.deck_summaries.persona.persona_name == "Fractal Thoughts"\
+			if  deckbuilder.deck_summaries.persona\
+					and deckbuilder.deck_summaries.persona.persona_name == "Fractal Thoughts"\
 					and card_properties.Type == CardConfig.CardTypes.SHADER:
 				current_quantity -= 1
 			if card_properties.get("_influence",0) * current_quantity != 0:

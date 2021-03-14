@@ -21,7 +21,8 @@ func _process(_delta: float) -> void:
 				used_inspiration += (card_properties.skill_req) * card_object.quantity
 			if deck_summaries.affinity != card_properties["_affinity"]:
 				var quantity : int = card_object.quantity
-				if deck_summaries.persona.persona_name == "Fractal Thoughts"\
+				if deck_summaries.persona\
+						and deck_summaries.persona.persona_name == "Fractal Thoughts"\
 						and card_properties.Type == CardConfig.CardTypes.SHADER:
 					quantity -= 1
 				max_inspiration -= card_properties.get("_influence",0) * quantity

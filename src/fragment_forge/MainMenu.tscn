@@ -140,18 +140,18 @@ __meta__ = {
 
 [node name="PC" type="PanelContainer" parent="Version"]
 self_modulate = Color( 1, 1, 1, 0.717647 )
-margin_left = 789.0
+margin_left = 804.0
 margin_top = 81.0
-margin_right = 910.0
+margin_right = 895.0
 margin_bottom = 118.0
 custom_styles/panel = SubResource( 3 )
 
 [node name="Label" type="Label" parent="Version/PC"]
-margin_right = 121.0
+margin_right = 91.0
 margin_bottom = 37.0
 custom_fonts/font = SubResource( 5 )
 custom_colors/font_color = Color( 0.976471, 0.603922, 0, 1 )
-text = "v0.11.1"
+text = "v0.12"
 
 [node name="Tween" type="Tween" parent="."]
 
