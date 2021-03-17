@@ -142,6 +142,21 @@ const CARDS := {
 		"_affinity": "ZIP",
 		"_influence": 1,
 	},
+	"Multifaceted Shader": {
+		"Type": CardConfig.CardTypes.SHADER,
+		"Tags": [],
+		"Abilities": "This Shader has +1 value for each different installed shader.",
+		"Time": 3,
+		"Value": GEN,
+		"Kudos": 0,
+		"skill_req": 0,
+		"cred_req": 0,
+		"motivation_req": 4,
+		"_abilities_power": 3,
+		"_illustration": "N/A",
+		"_affinity": "ART",
+		"_influence": 3,
+	},
 #### skill_req 1
 	"Fractal Pyramid": {
 		"Type": CardConfig.CardTypes.SHADER,
@@ -502,7 +517,7 @@ const CARDS := {
 		"Type": CardConfig.CardTypes.RESOURCE,
 		"Tags": ["Collaborator"],
 		"Abilities": "If you use at least 2 shaders of skill_req 1, "\
-				+ "increase your Demo value by 4.",
+				+ "increase your Demo value by 6.",
 		"Time": 1,
 		"Value": 0,
 		"Kudos": 1,
@@ -625,7 +640,7 @@ const CARDS := {
 	"Blog": {
 		"Type": CardConfig.CardTypes.RESOURCE,
 		"Tags": ["Community"],
-		"Abilities": "1 Time, Exhaust, Discard an installed card: "\
+		"Abilities": "1 Time, Exhaust, Discard an installed non-Reputation card: "\
 				+ "Gain 4 Kudos",
 		"Time": 1,
 		"Value": 0,
@@ -721,6 +736,32 @@ const CARDS := {
 		"motivation_req": 0,
 		"_affinity": "ZIP",
 		"_influence": 1,
+	},
+	"Podcast": {
+		"Type": CardConfig.CardTypes.RESOURCE,
+		"Tags": ["Community"],
+		"Abilities": "You are considered to have +1 cred for card effects",
+		"Time": 1,
+		"Value": 0,
+		"Kudos": 0,
+		"skill_req": 0,
+		"cred_req": 0,
+		"motivation_req": 0,
+		"_affinity": "NEUTRAL",
+		"_influence": 0,
+	},
+	"CC License": {
+		"Type": CardConfig.CardTypes.RESOURCE,
+		"Tags": ["Community"],
+		"Abilities": "1 Time, Exhaust an installed Shader: Gain 3 Kudos",
+		"Time": 1,
+		"Value": 0,
+		"Kudos": 0,
+		"skill_req": 0,
+		"cred_req": 0,
+		"motivation_req": 0,
+		"_affinity": "ART",
+		"_influence": 4,
 	},
 ### BEGIN Prep ###
 	"Collaboration": {
@@ -886,8 +927,8 @@ const CARDS := {
 		"Type": CardConfig.CardTypes.ACTION,
 		"Tags": [],
 		"Abilities": "Discard a shader from your hand: "\
-				+ "Gain 6 time",
-		"Time": 0,
+				+ "Gain 7 time",
+		"Time": 2,
 		"Value": 0,
 		"Kudos": 2,
 		"skill_req": 0,

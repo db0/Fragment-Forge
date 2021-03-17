@@ -16,7 +16,10 @@ func _init(
 		alteration_script: Dictionary,
 		trigger_card: Card,
 		alterant_object,
-		task_details: Dictionary).(alterant_object, alteration_script, trigger_card) -> void:
+		task_details: Dictionary).(
+			alterant_object,
+			alteration_script,
+			trigger_card) -> void:
 	# The alteration name gets its own var
 	script_name = get_property("filter_task")
 	trigger_details = task_details

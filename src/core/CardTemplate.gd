@@ -1676,7 +1676,6 @@ func common_pre_execution_scripts(trigger: String) -> void:
 func common_post_execution_scripts(trigger: String) -> void:
 	pass
 
-
 # Returns true is the card has hand_drag_starts_targeting set to true
 # is currently in hand, and has a targetting task.
 #

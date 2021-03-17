@@ -121,7 +121,7 @@ func get_scripts(card_name: String) -> Dictionary:
 				"board": [
 					{
 						"filter_task": "get_demo_value",
-						"alteration": 5,
+						"alteration": 6,
 						"filter_per_boardseek_count": {
 							"subject": "boardseek",
 							"subject_count": "all",
@@ -1240,6 +1240,87 @@ func get_scripts(card_name: String) -> Dictionary:
 						"subject_count": 1,
 						"subject": "index",
 						"subject_index": "top",
+					},
+				]
+			}
+		},
+		"Podcast": {
+			"alterants": {
+				"board": [
+					{
+						# By default, get_counter alterants will not work
+						# for winning the game
+						"filter_task": "get_counter",
+						"filter_counter_name": "cred",
+						"alteration": 1,
+					},
+				],
+			},
+		},
+		"CC License": {
+			"manual": {
+				"board":[
+					{
+						"name": "mod_counter",
+						"counter_name": "time",
+						"modification": -1,
+						"is_cost": true,
+					},
+					{
+						"name": "rotate_card",
+						"subject": "target",
+						"degrees": 90,
+						"is_cost": true,
+						"filter_state_subject": [
+							{
+								"filter_parent": cfc.NMAP.board,
+								"filter_properties": {
+									"Type": CardConfig.CardTypes.SHADER
+								},
+							},
+						],
+					},
+					{
+						"name": "mod_counter",
+						"counter_name": "kudos",
+						"modification": 3,
+					},
+				],
+			},
+		},
+		"Ininite Shader": {
+			"card_moved_to_board": {
+				"board": [
+					{
+						"name": "mod_counter",
+						"trigger": "self",
+						"modification": 0,
+						"counter_name": "time",
+						"set_to_mod": true
+					},
+				],
+			},
+		},
+		"Multifaceted Shader": {
+			"alterants": {
+				"board": [
+					{
+						"filter_task": "get_property",
+						"trigger": "self",
+						"filter_property_name": "Value",
+						"alteration": "per_boardseek",
+						"per_boardseek": {
+							"subject": "boardseek",
+							"subject_count": "all",
+							"count_unique": true,
+							"filter_state_seek": [
+								{
+									"filter_properties": {
+										"Type": CardConfig.CardTypes.SHADER
+									}
+								}
+							]
+						}
 					},
 				]
 			}
