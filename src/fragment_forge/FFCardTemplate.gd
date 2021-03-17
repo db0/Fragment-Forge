@@ -191,6 +191,9 @@ func check_play_costs() -> Color:
 	if check_unique_conflict():
 		ret = CFConst.CostsState.IMPOSSIBLE
 
+	if check_reputation_conflict():
+		ret = CFConst.CostsState.IMPOSSIBLE
+
 	if properties.get("_is_unplayable", false):
 		ret = CFConst.CostsState.IMPOSSIBLE
 
@@ -487,6 +490,14 @@ func check_unique_conflict() -> bool:
 			if card.canonical_name == canonical_name:
 				unique_conflict = true
 	return(unique_conflict)
+
+func check_reputation_conflict() -> bool:
+	var reputation_conflict := false
+	if "Reputation" in properties.get("Tags", []):
+		for card in cfc.NMAP.board.get_all_cards():
+			if "Reputation" in card.properties.get("Tags", []):
+				reputation_conflict = true
+	return(reputation_conflict)
 
 
 # Sets parameters for the shader, and also stores them in a dictionary to be

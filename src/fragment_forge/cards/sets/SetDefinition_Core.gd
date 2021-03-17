@@ -697,9 +697,9 @@ const CARDS := {
 	"Antisocial": {
 		"Type": CardConfig.CardTypes.RESOURCE,
 		"Tags": ["Reputation"],
-		"Abilities": "After you install this card, lose all your Kudos.\n"\
-				+ "You cannot install Collaborators or Tutors.\n"\
-				+ "+2 Motivation",
+		"Abilities": "After you install this card, lose all your Kudos "\
+				+ "and gain 2 Motivation\n"\
+				+ "You cannot install Collaborators or Tutors.\n",
 		"Time": 0,
 		"Value": 0,
 		"Kudos": 0,
@@ -707,6 +707,19 @@ const CARDS := {
 		"cred_req": 0,
 		"motivation_req": 0,
 		"_affinity": "ART",
+		"_influence": 1,
+	},
+	"Always Online": {
+		"Type": CardConfig.CardTypes.RESOURCE,
+		"Tags": ["Reputation", "Burnout", "Community"],
+		"Abilities": "Exhaust, Lose 1 Motivation: Gain 3 Kudos and draw a card.",
+		"Time": 0,
+		"Value": 0,
+		"Kudos": 0,
+		"skill_req": 0,
+		"cred_req": 0,
+		"motivation_req": 0,
+		"_affinity": "ZIP",
 		"_influence": 1,
 	},
 ### BEGIN Prep ###

@@ -464,20 +464,6 @@ func get_scripts(card_name: String) -> Dictionary:
 					},
 				],
 			},
-			"alterants": {
-				"board": [
-					{
-						"filter_task": "get_property",
-						"filter_property_name": "Time",
-						"alteration": -1,
-						"filter_state_trigger": [
-							{"filter_properties": {
-								"Type": "Shader",
-							}}
-						]
-					},
-				],
-			},
 		},
 		"Collaboration": {
 			"manual": {
@@ -1197,7 +1183,67 @@ func get_scripts(card_name: String) -> Dictionary:
 				],
 			},
 		},
-
+		"Antisocial": {
+			"manual": {
+				"hand": [
+					{
+						"name": "mod_counter",
+						"counter_name": "kudos",
+						"modification": 0,
+						"set_to_mod": true,
+					},
+					{
+						"name": "mod_counter",
+						"modification": +2,
+						"counter_name": "motivation",
+					},
+				],
+			},
+			"alterants": {
+				"board": [
+					{
+						"filter_task": "get_property",
+						"filter_property_name": "Time",
+						"alteration": +1000,
+						"filter_state_trigger": [
+							{"filter_properties": {"Tags": "Tutor"}},
+							{"filter_properties": {"Tags": "Collaborator"}},
+						]
+					},
+				],
+			},
+		},
+		"Always Online": {
+			"manual": {
+				"board": [
+					{
+						"name": "rotate_card",
+						"degrees": 90,
+						"is_cost": true,
+						"subject": "self",
+					},
+					{
+						"name": "mod_counter",
+						"modification": -1,
+						"counter_name": "motivation",
+						"is_cost": true,
+					},
+					{
+						"name": "mod_counter",
+						"modification": 3,
+						"counter_name": "kudos",
+					},
+					{
+						"name": "move_card_to_container",
+						"src_container": cfc.NMAP.deck,
+						"dest_container": cfc.NMAP.hand,
+						"subject_count": 1,
+						"subject": "index",
+						"subject_index": "top",
+					},
+				]
+			}
+		},
 	}
 	# We return only the scripts that match the card name and trigger
 	return(scripts.get(card_name,{}))
