@@ -22,7 +22,7 @@ const CARDS := {
 	"Fractal Tiling": {
 		"Type": CardConfig.CardTypes.SHADER,
 		"Tags": [],
-		"Abilities": "After you install this Shader, discard a random card",
+		"Abilities": "Install: Discard a random card from hand",
 		"Time": 2,
 		"Value": GEN,
 		"Kudos": 0,
@@ -62,8 +62,7 @@ const CARDS := {
 	"Ether": {
 		"Type": CardConfig.CardTypes.SHADER,
 		"Tags": [],
-		"Abilities": "After installing this Shader, "\
-				+ "search your deck for the first Collaborator "\
+		"Abilities": "Install: search your deck for the first Collaborator "\
 				+ "and put them in your hand",
 		"Time": 6,
 		"Value": GEN,
@@ -152,7 +151,7 @@ const CARDS := {
 		"skill_req": 0,
 		"cred_req": 0,
 		"motivation_req": 4,
-		"_abilities_power": 3,
+		"_abilities_power": 2,
 		"_illustration": "N/A",
 		"_affinity": "ART",
 		"_influence": 3,
@@ -187,7 +186,7 @@ const CARDS := {
 	"Sierpinski": {
 		"Type": CardConfig.CardTypes.SHADER,
 		"Tags": [],
-		"Abilities": "Comes with 1 Activation token\n"\
+		"Abilities": "Install: Put 1 Activation token\n"\
 				+ "After you install a shader, remove an activation token "\
 				+ "to give that Shader +3 Value",
 		"Time": 4,
@@ -204,7 +203,7 @@ const CARDS := {
 	"Plasma Globe": {
 		"Type": CardConfig.CardTypes.SHADER,
 		"Tags": ["Burnout"],
-		"Abilities": "After you install this shader, lose 1 motivation",
+		"Abilities": "Install: Lose 1 motivation",
 		"Time": 1,
 		"Value": GEN,
 		"Kudos": 0,
@@ -325,7 +324,7 @@ const CARDS := {
 	"Voronoi Column Tracing": {
 		"Type": CardConfig.CardTypes.SHADER,
 		"Tags": [],
-		"Abilities": "After you install this Shader, draw a card.",
+		"Abilities": "Install: Draw a card.",
 		"Time": 9,
 		"Value": GEN,
 		"Kudos": 0,
@@ -340,7 +339,7 @@ const CARDS := {
 	"Xod": {
 		"Type": CardConfig.CardTypes.SHADER,
 		"Tags": [],
-		"Abilities": "After you install this Shader, discard an installed Shader",
+		"Abilities": "Install: Discard an installed Shader",
 		"Time": 1,
 		"Value": GEN,
 		"Kudos": 0,
@@ -370,8 +369,7 @@ const CARDS := {
 	"Lanterns": {
 		"Type": CardConfig.CardTypes.SHADER,
 		"Tags": [],
-		"Abilities": "After installing this Shader, unexhaust "\
-				+ "a Collaborator or Tutor",
+		"Abilities": "Install: Unexhaust a Collaborator or Tutor",
 		"Time": 3,
 		"Value": GEN,
 		"Kudos": 0,
@@ -386,7 +384,7 @@ const CARDS := {
 	"Ininite Shader": {
 		"Type": CardConfig.CardTypes.SHADER,
 		"Tags": [],
-		"Abilities": "After installing this Shader, lose all remaining time",
+		"Abilities": "Install: lose all remaining time",
 		"Time": 3,
 		"Value": GEN,
 		"Kudos": 0,
@@ -425,7 +423,24 @@ const CARDS := {
 		"motivation_req": 0,
 		"_illustration": "Otavio Good",
 		"_affinity": "ZIP",
-		"_influence": 1,
+		"_abilities_power": 1,
+		"_influence": 2,
+	},
+	"Daemonic Shader": {
+		"Type": CardConfig.CardTypes.SHADER,
+		"Tags": [],
+		"Abilities": "Install: Search your deck for your highest value Shader "\
+				+ "and put it in your hand",
+		"Time": 3,
+		"Value": GEN,
+		"Kudos": 0,
+		"skill_req": 3,
+		"cred_req": 0,
+		"motivation_req": 3,
+		"_illustration": "N/A",
+		"_affinity": "ART",
+		"_abilities_power": 2,
+		"_influence": 3,
 	},
 ### BEGIN Resources ###
 	"Difios": {
@@ -445,7 +460,7 @@ const CARDS := {
 	"Cheerleader": {
 		"Type": CardConfig.CardTypes.RESOURCE,
 		"Tags": [],
-		"Abilities": "After recruiting this Resource, lose 1 cred. " \
+		"Abilities": "Install: Lose 1 cred. " \
 				+ "You win extra 1 cred for winning a tournament",
 		"Time": 1,
 		"Value": 0,
@@ -558,7 +573,7 @@ const CARDS := {
 	"Discord Mod": {
 		"Type": CardConfig.CardTypes.RESOURCE,
 		"Tags": ["Community"],
-		"Abilities": "Comes into the game with 12 Kudos tokens\n"\
+		"Abilities": "Install: Put 12 Kudos tokens\n"\
 				+ "1 Time: Take 2 Kudos tokens from this card. "\
 				+ "When it has no more kudos tokens, discard it.",
 		"Time": 1,
@@ -598,8 +613,7 @@ const CARDS := {
 	"Search Engine Expertise": {
 		"Type": CardConfig.CardTypes.RESOURCE,
 		"Tags": ["Knowledge"],
-		"Abilities": "Once per Competition, you may look "\
-				+ "at the top card of the deck\n"\
+		"Abilities": "Exhaust: Look at the top card of the deck\n"\
 				+ "Discard this card: Draw one card",
 		"Time": 1,
 		"Value": 0,
@@ -712,7 +726,7 @@ const CARDS := {
 	"Antisocial": {
 		"Type": CardConfig.CardTypes.RESOURCE,
 		"Tags": ["Reputation"],
-		"Abilities": "After you install this card, lose all your Kudos "\
+		"Abilities": "Install: Lose all Kudos "\
 				+ "and gain 2 Motivation\n"\
 				+ "You cannot install Collaborators or Tutors.\n",
 		"Time": 0,
