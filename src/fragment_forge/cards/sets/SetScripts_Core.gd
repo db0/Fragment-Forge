@@ -1347,6 +1347,30 @@ func get_scripts(card_name: String) -> Dictionary:
 				]
 			}
 		},
+		"Teaching Shader": {
+			"card_moved_to_board": {
+				"board": [
+					{
+						"name": "mod_counter",
+						"modification": 3,
+						"counter_name": "kudos",
+						"trigger": "self",
+					},
+				]
+			}
+		},
+		"Reusable Shader": {
+			"competition_ended": {
+				"board": [
+					{
+						"name": "move_card_to_container",
+						"subject": "self",
+						"dest_container":  cfc.NMAP.hand,
+					},
+				],
+				"filter_current_place": Competitions.Place.FIRST,
+			},
+		},
 	}
 	# We return only the scripts that match the card name and trigger
 	return(scripts.get(card_name,{}))
