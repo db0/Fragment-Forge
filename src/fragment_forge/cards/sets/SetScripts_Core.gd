@@ -259,7 +259,7 @@ func get_scripts(card_name: String) -> Dictionary:
 				],
 			},
 		},
-		"Constant": {
+		"Lachesis": {
 			"alterants": {
 				"board": [
 					{
@@ -274,6 +274,52 @@ func get_scripts(card_name: String) -> Dictionary:
 								},
 								"filter_properties2": {
 									"skill_req": 1,
+									"comparison": "eq",
+								}
+							}
+						]
+					},
+				],
+			},
+		},
+		"Clotho": {
+			"alterants": {
+				"board": [
+					{
+						"filter_task": "get_property",
+						"trigger": "another",
+						"filter_property_name": "Value",
+						"alteration": 1,
+						"filter_state_trigger": [
+							{
+								"filter_properties": {
+									"Type": "Shader"
+								},
+								"filter_properties2": {
+									"skill_req": 0,
+									"comparison": "eq",
+								}
+							}
+						]
+					},
+				],
+			},
+		},
+		"Atropos": {
+			"alterants": {
+				"board": [
+					{
+						"filter_task": "get_property",
+						"trigger": "another",
+						"filter_property_name": "Value",
+						"alteration": 1,
+						"filter_state_trigger": [
+							{
+								"filter_properties": {
+									"Type": "Shader"
+								},
+								"filter_properties2": {
+									"skill_req": 2,
 									"comparison": "eq",
 								}
 							}
@@ -1520,6 +1566,79 @@ func get_scripts(card_name: String) -> Dictionary:
 							}
 						],
 
+					},
+					{
+						"name": "mod_counter",
+						"trigger": "self",
+						"modification": 0,
+						"counter_name": "time",
+						"set_to_mod": true
+					},
+				],
+			},
+		},
+		"Vision": {
+			"competition_ended": {
+				"board": [
+					{
+						"name": "move_card_to_container",
+						"dest_container": cfc.NMAP.discard,
+						"subject": "self"
+					},
+				],
+			},
+			"alterants": {
+				"board": [
+					{
+						"filter_task": "get_demo_value",
+						"alteration": 8,
+						"filter_per_boardseek_count": {
+							"subject": "boardseek",
+							"subject_count": "all",
+							"filter_card_count": 5,
+							"comparison": "ge",
+							"filter_state_seek": [
+								{"filter_properties": {
+									"Type": CardConfig.CardTypes.SHADER
+								}}
+							],
+						}
+					},
+				],
+			},
+		},
+		"Art Degree": {
+			"manual": {
+				"board": [
+					{
+						"name": "rotate_card",
+						"subject": "self",
+						"degrees": 90,
+						"is_cost": true
+					},
+					{
+						"name": "mod_counter",
+						"modification": -2,
+						"counter_name": "time",
+						"is_cost": true,
+					},
+					{
+						"name": "move_card_to_board",
+						"grid_name": "Shaders",
+						"subject": "tutor",
+						"src_container":  cfc.NMAP.deck,
+						"filter_state_tutor": [
+							{
+								"filter_properties": {
+									"Type": CardConfig.CardTypes.SHADER
+								}
+							}
+						],
+					},
+					{
+						"name": "flip_card",
+						"subject": "previous",
+						"set_faceup": true
 					},
 					{
 						"name": "mod_counter",

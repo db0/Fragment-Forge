@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Constant.jpeg-dbbfd1bde0de108d8f99428382ff3df8.stex"
+path="res://.import/Lachesis.jpeg-a9f8bfc8d65a3b2e2b75c11226b8dd7f.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/Constant.jpeg"
-dest_files=[ "res://.import/Constant.jpeg-dbbfd1bde0de108d8f99428382ff3df8.stex" ]
+source_file="res://assets/images/Lachesis.jpeg"
+dest_files=[ "res://.import/Lachesis.jpeg-a9f8bfc8d65a3b2e2b75c11226b8dd7f.stex" ]
 
 [params]
 
