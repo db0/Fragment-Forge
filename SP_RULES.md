@@ -130,12 +130,12 @@ There's three loose affinities of people, grouped by approach to the demoscene.
 * Zippers: The minimalists of the bunch. They are keen on reducing the size of their code to the absolute minimum, just because they can. They can cram an absurd amount of power in a short amount of time and space. Their shortcuts are legendary.
 * Champions: The people who are in for the rush of competition. Winning is the name of the game and they will take advantage of every loophole in order to do so. Maybe even make some new ones in the process.
 
-Most cards in the game are affiliated to one of these affinities. When making a new deck, you'll first of all select your own affiliation. You will have free access to all cards from your affinity. You can also pick card from the others, but you will have to spend some of your insight to do so.
+Most cards in the game are affiliated to one of these affinities. When making a new deck, you'll first of all select your own affiliation. You will have free access to all cards from your affinity. You can also pick card from the others, but you will have to spend some of your Inspiration to do so.
 
-#### Insight
+#### Inspiration
 
-Each player starts with a number of insight. You use this insight to add Shaders to your deck, or to learn tricks from other affinities. 
+Each player starts with a number of Inspiration. You use this Inspiration to add Shaders to your deck, or to learn tricks from other affinities. 
 
-Each shader that you add in your deck takes up a number of Insight equal to its <img src="assets/icons/skill.png" alt="skill_req icon" width="15"/>. Generally having a lot of shaders simplifies the mechanics of a deck, but doing so will mean you have less flexibility in your combos from other factions.
+Each shader that you add in your deck takes up a number of Inspiration equal to its <img src="assets/icons/skill.png" alt="skill_req icon" width="15"/>. Generally having a lot of shaders simplifies the mechanics of a deck, but doing so will mean you have less flexibility in your combos from other factions.
 
-Every affiliated card has also an insight cost. Cards from the affinity you belong to, are free to pick. however picking form other factions reduces your insight by that amount. Obviously picking a shader from another affinity is a double-whammy, as you pay Insight both for being a Shader and for it being out-of-affinity.
+Every affiliated card has also an Influence cost. Cards from the affinity you belong to, are free to pick. however picking form other factions reduces your Inspiration by that amount. Obviously picking a shader from another affinity is a double-whammy, as you pay Inspiration both for being a Shader and Influence for it being out-of-affinity.
