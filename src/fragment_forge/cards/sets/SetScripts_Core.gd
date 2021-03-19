@@ -1103,7 +1103,7 @@ func get_scripts(card_name: String) -> Dictionary:
 				],
 			},
 		},
-		"Igorrr": {
+		"Math Degree": {
 			"manual": {
 				"board": [
 					{
@@ -1646,6 +1646,30 @@ func get_scripts(card_name: String) -> Dictionary:
 						"modification": 0,
 						"counter_name": "time",
 						"set_to_mod": true
+					},
+				],
+			},
+		},
+		"Igorrr": {
+			"competition_ended": {
+				"board": [
+					{
+						"name": "move_card_to_container",
+						"dest_container": cfc.NMAP.discard,
+						"subject": "self"
+					},
+				],
+			},
+			"alterants": {
+				"board": [
+					{
+						"filter_task": "get_demo_value",
+						"alteration": 8,
+						"filter_per_counter": {
+							"filter_count": 3,
+							"comparison": "le",
+							"counter_name": "motivation",
+						}
 					},
 				],
 			},

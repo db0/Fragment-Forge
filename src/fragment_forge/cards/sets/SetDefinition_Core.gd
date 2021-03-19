@@ -844,9 +844,9 @@ const CARDS := {
 		"_affinity": "ZIP",
 		"_influence": 2,
 	},
-	"Igorrr": {
+	"Math Degree": {
 		"Type": CardConfig.CardTypes.RESOURCE,
-		"Tags": ["Unique"],
+		"Tags": ["Unique", "Knowledge"],
 		"Abilities": "1 Kudos, Exhaust: Put the top Shader of your "\
 				+ "Discard Pile into your hand.",
 		"Time": 1,
@@ -1025,7 +1025,7 @@ const CARDS := {
 	},
 	"Art Degree": {
 		"Type": CardConfig.CardTypes.RESOURCE,
-		"Tags": ["Knowledge"],
+		"Tags": ["Knowledge", "Unique"],
 		"Abilities": "2 Time, Exhaust: Retrieve the first skill_req 0 shader from your "\
 				+ "deck and install it immediately. Lose all remaining time.",
 		"Time": 1,
@@ -1035,6 +1035,19 @@ const CARDS := {
 		"cred_req": 0,
 		"motivation_req": 0,
 		"_affinity": "ART",
+		"_influence": 2,
+	},
+	"Igorrr": {
+		"Type": CardConfig.CardTypes.RESOURCE,
+		"Tags": ["Collaborator"],
+		"Abilities": "If your motivation is 3 or less, increase you demo value by 8.",
+		"Time": 1,
+		"Value": 0,
+		"Kudos": 4,
+		"skill_req": 1,
+		"cred_req": 0,
+		"motivation_req": 0,
+		"_affinity": "ZIP",
 		"_influence": 2,
 	},
 ### BEGIN Prep ###
