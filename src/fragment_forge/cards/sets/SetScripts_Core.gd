@@ -1151,7 +1151,7 @@ func get_scripts(card_name: String) -> Dictionary:
 					},
 				],
 			},
-		},		
+		},
 		"Barberella": {
 			"card_moved_to_board": {
 				"board": [
@@ -1169,7 +1169,7 @@ func get_scripts(card_name: String) -> Dictionary:
 					},
 				],
 			},
-		},		
+		},
 		"Fidazzia": {
 			"alterants": {
 				"board": [
@@ -1370,6 +1370,44 @@ func get_scripts(card_name: String) -> Dictionary:
 				],
 				"filter_current_place": Competitions.Place.FIRST,
 			},
+		},
+		"Refreshing Shader": {
+			"card_moved_to_board": {
+				"board": [
+					{
+						"name": "rotate_card",
+						"degrees": 0,
+						"subject": "target",
+						"trigger": "self",
+						"filter_state_subject": [
+							{
+								"filter_properties1": {"Type": CardConfig.CardTypes.SHADER},
+								"filter_parent": cfc.NMAP.board,
+							},
+						],
+					},
+				],
+			},
+		},
+		"Cantrip Shader": {
+			"card_moved_to_board": {
+				"deck": [
+					{
+						"name": "move_card_to_container",
+						"subject": "self",
+						"trigger": "another",
+						"dest_container":  cfc.NMAP.hand,
+						"filter_per_boardseek_count": {
+							"subject": "boardseek",
+							"subject_count": "all",
+							"count_unique": true,
+							"filter_state_seek": [{
+								"filter_properties": {"Type": CardConfig.CardTypes.SHADER}
+							}],
+							"filter_card_count": 3,}
+					},
+				]
+			}
 		},
 	}
 	# We return only the scripts that match the card name and trigger
