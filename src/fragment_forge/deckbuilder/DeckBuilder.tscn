@@ -43,8 +43,9 @@ text = "Back"
 criteria_map = {
 "a": "Abilities",
 "c": "cred_req",
+"e": "Time",
 "g": "Tags",
-"i": "Time",
+"i": "_influence",
 "k": "Kudos",
 "m": "motivation_req",
 "s": "skill_req",

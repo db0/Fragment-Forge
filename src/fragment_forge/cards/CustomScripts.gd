@@ -44,3 +44,19 @@ func custom_script(script: ScriptTask) -> void:
 						highest_time_shader = shader
 				if highest_time_shader:
 					highest_time_shader.move_to(cfc.NMAP.board)
+
+func custom_alterants(script: ScriptAlter) -> int:
+	var alteration := 0
+	var owner = script.owner
+	# warning-ignore:unused_variable
+	var subjects: Array = script.subjects
+	var counters : Counters = cfc.NMAP.board.counters
+	match script.owner.canonical_name:
+		"Tricky Shader":
+			if not costs_dry_run:
+				var current_skill := counters.get_counter("skill")
+				var skill_req : int = script.trigger_card.get_property("skill_req")
+				var diff := current_skill - skill_req
+				if diff > 0:
+					alteration -= diff * 2
+	return(alteration)

@@ -130,7 +130,7 @@ func _on_Debug_pressed() -> void:
 	# warning-ignore:return_value_discarded
 	counters.mod_counter("cred",10)
 	# warning-ignore:return_value_discarded
-	counters.mod_counter("skill",10)
+	counters.mod_counter("skill",4)
 	# warning-ignore:return_value_discarded
 	counters.mod_counter("kudos",10)
 	# warning-ignore:return_value_discarded

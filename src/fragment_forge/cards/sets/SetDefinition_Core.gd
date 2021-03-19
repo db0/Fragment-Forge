@@ -18,6 +18,7 @@ const CARDS := {
 		"motivation_req": 0,
 		"_illustration": "Db0",
 		"_affinity": "NEUTRAL",
+		"_influence": 0,
 	},
 	"Fractal Tiling": {
 		"Type": CardConfig.CardTypes.SHADER,
@@ -29,9 +30,10 @@ const CARDS := {
 		"skill_req": 0,
 		"cred_req": 0,
 		"motivation_req": 0,
-		"_abilities_power": -2,
+		"_abilities_power": -1,
 		"_illustration": "Inigo Quilez",
 		"_affinity": "NEUTRAL",
+		"_influence": 0,
 	},
 	"Light": {
 		"Type": CardConfig.CardTypes.SHADER,
@@ -44,7 +46,9 @@ const CARDS := {
 		"cred_req": 0,
 		"motivation_req": 0,
 		"_illustration": "Danilo Guanabara",
+		"_abilities_power": 1,
 		"_affinity": "NEUTRAL",
+		"_influence": 0,
 	},
 	"Twister": {
 		"Type": CardConfig.CardTypes.SHADER,
@@ -57,7 +61,9 @@ const CARDS := {
 		"cred_req": 0,
 		"motivation_req": 0,
 		"_illustration": "Inigo Quilez",
+		"_abilities_power": 1,
 		"_affinity": "NEUTRAL",
+		"_influence": 0,
 	},
 	"Ether": {
 		"Type": CardConfig.CardTypes.SHADER,
@@ -123,7 +129,7 @@ const CARDS := {
 		"_abilities_power": 1,
 		"_illustration": "Inigo Quilez & Weyland",
 		"_affinity": "WIN",
-		"_influence": 1,
+		"_influence": 2,
 	},
 	"Barberella": {
 		"Type": CardConfig.CardTypes.SHADER,
@@ -152,7 +158,7 @@ const CARDS := {
 		"cred_req": 0,
 		"motivation_req": 4,
 		"_abilities_power": 2,
-		"_illustration": "N/A",
+		#"_illustration": "N/A",
 		"_affinity": "ART",
 		"_influence": 3,
 	},
@@ -167,7 +173,7 @@ const CARDS := {
 		"cred_req": 0,
 		"motivation_req": 4,
 		"_abilities_power": 1,
-		"_illustration": "N/A",
+		#"_illustration": "N/A",
 		"_affinity": "WIN",
 		"_influence": 3,
 	},
@@ -185,7 +191,7 @@ const CARDS := {
 		"motivation_req": 0,
 		"_abilities_power": 1,
 		"_max_allowed": 1,
-		"_illustration": "N/A",
+		#"_illustration": "N/A",
 		"_affinity": "WIN",
 		"_influence": 4,
 	},
@@ -200,7 +206,7 @@ const CARDS := {
 		"cred_req": 0,
 		"motivation_req": 0,
 		"_abilities_power": 1,
-		"_illustration": "N/A",
+		#"_illustration": "N/A",
 		"_affinity": "ART",
 		"_influence": 2,
 	},
@@ -216,7 +222,7 @@ const CARDS := {
 		"cred_req": 0,
 		"motivation_req": 0,
 		"_abilities_power": 2,
-		"_illustration": "N/A",
+		#"_illustration": "N/A",
 		"_max_allowed": 1,
 		"_affinity": "ART",
 		"_influence": 4,
@@ -233,7 +239,9 @@ const CARDS := {
 		"cred_req": 0,
 		"motivation_req": 0,
 		"_illustration": "bradjamesgrant",
+		"_abilities_power": 1,
 		"_affinity": "NEUTRAL",
+		"_influence": 0,
 	},
 	"Pentagonal Tesselations": {
 		"Type": CardConfig.CardTypes.SHADER,
@@ -246,7 +254,9 @@ const CARDS := {
 		"cred_req": 0,
 		"motivation_req": 0,
 		"_illustration": "Matthew Arcus",
+		"_abilities_power": 1,
 		"_affinity": "NEUTRAL",
+		"_influence": 0,
 	},
 	"Sierpinski": {
 		"Type": CardConfig.CardTypes.SHADER,
@@ -263,7 +273,7 @@ const CARDS := {
 		"_abilities_power": 3,
 		"_illustration": "Inigo Quilez",
 		"_affinity": "WIN",
-		"_influence": 1,
+		"_influence": 2,
 	},
 	"Plasma Globe": {
 		"Type": CardConfig.CardTypes.SHADER,
@@ -309,7 +319,7 @@ const CARDS := {
 		"_abilities_power": 1,
 		"_illustration": "Matthew Arcus",
 		"_affinity": "WIN",
-		"_influence": 1,
+		"_influence": 3,
 	},
 	"Mandelbrot": {
 		"Type": CardConfig.CardTypes.SHADER,
@@ -370,7 +380,7 @@ const CARDS := {
 		"cred_req": 0,
 		"motivation_req": 6,
 		"_abilities_power": -3,
-		"_illustration": "N/A",
+		#"_illustration": "N/A",
 		"_affinity": "ART",
 		"_influence": 1,
 	},
@@ -385,9 +395,25 @@ const CARDS := {
 		"cred_req": 0,
 		"motivation_req": 0,
 		"_abilities_power": -1,
-		"_illustration": "N/A",
+		#"_illustration": "N/A",
 		"_affinity": "ART",
 		"_influence": 5,
+	},
+	"Memory Shader": {
+		"Type": CardConfig.CardTypes.SHADER,
+		"Tags": [],
+		"Abilities": "Install: Return the top " + CardConfig.CardTypes.ACTION\
+				+ " from your discard pile to your hand.",
+		"Time": 5,
+		"Value": GEN,
+		"Kudos": 0,
+		"skill_req": 1,
+		"cred_req": 0,
+		"motivation_req": 5,
+		"_abilities_power": 3,
+		#"_illustration": "N/A",
+		"_affinity": "ZIP",
+		"_influence": 4,
 	},
 #### skill_req 2
 	"Cloud": {
@@ -402,6 +428,7 @@ const CARDS := {
 		"motivation_req": 0,
 		"_illustration": "nmz",
 		"_affinity": "NEUTRAL",
+		"_influence": 0,
 	},
 	"Strings": {
 		"Type": CardConfig.CardTypes.SHADER,
@@ -414,7 +441,9 @@ const CARDS := {
 		"cred_req": 0,
 		"motivation_req": 0,
 		"_illustration": "Inigo Quilez",
+		"_abilities_power": 1,
 		"_affinity": "NEUTRAL",
+		"_influence": 0,
 	},
 	"Voronoi Column Tracing": {
 		"Type": CardConfig.CardTypes.SHADER,
@@ -459,7 +488,7 @@ const CARDS := {
 		"_abilities_power": -4,
 		"_illustration": "evvvvil",
 		"_affinity": "ZIP",
-		"_influence": 1,
+		"_influence": 2,
 	},
 	"Lanterns": {
 		"Type": CardConfig.CardTypes.SHADER,
@@ -471,12 +500,12 @@ const CARDS := {
 		"skill_req": 2,
 		"cred_req": 0,
 		"motivation_req": 0,
-		"_abilities_power": 1,
+		"_abilities_power": 2,
 		"_illustration": "Inigo Quilez",
 		"_affinity": "WIN",
 		"_influence": 1,
 	},
-	"Ininite Shader": {
+	"Infinite Shader": {
 		"Type": CardConfig.CardTypes.SHADER,
 		"Tags": [],
 		"Abilities": "Install: lose all remaining time",
@@ -487,9 +516,9 @@ const CARDS := {
 		"cred_req": 0,
 		"motivation_req": 4,
 		"_abilities_power": -3,
-#		"_illustration": "Inigo Quilez",
+#		"_illustration": "N/A",
 		"_affinity": "ART",
-		"_influence": 1,
+		"_influence": 2,
 	},
 	"Magnum Opus": {
 		"Type": CardConfig.CardTypes.SHADER,
@@ -502,8 +531,24 @@ const CARDS := {
 		"cred_req": 0,
 		"motivation_req": 0,
 		"_abilities_power": 0,
-#		"_illustration": "Inigo Quilez",
+#		"_illustration": "N/A",
 		"_affinity": "ART",
+		"_influence": 1,
+	},
+	"Tricky Shader": {
+		"Type": CardConfig.CardTypes.SHADER,
+		"Tags": [],
+		"Abilities": "When installing this shader, reduce its time by 2 extra (3 total) "\
+				+ "for each point by which you exceed its skill_req",
+		"Time": 9,
+		"Value": GEN,
+		"Kudos": 0,
+		"skill_req": 2,
+		"cred_req": 0,
+		"motivation_req": 0,
+		"_abilities_power": 2,
+#		"_illustration": "N/A",
+		"_affinity": "ZIP",
 		"_influence": 1,
 	},
 #### skill_req 3+
@@ -518,13 +563,15 @@ const CARDS := {
 		"cred_req": 0,
 		"motivation_req": 0,
 		"_illustration": "Alexander Alekseev",
+		"_abilities_power": 1,
 		"_affinity": "NEUTRAL",
+		"_influence": 0,
 	},
 	"Flux Core": {
 		"Type": CardConfig.CardTypes.SHADER,
 		"Tags": [],
-		"Abilities": "Reduce this shader's skill_req by the amount of "\
-				+ "installed Tutors",
+		"Abilities": "When installing this shader, reduce its "\
+				+ "skill_req by the amount of installed Tutors",
 		"Time": 4,
 		"Value": GEN,
 		"Kudos": 0,
@@ -547,9 +594,24 @@ const CARDS := {
 		"skill_req": 3,
 		"cred_req": 0,
 		"motivation_req": 3,
-		"_illustration": "N/A",
+		#"_illustration": "N/A",
 		"_affinity": "ART",
 		"_abilities_power": 2,
+		"_influence": 3,
+	},
+	"Squished Shader": {
+		"Type": CardConfig.CardTypes.SHADER,
+		"Tags": [],
+		"Abilities": "Install: Gain 1 Cred",
+		"Time": 6,
+		"Value": GEN,
+		"Kudos": 0,
+		"skill_req": 3,
+		"cred_req": 0,
+		"motivation_req": 2,
+		#"_illustration": "N/A",
+		"_affinity": "ZIP",
+		"_abilities_power": 3,
 		"_influence": 3,
 	},
 ### BEGIN Resources ###
@@ -565,7 +627,7 @@ const CARDS := {
 		"motivation_req": 0,
 		"_illustration": "Artbreeder",
 		"_affinity": "ART",
-		"_influence": 1,
+		"_influence": 3,
 	},
 	"Cheerleader": {
 		"Type": CardConfig.CardTypes.RESOURCE,
@@ -609,6 +671,7 @@ const CARDS := {
 		"motivation_req": 0,
 		"_illustration": "Artbreeder",
 		"_affinity": "NEUTRAL",
+		"_influence": 0,
 	},
 	"Zhee": {
 		"Type": CardConfig.CardTypes.RESOURCE,
@@ -622,6 +685,7 @@ const CARDS := {
 		"motivation_req": 0,
 		"_illustration": "Artbreeder",
 		"_affinity": "NEUTRAL",
+		"_influence": 0,
 	},
 	"Hardcode": {
 		"Type": CardConfig.CardTypes.RESOURCE,
@@ -666,6 +730,7 @@ const CARDS := {
 		"motivation_req": 5,
 		"_illustration": "Artbreeder",
 		"_affinity": "NEUTRAL",
+		"_influence": 0,
 	},
 	"Git": {
 		"Type": CardConfig.CardTypes.RESOURCE,
@@ -679,6 +744,7 @@ const CARDS := {
 		"cred_req": 0,
 		"motivation_req": 0,
 		"_affinity": "NEUTRAL",
+		"_influence": 0,
 	},
 	"Discord Mod": {
 		"Type": CardConfig.CardTypes.RESOURCE,
@@ -693,6 +759,7 @@ const CARDS := {
 		"cred_req": 0,
 		"motivation_req": 4,
 		"_affinity": "NEUTRAL",
+		"_influence": 0,
 	},
 	"Private Forum Mod": {
 		"Type": CardConfig.CardTypes.RESOURCE,
@@ -705,7 +772,7 @@ const CARDS := {
 		"cred_req": 3,
 		"motivation_req": 0,
 		"_affinity": "ZIP",
-		"_influence": 1,
+		"_influence": 2,
 	},
 	"Junker": {
 		"Type": CardConfig.CardTypes.RESOURCE,
@@ -719,6 +786,7 @@ const CARDS := {
 		"motivation_req": 0,
 		"_illustration": "Artbreeder",
 		"_affinity": "NEUTRAL",
+		"_influence": 0,
 	},
 	"Search Engine Expertise": {
 		"Type": CardConfig.CardTypes.RESOURCE,
@@ -732,7 +800,7 @@ const CARDS := {
 		"cred_req": 0,
 		"motivation_req": 0,
 		"_affinity": "WIN",
-		"_influence": 1,
+		"_influence": 2,
 	},
 	"Silver Tongue": {
 		"Type": CardConfig.CardTypes.RESOURCE,
@@ -746,7 +814,7 @@ const CARDS := {
 		"cred_req": 0,
 		"motivation_req": 0,
 		"_affinity": "WIN",
-		"_influence": 1,
+		"_influence": 4,
 	},
 	"ShaderToy": {
 		"Type": CardConfig.CardTypes.RESOURCE,
@@ -760,6 +828,7 @@ const CARDS := {
 		"cred_req": 0,
 		"motivation_req": 2,
 		"_affinity": "NEUTRAL",
+		"_influence": 0,
 	},
 	"Blog": {
 		"Type": CardConfig.CardTypes.RESOURCE,
@@ -773,7 +842,7 @@ const CARDS := {
 		"cred_req": 0,
 		"motivation_req": 0,
 		"_affinity": "ZIP",
-		"_influence": 1,
+		"_influence": 2,
 	},
 	"Igorrr": {
 		"Type": CardConfig.CardTypes.RESOURCE,
@@ -788,7 +857,7 @@ const CARDS := {
 		"motivation_req": 1,
 		"_illustration": "Artbreeder",
 		"_affinity": "ZIP",
-		"_influence": 1,
+		"_influence": 3,
 	},
 	"Prismatic": {
 		"Type": CardConfig.CardTypes.RESOURCE,
@@ -817,7 +886,7 @@ const CARDS := {
 		"motivation_req": 0,
 		"_illustration": "Artbreeder",
 		"_affinity": "WIN",
-		"_influence": 1,
+		"_influence": 3,
 	},
 	"Fidazzia": {
 		"Type": CardConfig.CardTypes.RESOURCE,
@@ -831,7 +900,7 @@ const CARDS := {
 		"motivation_req": 0,
 		"_illustration": "Artbreeder",
 		"_affinity": "WIN",
-		"_influence": 1,
+		"_influence": 2,
 	},
 	"Antisocial": {
 		"Type": CardConfig.CardTypes.RESOURCE,
@@ -846,7 +915,7 @@ const CARDS := {
 		"cred_req": 0,
 		"motivation_req": 0,
 		"_affinity": "ART",
-		"_influence": 1,
+		"_influence": 4,
 	},
 	"Always Online": {
 		"Type": CardConfig.CardTypes.RESOURCE,
@@ -859,11 +928,11 @@ const CARDS := {
 		"cred_req": 0,
 		"motivation_req": 0,
 		"_affinity": "ZIP",
-		"_influence": 1,
+		"_influence": 4,
 	},
 	"Podcast": {
 		"Type": CardConfig.CardTypes.RESOURCE,
-		"Tags": ["Community"],
+		"Tags": [],
 		"Abilities": "You are considered to have +1 cred for card effects",
 		"Time": 1,
 		"Value": 0,
@@ -885,7 +954,7 @@ const CARDS := {
 		"cred_req": 0,
 		"motivation_req": 0,
 		"_affinity": "ART",
-		"_influence": 4,
+		"_influence": 3,
 	},
 ### BEGIN Prep ###
 	"Collaboration": {
@@ -899,7 +968,7 @@ const CARDS := {
 		"cred_req": 0,
 		"motivation_req": 0,
 		"_affinity": "ART",
-		"_influence": 1,
+		"_influence": 2,
 	},
 	"Get Some Advice": {
 		"Type": CardConfig.CardTypes.ACTION,
@@ -912,6 +981,7 @@ const CARDS := {
 		"cred_req": 0,
 		"motivation_req": 0,
 		"_affinity": "NEUTRAL",
+		"_influence": 0,
 	},
 	"Google-Fu!": {
 		"Type": CardConfig.CardTypes.ACTION,
@@ -924,7 +994,7 @@ const CARDS := {
 		"cred_req": 0,
 		"motivation_req": 5,
 		"_affinity": "WIN",
-		"_influence": 1,
+		"_influence": 2,
 	},
 	"Massive Compression": {
 		"Type": CardConfig.CardTypes.ACTION,
@@ -937,7 +1007,7 @@ const CARDS := {
 		"cred_req": 0,
 		"motivation_req": 0,
 		"_affinity": "ZIP",
-		"_influence": 1,
+		"_influence": 2,
 	},
 	"Help out Some Newbs": {
 		"Type": CardConfig.CardTypes.ACTION,
@@ -950,6 +1020,7 @@ const CARDS := {
 		"cred_req": 0,
 		"motivation_req": 0,
 		"_affinity": "NEUTRAL",
+		"_influence": 0,
 	},
 	"Social Networking": {
 		"Type": CardConfig.CardTypes.ACTION,
@@ -1006,6 +1077,7 @@ const CARDS := {
 		"cred_req": 0,
 		"motivation_req": 6,
 		"_affinity": "NEUTRAL",
+		"_influence": 0,
 	},
 	"Meditation": {
 		"Type": CardConfig.CardTypes.ACTION,
@@ -1018,6 +1090,7 @@ const CARDS := {
 		"cred_req": 0,
 		"motivation_req": 0,
 		"_affinity": "NEUTRAL",
+		"_influence": 0,
 	},
 	"Pivot": {
 		"Type": CardConfig.CardTypes.ACTION,
@@ -1031,6 +1104,7 @@ const CARDS := {
 		"cred_req": 0,
 		"motivation_req": 0,
 		"_affinity": "NEUTRAL",
+		"_influence": 0,
 	},
 	"Crowdsourcing": {
 		"Type": CardConfig.CardTypes.ACTION,
@@ -1045,7 +1119,7 @@ const CARDS := {
 		"cred_req": 0,
 		"motivation_req": 0,
 		"_affinity": "WIN",
-		"_influence": 1,
+		"_influence": 3,
 	},
 	"Insight": {
 		"Type": CardConfig.CardTypes.ACTION,
@@ -1059,6 +1133,7 @@ const CARDS := {
 		"cred_req": 0,
 		"motivation_req": 5,
 		"_affinity": "NEUTRAL",
+		"_influence": 0,
 	},
 	"All-Nighter": {
 		"Type": CardConfig.CardTypes.ACTION,
@@ -1071,7 +1146,7 @@ const CARDS := {
 		"cred_req": 0,
 		"motivation_req": 0,
 		"_affinity": "ZIP",
-		"_influence": 1,
+		"_influence": 2,
 	},
 	"Refactoring": {
 		"Type": CardConfig.CardTypes.ACTION,
@@ -1101,7 +1176,7 @@ const CARDS := {
 		"cred_req": 0,
 		"motivation_req": 0,
 		"_affinity": "ART",
-		"_influence": 1,
+		"_influence": 2,
 	},
 	"Monetary Incentives": {
 		"Type": CardConfig.CardTypes.ACTION,
@@ -1114,7 +1189,7 @@ const CARDS := {
 		"cred_req": 1,
 		"motivation_req": 0,
 		"_affinity": "WIN",
-		"_influence": 1,
+		"_influence": 2,
 	},
 # Need to figure out how to script this first
 #	"Task Warrior": {

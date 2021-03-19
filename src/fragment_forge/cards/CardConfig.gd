@@ -46,7 +46,8 @@ const PROPERTIES_NUMBERS := [
 		"Kudos",
 		"skill_req",
 		"cred_req",
-		"motivation_req"]
+		"motivation_req",
+		"_influence"]
 const NUMBER_WITH_LABEL := []
 # Properties provided in a list which are converted into a string for the
 # label text, using the array_join() method

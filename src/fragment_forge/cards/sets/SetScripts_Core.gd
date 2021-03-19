@@ -1288,7 +1288,7 @@ func get_scripts(card_name: String) -> Dictionary:
 				],
 			},
 		},
-		"Ininite Shader": {
+		"Infinite Shader": {
 			"card_moved_to_board": {
 				"board": [
 					{
@@ -1405,6 +1405,50 @@ func get_scripts(card_name: String) -> Dictionary:
 								"filter_properties": {"Type": CardConfig.CardTypes.SHADER}
 							}],
 							"filter_card_count": 3,}
+					},
+				]
+			}
+		},
+		"Memory Shader": {
+			"card_moved_to_board": {
+				"board": [
+					{
+						"name": "move_card_to_container",
+						"subject": "tutor",
+						"trigger": "self",
+						"src_container":  cfc.NMAP.discard,
+						"dest_container":  cfc.NMAP.hand,
+						"filter_state_tutor": [
+							{
+								"filter_properties": {
+									"Type": CardConfig.CardTypes.ACTION
+								}
+							}
+						],
+					},
+				],
+			},
+		},
+		"Squished Shader": {
+			"card_moved_to_board": {
+				"board": [
+					{
+						"name": "mod_counter",
+						"counter_name": "cred",
+						"modification": 1,
+						"trigger": "self",
+					},
+				],
+			},
+		},
+		"Tricky Shader": {
+			"alterants": {
+				"hand": [
+					{
+						"filter_task": "get_property",
+						"trigger": "self",
+						"filter_property_name": "Time",
+						"alteration": "custom_script",
 					},
 				]
 			}
