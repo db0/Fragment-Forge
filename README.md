@@ -1,4 +1,4 @@
-# Fragment Forge v0.11
+# Fragment Forge v0.13
 
 Fragment Forge is a card game simulating the rise to fame of a new demo effects coder.
 
@@ -9,7 +9,7 @@ You can also [play it online](http://fragmentforge.dbzer0.com/) (however the des
 
 ## Roadmap
 
-* More cards
+* 120 cards
 * Fancier card layout
 * (More) Card art
 * Multiplayer rules (dependent on the card game framework adding networking code)
