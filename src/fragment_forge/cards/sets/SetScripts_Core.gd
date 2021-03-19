@@ -247,7 +247,7 @@ func get_scripts(card_name: String) -> Dictionary:
 						"filter_state_trigger": [
 							{
 								"filter_properties": {
-									"Type": "Shader"
+									"Type": CardConfig.CardTypes.SHADER
 								},
 								"filter_properties2": {
 									"skill_req": 1,
@@ -1244,7 +1244,7 @@ func get_scripts(card_name: String) -> Dictionary:
 				]
 			}
 		},
-		"Podcast": {
+		"Streaming": {
 			"alterants": {
 				"board": [
 					{
@@ -1252,6 +1252,19 @@ func get_scripts(card_name: String) -> Dictionary:
 						# for winning the game
 						"filter_task": "get_counter",
 						"filter_counter_name": "cred",
+						"alteration": 1,
+					},
+				],
+			},
+		},
+		"Podcast": {
+			"alterants": {
+				"board": [
+					{
+						# By default, get_counter alterants will not work
+						# for winning the game
+						"filter_task": "get_counter",
+						"filter_counter_name": "motivation",
 						"alteration": 1,
 					},
 				],
@@ -1453,6 +1466,72 @@ func get_scripts(card_name: String) -> Dictionary:
 				]
 			}
 		},
+		"Methodical": {
+			"card_moved_to_hand": {
+				"board": [
+					{
+						"name": "mod_counter",
+						"modification": -1,
+						"counter_name": "time",
+						"trigger": "another",
+					},
+				],
+			"filter_source": cfc.NMAP.deck,
+			"filter_tags": "Scripted",
+			},
+			"card_rotated": {
+				"board": [
+					{
+						"name": "mod_counter",
+						"modification": 1,
+						"counter_name": "time",
+						"trigger": "another",
+					},
+				],
+				"filter_state_trigger": [
+					{
+						"filter_properties": {
+							"Type": CardConfig.CardTypes.SHADER
+						},
+					}
+				]
+			},
+		},
+		"Lost in the Moment": {
+			"manual": {
+				"hand": [
+					{
+						"name": "modify_properties",
+						"set_properties": {"Value": "+per_property"},
+						"subject": "boardseek",
+						"subject_count": 1,
+						"sort_by": "property",
+						"sort_name": "Value",
+						"per_property": {
+							"subject": "boardseek",
+							"subject_count": 1,
+							"sort_by": "property",
+							"sort_name": "Value",
+							"property_name": "Value"},
+						"filter_state_seek": [
+							{
+								"filter_properties": \
+										{"Type": CardConfig.CardTypes.SHADER},
+							}
+						],
+
+					},
+					{
+						"name": "mod_counter",
+						"trigger": "self",
+						"modification": 0,
+						"counter_name": "time",
+						"set_to_mod": true
+					},
+				],
+			},
+		},
+
 	}
 	# We return only the scripts that match the card name and trigger
 	return(scripts.get(card_name,{}))

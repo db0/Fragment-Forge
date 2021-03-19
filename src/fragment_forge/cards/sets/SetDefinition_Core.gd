@@ -930,18 +930,18 @@ const CARDS := {
 		"_affinity": "ZIP",
 		"_influence": 4,
 	},
-	"Podcast": {
+	"Streaming": {
 		"Type": CardConfig.CardTypes.RESOURCE,
 		"Tags": [],
-		"Abilities": "You are considered to have +1 cred for card effects",
+		"Abilities": "You are considered to have +1 cred for card effects and requirements",
 		"Time": 1,
 		"Value": 0,
-		"Kudos": 0,
+		"Kudos": 2,
 		"skill_req": 0,
 		"cred_req": 0,
 		"motivation_req": 0,
-		"_affinity": "NEUTRAL",
-		"_influence": 0,
+		"_affinity": "ZIP",
+		"_influence": 1,
 	},
 	"CC License": {
 		"Type": CardConfig.CardTypes.RESOURCE,
@@ -955,6 +955,33 @@ const CARDS := {
 		"motivation_req": 0,
 		"_affinity": "ART",
 		"_influence": 3,
+	},
+	"Podcast": {
+		"Type": CardConfig.CardTypes.RESOURCE,
+		"Tags": [],
+		"Abilities": "You are considered to have +1 motivation for card effects and requirements",
+		"Time": 1,
+		"Value": 0,
+		"Kudos": 2,
+		"skill_req": 0,
+		"cred_req": 0,
+		"motivation_req": 0,
+		"_affinity": "ART",
+		"_influence": 1,
+	},
+	"Methodical": {
+		"Type": CardConfig.CardTypes.RESOURCE,
+		"Tags": ["Contact", "Obscure", "Unique"],
+		"Abilities": "Whenever you draw a card with a card effect, lose 1 time.\n"\
+				+ "Whenever you exhaust a shader, gain 1 time.",
+		"Time": 1,
+		"Value": 0,
+		"Kudos": 6,
+		"skill_req": 0,
+		"cred_req": 0,
+		"motivation_req": 0,
+		"_affinity": "ART",
+		"_influence": 2,
 	},
 ### BEGIN Prep ###
 	"Collaboration": {
@@ -1190,6 +1217,20 @@ const CARDS := {
 		"motivation_req": 0,
 		"_affinity": "WIN",
 		"_influence": 2,
+	},
+	"Lost in the Moment": {
+		"Type": CardConfig.CardTypes.ACTION,
+		"Tags": [],
+		"Abilities": "Double the value of your lower-value Shader. "\
+				+ "Lose all remaining time",
+		"Time": 3,
+		"Value": 0,
+		"Kudos": 0,
+		"skill_req": 0,
+		"cred_req": 0,
+		"motivation_req": 5,
+		"_affinity": "ART",
+		"_influence": 3,
 	},
 # Need to figure out how to script this first
 #	"Task Warrior": {
