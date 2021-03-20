@@ -876,7 +876,7 @@ func get_scripts(card_name: String) -> Dictionary:
 				],
 			},
 		},
-		"Silver Tongue": {
+		"CompSci Degree": {
 			"card_moved_to_board": {
 				"board": [
 					{
@@ -1674,7 +1674,67 @@ func get_scripts(card_name: String) -> Dictionary:
 				],
 			},
 		},
-
+		"Silver Tongue": {
+			"alterants": {
+				"board": [
+					{
+						"filter_task": "get_property",
+						"filter_property_name": "Kudos",
+						"alteration": -1,
+						"filter_state_trigger": [
+							{"filter_properties": {"Tags": "Tutor"}},
+							{"filter_properties": {"Tags": "Collaborator"}},
+						]
+					},
+				],
+			},
+		},
+		"Xeger": {
+			"manual": {
+				"board": {
+					"Exhaust a Shader": [
+						{
+							"name": "mod_counter",
+							"modification": -2,
+							"counter_name": "kudos",
+							"is_cost": true
+						},
+						{
+							"name": "rotate_card",
+							"degrees": 90,
+							"subject": "target",
+							"is_cost": true,
+							"filter_state_subject": [
+								{
+									"filter_properties1": {"Type": CardConfig.CardTypes.SHADER},
+									"filter_parent": cfc.NMAP.board,
+								},
+							],
+						},
+					],
+					"Unexhaust a Shader": [
+						{
+							"name": "mod_counter",
+							"modification": -2,
+							"counter_name": "kudos",
+							"is_cost": true
+						},
+						{
+							"name": "rotate_card",
+							"degrees": 0,
+							"subject": "target",
+							"is_cost": true,
+							"filter_state_subject": [
+								{
+									"filter_properties1": {"Type": CardConfig.CardTypes.SHADER},
+									"filter_parent": cfc.NMAP.board,
+								},
+							],
+						},
+					],
+				},
+			},
+		},
 	}
 	# We return only the scripts that match the card name and trigger
 	return(scripts.get(card_name,{}))
