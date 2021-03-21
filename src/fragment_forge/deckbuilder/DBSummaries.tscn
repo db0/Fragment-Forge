@@ -91,4 +91,5 @@ columns = 6
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
 [connection signal="pressed" from="PersonaSelect" to="." method="_on_PersonaSelect_pressed"]

@@ -1102,7 +1102,36 @@ const CARDS := {
 		"motivation_req": 0,
 		"_affinity": "WIN",
 		"_influence": 2,
-	},	
+	},
+	"Inner Circle": {
+		"Type": CardConfig.CardTypes.RESOURCE,
+		"Tags": [],
+		"Abilities": "Exhaust or 2 Kudos: Add an activation token to this card.\n"\
+				+ "Discard: Reduce the 1st position requirements by the number "\
+				+ "of activation tokens on this card.",
+		"Time": 1,
+		"Value": 0,
+		"Kudos": 0,
+		"skill_req": 0,
+		"cred_req": 2,
+		"motivation_req": 0,
+		"_affinity": "WIN",
+		"_influence": 2,
+	},
+	"Connected": {
+		"Type": CardConfig.CardTypes.RESOURCE,
+		"Tags": ["Community"],
+		"Abilities": "Exhaust: Gain 1 Kudos per installed Collaborator, "\
+				+ "Tutor or Contact",
+		"Time": 1,
+		"Value": 0,
+		"Kudos": 0,
+		"skill_req": 0,
+		"cred_req": 0,
+		"motivation_req": 4,
+		"_affinity": "WIN",
+		"_influence": 2,
+	},
 ### BEGIN Prep ###
 	"Collaboration": {
 		"Type": CardConfig.CardTypes.ACTION,

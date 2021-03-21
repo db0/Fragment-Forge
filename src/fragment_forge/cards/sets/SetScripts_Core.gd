@@ -460,7 +460,6 @@ func get_scripts(card_name: String) -> Dictionary:
 						"filter_state_subject": [
 							{"filter_properties1": {"Tags": "Tutor"}},
 							{"filter_properties1": {"Tags": "Collaborator"}},
-							{"filter_properties1": {"Tags": "Volunteering"}},
 						],
 					},
 					{
@@ -1772,6 +1771,83 @@ func get_scripts(card_name: String) -> Dictionary:
 									}
 								}
 							]
+						}
+					},
+				],
+			},
+		},
+		"Inner Circle": {
+			"manual": {
+				"board": {
+					"Exhaust: Add an Activation Token": [
+						{
+							"name": "rotate_card",
+							"subject": "self",
+							"degrees": 90,
+							"is_cost": true
+						},
+						{
+							"name": "mod_tokens",
+							"modification": 1,
+							"token_name": "activation",
+							"subject": "self"
+						},
+					],
+					"2 Kudos: Add an Activation Token": [
+						{
+							"name": "mod_counter",
+							"modification": -2,
+							"counter_name": "kudos",
+							"is_cost": true,
+						},
+						{
+							"name": "mod_tokens",
+							"modification": 1,
+							"token_name": "activation",
+							"subject": "self"
+						},
+					],
+					"Discard: Reduce the 1st place requirements by the number of activation tokens": [
+						{
+							"name": "mod_competition",
+							"place": Competitions.Place.FIRST,
+							"modification": "per_token",
+							"per_token": {
+								"subject": "self",
+								"token_name": "activation",
+								"is_inverted": true,
+							},
+						},
+						{
+							"name": "move_card_to_container",
+							"dest_container": cfc.NMAP.discard,
+							"subject": "self",
+						},
+					],
+				},
+			},
+		},
+		"Connected": {
+			"manual": {
+				"board": [
+					{
+						"name": "rotate_card",
+						"subject": "self",
+						"degrees": 90,
+						"is_cost": true
+					},
+					{
+						"name": "mod_counter",
+						"modification": "per_boardseek",
+						"counter_name":  "kudos",
+						"per_boardseek": {
+							"subject": "boardseek",
+							"subject_count": "all",
+							"filter_state_seek": [
+								{"filter_properties": {"Tags": "Tutor"}},
+								{"filter_properties": {"Tags": "Collaborator"}},
+								{"filter_properties": {"Tags": "Contact"}},
+							],
 						}
 					},
 				],
