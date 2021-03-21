@@ -112,6 +112,12 @@ The following tags have built-in effects on their cards.
 * Collaborator: Discarded at the end of the current competition
 * Reputation: Can only have 1 Reputation installed
 
+### Triggers
+
+Some card will have some specific triggers, which summarize when the card is activated. 
+
+* Install: Triggers when the card is played on the board for the first time.
+
 ### Losing the Game
 
 There is only one loss condition in the game, and that is running out of motivation. If your motivation ever drops to 0, you immediately lose the game, as you drop out of all further competitions!

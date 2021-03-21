@@ -102,7 +102,7 @@ func get_scripts(card_name: String) -> Dictionary:
 					{
 						"name": "mod_counter",
 						"counter_name": "kudos",
-						"modification": 5,
+						"modification": 4,
 					},
 				],
 			},
@@ -684,7 +684,7 @@ func get_scripts(card_name: String) -> Dictionary:
 			"filter_source": cfc.NMAP.deck,
 			},
 			"card_moved_to_pile": {
-				"pile": [
+				"discard": [
 					{
 						"name": "move_card_to_container",
 						"src_container": cfc.NMAP.deck,
@@ -1557,18 +1557,23 @@ func get_scripts(card_name: String) -> Dictionary:
 							"subject_count": 1,
 							"sort_by": "property",
 							"sort_name": "Value",
-							"property_name": "Value"},
+							"property_name": "Value",
+							"filter_state_seek": [
+								{
+									"filter_properties": \
+											{"Type": CardConfig.CardTypes.SHADER},
+								}
+							],
+						},
 						"filter_state_seek": [
 							{
 								"filter_properties": \
 										{"Type": CardConfig.CardTypes.SHADER},
 							}
 						],
-
 					},
 					{
 						"name": "mod_counter",
-						"trigger": "self",
 						"modification": 0,
 						"counter_name": "time",
 						"set_to_mod": true
@@ -1922,6 +1927,112 @@ func get_scripts(card_name: String) -> Dictionary:
 					},
 				]
 			}
+		},
+		"Common Shader": {
+			"manual": {
+				"board": [
+					{
+						"name": "mod_counter",
+						"counter_name": "kudos",
+						"is_cost": true,
+						"modification": -5,
+					},
+					{
+						"name": "modify_properties",
+						"set_properties": {"Value": "+2"},
+						"subject": "self",
+					},
+				]
+			}
+		},
+		"Suru": {
+			"manual": {
+				"board": [
+					{
+						"name": "rotate_card",
+						"subject": "self",
+						"degrees": 90,
+						"is_cost": true
+					},
+					{
+						"name": "mod_counter",
+						"modification": -2,
+						"counter_name": "kudos",
+						"is_cost": true
+					},
+					{
+						"name": "mod_tokens",
+						"modification": 1,
+						"token_name": "activation",
+						"subject": "self"
+					},
+				],
+			},
+			"card_moved_to_board": {
+				"board": [
+					{
+						"name": "mod_tokens",
+						"modification": 0,
+						"set_to_mod": true,
+						"token_name": "activation",
+						"subject": "self",
+						"trigger": "another",
+						"filter_state_trigger": [
+							{
+								"filter_properties": \
+										{"Type": CardConfig.CardTypes.SHADER},
+							}
+						],
+					},
+				],
+			},
+			"alterants": {
+				"board": [
+					{
+						"filter_task": "get_counter",
+						"filter_counter_name": "skill",
+						"alteration": "per_token",
+						"filter_state_trigger": [
+							{
+								"filter_properties": {
+									"Type": CardConfig.CardTypes.SHADER
+								},
+							}
+						],
+						"per_token": {
+							"subject": "self",
+							"token_name": "activation",
+						}
+					},
+				],
+			},
+		},
+		"Ideas Exchange": {
+			"manual": {
+				"hand":[
+					# We have a function to discard manually to ensure
+					# it's not counted for checking if the hand is full
+					{
+						"name": "move_card_to_container",
+						"dest_container": cfc.NMAP.discard,
+						"subject": "target",
+						"is_cost": true,
+					},
+					{
+						"name": "move_card_to_container",
+						"dest_container": cfc.NMAP.discard,
+						"subject": "self",
+					},
+					{
+						"name": "move_card_to_container",
+						"src_container": cfc.NMAP.deck,
+						"dest_container": cfc.NMAP.hand,
+						"subject_count": 3,
+						"subject": "index",
+						"subject_index": "top",
+					},
+				],
+			},
 		},
 	}
 	# We return only the scripts that match the card name and trigger

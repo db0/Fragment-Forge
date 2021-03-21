@@ -415,6 +415,21 @@ const CARDS := {
 		"_affinity": "ZIP",
 		"_influence": 4,
 	},
+	"Common Shader": {
+		"Type": CardConfig.CardTypes.SHADER,
+		"Tags": [],
+		"Abilities": "5 Kudos: Increase the value of this Shader by 2",
+		"Time": 5,
+		"Value": GEN,
+		"Kudos": 0,
+		"skill_req": 3,
+		"cred_req": 0,
+		"motivation_req": 0,
+		"_abilities_power": 2,
+		#"_illustration": "N/A",
+		"_affinity": "NEUTRAL",
+		"_influence": 0,
+	},
 #### skill_req 2
 	"Cloud": {
 		"Type": CardConfig.CardTypes.SHADER,
@@ -1132,6 +1147,22 @@ const CARDS := {
 		"_affinity": "WIN",
 		"_influence": 2,
 	},
+	"Suru": {
+		"Type": CardConfig.CardTypes.RESOURCE,
+		"Tags": ["Tutor"],
+		"Abilities": "2 Kudos, Exhaust: Put 1 activation token on this card.\n"\
+				+ "When you play a Shader, increase your skill "\
+				+ "by the amount of activation tokens on this card, "\
+				+ "then remove all activation tokens.",
+		"Time": 1,
+		"Value": 0,
+		"Kudos": 1,
+		"skill_req": 0,
+		"cred_req": 0,
+		"motivation_req": 0,
+		"_affinity": "NEUTRAL",
+		"_influence": 0,
+	},
 ### BEGIN Prep ###
 	"Collaboration": {
 		"Type": CardConfig.CardTypes.ACTION,
@@ -1192,9 +1223,9 @@ const CARDS := {
 		"Time": 1,
 		"Value": 0,
 		"Kudos": 0,
-		"skill_req": 1,
+		"skill_req": 0,
 		"cred_req": 0,
-		"motivation_req": 0,
+		"motivation_req": 5,
 		"_affinity": "NEUTRAL",
 		"_influence": 0,
 	},
@@ -1421,6 +1452,19 @@ const CARDS := {
 		"motivation_req": 0,
 		"_affinity": "WIN",
 		"_influence": 1,
+	},
+	"Ideas Exchange": {
+		"Type": CardConfig.CardTypes.ACTION,
+		"Tags": [],
+		"Abilities": "Discard a card from hand: Draw 3 cards",
+		"Time": 1,
+		"Value": 0,
+		"Kudos": 1,
+		"skill_req": 0,
+		"cred_req": 0,
+		"motivation_req": 0,
+		"_affinity": "NEUTRAL",
+		"_influence": 0,
 	},
 # Need to figure out how to script this first
 #	"Task Warrior": {
