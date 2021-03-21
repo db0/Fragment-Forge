@@ -420,6 +420,7 @@ func generate_discard_action_tasks() -> Array:
 	var discard_script_template := {
 			"name": "move_card_to_container",
 			"subject": "self",
+			"tags": ["Played"],
 			"dest_container": cfc.NMAP.discard}
 	var discard_tasks = [discard_script_template]
 	return(discard_tasks)

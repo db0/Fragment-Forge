@@ -102,7 +102,7 @@ func get_scripts(card_name: String) -> Dictionary:
 					{
 						"name": "mod_counter",
 						"counter_name": "kudos",
-						"modification": 3,
+						"modification": 5,
 					},
 				],
 			},
@@ -1852,6 +1852,76 @@ func get_scripts(card_name: String) -> Dictionary:
 					},
 				],
 			},
+		},
+		"Compacting Run": {
+			"manual": {
+				"hand": [
+					{
+						"name": "mod_counter",
+						"counter_name": "kudos",
+						"modification": 3,
+					},
+
+				]
+			},
+			"card_moved_to_pile": {
+				"discard": [
+					{
+						"name": "move_card_to_container",
+						"dest_container": cfc.NMAP.hand,
+						"subject": "self",
+						"trigger": "another",
+						"filter_state_trigger": [
+							{
+								"filter_properties": \
+										{"Type": CardConfig.CardTypes.ACTION},
+								"filter_tags": "Played",
+							}
+						],
+					},
+				],
+			},
+		},
+		"Versatility": {
+			"manual": {
+				"hand": {
+					"Gain 2 Kudos": [
+						{
+							"name": "mod_counter",
+							"counter_name": "kudos",
+							"modification": 2,
+						},
+					],
+					"Unexhaust a Shader": [
+						{
+							"name": "rotate_card",
+							"degrees": 0,
+							"subject": "target",
+							"filter_state_subject": [
+								{
+									"filter_properties1": {"Type": CardConfig.CardTypes.SHADER},
+									"filter_parent": cfc.NMAP.board,
+								},
+							],
+						},
+					],
+				},
+			},
+		},
+		"Polishing": {
+			"manual": {
+				"hand": [
+					{
+						"name": "modify_properties",
+						"set_properties": {"Value": "+4"},
+						"subject": "target",
+						"filter_state_subject": [{
+							"filter_properties": {"Type": "Shader"},
+							"filter_parent": cfc.NMAP.board
+						}],
+					},
+				]
+			}
 		},
 	}
 	# We return only the scripts that match the card name and trigger

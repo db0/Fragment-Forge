@@ -1,8 +1,8 @@
 shader_type canvas_item;
 // Using code from
 
-// Otavio Good for the runes shader
-// https://www.shadertoy.com/view/MsXSRn
+// Dmitriy Karaush for the rainbow matrix shader
+// https://www.shadertoy.com/view/3lBBWG
 // Ported to Godot and customized for FragmentForge by Db0
 
 // Licence: Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License
