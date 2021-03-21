@@ -1735,6 +1735,48 @@ func get_scripts(card_name: String) -> Dictionary:
 				},
 			},
 		},
+		"Twitter": {
+			"counter_modified": {
+				"board": [
+					{
+						"name": "mod_counter",
+						"modification": 2,
+						"counter_name": "kudos",
+					},
+				],
+				"filter_counter_name": "cred",
+				"filter_count_difference": "increased"
+			},
+		},
+		"Constant": {
+			"alterants": {
+				"board": [
+					{
+						"filter_task": "get_counter",
+						"filter_counter_name": "skill",
+						"alteration": "per_boardseek",
+						"filter_state_trigger": [
+							{
+								"filter_properties": {
+									"Type": CardConfig.CardTypes.SHADER
+								},
+							}
+						],
+						"per_boardseek": {
+							"subject": "boardseek",
+							"subject_count": "all",
+							"filter_state_seek": [
+								{
+									"filter_properties": {
+										"Name": SP.VALUE_COMPARE_WITH_TRIGGER
+									}
+								}
+							]
+						}
+					},
+				],
+			},
+		},
 	}
 	# We return only the scripts that match the card name and trigger
 	return(scripts.get(card_name,{}))

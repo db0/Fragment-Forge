@@ -1076,6 +1076,33 @@ const CARDS := {
 		"_affinity": "ART",
 		"_influence": 2,
 	},
+	"Twitter": {
+		"Type": CardConfig.CardTypes.RESOURCE,
+		"Tags": ["Community"],
+		"Abilities": "After you gain any amount of cred, gain 2 Kudos",
+		"Time": 1,
+		"Value": 0,
+		"Kudos": 0,
+		"skill_req": 0,
+		"cred_req": 0,
+		"motivation_req": 3,
+		"_affinity": "ZIP",
+		"_influence": 2,
+	},
+	"Constant": {
+		"Type": CardConfig.CardTypes.RESOURCE,
+		"Tags": ["Tutor"],
+		"Abilities": "When installing a Shader, you have +1 skill for each "\
+				+ "other Shader with the same name you have installed.",
+		"Time": 1,
+		"Value": 0,
+		"Kudos": 2,
+		"skill_req": 0,
+		"cred_req": 0,
+		"motivation_req": 0,
+		"_affinity": "WIN",
+		"_influence": 2,
+	},	
 ### BEGIN Prep ###
 	"Collaboration": {
 		"Type": CardConfig.CardTypes.ACTION,
