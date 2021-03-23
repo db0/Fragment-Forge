@@ -312,6 +312,7 @@ func sort_subjects(subject_list: Array) -> Array:
 # This allows us for example to filter cards sought based on the properties
 # of the card running the script.
 func parse_replacements() -> void:
+	# We need a deep copy because of all the nested dictionaries
 	var wip_definitions := script_definition.duplicate(true)
 	for key in wip_definitions:
 		# We have to go through all the state filters
@@ -353,9 +354,15 @@ func parse_replacements() -> void:
 					if SP.FILTER_TOKENS in filter:
 						var token_filters_array = state_filters[filter]
 						for token_filters in token_filters_array:
-							if str(token_filters.get(SP.FILTER_COUNT)) ==\
-									SP.VALUE_COMPARE_WITH_OWNER:
-								var card: Card = owner
+							if str(token_filters.get(SP.FILTER_COUNT)) in\
+									[SP.VALUE_COMPARE_WITH_OWNER,
+									SP.VALUE_COMPARE_WITH_TRIGGER]:
+								var card: Card
+								if str(token_filters.get(SP.FILTER_COUNT)) ==\
+										SP.VALUE_COMPARE_WITH_OWNER:
+									card = owner
+								else:
+									card = trigger_card
 								var owner_token_count :=\
 										card.tokens.get_token_count(
 										token_filters["filter_" + SP.KEY_TOKEN_NAME])
@@ -365,13 +372,21 @@ func parse_replacements() -> void:
 						if str(state_filters[filter]) == SP.VALUE_COMPARE_WITH_OWNER:
 							var card: Card = owner
 							state_filters[filter] = card.card_rotation
+						if str(state_filters[filter]) == SP.VALUE_COMPARE_WITH_TRIGGER:
+							var card: Card = trigger_card
+							state_filters[filter] = card.card_rotation
 					if SP.FILTER_FACEUP in filter:
 						if str(state_filters[filter]) == SP.VALUE_COMPARE_WITH_OWNER:
 							var card: Card = owner
+							state_filters[filter] = card.is_faceup
+						if str(state_filters[filter]) == SP.VALUE_COMPARE_WITH_TRIGGER:
+							var card: Card = trigger_card
 							state_filters[filter] = card.is_faceup
 					if SP.FILTER_PARENT in filter:
 						if str(state_filters[filter]) == SP.VALUE_COMPARE_WITH_OWNER:
 							var card: Card = owner
 							state_filters[filter] = card.get_parent()
+						if str(state_filters[filter]) == SP.VALUE_COMPARE_WITH_TRIGGER:
+							var card: Card = trigger_card
+							state_filters[filter] = card.get_parent()
 	script_definition = wip_definitions
-#	print_debug(script_definition)

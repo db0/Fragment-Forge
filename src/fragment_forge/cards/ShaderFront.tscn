@@ -1,5 +1,6 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
+[ext_resource path="res://src/fragment_forge/Theme/Theme_FF.tres" type="Theme" id=1]
 [ext_resource path="res://src/fragment_forge/cards/ShaderCardFront.tscn" type="PackedScene" id=2]
 
 [sub_resource type="StyleBoxFlat" id=1]
@@ -10,6 +11,54 @@ corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
 [node name="ShaderFront" instance=ExtResource( 2 )]
+theme = ExtResource( 1 )
 custom_styles/panel = SubResource( 1 )
+
+[node name="Requirements" parent="Margin/CardText" index="2"]
+margin_bottom = 96.0
+
+[node name="VBC" parent="Margin/CardText/Requirements" index="0"]
+margin_bottom = 56.0
+
+[node name="skill_reqCC" parent="Margin/CardText/Requirements/VBC" index="0"]
+margin_bottom = 16.0
+
+[node name="Icon" parent="Margin/CardText/Requirements/VBC/skill_reqCC" index="0"]
+margin_bottom = 16.0
+
+[node name="skill_req" parent="Margin/CardText/Requirements/VBC/skill_reqCC" index="1"]
+margin_bottom = 16.0
+
+[node name="cred_reqCC" parent="Margin/CardText/Requirements/VBC" index="1"]
+margin_top = 20.0
+margin_bottom = 36.0
+
+[node name="Icon" parent="Margin/CardText/Requirements/VBC/cred_reqCC" index="0"]
+margin_bottom = 16.0
+
+[node name="cred_req" parent="Margin/CardText/Requirements/VBC/cred_reqCC" index="1"]
+margin_bottom = 16.0
+
+[node name="motivation_reqCC" parent="Margin/CardText/Requirements/VBC" index="2"]
+margin_top = 40.0
+margin_bottom = 56.0
+
+[node name="Icon" parent="Margin/CardText/Requirements/VBC/motivation_reqCC" index="0"]
+margin_bottom = 16.0
+
+[node name="motivation_req" parent="Margin/CardText/Requirements/VBC/motivation_reqCC" index="1"]
+margin_bottom = 16.0
+
+[node name="VBoxContainer" parent="Margin/CardText/Requirements" index="1"]
+margin_bottom = 56.0
+
+[node name="Tags" parent="Margin/CardText/Requirements/VBoxContainer" index="0"]
+margin_bottom = 56.0
+
+[node name="Margin" parent="Margin/CardText/Requirements" index="2"]
+margin_bottom = 56.0
+
+[node name="Abilities" parent="Margin/CardText" index="3"]
+margin_top = 100.0
 
 [editable path="Margin/CardText/Requirements"]

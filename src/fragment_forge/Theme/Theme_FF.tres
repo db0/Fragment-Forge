@@ -1,0 +1,51 @@
+[gd_resource type="Theme" load_steps=8 format=2]
+
+[ext_resource path="res://src/fragment_forge/Theme/CardFrontFontLabels.tres" type="DynamicFont" id=1]
+[ext_resource path="res://src/fragment_forge/Theme/CardFrontFontAbilities.tres" type="DynamicFont" id=2]
+
+[sub_resource type="StyleBoxFlat" id=6]
+content_margin_left = 5.0
+bg_color = Color( 0.329412, 0.752941, 0.317647, 1 )
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+
+[sub_resource type="StyleBoxFlat" id=7]
+content_margin_left = 5.0
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+
+[sub_resource type="StyleBoxFlat" id=8]
+content_margin_left = 5.0
+bg_color = Color( 0.894118, 0.819608, 0.192157, 1 )
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+
+[sub_resource type="StyleBoxFlat" id=9]
+content_margin_left = 5.0
+bg_color = Color( 0.329412, 0.552941, 0.764706, 1 )
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+
+[sub_resource type="StyleBoxFlat" id=5]
+
+[resource]
+default_font = ExtResource( 1 )
+Label/colors/ART = Color( 0.482353, 1, 0.466667, 1 )
+Label/colors/NEUTRAL = Color( 1, 1, 1, 1 )
+Label/colors/WIN = Color( 1, 0.988235, 0.168627, 1 )
+Label/colors/ZIP = Color( 0.580392, 0.901961, 1, 1 )
+Label/colors/font_color = Color( 1, 1, 1, 1 )
+Label/colors/font_color_shadow = Color( 0, 0, 0, 0 )
+Label/colors/font_outline_modulate = Color( 1, 1, 1, 1 )
+Label/constants/line_spacing = 3
+Label/constants/shadow_as_outline = 0
+Label/constants/shadow_offset_x = 1
+Label/constants/shadow_offset_y = 1
+Label/fonts/abilities = ExtResource( 2 )
+Label/fonts/font = ExtResource( 1 )
+Label/styles/normal = null
+PanelContainer/styles/ART = SubResource( 6 )
+PanelContainer/styles/NEUTRAL = SubResource( 7 )
+PanelContainer/styles/WIN = SubResource( 8 )
+PanelContainer/styles/ZIP = SubResource( 9 )
+PanelContainer/styles/panel = SubResource( 5 )

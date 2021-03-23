@@ -1,13 +1,12 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://assets/images/Difios.jpeg" type="Texture" id=1]
 [ext_resource path="res://src/fragment_forge/cards/CardFrontRequirements.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/fragment_forge/cards/CardFrontValue.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/fragment_forge/cards/CardFrontHeader.tscn" type="PackedScene" id=4]
-[ext_resource path="res://fonts/Xolonium-Regular.ttf" type="DynamicFontData" id=5]
 [ext_resource path="res://src/fragment_forge/cards/GeneralCardFront.gd" type="Script" id=6]
-[ext_resource path="res://fonts/OpenSans-Semibold.ttf" type="DynamicFontData" id=7]
 [ext_resource path="res://shaders/Warping.shader" type="Shader" id=8]
+[ext_resource path="res://src/fragment_forge/Theme/Theme_FF.tres" type="Theme" id=9]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.145098, 0.145098, 0.145098, 1 )
@@ -15,21 +14,6 @@ corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
-
-[sub_resource type="DynamicFont" id=2]
-size = 12
-outline_size = 2
-outline_color = Color( 0, 0, 0, 1 )
-use_filter = true
-extra_spacing_char = 2
-font_data = ExtResource( 5 )
-
-[sub_resource type="DynamicFont" id=3]
-size = 13
-outline_size = 2
-outline_color = Color( 0.243137, 0.243137, 0.243137, 1 )
-use_filter = true
-font_data = ExtResource( 5 )
 
 [sub_resource type="ShaderMaterial" id=4]
 shader = ExtResource( 8 )
@@ -42,19 +26,13 @@ content_margin_bottom = 1.0
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
-[sub_resource type="DynamicFont" id=6]
-size = 13
-outline_size = 1
-outline_color = Color( 0, 0, 0, 1 )
-use_filter = true
-font_data = ExtResource( 7 )
-
 [node name="Front" type="Panel"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_right = -1550.0
 margin_bottom = -660.0
 mouse_filter = 2
+theme = ExtResource( 9 )
 custom_styles/panel = SubResource( 1 )
 script = ExtResource( 6 )
 __meta__ = {
@@ -95,7 +73,6 @@ margin_bottom = 39.0
 rect_min_size = Vector2( 50, 16 )
 size_flags_horizontal = 3
 size_flags_vertical = 1
-custom_fonts/font = SubResource( 2 )
 text = "Type"
 align = 1
 valign = 1
@@ -104,10 +81,10 @@ uppercase = true
 
 [node name="Requirements" parent="CardText/ArtLayover" instance=ExtResource( 2 )]
 margin_top = 43.0
-margin_bottom = 96.0
+margin_bottom = 99.0
 
 [node name="Control" type="Control" parent="CardText/ArtLayover"]
-margin_top = 100.0
+margin_top = 103.0
 margin_right = 150.0
 margin_bottom = 129.0
 mouse_filter = 2
@@ -119,7 +96,6 @@ margin_right = 150.0
 margin_bottom = 150.0
 rect_min_size = Vector2( 146, 17 )
 size_flags_vertical = 1
-custom_fonts/font = SubResource( 3 )
 text = "Tag1 - Tag2"
 align = 1
 valign = 1
@@ -147,6 +123,5 @@ margin_top = 1.0
 margin_right = 147.0
 margin_bottom = 89.0
 rect_min_size = Vector2( 120, 88 )
-custom_fonts/font = SubResource( 6 )
 text = "Text"
 autowrap = true

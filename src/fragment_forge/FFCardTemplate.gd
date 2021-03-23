@@ -145,6 +145,10 @@ func setup() -> void:
 	if printed_properties.empty():
 		printed_properties = properties.duplicate()
 
+	var header_style := card_front.theme.get_stylebox(
+			get_property("_affinity"), "PanelContainer")
+	var card_header : PanelContainer = card_front.header
+	card_header.add_stylebox_override("panel", header_style)
 
 # Formula for generating the shader value based on skill_req, time and ability power
 static func generate_shader_value(time: int, skill_req: int, power: int) -> int:

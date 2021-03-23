@@ -1,6 +1,5 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://src/fragment_forge/cards/NumberPropertyFont.tres" type="DynamicFont" id=1]
 [ext_resource path="res://assets/icons/value.png" type="Texture" id=2]
 
 [node name="ValueContainer" type="HBoxContainer"]
@@ -66,7 +65,6 @@ stretch_mode = 5
 margin_right = 18.0
 margin_bottom = 19.0
 rect_min_size = Vector2( 18, 19 )
-custom_fonts/font = ExtResource( 1 )
 text = "0"
 align = 1
 valign = 1

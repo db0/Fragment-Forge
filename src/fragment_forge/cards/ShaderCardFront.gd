@@ -2,6 +2,7 @@ extends "res://src/fragment_forge/cards/CardFront.gd"
 
 onready var art = $ArtLayout/ArtMargin/CC/Art
 onready var art_layout = $ArtLayout
+onready var header := $Margin/CardText/Header
 
 func _ready() -> void:
 	text_expansion_multiplier = {
