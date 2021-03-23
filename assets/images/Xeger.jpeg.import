@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/cccc.jpeg-25a3f8917235bbf03552e29e4ff6ba3d.stex"
+path="res://.import/Xeger.jpeg-a062bac9e52496f8a6bb76b0e6386d96.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/cccc.jpeg"
-dest_files=[ "res://.import/cccc.jpeg-25a3f8917235bbf03552e29e4ff6ba3d.stex" ]
+source_file="res://assets/images/Xeger.jpeg"
+dest_files=[ "res://.import/Xeger.jpeg-a062bac9e52496f8a6bb76b0e6386d96.stex" ]
 
 [params]
 
