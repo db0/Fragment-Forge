@@ -1499,7 +1499,7 @@ func get_scripts(card_name: String) -> Dictionary:
 				],
 			},
 		},
-		"Tricky Shader": {
+		"Kali": {
 			"alterants": {
 				"hand": [
 					{

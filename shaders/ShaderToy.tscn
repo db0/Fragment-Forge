@@ -1,19 +1,22 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://shaders/ShaderToy.gd" type="Script" id=1]
-[ext_resource path="res://shaders/textures/cc0textures/Gravel017_1K_Color.jpg" type="Texture" id=2]
-[ext_resource path="res://shaders/textures/pixabay/background-4168664_640.jpg" type="Texture" id=3]
-[ext_resource path="res://shaders/Liquid Bubbles.shader" type="Shader" id=4]
+[ext_resource path="res://shaders/Kali.shader" type="Shader" id=2]
 
-[sub_resource type="ShaderMaterial" id=2]
-shader = ExtResource( 4 )
-shader_param/is_card = false
-shader_param/iTime = 4526.87
-shader_param/iChannelResolution1 = Vector2( 512, 512 )
-shader_param/iChannel0 = ExtResource( 3 )
-shader_param/iChannel1 = ExtResource( 2 )
+[sub_resource type="ShaderMaterial" id=1]
+shader = ExtResource( 2 )
+shader_param/is_card = true
+shader_param/iTime = 15170.0
+shader_param/big_offset = 1000.0
+shader_param/PATH = 3
+shader_param/NUM_ITER = 19
+shader_param/NUM_TEX_ITER = 60
+shader_param/NORM_EPS = 0.002
+shader_param/NUM_TRACE = 100
+shader_param/PRECISSION = 0.1
+shader_param/FOG_DIST = 0.05
 
-[sub_resource type="Environment" id=3]
+[sub_resource type="Environment" id=2]
 background_mode = 4
 ssao_radius = 95.17
 ssao_bias = 0.961
@@ -28,17 +31,17 @@ glow_hdr_luminance_cap = 2.0
 glow_bicubic_upscale = true
 
 [node name="ShaderToy" type="Panel"]
-material = SubResource( 2 )
+material = SubResource( 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 1.8534
-margin_top = 1.14475
-margin_right = -1548.15
-margin_bottom = -658.855
+margin_left = 1.25881
+margin_top = -2.01156
+margin_right = -1548.74
+margin_bottom = -662.011
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource( 3 )
+environment = SubResource( 2 )

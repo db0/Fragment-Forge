@@ -415,18 +415,18 @@ const CARDS := {
 		"_affinity": "ZIP",
 		"_influence": 4,
 	},
-	"Common Shader": {
+	"Point Tunnel": {
 		"Type": CardConfig.CardTypes.SHADER,
 		"Tags": [],
 		"Abilities": "5 Kudos: Increase the value of this Shader by 2",
 		"Time": 5,
 		"Value": GEN,
 		"Kudos": 0,
-		"skill_req": 3,
+		"skill_req": 0,
 		"cred_req": 0,
 		"motivation_req": 0,
 		"_abilities_power": 2,
-		#"_illustration": "N/A",
+		"_illustration": "Flyguy",
 		"_affinity": "NEUTRAL",
 		"_influence": 0,
 	},
@@ -550,7 +550,7 @@ const CARDS := {
 		"_affinity": "ART",
 		"_influence": 1,
 	},
-	"Tricky Shader": {
+	"Kali": {
 		"Type": CardConfig.CardTypes.SHADER,
 		"Tags": [],
 		"Abilities": "When installing this shader, reduce its time by 2 extra (3 total) "\
@@ -562,7 +562,7 @@ const CARDS := {
 		"cred_req": 0,
 		"motivation_req": 0,
 		"_abilities_power": 2,
-#		"_illustration": "N/A",
+		"_illustration": "Stefan Berke",
 		"_affinity": "ZIP",
 		"_influence": 1,
 	},

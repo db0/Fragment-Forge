@@ -115,6 +115,9 @@ func init_shader(shader_name: String, is_card := true) -> void:
 		"Pentagonal Tesselations":
 			_set_shader_param('colour_change', CFUtils.rand_bool())
 			_set_shader_param('zoom', CFUtils.randf_range(2.0,6.0))
+		"Kali":
+			# More than 10k, and it gets jittery
+			_set_shader_param('big_offset', CFUtils.randf_range(100.0,10000.0))
 		_:
 			pass
 
