@@ -399,7 +399,7 @@ const CARDS := {
 		"_affinity": "ART",
 		"_influence": 5,
 	},
-	"Memory Shader": {
+	"Star Nest": {
 		"Type": CardConfig.CardTypes.SHADER,
 		"Tags": [],
 		"Abilities": "Install: Return the top " + CardConfig.CardTypes.ACTION\
@@ -411,7 +411,7 @@ const CARDS := {
 		"cred_req": 0,
 		"motivation_req": 5,
 		"_abilities_power": 3,
-		#"_illustration": "N/A",
+		"_illustration": "Pablo Roman Andrioli",
 		"_affinity": "ZIP",
 		"_influence": 4,
 	},
@@ -550,7 +550,7 @@ const CARDS := {
 		"_affinity": "ART",
 		"_influence": 1,
 	},
-	"Kali": {
+	"Explorer": {
 		"Type": CardConfig.CardTypes.SHADER,
 		"Tags": [],
 		"Abilities": "When installing this shader, reduce its time by 2 extra (3 total) "\
@@ -614,7 +614,7 @@ const CARDS := {
 		"_abilities_power": 2,
 		"_influence": 3,
 	},
-	"Squished Shader": {
+	"Planet": {
 		"Type": CardConfig.CardTypes.SHADER,
 		"Tags": [],
 		"Abilities": "Install: Gain 1 Cred",
@@ -624,7 +624,7 @@ const CARDS := {
 		"skill_req": 3,
 		"cred_req": 0,
 		"motivation_req": 2,
-		#"_illustration": "N/A",
+		"_illustration": "Pablo Roman Andrioli",
 		"_affinity": "ZIP",
 		"_abilities_power": 3,
 		"_influence": 3,

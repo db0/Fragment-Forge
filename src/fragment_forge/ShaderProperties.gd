@@ -1,7 +1,7 @@
 class_name ShaderProperties
 extends Reference
 
-const shaders_without_time_offset := ["Sculpture"]
+const shaders_without_time_offset := ["Sculpture", "Planet"]
 var shader_params := {}
 var material: Material
 var shader_time_offset := 0.0
@@ -115,9 +115,16 @@ func init_shader(shader_name: String, is_card := true) -> void:
 		"Pentagonal Tesselations":
 			_set_shader_param('colour_change', CFUtils.rand_bool())
 			_set_shader_param('zoom', CFUtils.randf_range(2.0,6.0))
-		"Kali":
+		"Explorer":
 			# More than 10k, and it gets jittery
 			_set_shader_param('big_offset', CFUtils.randf_range(100.0,10000.0))
+		"Planet":
+			# More than 10k, and it gets jittery
+			_set_shader_param('water_color', FFUtils.rnd_color())
+			_set_shader_param('land_color1', FFUtils.rnd_color())
+			_set_shader_param('land_color2', FFUtils.rnd_color())
+			_set_shader_param('atmo_color', FFUtils.rnd_color())
+			_set_shader_param('cloud_color', FFUtils.rnd_color())
 		_:
 			pass
 

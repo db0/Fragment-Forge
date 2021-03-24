@@ -1467,7 +1467,7 @@ func get_scripts(card_name: String) -> Dictionary:
 				]
 			}
 		},
-		"Memory Shader": {
+		"Star Nest": {
 			"card_moved_to_board": {
 				"board": [
 					{
@@ -1487,7 +1487,7 @@ func get_scripts(card_name: String) -> Dictionary:
 				],
 			},
 		},
-		"Squished Shader": {
+		"Planet": {
 			"card_moved_to_board": {
 				"board": [
 					{
@@ -1499,7 +1499,7 @@ func get_scripts(card_name: String) -> Dictionary:
 				],
 			},
 		},
-		"Kali": {
+		"Explorer": {
 			"alterants": {
 				"hand": [
 					{

@@ -18,7 +18,7 @@ onready var version := $Version
 
 func _ready() -> void:
 	cfc.game_rng.randomize()
-	change_shader('Kali')
+	change_shader("Star Nest")
 	settings_menu.rect_position.x = get_viewport().size.x
 	new_game_menu.rect_position.x = get_viewport().size.x
 	deck_builder.rect_position.x = -get_viewport().size.x
