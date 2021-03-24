@@ -1,23 +1,14 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://shaders/ShaderToy.gd" type="Script" id=1]
-[ext_resource path="res://shaders/Star Nest.shader" type="Shader" id=2]
+[ext_resource path="res://shaders/Circuits.shader" type="Shader" id=2]
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 2 )
-shader_param/is_card = true
-shader_param/iTime = 2595.02
-shader_param/iterations = 17
-shader_param/formuparam = 0.53
-shader_param/volsteps = 20
-shader_param/stepsize = 0.1
-shader_param/zoom = 0.8
-shader_param/tile = 0.85
-shader_param/speed = 0.01
-shader_param/brightness = 0.0015
-shader_param/darkmatter = 0.3
-shader_param/distfading = 0.73
-shader_param/saturation = 0.85
+shader_param/is_card = false
+shader_param/iTime = 2958.3
+shader_param/width = 0.005
+shader_param/zoom = 0.18
 
 [sub_resource type="Environment" id=2]
 background_mode = 4
@@ -37,10 +28,10 @@ glow_bicubic_upscale = true
 material = SubResource( 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 0.729055
-margin_top = -0.952112
-margin_right = -1549.27
-margin_bottom = -660.952
+margin_left = 1.0
+margin_top = 2.0
+margin_right = -1213.0
+margin_bottom = -556.0
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false

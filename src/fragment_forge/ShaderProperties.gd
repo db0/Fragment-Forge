@@ -125,6 +125,9 @@ func init_shader(shader_name: String, is_card := true) -> void:
 			_set_shader_param('land_color2', FFUtils.rnd_color())
 			_set_shader_param('atmo_color', FFUtils.rnd_color())
 			_set_shader_param('cloud_color', FFUtils.rnd_color())
+		"Circuits":
+			_set_shader_param('iChannel0', FFUtils.grab_random_texture())
+			_set_shader_param('iChannel1', FFUtils.grab_random_texture())
 		_:
 			pass
 

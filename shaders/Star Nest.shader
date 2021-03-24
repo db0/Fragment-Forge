@@ -5,7 +5,7 @@ shader_type canvas_item;
 // https://www.shadertoy.com/view/XlfGRj
 // Ported to Godot and customized for FragmentForge by Db0
 
-// Licence: CC0
+// Licence: MIT
 
 uniform bool is_card = true;
 uniform float iTime;

@@ -369,7 +369,7 @@ const CARDS := {
 		"_affinity": "ART",
 		"_influence": 1,
 	},
-	"Motivated Shader": {
+	"Circuits": {
 		"Type": CardConfig.CardTypes.SHADER,
 		"Tags": [],
 		"Abilities": "",
@@ -380,7 +380,7 @@ const CARDS := {
 		"cred_req": 0,
 		"motivation_req": 6,
 		"_abilities_power": -3,
-		#"_illustration": "N/A",
+		"_illustration": "Pablo Roman Andrioli",
 		"_affinity": "ART",
 		"_influence": 1,
 	},
