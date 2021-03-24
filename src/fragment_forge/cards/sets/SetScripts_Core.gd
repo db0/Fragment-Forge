@@ -1417,7 +1417,7 @@ func get_scripts(card_name: String) -> Dictionary:
 				]
 			}
 		},
-		"Reusable Shader": {
+		"Point Tunnel": {
 			"competition_ended": {
 				"board": [
 					{

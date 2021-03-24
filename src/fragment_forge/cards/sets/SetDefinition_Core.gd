@@ -177,7 +177,7 @@ const CARDS := {
 		"_affinity": "WIN",
 		"_influence": 3,
 	},
-	"Reusable Shader": {
+	"Point Tunnel": {
 		"Type": CardConfig.CardTypes.SHADER,
 		"Tags": ["Restricted"],
 		"Abilities": "If you take first place while this shader is installed "\
@@ -191,7 +191,7 @@ const CARDS := {
 		"motivation_req": 0,
 		"_abilities_power": 1,
 		"_max_allowed": 1,
-		#"_illustration": "N/A",
+		"_illustration": "Flyguy",
 		"_affinity": "WIN",
 		"_influence": 4,
 	},
@@ -415,18 +415,18 @@ const CARDS := {
 		"_affinity": "ZIP",
 		"_influence": 4,
 	},
-	"Point Tunnel": {
+	"Common Shader": {
 		"Type": CardConfig.CardTypes.SHADER,
 		"Tags": [],
 		"Abilities": "5 Kudos: Increase the value of this Shader by 2",
 		"Time": 5,
 		"Value": GEN,
 		"Kudos": 0,
-		"skill_req": 0,
+		"skill_req": 2,
 		"cred_req": 0,
 		"motivation_req": 0,
 		"_abilities_power": 2,
-		"_illustration": "Flyguy",
+#		"_illustration": "Flyguy",
 		"_affinity": "NEUTRAL",
 		"_influence": 0,
 	},

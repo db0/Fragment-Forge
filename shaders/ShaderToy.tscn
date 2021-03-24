@@ -6,7 +6,7 @@
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 2 )
 shader_param/is_card = false
-shader_param/iTime = 2958.3
+shader_param/iTime = 2961.66
 shader_param/width = 0.005
 shader_param/zoom = 0.18
 
