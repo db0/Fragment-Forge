@@ -147,7 +147,7 @@ const CARDS := {
 		"_affinity": "ZIP",
 		"_influence": 1,
 	},
-	"Multifaceted Shader": {
+	"Vitraux": {
 		"Type": CardConfig.CardTypes.SHADER,
 		"Tags": [],
 		"Abilities": "This Shader has +1 value for each different installed shader.",
@@ -158,7 +158,7 @@ const CARDS := {
 		"cred_req": 0,
 		"motivation_req": 4,
 		"_abilities_power": 2,
-		#"_illustration": "N/A",
+		"_illustration": "Pablo Roman Andrioli",
 		"_affinity": "ART",
 		"_influence": 3,
 	},
@@ -206,7 +206,7 @@ const CARDS := {
 		"cred_req": 0,
 		"motivation_req": 0,
 		"_abilities_power": 1,
-		#"_illustration": "N/A",
+		"_illustration": "Pablo Roman Andrioli",
 		"_affinity": "ART",
 		"_influence": 2,
 	},
@@ -415,14 +415,14 @@ const CARDS := {
 		"_affinity": "ZIP",
 		"_influence": 4,
 	},
-	"Common Shader": {
+	"Flow": {
 		"Type": CardConfig.CardTypes.SHADER,
 		"Tags": [],
 		"Abilities": "5 Kudos: Increase the value of this Shader by 2",
 		"Time": 5,
 		"Value": GEN,
 		"Kudos": 0,
-		"skill_req": 2,
+		"skill_req": 1,
 		"cred_req": 0,
 		"motivation_req": 0,
 		"_abilities_power": 2,

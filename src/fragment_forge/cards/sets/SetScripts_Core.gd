@@ -1359,7 +1359,7 @@ func get_scripts(card_name: String) -> Dictionary:
 				],
 			},
 		},
-		"Multifaceted Shader": {
+		"Virtaux": {
 			"alterants": {
 				"board": [
 					{
@@ -1928,7 +1928,7 @@ func get_scripts(card_name: String) -> Dictionary:
 				]
 			}
 		},
-		"Common Shader": {
+		"Flow": {
 			"manual": {
 				"board": [
 					{

@@ -1,13 +1,12 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://shaders/ShaderToy.gd" type="Script" id=1]
-[ext_resource path="res://shaders/Spiral Riders.shader" type="Shader" id=2]
+[ext_resource path="res://shaders/Flow.shader" type="Shader" id=2]
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 2 )
-shader_param/is_card = false
-shader_param/iTime = 3964.74
-shader_param/color_choice = 0
+shader_param/is_card = true
+shader_param/iTime = 421.634
 
 [sub_resource type="Environment" id=2]
 background_mode = 4
@@ -27,10 +26,10 @@ glow_bicubic_upscale = true
 material = SubResource( 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 0.470245
-margin_top = -0.648651
-margin_right = -1213.53
-margin_bottom = -558.649
+margin_left = 1.0
+margin_top = 1.0
+margin_right = -1514.0
+margin_bottom = -525.0
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
