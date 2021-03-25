@@ -195,7 +195,7 @@ const CARDS := {
 		"_affinity": "WIN",
 		"_influence": 4,
 	},
-	"Refreshing Shader": {
+	"Spiral Riders": {
 		"Type": CardConfig.CardTypes.SHADER,
 		"Tags": [],
 		"Abilities": "Install: Unexhaust an installed Shader",

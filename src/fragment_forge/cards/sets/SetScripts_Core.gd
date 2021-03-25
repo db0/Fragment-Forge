@@ -1429,7 +1429,7 @@ func get_scripts(card_name: String) -> Dictionary:
 				"filter_current_place": Competitions.Place.FIRST,
 			},
 		},
-		"Refreshing Shader": {
+		"Spiral Riders": {
 			"card_moved_to_board": {
 				"board": [
 					{

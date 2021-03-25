@@ -128,6 +128,8 @@ func init_shader(shader_name: String, is_card := true) -> void:
 		"Circuits":
 			_set_shader_param('iChannel0', FFUtils.grab_random_texture())
 			_set_shader_param('iChannel1', FFUtils.grab_random_texture())
+		"Spiral Riders":
+			_set_shader_param('color_choice', CFUtils.randi()%5)
 		_:
 			pass
 
