@@ -1346,7 +1346,7 @@ func get_scripts(card_name: String) -> Dictionary:
 				],
 			},
 		},
-		"Infinite Shader": {
+		"Galaxy": {
 			"card_moved_to_board": {
 				"board": [
 					{

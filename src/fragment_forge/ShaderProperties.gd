@@ -132,6 +132,10 @@ func init_shader(shader_name: String, is_card := true) -> void:
 			_set_shader_param('color_choice', CFUtils.randi()%5)
 		"Tundra":
 			_set_shader_param('direction',{true:1.0, false:-1.0}[CFUtils.rand_bool()])
+		"Galaxy":
+			_set_shader_param('iChannel0', FFUtils.grab_random_texture())
+			_set_shader_param('NUMRINGS', CFUtils.randf_range(20.0,60-.0))
+			_set_shader_param('MAX_BLOCKS', CFUtils.randf_range(20.0,60-.0))
 		_:
 			pass
 

@@ -520,7 +520,7 @@ const CARDS := {
 		"_affinity": "WIN",
 		"_influence": 1,
 	},
-	"Infinite Shader": {
+	"Galaxy": {
 		"Type": CardConfig.CardTypes.SHADER,
 		"Tags": [],
 		"Abilities": "Install: lose all remaining time",
@@ -531,7 +531,7 @@ const CARDS := {
 		"cred_req": 0,
 		"motivation_req": 4,
 		"_abilities_power": -3,
-#		"_illustration": "N/A",
+		"_illustration": "Martijn Steinrucken",
 		"_affinity": "ART",
 		"_influence": 2,
 	},

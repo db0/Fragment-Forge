@@ -1,15 +1,14 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://shaders/ShaderToy.gd" type="Script" id=1]
-[ext_resource path="res://shaders/Tundra.shader" type="Shader" id=2]
+[ext_resource path="res://shaders/Galaxy.shader" type="Shader" id=2]
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 2 )
-shader_param/is_card = true
-shader_param/iTime = 1477.42
-shader_param/direction = 1.0
-shader_param/MOD3 = Vector3( 0.1031, 0.11369, 0.13787 )
-shader_param/MOONPOS = Vector2( 1.3, 0.8 )
+shader_param/is_card = false
+shader_param/iTime = 1773.16
+shader_param/NUMRINGS = 60.0
+shader_param/MAX_BLOCKS = 60.0
 
 [sub_resource type="Environment" id=2]
 background_mode = 4
@@ -29,10 +28,10 @@ glow_bicubic_upscale = true
 material = SubResource( 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 5.0
-margin_top = 8.0
-margin_right = -1476.0
-margin_bottom = -513.0
+margin_left = 4.15909
+margin_top = -0.408997
+margin_right = -1476.84
+margin_bottom = -521.409
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
