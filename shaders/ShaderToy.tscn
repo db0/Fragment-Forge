@@ -1,12 +1,13 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://shaders/ShaderToy.gd" type="Script" id=1]
-[ext_resource path="res://shaders/Flow.shader" type="Shader" id=2]
+[ext_resource path="res://shaders/Cosmic Marble.shader" type="Shader" id=2]
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 2 )
 shader_param/is_card = true
-shader_param/iTime = 421.634
+shader_param/iTime = 871.858
+shader_param/iChannelResolution1 = Vector2( 512, 512 )
 
 [sub_resource type="Environment" id=2]
 background_mode = 4
@@ -26,10 +27,10 @@ glow_bicubic_upscale = true
 material = SubResource( 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 1.0
-margin_top = 1.0
-margin_right = -1514.0
-margin_bottom = -525.0
+margin_left = 2.68179
+margin_top = -0.681824
+margin_right = -1512.32
+margin_bottom = -526.682
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false

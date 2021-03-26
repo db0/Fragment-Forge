@@ -384,7 +384,7 @@ const CARDS := {
 		"_affinity": "ART",
 		"_influence": 1,
 	},
-	"Unique Shader": {
+	"Cosmic Marble": {
 		"Type": CardConfig.CardTypes.SHADER,
 		"Tags": ["Unique"],
 		"Abilities": "",
@@ -395,7 +395,7 @@ const CARDS := {
 		"cred_req": 0,
 		"motivation_req": 0,
 		"_abilities_power": -1,
-		#"_illustration": "N/A",
+		"_illustration": "Eddie Lee",
 		"_affinity": "ART",
 		"_influence": 5,
 	},
