@@ -1,8 +1,8 @@
 shader_type canvas_item;
 // Using code from
 
-// Otavio Good for the runes shader
-// https://www.shadertoy.com/view/MsXSRn
+// Otavio Good for the Let it Flow shader
+// https://www.shadertoy.com/view/wtBBzG
 // Ported to Godot and customized for FragmentForge by Db0
 
 // Licence: CC0

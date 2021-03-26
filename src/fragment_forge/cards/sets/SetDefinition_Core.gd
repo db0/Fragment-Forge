@@ -426,7 +426,7 @@ const CARDS := {
 		"cred_req": 0,
 		"motivation_req": 0,
 		"_abilities_power": 2,
-#		"_illustration": "Flyguy",
+		"_illustration": "Pablo Roman Andrioli",
 		"_affinity": "NEUTRAL",
 		"_influence": 0,
 	},
