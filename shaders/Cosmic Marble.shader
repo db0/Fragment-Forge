@@ -10,10 +10,6 @@ shader_type canvas_item;
 
 uniform bool is_card = true;
 uniform float iTime;
-uniform sampler2D iChannel0;
-uniform sampler2D iChannel1;
-uniform vec2 iChannelResolution1;
-
 
 // a study on raymarching, soft-shadows, ao, etc
 // borrowed heavy from others, esp @cabbibo and @iquilezles and more

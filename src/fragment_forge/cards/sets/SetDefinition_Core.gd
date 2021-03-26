@@ -535,7 +535,7 @@ const CARDS := {
 		"_affinity": "ART",
 		"_influence": 2,
 	},
-	"Magnum Opus": {
+	"Tundra": {
 		"Type": CardConfig.CardTypes.SHADER,
 		"Tags": [],
 		"Abilities": "",
@@ -546,7 +546,7 @@ const CARDS := {
 		"cred_req": 0,
 		"motivation_req": 0,
 		"_abilities_power": 0,
-#		"_illustration": "N/A",
+		"_illustration": "Martijn Steinrucken",
 		"_affinity": "ART",
 		"_influence": 1,
 	},
