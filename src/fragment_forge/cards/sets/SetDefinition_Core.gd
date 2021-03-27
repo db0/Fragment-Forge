@@ -162,7 +162,7 @@ const CARDS := {
 		"_affinity": "ART",
 		"_influence": 3,
 	},
-	"Teaching Shader": {
+	"Truchet": {
 		"Type": CardConfig.CardTypes.SHADER,
 		"Tags": ["Community"],
 		"Abilities": "Install: Gain 3 Kudos",
@@ -173,7 +173,7 @@ const CARDS := {
 		"cred_req": 0,
 		"motivation_req": 4,
 		"_abilities_power": 1,
-		#"_illustration": "N/A",
+		"_illustration": "Martijn Steinrucken",
 		"_affinity": "WIN",
 		"_influence": 3,
 	},
@@ -210,7 +210,7 @@ const CARDS := {
 		"_affinity": "ART",
 		"_influence": 2,
 	},
-	"Cantrip Shader": {
+	"Ojascki": {
 		"Type": CardConfig.CardTypes.SHADER,
 		"Tags": ["Restricted"],
 		"Abilities": "After you play your third different Shader, "\
@@ -222,7 +222,7 @@ const CARDS := {
 		"cred_req": 0,
 		"motivation_req": 0,
 		"_abilities_power": 2,
-		#"_illustration": "N/A",
+		"_illustration": "Martijn Steinrucker",
 		"_max_allowed": 1,
 		"_affinity": "ART",
 		"_influence": 4,
@@ -598,7 +598,7 @@ const CARDS := {
 		"_abilities_power": 1,
 		"_influence": 2,
 	},
-	"Daemonic Shader": {
+	"Snake": {
 		"Type": CardConfig.CardTypes.SHADER,
 		"Tags": [],
 		"Abilities": "Install: Search your deck for your highest value Shader "\
@@ -609,7 +609,7 @@ const CARDS := {
 		"skill_req": 3,
 		"cred_req": 0,
 		"motivation_req": 3,
-		#"_illustration": "N/A",
+		"_illustration": "Martijn Steinrucken",
 		"_affinity": "ART",
 		"_abilities_power": 2,
 		"_influence": 3,

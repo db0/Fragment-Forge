@@ -1,0 +1,16 @@
+[gd_resource type="CubeMap" load_steps=7 format=2]
+
+[ext_resource path="res://shaders/textures/cubemaps/shady_patch_nx.png" type="Image" id=1]
+[ext_resource path="res://shaders/textures/cubemaps/shady_patch_px.png" type="Image" id=2]
+[ext_resource path="res://shaders/textures/cubemaps/shady_patch_pz.png" type="Image" id=3]
+[ext_resource path="res://shaders/textures/cubemaps/shady_patch_ny.png" type="Image" id=4]
+[ext_resource path="res://shaders/textures/cubemaps/shady_patch_py.png" type="Image" id=5]
+[ext_resource path="res://shaders/textures/cubemaps/shady_patch_nz.png" type="Image" id=6]
+
+[resource]
+side/left = ExtResource( 1 )
+side/right = ExtResource( 2 )
+side/bottom = ExtResource( 4 )
+side/top = ExtResource( 5 )
+side/front = ExtResource( 6 )
+side/back = ExtResource( 3 )

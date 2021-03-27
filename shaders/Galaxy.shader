@@ -13,7 +13,7 @@ uniform float iTime;
 uniform sampler2D iChannel0;
 
 uniform float NUMRINGS=60.;
-uniform float MAX_BLOCKS=60.;
+uniform float MAX_BLOCKS=40.;
 
 
 mat2 Rot(float a) {
@@ -125,7 +125,9 @@ vec3 Bg(vec3 rd) {
 	uv *= 2.;
     float wave = sin(rd.y*3.14+iTime*.1)*.5+.5;
     wave *= sin(uv.x+uv.y*3.1415)*.5+.5;
-    return vec3(0.01*sin(iTime*.06),0,.05)*wave;
+	// reduced the time multiplier to 0.1 (was 0.6) 
+	// as it ended up always glowing red otherwise - db0
+    return vec3(0.01*sin(iTime*.01),0,.05)*wave;
 }
 
 void fragment()
@@ -196,7 +198,8 @@ void fragment()
     col += galaxy.rgb;
     col += max(0., sB)*smoothstep(5.0, 0., dot(ro,ro))*.03*zoom;
     
-    col *= smoothstep(0.9, 0.5, d);
+    col *= smoothstep(1., 0.5, d);
+	col.r *= 1.;
     
     COLOR = vec4(sqrt(col),1.0);
 }

@@ -1,0 +1,13 @@
+[remap]
+
+importer="image"
+type="Image"
+path="res://.import/shady_patch_nz.png-76341d87179f6baa334bbf1c0eab3ead.image"
+
+[deps]
+
+source_file="res://shaders/textures/cubemaps/shady_patch_nz.png"
+dest_files=[ "res://.import/shady_patch_nz.png-76341d87179f6baa334bbf1c0eab3ead.image" ]
+
+[params]
+

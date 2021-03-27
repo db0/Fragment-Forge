@@ -1,16 +1,15 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://shaders/ShaderToy.gd" type="Script" id=1]
-[ext_resource path="res://shaders/Galaxy.shader" type="Shader" id=2]
+[ext_resource path="res://shaders/Ojascki.shader" type="Shader" id=2]
 
-[sub_resource type="ShaderMaterial" id=1]
+[sub_resource type="ShaderMaterial" id=2]
 shader = ExtResource( 2 )
-shader_param/is_card = false
-shader_param/iTime = 1773.16
-shader_param/NUMRINGS = 60.0
-shader_param/MAX_BLOCKS = 60.0
+shader_param/is_card = true
+shader_param/iTime = 2414.9
+shader_param/reverse = null
 
-[sub_resource type="Environment" id=2]
+[sub_resource type="Environment" id=3]
 background_mode = 4
 ssao_radius = 95.17
 ssao_bias = 0.961
@@ -25,17 +24,17 @@ glow_hdr_luminance_cap = 2.0
 glow_bicubic_upscale = true
 
 [node name="ShaderToy" type="Panel"]
-material = SubResource( 1 )
+material = SubResource( 2 )
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 4.15909
-margin_top = -0.408997
-margin_right = -1476.84
-margin_bottom = -521.409
+margin_left = 2.03149
+margin_top = 3.93701
+margin_right = -1402.97
+margin_bottom = -441.063
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource( 2 )
+environment = SubResource( 3 )

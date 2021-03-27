@@ -1383,7 +1383,7 @@ func get_scripts(card_name: String) -> Dictionary:
 				]
 			}
 		},
-		"Daemonic Shader": {
+		"Snake": {
 			"card_moved_to_board": {
 				"board": [
 					{
@@ -1405,7 +1405,7 @@ func get_scripts(card_name: String) -> Dictionary:
 				]
 			}
 		},
-		"Teaching Shader": {
+		"Truchet": {
 			"card_moved_to_board": {
 				"board": [
 					{
@@ -1447,7 +1447,7 @@ func get_scripts(card_name: String) -> Dictionary:
 				],
 			},
 		},
-		"Cantrip Shader": {
+		"Ojascki": {
 			"card_moved_to_board": {
 				"deck": [
 					{

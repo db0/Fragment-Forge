@@ -1,0 +1,13 @@
+[remap]
+
+importer="image"
+type="Image"
+path="res://.import/shady_patch_py.png-dfa138e9941435fac566c0153da89053.image"
+
+[deps]
+
+source_file="res://shaders/textures/cubemaps/shady_patch_py.png"
+dest_files=[ "res://.import/shady_patch_py.png-dfa138e9941435fac566c0153da89053.image" ]
+
+[params]
+

@@ -134,8 +134,15 @@ func init_shader(shader_name: String, is_card := true) -> void:
 			_set_shader_param('direction',{true:1.0, false:-1.0}[CFUtils.rand_bool()])
 		"Galaxy":
 			_set_shader_param('iChannel0', FFUtils.grab_random_texture())
-			_set_shader_param('NUMRINGS', CFUtils.randf_range(20.0,60-.0))
-			_set_shader_param('MAX_BLOCKS', CFUtils.randf_range(20.0,60-.0))
+			_set_shader_param('NUMRINGS', CFUtils.randf_range(40.0,60.0))
+			_set_shader_param('MAX_BLOCKS', CFUtils.randf_range(40.0,60.0))
+		"Snake":
+			_set_shader_param('iChannel0', preload("res://shaders/textures/cubemaps/shade_patch.tres"))
+			_set_shader_param('iChannel1', FFUtils.grab_random_texture())
+		"Truchet":
+			_set_shader_param('speed', CFUtils.randf_range(0.2,1.0))
+		"Ojascki":
+			_set_shader_param('reverse', CFUtils.rand_bool())
 		_:
 			pass
 
