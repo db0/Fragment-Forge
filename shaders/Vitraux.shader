@@ -45,6 +45,7 @@ void fragment()
     for (int x=-AA;x<AA;x++) 
         for (int y=-AA;y<AA;y++)
 		    col+=fractal(UV+vec2(float(x),float(y))*pix);
-
-	COLOR = col / float(AA*AA);
+	col /= float(AA*AA);
+	col.a = 1.0;
+	COLOR = col;
 }

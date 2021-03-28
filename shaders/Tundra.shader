@@ -213,6 +213,7 @@ void fragment()
     foreground.rgb *= vec3(.1, .1, .2)*.5;
     
     col = mix(col, foreground, foreground.a);
-    
-    COLOR = vec4(col);
+    vec4 color = vec4(col);
+	color.a = 1.0;
+    COLOR = color;
 }
