@@ -3,13 +3,13 @@
 [ext_resource path="res://shaders/ShaderToy.gd" type="Script" id=1]
 [ext_resource path="res://shaders/Ojascki.shader" type="Shader" id=2]
 
-[sub_resource type="ShaderMaterial" id=2]
+[sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 2 )
 shader_param/is_card = true
 shader_param/iTime = 2414.9
 shader_param/reverse = null
 
-[sub_resource type="Environment" id=3]
+[sub_resource type="Environment" id=2]
 background_mode = 4
 ssao_radius = 95.17
 ssao_bias = 0.961
@@ -24,7 +24,7 @@ glow_hdr_luminance_cap = 2.0
 glow_bicubic_upscale = true
 
 [node name="ShaderToy" type="Panel"]
-material = SubResource( 2 )
+material = SubResource( 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 2.03149
@@ -37,4 +37,4 @@ __meta__ = {
 }
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource( 3 )
+environment = SubResource( 2 )
