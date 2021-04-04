@@ -24,9 +24,9 @@ const decks = [
 
 # This deck is specially designed to be loaded with cards in order
 const tutorial_deck = [
-	"Simple Colours",
+	"Cloud",
+	"Twister",
 	"Fractal Pyramid",
-	"Strings",
 	"Google-Fu!",
 	"Discord Mod",
 	"Difios",

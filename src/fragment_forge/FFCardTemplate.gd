@@ -12,6 +12,7 @@ var shader_params := {}
 var shader_properties: ShaderProperties
 var printed_properties := {}
 var shader_init_thread: Thread
+var tutorial_disabled := false
 
 onready var modified_costs_popup := $ModifiedCostsPopup
 
@@ -352,6 +353,8 @@ func common_post_move_scripts(new_container: Node, old_container: Node, tags: Ar
 # Returns a dictionary of card scripts for this specific card
 # based on the current trigger.
 func retrieve_scripts(trigger: String) -> Dictionary:
+	if tutorial_disabled: 
+		return({})
 	var found_scripts = .retrieve_scripts(trigger)
 	if trigger == "manual" and get_state_exec() == "hand":
 		found_scripts = insert_payment_costs(found_scripts)
