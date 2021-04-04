@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://src/core/Hand.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/fragment_forge/Deck.tscn" type="PackedScene" id=2]
@@ -8,6 +8,8 @@
 [ext_resource path="res://src/fragment_forge/Details.tscn" type="PackedScene" id=6]
 [ext_resource path="res://src/fragment_forge/Hand.gd" type="Script" id=7]
 [ext_resource path="res://src/fragment_forge/ShadersGrid.tscn" type="PackedScene" id=8]
+[ext_resource path="res://src/fragment_forge/Theme/Theme_FF.tres" type="Theme" id=9]
+[ext_resource path="res://src/fragment_forge/Tutorial.gd" type="Script" id=10]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0, 0, 0, 1 )
@@ -182,9 +184,26 @@ __meta__ = {
 
 [node name="BoardTween" type="Tween" parent="."]
 
+[node name="Tutorial" type="AcceptDialog" parent="."]
+visible = true
+margin_right = 700.0
+margin_bottom = 62.0
+rect_min_size = Vector2( 700, 0 )
+theme = ExtResource( 9 )
+popup_exclusive = true
+window_title = "Fragment Forge Tutorial"
+dialog_text = "Welcome to the Fragment Forge Tutorial"
+dialog_autowrap = true
+script = ExtResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [connection signal="pressed" from="ReshuffleAllDeck" to="." method="_on_ReshuffleAllDeck_pressed"]
 [connection signal="pressed" from="ReshuffleAllDiscard" to="." method="_on_ReshuffleAllDiscard_pressed"]
 [connection signal="toggled" from="Debug" to="." method="_on_Debug_toggled"]
+[connection signal="about_to_show" from="Tutorial" to="Tutorial" method="_on_Tutorial_about_to_show"]
+[connection signal="popup_hide" from="Tutorial" to="Tutorial" method="_on_Tutorial_popup_hide"]
 
 [editable path="Deck"]
 [editable path="Discard"]

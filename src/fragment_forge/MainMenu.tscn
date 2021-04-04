@@ -69,15 +69,15 @@ __meta__ = {
 [node name="PC" type="PanelContainer" parent="MainMenu"]
 self_modulate = Color( 1, 1, 1, 0.690196 )
 margin_left = 721.0
-margin_top = 253.0
+margin_top = 183.0
 margin_right = 978.0
-margin_bottom = 647.0
+margin_bottom = 717.0
 
 [node name="VBC" type="VBoxContainer" parent="MainMenu/PC"]
 margin_left = 7.0
 margin_top = 7.0
 margin_right = 250.0
-margin_bottom = 387.0
+margin_bottom = 527.0
 size_flags_horizontal = 3
 custom_constants/separation = 40
 
@@ -88,18 +88,26 @@ rect_min_size = Vector2( 0, 100 )
 custom_fonts/font = SubResource( 2 )
 text = "New Game"
 
-[node name="DeckBuilder" type="Button" parent="MainMenu/PC/VBC"]
+[node name="Tutorial" type="Button" parent="MainMenu/PC/VBC"]
 margin_top = 140.0
 margin_right = 243.0
 margin_bottom = 240.0
 rect_min_size = Vector2( 0, 100 )
 custom_fonts/font = SubResource( 2 )
-text = "Deck Builder"
+text = "Tutorial"
 
-[node name="Settings" type="Button" parent="MainMenu/PC/VBC"]
+[node name="DeckBuilder" type="Button" parent="MainMenu/PC/VBC"]
 margin_top = 280.0
 margin_right = 243.0
 margin_bottom = 380.0
+rect_min_size = Vector2( 0, 100 )
+custom_fonts/font = SubResource( 2 )
+text = "Deck Builder"
+
+[node name="Settings" type="Button" parent="MainMenu/PC/VBC"]
+margin_top = 420.0
+margin_right = 243.0
+margin_bottom = 520.0
 rect_min_size = Vector2( 0, 100 )
 custom_fonts/font = SubResource( 2 )
 text = "Settings"
@@ -158,5 +166,6 @@ text = "v0.16"
 [node name="MenuTween" type="Tween" parent="."]
 
 [connection signal="pressed" from="MainMenu/PC/VBC/NewGame" to="." method="_on_NewGame_pressed"]
+[connection signal="pressed" from="MainMenu/PC/VBC/Tutorial" to="." method="_on_Tutorial_pressed"]
 [connection signal="pressed" from="MainMenu/PC/VBC/DeckBuilder" to="." method="_on_DeckBuilder_pressed"]
 [connection signal="pressed" from="MainMenu/PC/VBC/Settings" to="." method="_on_Settings_pressed"]

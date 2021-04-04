@@ -6,12 +6,15 @@ var allCards := [] # A pseudo-deck array to hold the card objects we want to pul
 
 onready var start_button := $VBC/Details/Start
 onready var debug_button := $VBC/Details/Debug
+onready var show_tutorial := $VBC/Details/ShowTutorial
 onready var settings_button := $VBC/Details/VBC3/Settings
 onready var back_button := $VBC/Details/VBC3/Back
 
 onready var competitions : Competitions = $VBC/Details/VBC/Competition
 onready var game_goal := $VBC/Details/VBC2/GameGoal
 onready var persona := $VBC/Details/VBC4/HBC
+
+onready var tutorial := $Tutorial
 
 var tournament := 1
 var popup_settings : PopupPanel
@@ -38,11 +41,15 @@ func _ready() -> void:
 	back_button.connect("pressed", self, "_on_Back_pressed")
 	# warning-ignore:return_value_discarded
 	debug_button.connect("pressed", self, "_on_Debug_pressed")
+	# warning-ignore:return_value_discarded
+	show_tutorial.connect("pressed", self, "_on_show_tutorial_pressed")
 	# Fill up the deck for demo purposes
 	if not cfc.ut:
 		cfc.game_rng_seed = CFUtils.generate_random_seed()
 	if not get_tree().get_root().has_node('Gut'):
 		load_deck()
+	if ffc.is_tutorial:
+		_start_tutorial()
 
 func _input(event):
 	if event.is_action_pressed("debug"):
@@ -58,7 +65,7 @@ func _on_Start_pressed() -> void:
 		for card in ffc.current_deck:
 			cards_amount += ffc.current_deck[card]
 		# If the deck didn't have the minimum, we don't consider it a valid game
-		if cards_amount >= 30:
+		if cards_amount >= 30 and not ffc.is_tutorial:
 			var stats_deck = {
 				"persona": ffc.current_persona.persona_name,
 				"cards": ffc.current_deck,
@@ -192,20 +199,55 @@ func load_deck() -> void:
 		deck = sample_decks.decks[0].cards
 	else:
 		deck = ffc.current_deck
-	persona.setup()
-	var cards_array := []
-	for card_name in deck:
-		for _iter in range(deck[card_name]):
+	if ffc.is_tutorial:
+		var sample_decks = load(CFConst.PATH_CUSTOM + "decks/SampleDecks.gd")
+		var tutorial_deck: Array = sample_decks.tutorial_deck
+		ffc.current_persona = Persona.new("Imploder")
+		persona.setup()
+		var cards_array := []
+		for card_name in tutorial_deck:
 			cards_array.append(cfc.instance_card(card_name))
-	for card in cards_array:
-		cfc.NMAP.deck.add_child(card)
-		# warning-ignore:return_value_discarded
-		#card.set_is_faceup(false,true)
-		card._determine_idle_state()
-	cfc.NMAP.deck.shuffle_cards()
+		cards_array.invert()
+		for card in cards_array:
+			cfc.NMAP.deck.add_child(card)
+			card._determine_idle_state()
+	else:
+		persona.setup()
+		var cards_array := []
+		for card_name in deck:
+			for _iter in range(deck[card_name]):
+				cards_array.append(cfc.instance_card(card_name))
+		for card in cards_array:
+			cfc.NMAP.deck.add_child(card)
+			# warning-ignore:return_value_discarded
+			#card.set_is_faceup(false,true)
+			card._determine_idle_state()
+		cfc.NMAP.deck.shuffle_cards()
 
 
 func reset_game() -> void:
 	for c in get_tree().get_nodes_in_group("cards"):
 		c.queue_free()
 
+func _start_tutorial() -> void:
+	$Tutorial.board = self
+	$Tutorial.board_elements = {
+	"start_button": start_button,
+	"settings_button": settings_button,
+	"menu_button": back_button,
+	"counters": counters,
+	"competitions": competitions,
+	"game_goal": game_goal,
+	"persona": persona,
+	"deck": $Deck,
+	"hand": $Hand,
+	"discard": $Discard,
+	"mc_resources": $"VBC/MC-Resources",
+	"mc_shaders": $"VBC/MC-Shaders",
+	}
+	show_tutorial.visible = true
+	tutorial.display_tutorial()
+#	tutorial.highlight_element("persona")
+
+func _on_show_tutorial_pressed() -> void:
+	tutorial.popup_centered()

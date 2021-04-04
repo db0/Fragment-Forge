@@ -5,28 +5,28 @@
 [ext_resource path="res://fonts/Comfortaa-Bold.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://src/fragment_forge/NewGame.gd" type="Script" id=4]
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=1]
 size = 24
 outline_size = 2
 outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="DynamicFont" id=2]
 size = 18
 outline_size = 2
 outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
 font_data = ExtResource( 3 )
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="DynamicFont" id=3]
 size = 22
 outline_size = 2
 outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=4]
 size = 35
 outline_size = 2
 outline_color = Color( 0, 0, 0, 1 )
@@ -70,7 +70,7 @@ custom_constants/separation = 20
 visible = false
 margin_right = 274.0
 margin_bottom = 30.0
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 1 )
 text = "Loaded Deck"
 align = 1
 
@@ -78,14 +78,14 @@ align = 1
 visible = false
 margin_right = 274.0
 margin_bottom = 21.0
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 2 )
 text = "Deck Name"
 align = 1
 
 [node name="DeckLoader" type="MenuButton" parent="PC/VBC"]
 margin_right = 274.0
 margin_bottom = 33.0
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 3 )
 text = "Choose Deck"
 flat = false
 script = ExtResource( 2 )
@@ -94,7 +94,7 @@ script = ExtResource( 2 )
 margin_top = 53.0
 margin_right = 274.0
 margin_bottom = 83.0
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 1 )
 text = "Difficulty"
 align = 1
 
@@ -107,7 +107,7 @@ margin_bottom = 153.0
 margin_right = 37.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 0, 50 )
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 4 )
 text = "<"
 
 [node name="Level" type="Label" parent="PC/VBC/Difficulty"]
@@ -147,7 +147,7 @@ __meta__ = {
 [node name="DifficultiesTitle" type="Label" parent="PC/VBC/Difficulty/Level/Difficulties/MC/VBC"]
 margin_right = 148.0
 margin_bottom = 30.0
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 1 )
 text = "Difficulty"
 align = 1
 
@@ -155,7 +155,7 @@ align = 1
 margin_top = 40.0
 margin_right = 148.0
 margin_bottom = 61.0
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 2 )
 text = "0: Normal Game"
 
 [node name="Increase" type="Button" parent="PC/VBC/Difficulty"]
@@ -163,7 +163,7 @@ margin_left = 237.0
 margin_right = 274.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 0, 50 )
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 4 )
 text = ">"
 
 [node name="HBC" type="HBoxContainer" parent="PC/VBC"]
@@ -176,7 +176,7 @@ margin_right = 150.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 0, 50 )
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 4 )
 disabled = true
 text = "START"
 
@@ -186,7 +186,7 @@ margin_right = 274.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 0, 50 )
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 4 )
 text = "BACK"
 
 [connection signal="deck_loaded" from="PC/VBC/DeckLoader" to="." method="_on_DeckLoader_deck_loaded"]

@@ -28,9 +28,17 @@ text = "Start Competition"
 visible = false
 margin_left = 162.0
 margin_right = 277.0
-margin_bottom = 85.0
+margin_bottom = 100.0
 custom_fonts/font = ExtResource( 5 )
 text = "Debug Game"
+
+[node name="ShowTutorial" type="Button" parent="."]
+visible = false
+margin_left = 162.0
+margin_right = 277.0
+margin_bottom = 100.0
+custom_fonts/font = ExtResource( 5 )
+text = "Show Tutorial"
 
 [node name="VBC4" type="VBoxContainer" parent="."]
 margin_left = 162.0

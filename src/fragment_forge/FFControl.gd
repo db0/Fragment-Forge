@@ -70,6 +70,7 @@ var current_deck: Dictionary
 var current_persona: Persona
 var difficulty: int setget set_difficulty
 var game_stats := GAME_STATS.duplicate()
+var is_tutorial: bool
 
 
 func _ready() -> void:

@@ -27,6 +27,7 @@ func _ready() -> void:
 	settings_menu.recover_prebuilts.connect("pressed", self, "_on_PreBuilts_pressed")
 	deck_builder.back_button.connect("pressed", self, "_on_DeckBuilder_Back_pressed")
 	initiate_sample_decks()
+	ffc.is_tutorial = false
 
 func _process(delta: float) -> void:
 	material.set_shader_param('iTime', shader_time)
@@ -73,7 +74,8 @@ func change_shader(shader_name = null) -> void:
 
 
 func initiate_sample_decks(force := false) -> void:
-	cfc.game_settings['sample_decks_loaded'] = cfc.game_settings.get('sample_decks_loaded', false)
+	cfc.game_settings['sample_decks_loaded'] =\
+			cfc.game_settings.get('sample_decks_loaded', false)
 	if not cfc.game_settings.sample_decks_loaded or force:
 		var dir = Directory.new()
 		if not dir.dir_exists(CFConst.DECKS_PATH):
@@ -198,3 +200,8 @@ func _on_Menu_resized() -> void:
 					tab.rect_position.x = -get_viewport().size.x
 			elif tab.rect_position.x > 0.0:
 					tab.rect_position.x = get_viewport().size.x
+
+
+func _on_Tutorial_pressed() -> void:
+	ffc.is_tutorial = true
+	get_tree().change_scene("res://src/fragment_forge/Main.tscn")
