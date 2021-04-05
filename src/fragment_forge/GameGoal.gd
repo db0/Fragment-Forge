@@ -54,27 +54,41 @@ func send_end_game_stats(state: String, state_type: String = '') -> void:
 		var game_data = {"state": state, "details": game_details}
 		cfc.NMAP.board.stats.complete_game(game_data)
 
+func _show_tutorial_popup() -> void:
+	end_game_popup.window_title = "Tutorial Finished!"
+	end_game_popup.dialog_text = "Win or lose, you have now completeted your first game!"\
+			+ "\n\nPress OK to go back to the main menu."
+
 func win_game() -> void:
-	end_game_popup.window_title = "Congratulations!"
-	end_game_popup.dialog_text = "You have amassed the required cred "\
-			+ "to become the envy of your peers. Well done!\n\nPress OK to play again."
-	send_end_game_stats("victory")
+	if ffc.is_tutorial:
+		_show_tutorial_popup()
+	else:
+		end_game_popup.window_title = "Congratulations!"
+		end_game_popup.dialog_text = "You have amassed the required cred "\
+				+ "to become the envy of your peers. Well done!\n\nPress OK to play again."
+		send_end_game_stats("victory")
 	finish_game()
 
 
 func lose_game() -> void:
-	end_game_popup.window_title = "Game Over!"
-	end_game_popup.dialog_text = "Unfortunately, you have not managed to achieve "\
-			+ " the required cred to win this game.\n\nPress OK to play again."
-	send_end_game_stats("defeat", "time")
-	finish_game()
+	if ffc.is_tutorial:
+		_show_tutorial_popup()
+	else:
+		end_game_popup.window_title = "Game Over!"
+		end_game_popup.dialog_text = "Unfortunately, you have not managed to achieve "\
+				+ " the required cred to win this game.\n\nPress OK to play again."
+		send_end_game_stats("defeat", "time")
+		finish_game()
 
 func lose_game_motivation() -> void:
-	end_game_popup.window_title = "Game Over!"
-	end_game_popup.dialog_text = "Unfortunately, the stress of these competitions "\
-			+ " was too much and you have ended with bad case of Burnout. "\
-			+ "You have dropped out!\n\nPress OK to play again."
-	send_end_game_stats("defeat", "motivation")
+	if ffc.is_tutorial:
+		_show_tutorial_popup()
+	else:
+		end_game_popup.window_title = "Game Over!"
+		end_game_popup.dialog_text = "Unfortunately, the stress of these competitions "\
+				+ " was too much and you have ended with bad case of Burnout. "\
+				+ "You have dropped out!\n\nPress OK to play again."
+		send_end_game_stats("defeat", "motivation")
 	finish_game()
 
 
@@ -87,7 +101,12 @@ func finish_game() -> void:
 
 
 func _on_EndGame_confirmed() -> void:
-	if cfc.NMAP.board.stats:
-		cfc.NMAP.board.stats.thread.wait_to_finish()
-	cfc.reset_game()
-	ffc.reset_game()
+	if ffc.is_tutorial:
+		# warning-ignore:return_value_discarded
+		get_tree().change_scene("res://src/fragment_forge/MainMenu.tscn")
+		cfc.NMAP.clear()		
+	else:
+		if cfc.NMAP.board.stats:
+			cfc.NMAP.board.stats.thread.wait_to_finish()
+		cfc.reset_game()
+		ffc.reset_game()

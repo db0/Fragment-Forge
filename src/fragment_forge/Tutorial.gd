@@ -433,6 +433,7 @@ func display_tutorial() -> void:
 			_tutorial_disable(true, current_card)
 		tutorial_steps.SHADERS_PLAYED:
 			# I need to do this, otherwise the focus highlight will be stuck
+			yield(get_tree().create_timer(0.1), "timeout")
 			cfc.game_paused = true
 			board.mouse_pointer.current_focused_card = null
 			board.mouse_pointer.overlaps = []

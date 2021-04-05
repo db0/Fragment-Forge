@@ -40,7 +40,6 @@ const _PLACE_UNACHIEVED_COLOR = Color(1,0,0)
 const PLACE_NAMES := ["3rd", "2nd", "1st"]
 
 var current_tournament: Dictionary
-var available_tournaments := []
 var placement_requirements := []
 var current_round := 0
 var current_place := -1
@@ -108,9 +107,6 @@ func _process(_delta: float) -> void:
 			placements_labels[p].set("custom_colors/font_color", _PLACE_UNACHIEVED_COLOR)
 
 func next_competition() -> void:
-	if available_tournaments.empty():
-		available_tournaments = COMPETITIONS.duplicate()
-		CFUtils.shuffle_array(available_tournaments)
 	# We want to set the multiplier before incrementing the round
 	# so that on the first turn, the multiplier increase is 0. (0 * 0.5)
 	if current_round > 0:
@@ -135,7 +131,11 @@ func next_competition() -> void:
 	current_place = -1
 	round_multiplier = 1 + current_round * round_multiplier_increase
 	current_round += 1
-	current_tournament = available_tournaments.pop_front()
+	# We get a random competition each time
+	if ffc.is_tutorial and current_round <= 3:
+		current_tournament =  COMPETITIONS[current_round - 1]
+	else:
+		current_tournament =  COMPETITIONS[CFUtils.randi() % COMPETITIONS.size()]
 	title.text = current_tournament.name
 	# These are also relevant to multiplayer, as a player cannot get first
 	# place with very low value, just because the other players didn't play well
