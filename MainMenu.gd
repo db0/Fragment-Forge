@@ -204,4 +204,5 @@ func _on_Menu_resized() -> void:
 
 func _on_Tutorial_pressed() -> void:
 	ffc.is_tutorial = true
+	ffc.difficulty = 0
 	get_tree().change_scene("res://src/fragment_forge/Main.tscn")

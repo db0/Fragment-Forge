@@ -93,7 +93,8 @@ func get_count_and_alterants() -> Dictionary:
 func expand() -> void:
 	$Name.visible = true
 	$MarginContainer.visible = true
-	$Buttons.visible = true
+	if CFConst.SHOW_TOKEN_BUTTONS:
+		$Buttons.visible = true
 
 
 # Hides the Name label.
