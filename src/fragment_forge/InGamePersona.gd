@@ -7,6 +7,7 @@ extends HBoxContainer
 var persona: Persona
 var _debugger_hook := false
 var canonical_name: String
+var tutorial_disabled := false
 
 # Called when the deck is first loaded, to populate the various fields
 # and textures
@@ -117,7 +118,8 @@ func execute_scripts(
 
 
 func _on_Persona_pressed() -> void:
-	execute_scripts()
+	if not tutorial_disabled:
+		execute_scripts()
 
 # Connects to the next-competition button
 # re-enables personas which are once-per-competition

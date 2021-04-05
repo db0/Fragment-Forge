@@ -2,6 +2,8 @@
 extends Pile
 
 signal draw_card(deck)
+var tutorial_disabled := false
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	while cfc.NMAP.size() < 5:
@@ -22,7 +24,9 @@ func _process(_delta: float) -> void:
 		
 
 func _on_Deck_input_event(event) -> void:
-	if event.is_pressed() and event.get_button_index() == 1:
+	if event.is_pressed()\
+			and event.get_button_index() == 1\
+			and not tutorial_disabled:
 		emit_signal("draw_card", self)
 
 func display_draw_time_cost():

@@ -15,6 +15,7 @@ onready var game_goal := $VBC/Details/VBC2/GameGoal
 onready var persona := $VBC/Details/VBC4/HBC
 
 onready var tutorial := $Tutorial
+var tutorial_disabled := false
 
 var tournament := 1
 var popup_settings : PopupPanel
@@ -57,6 +58,7 @@ func _input(event):
 
 func _on_Start_pressed() -> void:
 # warning-ignore:return_value_discarded
+	if tutorial_disabled: return
 	if start_button.text != "Next Competition":
 		cfc.NMAP.hand.fill_starting_hand()
 		start_button.text = "Next Competition"
@@ -202,7 +204,7 @@ func load_deck() -> void:
 	if ffc.is_tutorial:
 		var sample_decks = load(CFConst.PATH_CUSTOM + "decks/SampleDecks.gd")
 		var tutorial_deck: Array = sample_decks.tutorial_deck
-		ffc.current_persona = Persona.new("Imploder")
+		ffc.current_persona = Persona.new("Loophole")
 		persona.setup()
 		var cards_array := []
 		for card_name in tutorial_deck:

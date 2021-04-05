@@ -1,6 +1,6 @@
 extends Hand
 
-
+var tutorial_disabled := false
 func _ready() -> void:
 	hand_size = 10
 
