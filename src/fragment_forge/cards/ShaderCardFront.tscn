@@ -87,7 +87,7 @@ __meta__ = {
 }
 
 [node name="CardText" type="VBoxContainer" parent="Margin"]
-margin_right = 150.0
+margin_right = 161.0
 margin_bottom = 240.0
 mouse_filter = 2
 __meta__ = {
@@ -95,11 +95,13 @@ __meta__ = {
 }
 
 [node name="Header" parent="Margin/CardText" instance=ExtResource( 6 )]
+margin_right = 161.0
+margin_bottom = 33.0
 
 [node name="Type" type="Label" parent="Margin/CardText"]
-margin_top = 23.0
-margin_right = 150.0
-margin_bottom = 36.0
+margin_top = 37.0
+margin_right = 161.0
+margin_bottom = 50.0
 rect_min_size = Vector2( 50, 13 )
 size_flags_horizontal = 3
 size_flags_vertical = 1
@@ -111,7 +113,9 @@ autowrap = true
 uppercase = true
 
 [node name="Requirements" parent="Margin/CardText" instance=ExtResource( 4 )]
-margin_bottom = 93.0
+margin_top = 54.0
+margin_right = 161.0
+margin_bottom = 107.0
 
 [node name="VBC" parent="Margin/CardText/Requirements" index="0"]
 margin_bottom = 53.0
@@ -142,8 +146,8 @@ rect_min_size = Vector2( 3, 0 )
 mouse_filter = 2
 
 [node name="Abilities" type="Label" parent="Margin/CardText"]
-margin_top = 97.0
-margin_right = 150.0
+margin_top = 111.0
+margin_right = 161.0
 margin_bottom = 240.0
 rect_min_size = Vector2( 146, 100 )
 size_flags_vertical = 3
@@ -154,6 +158,7 @@ valign = 1
 autowrap = true
 
 [node name="ValueContainer" parent="Margin" instance=ExtResource( 5 )]
+margin_right = 161.0
 margin_bottom = 240.0
 
 [editable path="Margin/CardText/Requirements"]

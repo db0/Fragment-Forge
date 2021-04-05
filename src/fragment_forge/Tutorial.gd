@@ -31,6 +31,12 @@ enum tutorial_steps {
 	PREP_PLAYER_INPUT,
 	PREP_PLAYED,
 	CARD_DRAW,
+	TUTORS,
+	TUTOR_PLAYER_INPUT,
+	TUTOR_PLAYED,
+	FREE_PLAY,
+	NEXT_COMPETITION,
+	END,
 }
 
 const TUTORIALS := {
@@ -185,12 +191,14 @@ const TUTORIALS := {
 	+ "Each shader costs time to play. The amount if shown under the time cost "\
 	+ "on the top (clock icon).\n"\
 	+ "* For Shaders of equal skill requirement as your skill, you pay the exact "\
-	+ "time cost shown on their cost."\
+	+ "time cost shown on their cost.\n"\
 	+ "* For Shaders of 1 skill requirement higher than your skill, you pay an extra "\
 	+ "time cost equal to their skill requirement + 50% of their time cost on top\n"\
 	+ "* For Shaders of lower skill requirement your skill, you pay 1 less time "\
 	+ "for each skill you have higher than their requirements, up to a maximum of half-cost.\n"\
 	+ "* Shader of 2 or higher skill requirement than your skill cannot be played.\n\n"\
+	+ "Finally, one last important thing to remember about Shaders is that they only "\
+	+ "last until the end of the current competition and will be discarded immediately after!\n\n"\
 	+ "Let's try to play a shader now. Try to play the Twister Shader from your hand.\n\n"\
 	+ "Press OK to hide this window. Then play the Twister shader by either "\
 	+ "double-clicking on it or by drag & dropping it to the board",
@@ -295,6 +303,41 @@ const TUTORIALS := {
 	+ "to draw a new card. It up to you to decide if the extra time cost is worth "\
 	+ "the benefit of playing with more options\n\n"\
 	+ "Press OK to proceed.",
+	tutorial_steps.TUTORS: "Some cards have permanent effects while they're in play.\n "\
+	+ "One such example is the Tutor resource you've just drawn.\n"\
+	+ "This specific card, increases your skill for playing low-level shaders while "\
+	+ "it's installed. Given that you have some shaders that will benefit from this "\
+	+ "now would be a good time to play it.\n\n"\
+	+ "While we're here though, also notice the text boxes under each card's magnified view.\n"\
+	+ "Other than information about the illustration, here you can see some hints "\
+	+ "about the purpose of its Tags. Text with a yellow color, explains mechanical "\
+	+ "effects of a tag, while white text is just for information.\n\n"\
+	+ "Press OK to hide this window, then play Difios from your hand.",
+	tutorial_steps.TUTOR_PLAYER_INPUT: '',
+	tutorial_steps.TUTOR_PLAYED: "Now that Difios is on the board, the cost to "\
+	+ "play your low-skill_req Shaders will decreate thanks to his tutoring.\n"\
+	+ "To take advantage of that, use this opportunity to play the 'Fractal Pyramid' "\
+	+ "and 'Light' Shaders you have in your hand. When your mouse hovers over them "\
+	+ "notice how they point out their reduced cost, and which card is affecting them\n\n"\
+	+ "After you've played this Shaders, you will see the 3rd placement position "\
+	+ "in the competition turn green. This means that with the current cards on the "\
+	+ "board, as soon as you finish this competition, you will receive the cred "\
+	+ "reward for this placement.\n\n"\
+	+ "Press OK to hide this window, then play 'Fractal Pyramid' and 'Light' from your hand."\
+	+ "Continue drawing and playing cards until your time reaches 0 or you can do nothing else. "\
+	+ "Then press 'Next Competition'. Remember to draw new cards by clicking the deck if needed.",
+	tutorial_steps.FREE_PLAY: '',
+	tutorial_steps.NEXT_COMPETITION: "Well done! You are 1/3 of the way through the game "\
+	+ "and with some success to boot. Have you followed the instructions correctly "\
+	+ "you should now have some initial cred, and some good idea how to continue. "\
+	+ "playing the game.\n\nYou can continue this game until its conclusion if you wish "\
+	+ "(it is winnable). Remember to use your persona ability when opportune by clicking "\
+	+ "on her portrait!\n\n"\
+	+ "If you preferm you can instead press the 'Main Menu' button and return to the main screen "\
+	+ "where you can use the 'New Game' button to play a game using one of the starting decks.\n\n"\
+	+ "Good luck, and have fun!\n\n"\
+	+ "Press OK to continue.",
+	tutorial_steps.END: "",
 }
 
 const HIGHLIGHTS = {
@@ -340,6 +383,12 @@ const HIGHLIGHTS = {
 	tutorial_steps.PREP_PLAYER_INPUT: ["all"],
 	tutorial_steps.PREP_PLAYED: ['hand', 'deck', 'discard'],
 	tutorial_steps.CARD_DRAW: ['deck'],
+	tutorial_steps.TUTORS: ['hand'],
+	tutorial_steps.TUTOR_PLAYER_INPUT: ["all"],
+	tutorial_steps.TUTOR_PLAYED: ['hand', 'current_card'],
+	tutorial_steps.FREE_PLAY: ["all"],
+	tutorial_steps.NEXT_COMPETITION: ["all"],
+	tutorial_steps.END: ["all"],
 }
 
 var current_step : int = tutorial_steps.WELCOME
@@ -392,9 +441,6 @@ func display_tutorial() -> void:
 			cfc.game_paused = true
 			current_card.disconnect("card_moved_to_board", self, "_on_card_trigger")
 			_tutorial_disable(false)
-#			yield(get_tree().create_timer(0.1), "timeout")
-#			current_card._on_Card_mouse_exited()
-#			cfc.NMAP.main.unfocus(current_card)
 		tutorial_steps.RESOURCES:
 			cfc.game_paused = true
 			current_card._on_Card_mouse_exited()
@@ -447,19 +493,51 @@ func display_tutorial() -> void:
 			current_card.connect("card_moved_to_pile", self, "_on_card_trigger")
 			_tutorial_disable(true, current_card)
 		tutorial_steps.PREP_PLAYED:
+			board.mouse_pointer.current_focused_card = null
+			board.mouse_pointer.overlaps = []
 			cfc.NMAP.board.mouse_pointer.global_position = Vector2(0,0)
 			yield(get_tree().create_timer(0.1), "timeout")
 			cfc.game_paused = true
 			current_card.disconnect("card_moved_to_pile", self, "_on_card_trigger")
 			_tutorial_disable(false)
+		tutorial_steps.TUTORS:
+			for card in cfc.NMAP.hand.get_all_cards():
+				if not card in active_cards:
+					active_cards.append(card)
+			# warning-ignore:return_value_discarded
+			cfc.game_paused = true
+			_tutorial_disable(false)
+		tutorial_steps.TUTOR_PLAYER_INPUT:
+			cfc.game_paused = false
+			current_card = active_cards[5]
+			# warning-ignore:return_value_discarded
+			current_card.connect("card_moved_to_board", self, "_on_card_trigger")
+			_tutorial_disable(true, current_card)
+		tutorial_steps.TUTOR_PLAYED:
+			board.mouse_pointer.current_focused_card = null
+			board.mouse_pointer.overlaps = []
+			cfc.NMAP.board.mouse_pointer.global_position = Vector2(0,0)
+			yield(get_tree().create_timer(0.1), "timeout")
+			cfc.game_paused = true
+			current_card.disconnect("card_moved_to_board", self, "_on_card_trigger")
+			_tutorial_disable(false)
+		tutorial_steps.FREE_PLAY:
+			cfc.game_paused = false
+			# warning-ignore:return_value_discarded
+			board.competitions.connect("competition_ended", self, "_on_card_trigger")
+		tutorial_steps.NEXT_COMPETITION:
+			cfc.game_paused = true
+			board.competitions.disconnect("competition_ended", self, "_on_card_trigger")
+		tutorial_steps.END:
+			cfc.game_paused = false
 		# This is the standard tutorial step with a potential highlight
 		_:
 			cfc.game_paused = true
-	dialog_text = TUTORIALS[current_step]
 	highlight_element(HIGHLIGHTS[current_step])
-	if dialog_text == '':
+	if TUTORIALS[current_step] == '':
 		_hide_popup()
 	else:
+		dialog_text = TUTORIALS[current_step]
 		_show_popup()
 
 func highlight_element(elements: Array) -> void:
