@@ -52,7 +52,11 @@ func _process(delta: float) -> void:
 					shader_time += delta
 					shader_frame += 1
 			CardState.PREVIEW:
-				if cfc.game_settings.animate_in_deckbuilder:
+				if cfc.game_settings.animate_in_deckbuilder_preview:
+					shader_time += delta
+					shader_frame += 1
+			CardState.DECKBUILDER_GRID:
+				if cfc.game_settings.animate_in_deckbuilder_grid:
 					shader_time += delta
 					shader_frame += 1
 	highlight_modified_properties()

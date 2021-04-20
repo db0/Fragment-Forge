@@ -80,6 +80,7 @@ export var deck_summary_scene = _DECK_SUMMARIES_SCENE
 var deck_summaries
 
 onready var _available_cards := $VBC/HBC/MC2/AvailableCards/ScrollContainer/CardList
+onready var _card_grid := $VBC/HBC/MC2/AvailableCards/ScrollContainer/CardGrid
 onready var _deck_cards := $VBC/HBC/MC/CurrentDeck/ScrollContainer/CardsInDeck
 onready var _deck_name := $VBC/HBC/MC/CurrentDeck/DeckNameEdit
 onready var _load_button := $VBC/HBC/MC/CurrentDeck/Buttons/Load
@@ -140,6 +141,9 @@ func _process(_delta: float) -> void:
 		deck_summaries.deck_min_label.modulate = Color(1,0,0)
 	else:
 		deck_summaries.deck_min_label.modulate = Color(1,1,1)
+	_card_grid.columns = int(
+			$"VBC/HBC/MC2/AvailableCards/ScrollContainer".rect_size.x 
+			/ CFConst.CARD_SIZE.x)
 
 # Populates the list of available cards, with all defined cards in the game
 func populate_available_cards() -> void:
@@ -306,7 +310,7 @@ func _apply_filters(active_filters: Array) -> void:
 			elif not card_object.card_properties[property]\
 					in active_button_values:
 				set_visible = false
-		card_object.visible = set_visible
+		card_object.set_visibility(set_visible)
 		total_count += 1
 		if set_visible:
 			counter += 1
@@ -340,3 +344,9 @@ func _set_notice(text: String, colour := Color(0,1,0)) -> void:
 			1, 0, 2, Tween.TRANS_SINE, Tween.EASE_IN)
 	# warning-ignore:return_value_discarded
 	tween.start()
+
+
+func _on_SwitchViewStyle_toggled(button_pressed: bool) -> void:
+	_available_cards.visible = !button_pressed
+	$"VBC/HBC/MC2/AvailableCards/CardListHeaders".visible = !button_pressed
+	_card_grid.visible = button_pressed

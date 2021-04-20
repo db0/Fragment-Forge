@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://src/core/DeckBuilder/DeckBuilder.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/fragment_forge/InfoPanel.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://src/fragment_forge/deckbuilder/DBListCardObject.tscn" type="PackedScene" id=6]
 [ext_resource path="res://src/fragment_forge/deckbuilder/DBDeckCardObject.tscn" type="PackedScene" id=7]
 [ext_resource path="res://src/fragment_forge/deckbuilder/DBSummaries.tscn" type="PackedScene" id=8]
+[ext_resource path="res://src/fragment_forge/Theme/Theme_FF.tres" type="Theme" id=9]
 
 [sub_resource type="DynamicFont" id=1]
 outline_size = 2
@@ -26,56 +27,6 @@ deck_card_object_scene = ExtResource( 7 )
 list_card_object_scene = ExtResource( 6 )
 deck_summary_scene = ExtResource( 8 )
 
-[node name="VBC" parent="." index="0"]
-margin_right = 1700.0
-margin_bottom = 900.0
-
-[node name="Title" parent="VBC" index="0"]
-margin_right = 1700.0
-
-[node name="HBC" parent="VBC" index="1"]
-margin_right = 1700.0
-margin_bottom = 900.0
-
-[node name="MC" parent="VBC/HBC" index="0"]
-margin_right = 848.0
-margin_bottom = 859.0
-
-[node name="CurrentDeck" parent="VBC/HBC/MC" index="0"]
-margin_right = 848.0
-margin_bottom = 854.0
-
-[node name="DeckDetails" parent="VBC/HBC/MC/CurrentDeck" index="0"]
-margin_right = 843.0
-
-[node name="LineSeparator2" parent="VBC/HBC/MC/CurrentDeck" index="1"]
-margin_right = 843.0
-
-[node name="ScrollContainer" parent="VBC/HBC/MC/CurrentDeck" index="2"]
-margin_right = 843.0
-margin_bottom = 763.0
-
-[node name="CardsInDeck" parent="VBC/HBC/MC/CurrentDeck/ScrollContainer" index="0"]
-margin_bottom = 755.0
-
-[node name="HBoxContainer" parent="VBC/HBC/MC/CurrentDeck" index="3"]
-margin_top = 767.0
-margin_right = 843.0
-margin_bottom = 793.0
-
-[node name="NoticeLabel" parent="VBC/HBC/MC/CurrentDeck/HBoxContainer" index="2"]
-margin_right = 843.0
-
-[node name="DeckNameEdit" parent="VBC/HBC/MC/CurrentDeck" index="4"]
-margin_top = 797.0
-margin_right = 843.0
-margin_bottom = 824.0
-
-[node name="Buttons" parent="VBC/HBC/MC/CurrentDeck" index="5"]
-margin_top = 828.0
-margin_right = 843.0
-margin_bottom = 854.0
-
 [node name="MC" type="MarginContainer" parent="VBC/HBC/MC/CurrentDeck/Buttons" index="4"]
 margin_left = 248.0
 margin_right = 785.0
@@ -89,20 +40,7 @@ margin_bottom = 26.0
 custom_fonts/font = SubResource( 1 )
 text = "Back"
 
-[node name="MC2" parent="VBC/HBC" index="1"]
-margin_left = 852.0
-margin_right = 1700.0
-margin_bottom = 859.0
-
-[node name="AvailableCards" parent="VBC/HBC/MC2" index="0"]
-margin_right = 838.0
-margin_bottom = 854.0
-
-[node name="HBC" parent="VBC/HBC/MC2/AvailableCards" index="0"]
-margin_right = 838.0
-
 [node name="FilterLine" parent="VBC/HBC/MC2/AvailableCards/HBC" index="1"]
-margin_right = 734.0
 criteria_map = {
 "a": "Abilities",
 "c": "cred_req",
@@ -115,20 +53,6 @@ criteria_map = {
 "t": "Type",
 "v": "Value"
 }
-
-[node name="CardCount" parent="VBC/HBC/MC2/AvailableCards/HBC" index="2"]
-margin_left = 738.0
-margin_right = 838.0
-
-[node name="CC" parent="VBC/HBC/MC2/AvailableCards" index="1"]
-margin_right = 838.0
-
-[node name="ButtonFilters" parent="VBC/HBC/MC2/AvailableCards/CC" index="0"]
-margin_left = 419.0
-margin_right = 419.0
-
-[node name="CardListHeaders" parent="VBC/HBC/MC2/AvailableCards" index="2"]
-margin_right = 838.0
 
 [node name="Name" parent="VBC/HBC/MC2/AvailableCards/CardListHeaders" index="1"]
 margin_right = 656.0
@@ -156,12 +80,26 @@ rect_min_size = Vector2( 40, 0 )
 custom_fonts/font = ExtResource( 5 )
 text = "A."
 
-[node name="LineSeparator" parent="VBC/HBC/MC2/AvailableCards" index="3"]
-margin_right = 838.0
+[node name="Control" parent="VBC/HBC/MC2/AvailableCards/Settings" index="0"]
+margin_right = 223.0
 
-[node name="ScrollContainer" parent="VBC/HBC/MC2/AvailableCards" index="4"]
-margin_right = 838.0
-margin_bottom = 854.0
+[node name="SwitchViewStyle" parent="VBC/HBC/MC2/AvailableCards/Settings" index="1"]
+margin_left = 227.0
+margin_right = 386.0
 
-[node name="CardList" parent="VBC/HBC/MC2/AvailableCards/ScrollContainer" index="0"]
+[node name="AnimateGrid" type="CheckButton" parent="VBC/HBC/MC2/AvailableCards/Settings" index="2"]
+margin_left = 390.0
+margin_right = 595.0
+margin_bottom = 40.0
+theme = ExtResource( 9 )
+text = "Animate in Grid"
+
+[node name="AnimatePreview" type="CheckButton" parent="VBC/HBC/MC2/AvailableCards/Settings" index="3"]
+margin_left = 599.0
 margin_right = 838.0
+margin_bottom = 40.0
+theme = ExtResource( 9 )
+text = "Animate in Preview"
+
+[connection signal="toggled" from="VBC/HBC/MC2/AvailableCards/Settings/AnimateGrid" to="." method="_on_AnimateGrid_toggled"]
+[connection signal="toggled" from="VBC/HBC/MC2/AvailableCards/Settings/AnimatePreview" to="." method="_on_AnimatePreview_toggled"]

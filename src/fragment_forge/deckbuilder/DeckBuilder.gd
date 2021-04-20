@@ -9,6 +9,17 @@ onready var back_button = $VBC/HBC/MC/CurrentDeck/Buttons/Back
 
 func _ready() -> void:
 	deck_summaries.connect("persona_selected", self, "_on_persona_selected")
+	cfc.game_settings['animate_in_deckbuilder_preview'] =\
+			cfc.game_settings.get('animate_in_deckbuilder_preview', true)
+#	cfc.game_settings['animate_in_deckbuilder_grid'] =\
+#			cfc.game_settings.get('animate_in_deckbuilder_grid', false)
+	cfc.game_settings['animate_in_deckbuilder_grid'] = false
+	$VBC/HBC/MC2/AvailableCards/Settings/AnimatePreview.pressed =\
+		cfc.game_settings.animate_in_deckbuilder_preview
+#	$VBC/HBC/MC2/AvailableCards/Settings/AnimateGrid.pressed =\
+#		cfc.game_settings.animate_in_deckbuilder_grid
+	$VBC/HBC/MC2/AvailableCards/Settings/AnimateGrid.pressed = false
+	$VBC/HBC/MC2/AvailableCards/Settings/SwitchViewStyle.pressed = false
 
 func _process(_delta: float) -> void:
 	# We keep updating the card count label with the amount of cards in the deck
@@ -128,3 +139,23 @@ func _on_Reset_pressed() -> void:
 func _on_persona_selected() -> void:
 	for card_object in _available_cards.get_children():
 		card_object.check_influence()
+
+func _on_AnimateGrid_toggled(button_pressed: bool) -> void:
+	cfc.set_setting('animate_in_deckbuilder_grid',button_pressed)
+
+func _on_AnimatePreview_toggled(button_pressed: bool) -> void:
+	cfc.set_setting('animate_in_deckbuilder_preview',button_pressed)
+
+
+func _on_SwitchViewStyle_toggled(button_pressed: bool) -> void:
+	_available_cards.visible = !button_pressed
+	$"VBC/HBC/MC2/AvailableCards/CardListHeaders".visible = !button_pressed
+	_card_grid.visible = button_pressed
+	if button_pressed:
+		$"VBC/HBC/MC2/AvailableCards/Settings/AnimatePreview".text = "Show Preview"
+		for card_object in _available_cards.get_children():
+			card_object.setup_grid_card_object()
+			yield(get_tree().create_timer(0.01), "timeout")
+	else:
+		$"VBC/HBC/MC2/AvailableCards/Settings/AnimatePreview".text = "Animate Preview"
+		
