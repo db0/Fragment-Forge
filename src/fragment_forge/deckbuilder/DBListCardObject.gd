@@ -2,8 +2,8 @@ extends DBListCardObject
 
 
 # This is used to prepare the values of this object
-func setup(_card_name: String, count = 0, init_card_object = false) -> void:
-	.setup(_card_name, count, init_card_object)
+func setup(_card_name: String, count = 0) -> void:
+	.setup(_card_name, count)
 	$Influence.text = str(card_properties.get("_influence",0))
 	var affinity = card_properties.get("_affinity")
 	var icon_texture = ImageTexture.new();

@@ -10,9 +10,6 @@ rect_min_size = Vector2( 150, 240 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="PreviewPopup" parent="." instance=ExtResource( 2 )]
 margin_left = 75.0

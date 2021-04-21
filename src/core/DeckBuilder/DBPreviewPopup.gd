@@ -58,5 +58,6 @@ func show_preview_card(card_name) -> void:
 
 
 func hide_preview_card() -> void:
-	preview_card.queue_free()
+	if preview_card:
+		preview_card.queue_free()
 	visible = false

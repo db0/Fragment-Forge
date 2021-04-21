@@ -11,15 +11,19 @@ func _ready() -> void:
 	deck_summaries.connect("persona_selected", self, "_on_persona_selected")
 	cfc.game_settings['animate_in_deckbuilder_preview'] =\
 			cfc.game_settings.get('animate_in_deckbuilder_preview', true)
-#	cfc.game_settings['animate_in_deckbuilder_grid'] =\
-#			cfc.game_settings.get('animate_in_deckbuilder_grid', false)
-	cfc.game_settings['animate_in_deckbuilder_grid'] = false
+	cfc.game_settings['animate_in_deckbuilder_grid'] =\
+			cfc.game_settings.get('animate_in_deckbuilder_grid', false)
+	cfc.game_settings['deckbuilder_gridstyle'] =\
+			cfc.game_settings.get('deckbuilder_gridstyle', false)
 	$VBC/HBC/MC2/AvailableCards/Settings/AnimatePreview.pressed =\
 		cfc.game_settings.animate_in_deckbuilder_preview
-#	$VBC/HBC/MC2/AvailableCards/Settings/AnimateGrid.pressed =\
-#		cfc.game_settings.animate_in_deckbuilder_grid
-	$VBC/HBC/MC2/AvailableCards/Settings/AnimateGrid.pressed = false
-	$VBC/HBC/MC2/AvailableCards/Settings/SwitchViewStyle.pressed = false
+	$VBC/HBC/MC2/AvailableCards/Settings/AnimateGrid.pressed =\
+		cfc.game_settings.animate_in_deckbuilder_grid
+	$VBC/HBC/MC2/AvailableCards/Settings/GridViewStyle.pressed =\
+			cfc.game_settings.deckbuilder_gridstyle
+	if cfc.game_settings.deckbuilder_gridstyle:
+		prepare_card_grid()
+	_set_preview_button_name()
 
 func _process(_delta: float) -> void:
 	# We keep updating the card count label with the amount of cards in the deck
@@ -147,15 +151,12 @@ func _on_AnimatePreview_toggled(button_pressed: bool) -> void:
 	cfc.set_setting('animate_in_deckbuilder_preview',button_pressed)
 
 
-func _on_SwitchViewStyle_toggled(button_pressed: bool) -> void:
-	_available_cards.visible = !button_pressed
-	$"VBC/HBC/MC2/AvailableCards/CardListHeaders".visible = !button_pressed
-	_card_grid.visible = button_pressed
-	if button_pressed:
+func _on_GridViewStyle_toggled(button_pressed: bool) -> void:
+	._on_GridViewStyle_toggled(button_pressed)
+	_set_preview_button_name()
+
+func _set_preview_button_name() -> void:
+	if cfc.game_settings.deckbuilder_gridstyle:
 		$"VBC/HBC/MC2/AvailableCards/Settings/AnimatePreview".text = "Show Preview"
-		for card_object in _available_cards.get_children():
-			card_object.setup_grid_card_object()
-			yield(get_tree().create_timer(0.01), "timeout")
 	else:
 		$"VBC/HBC/MC2/AvailableCards/Settings/AnimatePreview".text = "Animate Preview"
-		
