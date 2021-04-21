@@ -2,9 +2,9 @@
 
 Fragment Forge is a card game simulating the rise to fame of a new demo effects coder.
 
-This a very rough release containing only a few cards. However you can make your own decks and should be playable with full rules enforcement.
+This an early release and the balance will be off. However you can make your own decks and it is playable with full rules enforcement.
 
-Feel free to download and see [the single-player rules](SP_RULES.md). 
+Feel free to download and try [the single-player](SP_RULES.md). A tutorial is also inluded. 
 You can also [play it online](http://fragmentforge.dbzer0.com/) (however the desktop client is faster)
 
 ## Roadmap
