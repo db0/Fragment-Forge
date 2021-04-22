@@ -359,9 +359,10 @@ func common_post_move_scripts(new_container: Node, old_container: Node, tags: Ar
 func retrieve_scripts(trigger: String) -> Dictionary:
 	if tutorial_disabled: 
 		return({})
-	var found_scripts = .retrieve_scripts(trigger)
+	var found_scripts = .retrieve_scripts(trigger).duplicate(true)
 	if trigger == "manual" and get_state_exec() == "hand":
 		found_scripts = insert_payment_costs(found_scripts)
+#		print_debug(found_scripts)
 		if typeof(found_scripts["hand"]) == TYPE_ARRAY:
 			if properties.Type == CardConfig.CardTypes.ACTION:
 				found_scripts["hand"] += generate_discard_action_tasks()
@@ -382,10 +383,10 @@ func insert_payment_costs(found_scripts) -> Dictionary:
 	var state_scripts = found_scripts.get("hand",[])
 	if typeof(state_scripts) == TYPE_ARRAY:
 		array_with_costs += state_scripts
-		found_scripts["hand"] = array_with_costs
+		found_scripts["hand"] = array_with_costs.duplicate()
 	else:
 		for key in state_scripts:
-			var temp_array = array_with_costs.duplicate()
+			var temp_array = array_with_costs.duplicate(true)
 			temp_array += state_scripts[key]
 			found_scripts["hand"][key] = temp_array
 	return(found_scripts)

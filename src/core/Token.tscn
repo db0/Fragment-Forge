@@ -104,6 +104,5 @@ text = "1"
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
 [connection signal="pressed" from="Buttons/Add" to="." method="_on_Add_pressed"]
 [connection signal="pressed" from="Buttons/Remove" to="." method="_on_Remove_pressed"]

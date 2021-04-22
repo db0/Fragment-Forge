@@ -955,7 +955,7 @@ func get_scripts(card_name: String) -> Dictionary:
 					},
 					{
 						"name": "modify_properties",
-						"set_properties": {"Value": "+2"},
+						"set_properties": {"Value": "+3"},
 						"subject": "self",
 					},
 				]
