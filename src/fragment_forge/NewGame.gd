@@ -33,8 +33,11 @@ func _on_DeckLoader_deck_loaded(deck) -> void:
 	deck_title.text = deck.name
 	deck_details.visible = true
 	deck_details.text = str(deck.total) + " Cards"
-	start_button.disabled = false
-
+	if (deck.total >= 30):
+		start_button.disabled = false
+	else:
+		start_button.disabled = true
+		
 func _on_Decrease_pressed() -> void:
 	if ffc.difficulty > ffc.Difficulties.START + 1:
 		ffc.difficulty -= 1
